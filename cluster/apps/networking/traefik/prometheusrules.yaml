@@ -34,9 +34,9 @@ spec:
         description: "Traefik is reporting {{ $value | humanizePercentage }} of 4xx
           errors on {{ $labels.exported_service }}"
       expr: |
-        sum(rate(traefik_service_requests_total{code=~"4.*"}[1m])) by (exported_service)
+        sum(rate(traefik_service_requests_total{code=~"4.*"}[1m])) by (service)
           /
-        sum(rate(traefik_service_requests_total[1m])) by (exported_service)
+        sum(rate(traefik_service_requests_total[1m])) by (service)
           > .05
       for: 2m
       labels:
@@ -47,9 +47,9 @@ spec:
         description: "Traefik is reporting {{ $value | humanizePercentage }} of 5xx
           errors on {{ $labels.exported_service }}"
       expr: |
-        sum(rate(traefik_service_requests_total{code=~"5.*"}[1m])) by (exported_service)
+        sum(rate(traefik_service_requests_total{code=~"5.*"}[1m])) by (service)
           /
-        sum(rate(traefik_service_requests_total[1m])) by (exported_service)
+        sum(rate(traefik_service_requests_total[1m])) by (service)
           > .05
       for: 2m
       labels:
