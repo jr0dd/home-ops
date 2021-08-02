@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://github.com/jr0dd/charts/
+      # renovate: registryUrl=https://jr0dd.github.io/charts/
       chart: discord-stock-ticker 
       version: 7.5.0
       sourceRef:

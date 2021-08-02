@@ -6,5 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  url: https://github.com/jr0dd/charts
+  url: https://jr0dd.github.io/charts/
   timeout: 3m
