@@ -131,10 +131,7 @@ spec:
         certManager:
           enabled: true
     coreDns:
-      enabled: true
-      service:
-        selector:
-          k8s-app: coredns
+      enabled: false
     kubeApiServer:
       enabled: true
       serviceMonitor:
