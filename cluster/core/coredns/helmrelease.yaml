@@ -44,7 +44,7 @@ spec:
           fallthrough
           ttl 60
       - name: forward
-        parameters: . "${GATEWAY_IP}"
+        parameters: . ${GATEWAY_IP}
         configBlock: |-
           max_concurrent 1000
       - name: prometheus
@@ -57,7 +57,7 @@ spec:
     zoneFiles:
     - filename: NodeHosts
       contents: |
-        "${GATEWAY_IP}" ix-truenas
+        ${GATEWAY_IP} ix-truenas
     prometheus:
       service:
         enabled: true
@@ -82,3 +82,5 @@ spec:
       effect: "NoSchedule"
     nodeSelector:
       kubernetes.io/os: linux
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "corens"
