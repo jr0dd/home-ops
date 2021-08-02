@@ -88,11 +88,11 @@ spec:
         existingClaim: plex
         mountPath: /config
         skipuninstall: true
-      data:
+      media:
         enabled: true
         type: pvc
         existingClaim: media
-        mountPath: /data
+        mountPath: /media
         skipuninstall: true
       transcode:
         enabled: true
