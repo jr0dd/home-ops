@@ -1,0 +1,25 @@
+image:
+  repository: ghcr.io/k8s-at-home/wireguard
+  pullPolicy: IfNotPresent
+  tag: v1.0.20210424
+controller:
+  enabled: true
+  replicas: 1
+  strategy: RollingUpdate
+env:
+  TZ: "America/New_York"
+  IPTABLES_BACKEND: "nft"
+  KILLSWITCH: "false"
+service:
+  main:
+    enabled: true
+    type: LoadBalancer
+    loadBalancerIP: "${LB_WIREGUARD_IP}"
+    externalTrafficPolicy: Local
+    ports:
+      http:
+        enabled: false
+      vpn:
+        enabled: true
+        port: 51820
+        protocol: UDP

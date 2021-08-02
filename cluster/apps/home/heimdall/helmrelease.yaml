@@ -1,0 +1,59 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: heimdall
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: heimdall
+      version: 7.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/linuxserver/heimdall
+      tag: 2.2.2-ls130
+    controller:
+      enabled: true
+      replicas: 1
+      strategy: RollingUpdate
+    env:
+      TZ: "America/New_York"
+      PUID: 568
+      PGID: 568
+    service:
+      main:
+        ports:
+          http:
+            port: 80
+    persistence:
+      config:
+        enabled: true
+        type: pvc
+        existingClaim: heimdall
+        mountPath: /config
+        skipuninstall: true
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
+        hosts:
+        - host: heimdall.storage-addict.io
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - secretName: heimdall-tls
+          hosts:
+          - heimdall.storage-addict.io

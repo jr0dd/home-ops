@@ -1,0 +1,14 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  storageClassName: openebs-zfspv
+  volumeName: sonarr
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi

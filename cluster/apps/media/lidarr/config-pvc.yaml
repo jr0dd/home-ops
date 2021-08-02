@@ -1,0 +1,14 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: lidarr
+  namespace: media
+spec:
+  storageClassName: openebs-zfspv
+  volumeName: lidarr
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi

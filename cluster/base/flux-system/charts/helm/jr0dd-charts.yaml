@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: jr0dd-charts
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://github.com/jr0dd/charts
+  timeout: 3m

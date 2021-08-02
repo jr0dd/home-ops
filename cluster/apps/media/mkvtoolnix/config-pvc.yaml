@@ -1,0 +1,14 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mkvtoolnix
+  namespace: media
+spec:
+  storageClassName: openebs-zfspv
+  volumeName: mkvtoolnix
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi

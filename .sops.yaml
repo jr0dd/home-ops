@@ -1,0 +1,6 @@
+---
+creation_rules:
+- encrypted_regex: '^(data|stringData)$'
+  pgp: >-
+    90D70EF82A524A486F33D8EF787289B5A6C8ED92,
+    AFE6721008A3DA5B6A027947B8C7431C430C6D24

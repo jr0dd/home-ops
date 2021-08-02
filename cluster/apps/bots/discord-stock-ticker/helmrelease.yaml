@@ -1,0 +1,130 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: discord-stock-ticker
+  namespace: bots
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://github.com/jr0dd/charts/
+      chart: discord-stock-ticker 
+      version: 7.5.0
+      sourceRef:
+        kind: HelmRepository
+        name: jr0dd-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/jr0dd/discord-stock-ticker
+      tag: v3.0.0
+    lifecycle:
+      postStart:
+        exec:
+          command: ["bash", "/app/config.sh"]
+    controller:
+      enabled: true
+      replicas: 1
+      strategy: RollingUpdate
+    env:
+      TZ: "America/New_York" 
+    envFrom:
+    - secretRef:
+        name: discord-tokens
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+    prometheus:
+      serviceMonitor:
+        enabled: true
+        interval: 10s
+        port: http
+        path: /metrics
+      prometheusRule:
+        enabled: true
+    config: |
+      #!/usr/bin/env bash
+
+      set -eu
+
+      FREQ="10"
+      NICK="true"
+      COLOR="true"
+    
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"BTC\", \
+        \"name\":\"bitcoin\", \
+        \"discord_bot_token\":\"${BTC}\", \
+        \"crypto\":true, \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}}"
+
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"DOGE\", \
+        \"name\":\"dogecoin\", \
+        \"discord_bot_token\":\"${DOGE}\", \
+        \"crypto\":true, \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}}"
+
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"ETH\", \
+        \"name\":\"ethereum\", \
+        \"discord_bot_token\":\"${ETH}\", \
+        \"crypto\":true, \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}}"
+
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"ZRX\", \
+        \"name\":\"0x\", \
+        \"discord_bot_token\":\"${ZRX}\", \
+        \"crypto\":true, \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}}"
+
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"AMC\", \
+        \"name\":\"AMC\", \
+        \"discord_bot_token\":\"${AMC}\", \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}}"
+
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"AAPL\", \
+        \"name\":\"AAPL\", \
+        \"discord_bot_token\":\"${AAPL}\", \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}}"
+
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"TSLA\", \
+        \"name\":\"TSLA\", \
+        \"discord_bot_token\":\"${TSLA}\", \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}}"

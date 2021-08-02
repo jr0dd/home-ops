@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- grafana
+- kube-prometheus-stack
+- loki
+- network-ups-tools
+- prometheus-blackbox-exporter
+- prometheus-nut-exporter
+- prometheus-snmp-exporter
+- promtail
+- speedtest-exporter

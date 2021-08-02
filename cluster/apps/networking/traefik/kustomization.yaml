@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- helmrelease.yaml
+- ingress.yaml
+- middlewares
+- prometheusrules.yaml
+- servicemonitor.yaml
+- tlsstore.yaml

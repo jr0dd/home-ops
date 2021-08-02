@@ -1,0 +1,74 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: qbittorrent
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: qbittorrent
+      version: 11.3.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/k8s-at-home/qbittorrent
+      tag: v4.3.5
+    controller:
+      enabled: true
+      replicas: 1
+      strategy: RollingUpdate
+    settings:
+      automaticPortSetup: true
+    env:
+      TZ: "America/New_York"
+    service:
+      main:
+        ports:
+          http:
+            port: 8080
+      bittorrent:
+        enabled: false
+        type: ClusterIP
+        ports:
+          bittorrent:
+            enabled: true
+            port: 50413
+            protocol: TCP
+            targetPort: 50413
+    persistence:
+      config:
+        enabled: true
+        type: pvc
+        existingClaim: qbittorrent
+        mountPath: /config
+        skipuninstall: true
+      media:
+        enabled: true
+        type: pvc
+        existingClaim: media
+        mountPath: /media
+        skipuninstall: true
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
+        hosts:
+        - host: "qbittorrent.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - secretName: qbittorrent-tls
+          hosts:
+          - "qbittorrent.${SECRET_DOMAIN}"

@@ -1,0 +1,49 @@
+image:
+  repository: jlesage/mkvtoolnix
+  tag: 1.54.0
+controller:
+  enabled: true
+  replicas: 1
+  strategy: RollingUpdate
+env:
+  TZ: "America/New_York"
+  USER_ID: 568
+  GROUP_ID: 568
+  KEEP_APP_RUNNING: 1
+  DISPLAY_WIDTH: 2560
+  DISPLAY_HEIGHT: 1440
+service:
+  main:
+    ports:
+      http:
+        port: 5800
+persistence:
+  config:
+    enabled: true
+    type: pvc
+    existingClaim: mkvtoolnix
+    mountPath: /config
+    skipuninstall: true
+  data:
+    enabled: true
+    type: pvc
+    existingClaim: media
+    mountPath: /storage
+    skipuninstall: true
+ingress:
+  main:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-production
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
+    hosts:
+    - host: "mkvtoolnix.${SECRET_DOMAIN}"
+      paths:
+      - path: /
+        pathType: Prefix
+    tls:
+    - secretName: mkvtoolnix-tls
+      hosts:
+      - "mkvtoolnix.${SECRET_DOMAIN}"

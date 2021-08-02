@@ -1,0 +1,14 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: tautulli
+  namespace: media
+spec:
+  storageClassName: openebs-zfspv
+  volumeName: tautulli
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

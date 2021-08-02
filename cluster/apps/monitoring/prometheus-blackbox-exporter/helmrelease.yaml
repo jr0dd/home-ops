@@ -1,0 +1,75 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: blackbox-exporter
+  namespace: monitoring
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: prometheus-blackbox-exporter
+      version: 5.0.3
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    fullnameOverride: blackbox-exporter
+    nameOverride: blackbox-exporter
+    allowIcmp: true
+    secretConfig: false
+    config:
+      modules:
+        icmp:
+          prober: icmp
+          timeout: 30s
+          icmp:
+            preferred_ip_protocol: "ip4"
+    serviceMonitor:
+      enabled: true
+      defaults:
+        labels:
+          release: prometheus
+        interval: 30s
+        scrapeTimeout: 30s
+      targets:
+      - name: router
+        url: 10.10.0.1
+        module: icmp
+      - name: switch
+        url: 10.10.0.2
+        module: icmp
+      - name: velop-mbr
+        url: 10.10.0.7
+        module: icmp
+      - name: velop-fr
+        url: 10.10.0.8
+        module: icmp
+      - name: ipmi
+        url: 10.10.0.50
+        module: icmp
+      - name: truenas
+        url: 10.10.0.10
+        module: icmp
+      - name: hdhomerun
+        url: 10.10.0.113
+        module: icmp
+    ingress:
+      enabled: true
+      className: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
+      hosts:
+      - host: "blackbox.${SECRET_DOMAIN}"
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - secretName: blackbox-tls
+        hosts:
+        - "blackbox.${SECRET_DOMAIN}"

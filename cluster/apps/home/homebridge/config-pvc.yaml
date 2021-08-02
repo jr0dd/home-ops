@@ -1,0 +1,14 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: homebridge
+  namespace: home
+spec:
+  storageClassName: openebs-zfspv
+  volumeName: homebridge
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 150Mi

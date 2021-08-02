@@ -1,0 +1,14 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: radarr
+  namespace: media
+spec:
+  storageClassName: openebs-zfspv
+  volumeName: radarr
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
