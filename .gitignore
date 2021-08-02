@@ -3,7 +3,18 @@
 # Trash
 .DS_Store
 Thumbs.db
-# k8s
+# Binaries
+bin
+/flux
+*.iso
+# Temp folders
+.temp*
+.private/
+.logs/
+.task/
+# Sops
+.decrypted~*
+# Kubernetes
 kubeconfig
-# vscode-sops
-.decrypted~*.yaml
+# Other
+report.html
