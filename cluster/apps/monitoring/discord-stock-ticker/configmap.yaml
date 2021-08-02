@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: discord-stock-ticker-config
-  namespace: bots
+  namespace: monitoring
 data:
   config.sh: |
     #!/usr/bin/env bash
