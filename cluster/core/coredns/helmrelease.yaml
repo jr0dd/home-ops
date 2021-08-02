@@ -84,3 +84,9 @@ spec:
       kubernetes.io/os: linux
     podAnnotations:
       configmap.reloader.stakater.com/reload: "corens"
+    resources:
+      limits:
+        memory: 170Mi
+      requests:
+        cpu: 100m
+        memory: 70Mi
