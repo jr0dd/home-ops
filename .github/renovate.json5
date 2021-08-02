@@ -3,8 +3,8 @@
   "timezone": "America/New_York",
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Renovate Dashboard",
-  "commitBody": "Signed-off-by: j_r0dd <jr0dd@users.noreply.github.com>",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "commitBody": "Signed-off-by: Devin Buhl <onedr0p@users.noreply.github.com>",
   // do not notify on closed unmerged PRs
   "suppressNotifications": ["prIgnoreNotification"],
   // only rebase PRs when there's a conflict
@@ -192,11 +192,6 @@
       "matchPackagePatterns": ["^rook.ceph"],
       "groupName": "rook-ceph-suite",
       "additionalBranchPrefix": "",
-    },
-    {
-      "matchDatasources": ["docker"],
-      "allowedVersions": "16.2.4",
-      "matchPackageNames": ["ceph/ceph"],
     },
     {
       "matchPackageNames": [
