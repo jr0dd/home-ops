@@ -76,12 +76,12 @@ spec:
           enabled: true
           existingClaim: authentik
           skipuninstall: true
-    prometheus:
-      serviceMonitor:
-        create: true
-        secret:
-          name: "authentik-prometheus"
-          usernameKey: monitor
-          passwordKey: "${SECRET_AUTHENTIK_SECRET_KEY}"
-      rules:
-        create: true
+    # prometheus:
+    #   serviceMonitor:
+    #     create: true
+    #     secret:
+    #       name: "authentik-prometheus"
+    #       usernameKey: monitor
+    #       passwordKey: "${SECRET_AUTHENTIK_SECRET_KEY}"
+    #   rules:
+    #     create: true
