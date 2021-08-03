@@ -11,7 +11,7 @@
   "rebaseWhen": "conflicted",
   "helm-values": {
     "fileMatch": [
-      "cluster/.+/helm-release\\.yaml$",
+      "cluster/.+/helmrelease\\.yaml$",
     ],
   },
   "kubernetes": {
