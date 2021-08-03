@@ -5,5 +5,5 @@ resources:
 - external-dns
 - kube-prometheus-stack
 # - openebs
-- stakater
+# - stakater
 - traefik
