@@ -5,5 +5,5 @@ resources:
 - external-dns
 - kube-prometheus-stack
 - openebs-zfslocalpv
-- stakater-forecastle
+# - stakater-forecastle
 - traefik
