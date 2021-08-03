@@ -3,7 +3,9 @@ kind: Kustomization
 resources:
 - flux-system.yaml
 - home.yaml
+- mail.yaml
 - media.yaml
 - monitoring.yaml
 - networking.yaml
+- openebs.yaml
 - security.yaml
