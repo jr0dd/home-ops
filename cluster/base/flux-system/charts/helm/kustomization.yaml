@@ -13,4 +13,5 @@ resources:
 - openebs-zfslocalpv-charts.yaml
 - prometheus-community-charts.yaml
 - stakater-charts.yaml
+- toboshii-charts.yaml
 - traefik-charts.yaml
