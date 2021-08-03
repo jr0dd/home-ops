@@ -6,6 +6,5 @@ resources:
 - kube-system
 # - mail
 - media
-- monitoring
 - networking
 - security

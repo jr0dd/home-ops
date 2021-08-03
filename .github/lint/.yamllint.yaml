@@ -2,9 +2,7 @@
 ignore: |
   .private/
   .vscode/
-  ansible/
-  *.enc.yaml
-  *.sops.yml
+  *.enc.*
   gotk-components.yaml
 extends: default
 rules:

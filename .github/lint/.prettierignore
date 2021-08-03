@@ -1,6 +1,5 @@
 .private
 .vscode
 ansible
-*.enc.yaml
-*.sops.yml
+*.sops.*
 gotk-components.yaml
