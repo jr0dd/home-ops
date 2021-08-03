@@ -6,7 +6,7 @@ resources:
 - plex
 - prowlarr
 - qbittorrent
-- overseerr
+# - overseerr
 - radarr
 - sonarr
 - tautulli
