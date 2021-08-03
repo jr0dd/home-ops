@@ -11,6 +11,7 @@ resources:
 - mailu.yaml
 - media.yaml
 - mkvtoolnix.yaml
+- overseerr.yaml
 - plex.yaml
 - prometheus.yaml
 - prowlarr.yaml
