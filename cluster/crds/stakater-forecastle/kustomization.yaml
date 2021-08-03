@@ -1,10 +1,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- home
-- kube-system
-# - mail
-- media
-- monitoring
-- networking
-- security
+- crds.yaml
