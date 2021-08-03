@@ -104,10 +104,10 @@ spec:
 
       conditional:
         mapping:
-          "${SECRET_DOMAIN}": tcp+udp:"${GATEWAY_IP}"
+          ${SECRET_DOMAIN}: tcp+udp:${GATEWAY_IP}
 
       clientLookup:
-        upstream: tcp+udp:"${GATEWAY_IP}"
+        upstream: tcp+udp:${GATEWAY_IP}
 
       blocking:
         blackLists:
