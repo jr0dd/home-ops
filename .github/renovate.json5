@@ -4,7 +4,7 @@
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "commitBody": "Signed-off-by: Devin Buhl <onedr0p@users.noreply.github.com>",
+  "commitBody": "Signed-off-by: j_r0dd <jr0dd@users.noreply.github.com>",
   // do not notify on closed unmerged PRs
   "suppressNotifications": ["prIgnoreNotification"],
   // only rebase PRs when there's a conflict
@@ -71,6 +71,26 @@
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n",
+      ],
+      "datasourceTemplate": "helm"
+    },
+    // regexManager to read and process OpenEBS CRD's
+    {
+      "fileMatch": [
+        "cluster/crds/openebs/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n",
+      ],
+      "datasourceTemplate": "helm"
+    },
+    // regexManager to read and process Stakater CRD's
+    {
+      "fileMatch": [
+        "cluster/crds/stakater/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: v(?<currentValue>.*)\n",
       ],
       "datasourceTemplate": "helm"
     },
