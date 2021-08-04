@@ -9,9 +9,11 @@ resources:
 - jetstack-charts.yaml
 - jr0dd-charts.yaml
 - k8s-at-home-charts.yaml
+- kubernetes-sigs-descheduler-charts
 - lwolf-charts.yaml
 - mailu-charts.yaml
 - metallb-charts.yaml
+- minio-charts.yaml
 - openebs-monitoring-charts.yaml
 - openebs-zfslocalpv-charts.yaml
 - prometheus-community-charts.yaml
