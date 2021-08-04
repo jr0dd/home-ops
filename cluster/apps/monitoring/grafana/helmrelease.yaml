@@ -42,6 +42,8 @@ spec:
         token_url: https://id.${SECRET_DOMAIN}/application/o/token/
         api_url: https://id.${SECRET_DOMAIN}/application/o/userinfo/
         role_attribute_path: "contains(groups[*], 'Grafana Admins') && 'Admin' || contains(groups[*], 'Grafana Editors') && 'Editor' || 'Viewer'"
+      date_formats:
+        default_timezone: America/New_York
       explore:
         enabled: true
       grafana_net:
