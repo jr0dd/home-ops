@@ -16,6 +16,8 @@ spec:
         name: jr0dd-charts
         namespace: flux-system
       interval: 5m
+  dependsOn:
+    - name: coredns
   values:
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
@@ -31,8 +33,8 @@ spec:
     env:
       TZ: "America/New_York" 
     envFrom:
-    - secretRef:
-        name: discord-tokens
+      - secretRef:
+          name: discord-tokens
     service:
       main:
         ports:
