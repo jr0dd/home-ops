@@ -20,7 +20,10 @@ spec:
     replicas: 1
     deploymentStrategy:
       type: RollingUpdate
-    adminPassword: "${SECRET_GRAFANA_PASSWORD}"
+    admin:
+      existingSecret: grafana
+      userKey: adminUser
+      passwordKey: adminPass
     grafana.ini:
       analytics:
         check_for_updates: false
@@ -38,7 +41,7 @@ spec:
         auth_url: https://id.${SECRET_DOMAIN}/application/o/authorize/
         token_url: https://id.${SECRET_DOMAIN}/application/o/token/
         api_url: https://id.${SECRET_DOMAIN}/application/o/userinfo/
-        # role_attribute_path: "contains(groups[*], 'Grafana Admins') && 'Admin' || contains(groups[*], 'Grafana Editors') && 'Editor' || 'Viewer'"
+        role_attribute_path: "contains(groups[*], 'Grafana Admins') && 'Admin' || contains(groups[*], 'Grafana Editors') && 'Editor' || 'Viewer'"
       explore:
         enabled: true
       grafana_net:
@@ -58,10 +61,7 @@ spec:
     serviceMonitor:
       enabled: true
     persistence:
-      enabled: true
-      type: pvc
-      existingClaim: grafana
-      skipuninstall: true
+      enabled: false
     ingress:
       enabled: true
       ingressClassName: traefik
@@ -110,3 +110,71 @@ spec:
           type: loki
           access: proxy
           url: http://loki:3100
+    dashboardProviders:
+      dashboardproviders.yaml:
+        apiVersion: 1
+        providers:
+        - name: 'default'
+          orgId: 1
+          folder: ''
+          type: file
+          disableDeletion: false
+          editable: true
+          options:
+            path: /var/lib/grafana/dashboards/default
+    dashboards:
+      default:
+        # Ref: https://grafana.com/grafana/dashboards/13665
+        speedtest:
+          gnetId: 13665
+          revision: 1
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/14127
+        metallb:
+          gnetId: 14127
+          revision: 5
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/14420
+        mikrotik:
+          gnetId: 14420
+          revision: 5
+          datasource: Prometheus
+        # OG source: https://grafana.com/grafana/dashboards/12275
+        blackbox:
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blackbox.json
+          datasource: Prometheus
+        blocky:
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blocky.json
+          datasource: Prometheus
+        cert-manager:
+          url: https://github.com/monitoring-mixins/website/blob/master/assets/cert-manager/dashboards/cert-manager.json
+          datasource: Prometheus
+        coredns:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/coredns/dashboards/coredns.json
+          datasource: Prometheus
+        flux-cluster:
+          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+          datasource: Prometheus
+        flux-control-plane:
+          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+          datasource: Prometheus
+        lidarr:
+          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
+          datasource: Prometheus
+        nut:
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/nut.json
+          datasource: Prometheus
+        qbittorrent:
+          url: https://raw.githubusercontent.com/esanchezm/prometheus-qbittorrent-exporter/master/grafana/dashboard.json
+          datasource: Prometheus
+        radarr:
+          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/radarr.json
+          datasource: Prometheus
+        sonarr:
+          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
+          datasource: Prometheus
+        traefik:
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/traefik.json
+          datasource: Prometheus
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "grafana"
