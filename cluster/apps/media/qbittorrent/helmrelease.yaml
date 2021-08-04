@@ -73,12 +73,12 @@ spec:
           hosts:
           - "qbittorrent.${SECRET_DOMAIN}"
     additionalContainers:
-    - name: qbittorrent-exporter
+    - name: exporter
       image: esanchezm/prometheus-qbittorrent-exporter:latest
       imagePullPolicy: IfNotPresent
       env:
       - name: QBITTORRENT_HOST
-        value: "http://qbittorrent"
+        value: "http://localhost"
       - name: QBITTORRENT_PORT
         value: "8080"
       - name: QBITTORRENT_USER

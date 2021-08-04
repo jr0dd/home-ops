@@ -1,25 +1,21 @@
 ---
-name: Schedule - Renovate Helm Releases
+name: Schedule - Add Helm Release Renovate annotations
 
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */12 * * *"
 
 jobs:
   renovate-helm-releases:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 1
-
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Renovate Helm Releases
         uses: k8s-at-home/renovate-helm-releases@v1
         with:
           cluster-path: "./cluster"
-
       - name: Create pull request for renovatebot helm-release annotations
         uses: peter-evans/create-pull-request@v3
         with:
