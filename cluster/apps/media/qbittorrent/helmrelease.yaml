@@ -90,7 +90,7 @@ spec:
       - name: EXPORTER_LOG_LEVEL
         value: "INFO"
       - name: METRICS_PREFIX
-        value: "qb"
+        value: "qbittorrent"
       ports:
       - name: metrics
         containerPort: 9022     
