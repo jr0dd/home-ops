@@ -9,6 +9,7 @@ resources:
 - jetstack-charts.yaml
 - jr0dd-charts.yaml
 - k8s-at-home-charts.yaml
+- lwolf-charts.yaml
 - mailu-charts.yaml
 - metallb-charts.yaml
 - openebs-monitoring-charts.yaml
