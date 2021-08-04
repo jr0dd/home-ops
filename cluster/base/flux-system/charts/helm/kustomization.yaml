@@ -9,7 +9,7 @@ resources:
 - jetstack-charts.yaml
 - jr0dd-charts.yaml
 - k8s-at-home-charts.yaml
-- kubernetes-sigs-descheduler-charts
+- kubernetes-sigs-descheduler-charts.yaml
 - lwolf-charts.yaml
 - mailu-charts.yaml
 - metallb-charts.yaml
