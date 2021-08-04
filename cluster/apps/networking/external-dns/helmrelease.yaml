@@ -35,3 +35,7 @@ spec:
       apiversion: externaldns.k8s.io/v1alpha1
       kind: DNSEndpoint
     annotationFilter: "external-dns/is-public in (true)"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
