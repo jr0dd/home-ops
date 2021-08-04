@@ -134,13 +134,19 @@ spec:
         # Ref: https://grafana.com/grafana/dashboards/14127
         metallb:
           gnetId: 14127
-          revision: 5
+          revision: 1
           datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/14420
         mikrotik:
           gnetId: 14420
           revision: 5
           datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/14371
+        nut:
+          gnetId: 14371
+          revision: 1
+          datasource: Prometheus
+
         # OG source: https://grafana.com/grafana/dashboards/12275
         blackbox:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blackbox.json
@@ -149,7 +155,7 @@ spec:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blocky.json
           datasource: Prometheus
         cert-manager:
-          url: https://github.com/monitoring-mixins/website/blob/master/assets/cert-manager/dashboards/cert-manager.json
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
           datasource: Prometheus
         coredns:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/coredns/dashboards/coredns.json
@@ -162,9 +168,6 @@ spec:
           datasource: Prometheus
         lidarr:
           url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
-          datasource: Prometheus
-        nut:
-          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/nut.json
           datasource: Prometheus
         qbittorrent:
           url: https://raw.githubusercontent.com/esanchezm/prometheus-qbittorrent-exporter/master/grafana/dashboard.json
