@@ -18,6 +18,7 @@ spec:
       interval: 5m
   dependsOn:
     - name: coredns
+      namespace: networking
   values:
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
