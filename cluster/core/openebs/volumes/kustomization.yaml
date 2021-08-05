@@ -6,6 +6,7 @@ resources:
 - grafana.yaml
 - heimdall.yaml
 - homebridge.yaml
+- homer.yaml
 - lidarr.yaml
 - loki.yaml
 - mailu.yaml

@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: media
+  name: homer
 spec:
   capacity:
-    storage: 50Gi
+    storage: 1Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: openebs-zfspv
   hostPath:
-    path: /mnt/deadpool/media
+    path: /mnt/deadpool/containous/datastore/homer

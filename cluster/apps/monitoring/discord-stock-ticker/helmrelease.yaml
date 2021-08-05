@@ -10,15 +10,12 @@ spec:
     spec:
       # renovate: registryUrl=https://jr0dd.github.io/charts/
       chart: discord-stock-ticker 
-      version: 10.0.1
+      version: 10.1.0
       sourceRef:
         kind: HelmRepository
         name: jr0dd-charts
         namespace: flux-system
       interval: 5m
-  dependsOn:
-    - name: coredns
-      namespace: networking
   values:
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
@@ -34,8 +31,8 @@ spec:
     env:
       TZ: "America/New_York" 
     envFrom:
-      - secretRef:
-          name: discord-tokens
+    - secretRef:
+        name: discord-tokens
     service:
       main:
         ports:
@@ -45,8 +42,6 @@ spec:
       serviceMonitor:
         enabled: true
         interval: 10s
-        port: http
-        path: /metrics
       prometheusRule:
         enabled: true
     podAnnotations:

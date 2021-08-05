@@ -2,13 +2,13 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: media
-  namespace: media
+  name: homer
+  namespace: home
 spec:
   storageClassName: openebs-zfspv
-  volumeName: media
+  volumeName: homer
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 500Gi
+      storage: 1Gi
