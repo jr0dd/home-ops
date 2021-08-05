@@ -7,7 +7,7 @@ resources:
 - loki
 - network-ups-tools
 - prometheus-blackbox-exporter
-- prometheus-nut-exporter
+# - prometheus-nut-exporter
 - prometheus-snmp-exporter
 - promtail
 - speedtest-exporter

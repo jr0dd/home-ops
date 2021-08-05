@@ -75,3 +75,13 @@ spec:
           POLLFREQ 15
           POLLFREQALERT 5
           HOSTSYNC 15
+    additionalContainers:
+    - name: exporter
+      image: hon95/prometheus-nut-exporter:v1.1.1
+      imagePullPolicy: IfNotPresent
+      env:
+        HTTP_PATH: "/nut"
+        RUST_LOG: "debug"
+      ports:
+      - name: metrics
+        containerPort: 9995
