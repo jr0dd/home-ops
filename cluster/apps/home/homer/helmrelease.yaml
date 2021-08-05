@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: heimdall
+  name: homer
   namespace: home
 spec:
   interval: 5m
   chart:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
-      chart: heimdall
+      chart: homer
       version: 7.3.0
       sourceRef:
         kind: HelmRepository
@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     image:
-      repository: ghcr.io/linuxserver/heimdall
+      repository: ghcr.io/linuxserver/homer
       tag: 2.2.2-ls130
     controller:
       enabled: true
@@ -37,7 +37,7 @@ spec:
       config:
         enabled: true
         type: pvc
-        existingClaim: heimdall
+        existingClaim: homer
         mountPath: /config
     ingress:
       main:
@@ -46,13 +46,12 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
         hosts:
-        - host: "heimdall.${SECRET_DOMAIN}"
+        - host: homer.storage-addict.io
           paths:
           - path: /
             pathType: Prefix
         tls:
-        - secretName: heimdall-tls
+        - secretName: homer-tls
           hosts:
-          - "heimdall.${SECRET_DOMAIN}"
+          - homer.storage-addict.io
