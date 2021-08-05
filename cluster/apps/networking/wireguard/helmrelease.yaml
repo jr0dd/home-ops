@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://jr0dd.github.io/charts/
       chart: wireguard
-      version: 8.4.0
+      version: 8.5.0
       sourceRef:
         kind: HelmRepository
         name: jr0dd-charts
