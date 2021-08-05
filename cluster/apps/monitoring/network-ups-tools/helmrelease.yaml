@@ -77,7 +77,7 @@ spec:
           HOSTSYNC 15
     additionalContainers:
     - name: exporter
-      image: hon95/prometheus-nut-exporter:v1.1.1
+      image: hon95/prometheus-nut-exporter:1.1.1
       imagePullPolicy: IfNotPresent
       env:
       - name: "HTTP_PATH"
