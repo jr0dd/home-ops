@@ -50,13 +50,11 @@ spec:
         type: pvc
         existingClaim: qbittorrent
         mountPath: /config
-        skipuninstall: true
       media:
         enabled: true
         type: pvc
         existingClaim: media
         mountPath: /media
-        skipuninstall: true
     ingress:
       main:
         enabled: true

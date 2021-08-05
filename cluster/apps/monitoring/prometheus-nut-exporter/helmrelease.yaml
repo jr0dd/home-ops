@@ -41,5 +41,5 @@ spec:
         targets:
         - hostname: network-ups-tools.monitoring.svc.cluster.local
           port: 3493
-          interval: 5s
-          scrapeTimeout: 5s
+          interval: 15s
+          scrapeTimeout: 10s

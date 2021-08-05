@@ -37,7 +37,6 @@ spec:
         type: pvc
         existingClaim: tautulli
         mountPath: /config
-        skipuninstall: true
     ingress:
       main:
         enabled: true

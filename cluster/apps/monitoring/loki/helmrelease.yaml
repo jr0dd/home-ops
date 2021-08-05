@@ -38,6 +38,5 @@ spec:
       enabled: true
       type: pvc
       existingClaim: loki
-      skipuninstall: true
     serviceMonitor:
       enabled: true

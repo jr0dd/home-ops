@@ -37,13 +37,11 @@ spec:
         type: pvc
         mountPath: /config
         existingClaim: radarr
-        skipuninstall: true
       media:
         enabled: true
         type: pvc
         mountPath: /media
         existingClaim: media
-        skipuninstall: true
     ingress:
       main:
         enabled: true

@@ -42,13 +42,11 @@ spec:
         type: pvc
         existingClaim: mkvtoolnix
         mountPath: /config
-        skipuninstall: true
       media:
         enabled: true
         type: pvc
         existingClaim: media
         mountPath: /storage
-        skipuninstall: true
     ingress:
       main:
         enabled: true

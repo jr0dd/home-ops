@@ -65,7 +65,6 @@ spec:
       persistence:
         enabled: true
         existingClaim: authentik
-        skipuninstall: true
       postgresqlUsername: authentik
       postgresqlDatabase: authentik
       postgresqlPassword: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"    
@@ -75,7 +74,6 @@ spec:
         persistence:
           enabled: true
           existingClaim: authentik
-          skipuninstall: true
     prometheus:
       serviceMonitor:
         create: true

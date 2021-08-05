@@ -39,7 +39,6 @@ spec:
         type: pvc
         existingClaim: heimdall
         mountPath: /config
-        skipuninstall: true
     ingress:
       main:
         enabled: true
