@@ -35,6 +35,7 @@ spec:
             port: 8080
       bittorrent:
         enabled: true
+        type: LoadBalancer
         loadBalancerIP: "${LB_QB_IP}"
         externalTrafficPolicy: Local
         ports:
