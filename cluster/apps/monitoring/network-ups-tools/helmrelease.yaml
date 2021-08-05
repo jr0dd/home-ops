@@ -80,8 +80,10 @@ spec:
       image: hon95/prometheus-nut-exporter:v1.1.1
       imagePullPolicy: IfNotPresent
       env:
-        HTTP_PATH: "/nut"
-        RUST_LOG: "debug"
+      - name: "HTTP_PATH"
+        value: "/nut"
+      - name: "RUST_LOG"
+        value: "debug"
       ports:
       - name: metrics
         containerPort: 9995
