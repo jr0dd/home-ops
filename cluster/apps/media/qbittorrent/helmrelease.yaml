@@ -34,8 +34,9 @@ spec:
           http:
             port: 8080
       bittorrent:
-        enabled: false
-        type: ClusterIP
+        enabled: true
+        loadBalancerIP: "${LB_QB_IP}"
+        externalTrafficPolicy: Local
         ports:
           bittorrent:
             enabled: true
