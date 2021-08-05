@@ -74,8 +74,3 @@ spec:
         persistence:
           enabled: true
           existingClaim: authentik
-    prometheus:
-      serviceMonitor:
-        create: true
-      rules:
-        create: true
