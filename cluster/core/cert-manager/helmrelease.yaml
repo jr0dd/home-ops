@@ -23,8 +23,8 @@ spec:
     podDnsPolicy: "None"
     podDnsConfig:
       nameservers:
-      - "1.1.1.1"
-      - "9.9.9.9"
+        - "1.1.1.1"
+        - "9.9.9.9"
     prometheus:
       enabled: true
       servicemonitor:
