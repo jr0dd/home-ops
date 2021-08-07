@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
 - home
 - kube-system
-- mail
+# - mail
 - media
 - monitoring
 - networking
