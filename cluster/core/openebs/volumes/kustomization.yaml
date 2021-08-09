@@ -11,6 +11,7 @@ resources:
 - loki.yaml
 - mailu.yaml
 - media.yaml
+- minio.yaml
 - mkvtoolnix.yaml
 - overseerr.yaml
 - plex.yaml
