@@ -4,6 +4,7 @@ resources:
 - blocky
 - cloudflare-ddns
 - external-dns
+- k8s-gateway
 - traefik
 - wildcard-certificate
 - wireguard
