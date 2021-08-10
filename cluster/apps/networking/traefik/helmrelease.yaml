@@ -79,7 +79,6 @@ spec:
       default:
         minVersion: VersionTLS12
         maxVersion: VersionTLS13
-        preferServerCipherSuites: true
         sniStrict: true
     pilot:
       enabled: true
