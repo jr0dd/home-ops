@@ -32,6 +32,14 @@ spec:
               target_label: 'unit'
             - source_labels: ['__journal__hostname']
               target_label: 'hostname'
+    defaultVolumes:
+      - name: containers
+        hostPath:
+          path: /var/log/containers
+    defaultVolumeMounts:
+      - name: containers
+        mountPath: /var/log/containers
+        readOnly: true
     extraVolumes:
       - name: journal
         hostPath:
