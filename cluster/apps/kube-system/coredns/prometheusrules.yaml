@@ -14,7 +14,7 @@ spec:
         message: "CoreDNS has disappeared from Prometheus target discovery."
         runbook_url: https://github.com/povilasv/coredns-mixin/tree/master/runbook.md#alert-name-corednsdown
       expr: |
-        absent(up{job="coredns-metrics"})
+        absent(up{job="coredns"})
       for: 15m
       labels:
         severity: critical
