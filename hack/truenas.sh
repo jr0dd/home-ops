@@ -7,26 +7,10 @@
 if ! grep -q 'servicelb' /lib/systemd/system/k3s.service; then
     sed -i 's/\(disable=\)/\1servicelb,/' /lib/systemd/system/k3s.service
     echo "servicelb patched"
-    touch /tmp/syspatch
-  else
-    echo "servicelb already patched"
-fi
-
-# Optional. Only necessary if you want a custom install.
-# coredns fix
-if ! grep -q 'coredns' /lib/systemd/system/k3s.service; then
-    sed -i 's/\(disable=\)/\1coredns,/' /lib/systemd/system/k3s.service
-    echo "coredns patched"
-    touch /tmp/syspatch
-  else
-    echo "coredns already patched"
-fi
-
-if [[ -f /tmp/syspatch ]]; then
-    echo "restarting daemon"
     systemctl daemon-reload
     systemctl restart k3s.service
-    rm /tmp/syspatch
+  else
+    echo "servicelb already patched"
 fi
 
 # kustomize

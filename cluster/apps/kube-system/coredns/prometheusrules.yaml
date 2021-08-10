@@ -4,7 +4,7 @@ metadata:
   labels:
     app: coredns
   name: coredns.rules
-  namespace: networking
+  namespace: kube-system
 spec:
   groups:
   - name: coredns
