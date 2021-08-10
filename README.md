@@ -23,7 +23,7 @@ _... managed with Flux and Renovate_ :robot:
 
 This is home to my personal Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches this Git repository and makes the changes to my cluster based on the manifests in the [cluster](./cluster/) directory. [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/) protects my secrets so I can keep everything on a public repo.
 
-Currently I only have a single node with this running on [TrueNAS SCALE](https://www.truenas.com/docs/scale/devnotes/). If you use this repo to install on TrueNAS be prepared for some manual intervention since their middleware prevents certain system changes to persist updates and/or reboots. Please see the [scripts](./scripts) directory. 
+Currently I only have a single node with this running on [TrueNAS SCALE](https://www.truenas.com/docs/scale/devnotes/). If you use this repo to install on TrueNAS be prepared for some manual intervention since their middleware prevents certain system changes to persist updates and/or reboots. Please see the truenas.sh script in the [hack](./hack) directory. 
 
 For more information, head on over to my [docs](https://jr0dd.github.io/k8s-gitops/). ***Not ready yet***
 
