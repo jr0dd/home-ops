@@ -39,7 +39,7 @@ spec:
           - path: /
             pathType: Prefix
         tls:
-        - secretName: overseer-tls
+        - secretName: overseerr-tls
           hosts:
           - "requests.${SECRET_DOMAIN}"
     persistence:
