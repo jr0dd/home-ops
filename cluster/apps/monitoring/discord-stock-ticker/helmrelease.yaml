@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://jr0dd.github.io/charts/
       chart: discord-stock-ticker
-      version: 10.1.5
+      version: 11.0.0
       sourceRef:
         kind: HelmRepository
         name: jr0dd-charts
