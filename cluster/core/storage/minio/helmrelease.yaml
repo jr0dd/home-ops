@@ -1,0 +1,54 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio-operator
+  namespace: kube-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://operator.min.io/
+      chart: minio-operator
+      version: 4.1.8
+      sourceRef:
+        kind: HelmRepository
+        name: minio-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    console:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        host: "minio.${SECRET_DOMAIN}"
+        tls:
+          - secretName: minio-tls
+            hosts:
+              - "minio.${SECRET_DOMAIN}"
+      tenants:
+        - name: minio1
+          namespace: kube-system
+          pools:
+            - servers: 1
+              size: 30Gi
+              storageClassName: openebs-zfspv
+          secrets:
+            enabled: true
+            name: minio1-secret
+            accessKey: "${SECRET_MINIO_ACCESSKEY}"
+            secretKey: "${SECRET_MINIO_SECRETKEY}"
+          metrics:
+            enabled: true
+            port: 9000
+          console:
+            secrets:
+              enabled: true
+              name: console-secret
+              passphrase: "${SECRET_MINIO_PASSPHRASE}"
+              salt: "${SECRET_MINIO_SALT}"
+              accessKey: "${SECRET_MINIO_ACCESSKEY}"
+              secretKey: "${SECRET_MINIO_SECRETKEY}"
