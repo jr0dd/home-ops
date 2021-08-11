@@ -30,15 +30,23 @@ spec:
             hosts:
               - "minio.${SECRET_DOMAIN}"
       tenants:
-        - name: minio1
-          namespace: kube-system
+        - name: minio
           pools:
             - servers: 1
               size: 30Gi
               storageClassName: openebs-zfspv
+              volumeClaimTemplate:
+                metadata:
+                  name: minio
+                spec:
+                  accessModes:
+                    - ReadWriteOnce
+                  resources:
+                    requests:
+                      storage: 30Gi
           secrets:
             enabled: true
-            name: minio1-secret
+            name: minio-secret
             accessKey: "${SECRET_MINIO_ACCESSKEY}"
             secretKey: "${SECRET_MINIO_SECRETKEY}"
           metrics:
