@@ -183,4 +183,6 @@ spec:
       forceDeployDashboards: true
       sidecar:
         dashboards:
-          multicluster: true
+          multicluster:
+            global:
+              enabled: true
