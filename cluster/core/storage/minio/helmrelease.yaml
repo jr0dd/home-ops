@@ -34,8 +34,8 @@ spec:
         namespace: minio
         pools:
           - servers: 1
-            volumesPerServer: 1
-            size: 30Gi
+            volumesPerServer: 4
+            size: 10Gi
             storageClassName: openebs-zfspv
         secrets:
           enabled: true
