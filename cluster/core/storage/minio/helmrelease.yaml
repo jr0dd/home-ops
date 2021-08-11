@@ -34,17 +34,9 @@ spec:
         namespace: minio
         pools:
           - servers: 1
+            volumesPerServer: 1
             size: 30Gi
             storageClassName: openebs-zfspv
-            volumeClaimTemplate:
-              metadata:
-                name: minio
-              spec:
-                accessModes:
-                  - ReadWriteOnce
-                resources:
-                  requests:
-                    storage: 30Gi
         secrets:
           enabled: true
           name: minio-secret
