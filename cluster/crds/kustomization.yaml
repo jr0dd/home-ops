@@ -6,5 +6,4 @@ resources:
 - kube-prometheus-stack
 - minio
 # - openebs
-# - stakater
 - traefik

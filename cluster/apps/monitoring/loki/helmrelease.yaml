@@ -22,7 +22,7 @@ spec:
         boltdb_shipper:
           active_index_directory: /data/loki/index
           cache_location: /data/loki/cache
-          cache_ttl: 24h
+          cache_ttl: 12h
           shared_store: filesystem
         filesystem:
           directory: /data/loki/chunks
