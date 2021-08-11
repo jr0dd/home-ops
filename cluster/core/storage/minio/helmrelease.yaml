@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: minio-operator
-  namespace: kube-system
+  namespace: minio
 spec:
   interval: 5m
   chart:
@@ -29,34 +29,35 @@ spec:
           - secretName: minio-tls
             hosts:
               - "minio.${SECRET_DOMAIN}"
-      tenants:
-        - name: minio
-          pools:
-            - servers: 1
-              size: 30Gi
-              storageClassName: openebs-zfspv
-              volumeClaimTemplate:
-                metadata:
-                  name: minio
-                spec:
-                  accessModes:
-                    - ReadWriteOnce
-                  resources:
-                    requests:
-                      storage: 30Gi
+    tenants:
+      - name: minio
+        namespace: minio
+        pools:
+          - servers: 1
+            size: 30Gi
+            storageClassName: openebs-zfspv
+            volumeClaimTemplate:
+              metadata:
+                name: minio
+              spec:
+                accessModes:
+                  - ReadWriteOnce
+                resources:
+                  requests:
+                    storage: 30Gi
+        secrets:
+          enabled: true
+          name: minio-secret
+          accessKey: "${SECRET_MINIO_ACCESSKEY}"
+          secretKey: "${SECRET_MINIO_SECRETKEY}"
+        metrics:
+          enabled: true
+          port: 9000
+        console:
           secrets:
             enabled: true
-            name: minio-secret
+            name: console-secret
+            passphrase: "${SECRET_MINIO_PASSPHRASE}"
+            salt: "${SECRET_MINIO_SALT}"
             accessKey: "${SECRET_MINIO_ACCESSKEY}"
             secretKey: "${SECRET_MINIO_SECRETKEY}"
-          metrics:
-            enabled: true
-            port: 9000
-          console:
-            secrets:
-              enabled: true
-              name: console-secret
-              passphrase: "${SECRET_MINIO_PASSPHRASE}"
-              salt: "${SECRET_MINIO_SALT}"
-              accessKey: "${SECRET_MINIO_ACCESSKEY}"
-              secretKey: "${SECRET_MINIO_SECRETKEY}"
