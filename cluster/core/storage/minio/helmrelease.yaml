@@ -53,6 +53,8 @@ spec:
         metrics:
           enabled: true
           port: 9000
+        s3:
+          bucketDNS: true
         console:
           secrets:
             enabled: true
