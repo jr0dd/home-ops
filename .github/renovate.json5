@@ -172,7 +172,6 @@
       "matchDatasources": ["docker"],
       "allowedVersions": "<2",
       "matchPackageNames": ["influxdb"]
-      ]
     },
     // version strategies
     {
