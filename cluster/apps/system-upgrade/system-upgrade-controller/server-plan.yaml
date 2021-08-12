@@ -7,14 +7,22 @@ metadata:
   labels:
     k3s-upgrade: server
 spec:
+  serviceAccountName: system-upgrade
   concurrency: 1
   cordon: true
   channel: https://update.k3s.io/v1-release/channels/v1.21
   nodeSelector:
     matchExpressions:
-      - {key: k3s-upgrade, operator: Exists}
-      - {key: k3s-upgrade, operator: NotIn, values: ["disabled", "false"]}
-      - {key: node-role.kubernetes.io/master, operator: In, values: ["true"]}
-  serviceAccountName: system-upgrade
+      - key: node-role.kubernetes.io/master
+        operator: In
+        values:
+          - "true"
+      - key: k3s-upgrade
+        operator: In
+        values:
+          - "true"
+  tolerations:
+    - key: node-role.kubernetes.io/master
+      operator: Exists
   upgrade:
     image: rancher/k3s-upgrade

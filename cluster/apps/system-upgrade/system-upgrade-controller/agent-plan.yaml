@@ -7,17 +7,24 @@ metadata:
   labels:
     k3s-upgrade: agent
 spec:
+  serviceAccountName: system-upgrade
   concurrency: 1
   channel: https://update.k3s.io/v1-release/channels/v1.21
   nodeSelector:
     matchExpressions:
-      - {key: k3s-upgrade, operator: Exists}
-      - {key: k3s-upgrade, operator: NotIn, values: ["disabled", "false"]}
-      - {key: node-role.kubernetes.io/master, operator: NotIn, values: ["true"]}
-  serviceAccountName: system-upgrade
+      - key: node-role.kubernetes.io/master
+        operator: NotIn
+        values:
+          - "true"
+      - key: k3s-upgrade
+        operator: In
+        values:
+          - "true"
   prepare:
     image: rancher/k3s-upgrade
-    args: ["prepare", "k3s-server"]
+    args:
+      - "prepare"
+      - "k3s-server"
   drain:
     force: true
     skipWaitForDeleteTimeout: 60
