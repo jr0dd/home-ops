@@ -13,7 +13,7 @@ spec:
       version: 4.1.7
       sourceRef:
         kind: HelmRepository
-        name: minio-charts
+        name: jr0dd-charts
         namespace: flux-system
       interval: 5m
   values:
