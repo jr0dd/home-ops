@@ -63,8 +63,8 @@ spec:
         # Homepage configuration
         # See https://fontawesome.com/icons for icons options
 
-        title: "K8S Home Dashboard"
-        subtitle: "K8S"
+        title: "K8s Home Dashboard"
+        subtitle: "K8s"
         logo: "assets/tools/k8s.png"
 
         header: true
@@ -161,7 +161,7 @@ spec:
                 tag: "app"
                 url: "https://qb.${SECRET_DOMAIN}"
                 target: "_blank"
-              - name: "Lidarr"                                  
+              - name: "Lidarr"
                 logo: "assets/tools/qbittorrent.png"
                 subtitle: "Lidarr"
                 tag: "app"
@@ -193,7 +193,7 @@ spec:
                 target: "_blank"
           
           - name: "Monitoring"
-            icon: "fas fa-chart-scatter"
+            icon: "fas fa-project-diagran"
             items:
               - name: "Alertmanager"
                 logo: "assets/tools/prometheus.png"
@@ -239,7 +239,7 @@ spec:
                 logo: "assets/tools/authentik.png"
                 subtitle: "Authentik"
                 tag: "app"
-                url: "https://authentik.${SECRET_DOMAIN}"
+                url: "https://id.${SECRET_DOMAIN}"
                 target: "_blank"
               # - name: "Minio"
               #   logo: "assets/tools/minio.png"

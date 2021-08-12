@@ -47,11 +47,3 @@ spec:
           port: 9000
         s3:
           bucketDNS: true
-        console:
-          secrets:
-            enabled: true
-            name: console-secret
-            passphrase: "${SECRET_MINIO_PASSPHRASE}"
-            salt: "${SECRET_MINIO_SALT}"
-            accessKey: "${SECRET_MINIO_ACCESSKEY}"
-            secretKey: "${SECRET_MINIO_SECRETKEY}"
