@@ -2,14 +2,59 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: minio
+  name: minio0
 spec:
   capacity:
-    storage: 30Gi
+    storage: 10Gi
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: openebs-zfspv
   hostPath:
-    path: /mnt/deadpool/containous/datastore/minio
+    path: /mnt/deadpool/containous/datastore/minio0
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio1
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: openebs-zfspv
+  hostPath:
+    path: /mnt/deadpool/containous/datastore/minio1
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio2
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: openebs-zfspv
+  hostPath:
+    path: /mnt/deadpool/containous/datastore/minio2
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio3
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: openebs-zfspv
+  hostPath:
+    path: /mnt/deadpool/containous/datastore/minio3
