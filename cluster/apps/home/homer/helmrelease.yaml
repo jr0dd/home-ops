@@ -69,6 +69,7 @@ spec:
 
         header: true
         footer: false
+        columns: 4
 
         # Optional theme customization
         theme: default
@@ -113,7 +114,7 @@ spec:
             icon: "fas fa-server"
             items:
               - name: "TrueNAS SCALE"
-                logo: "assets/tools/truenas.png"
+                logo: "assets/tools/scale.png"
                 subtitle: "TrueNAS"
                 tag: "device"
                 url: "https://truenas.${SECRET_DOMAIN}"
@@ -129,7 +130,7 @@ spec:
                 tag: "device"
                 url: "http://ipmi.${SECRET_DOMAIN}"
                 target: "_blank"
-        
+
           - name: "Media"
             icon: "fas fa-photo-video"
             items:
@@ -151,7 +152,7 @@ spec:
                 tag: "app"
                 url: "https://tautulli.${SECRET_DOMAIN}"
                 target: "_blank"
-          
+
           - name: "Downloads"
             icon: "fas fa-cloud-download-alt"
             items:
@@ -191,7 +192,7 @@ spec:
                 tag: "app"
                 url: "https://sonarr.${SECRET_DOMAIN}"
                 target: "_blank"
-          
+
           - name: "Monitoring"
             icon: "fas fa-project-diagran"
             items:
@@ -225,13 +226,13 @@ spec:
                 tag: "app"
                 url: "https://traefik.${SECRET_DOMAIN}"
                 target: "_blank"
-              # - name: "Thanos"
-              #   logo: "assets/tools/thanos.png"
-              #   subtitle: "Thanos"
-              #   tag: "app"
-              #   url: "https://thanos.${SECRET_DOMAIN}"
-              #   target: "_blank"
-        
+              - name: "Thanos"
+                logo: "assets/tools/thanos.png"
+                subtitle: "Thanos"
+                tag: "app"
+                url: "https://thanos.${SECRET_DOMAIN}"
+                target: "_blank"
+
           - name: "Misc"
             icon: "fas fa-hashtag"
             items:
@@ -241,9 +242,9 @@ spec:
                 tag: "app"
                 url: "https://id.${SECRET_DOMAIN}"
                 target: "_blank"
-              # - name: "Minio"
-              #   logo: "assets/tools/minio.png"
-              #   subtitle: "Minio"
-              #   tag: "app"
-              #   url: "https://minio.${SECRET_DOMAIN}"
-              #   target: "_blank"
+              - name: "Minio"
+                logo: "assets/tools/minio.png"
+                subtitle: "Minio"
+                tag: "app"
+                url: "https://minio.${SECRET_DOMAIN}"
+                target: "_blank"
