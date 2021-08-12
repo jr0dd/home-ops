@@ -124,7 +124,7 @@ spec:
                 logo: "assets/tools/hdhomerun.png"
                 subtitle: "HDHomeRun"
                 tag: "device"
-                url: "https://hdhomerun.${SECRET_DOMAIN}"
+                url: "http://hdhomerun.${SECRET_DOMAIN}"
               - name: "ASRock Rack IPMI"
                 logo: "assets/tools/asrockrack.png"
                 subtitle: "IPMI"
@@ -195,7 +195,7 @@ spec:
                 target: "_blank"
 
           - name: "Monitoring"
-            icon: "fas fa-project-diagram"
+            icon: "fas fa-chart-scatter-bubble"
             items:
               - name: "Alertmanager"
                 logo: "assets/tools/prometheus.png"
