@@ -60,4 +60,4 @@ spec:
     configmap:
       enabled: true
       config: |
-        externalConfig: https://raw.githubusercontent.com/jr0dd/k8s-gitops/cluster/apps/home/homer/config.yaml
+        externalConfig: https://raw.githubusercontent.com/jr0dd/k8s-gitops/main/cluster/apps/home/homer/config.yaml
