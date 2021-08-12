@@ -26,8 +26,8 @@ spec:
       strategy: RollingUpdate
     env:
       TZ: "America/New_York"
-      UID: 568
-      GID: 568
+      UID: 911
+      GID: 911
     service:
       main:
         ports:
@@ -195,7 +195,7 @@ spec:
                 target: "_blank"
 
           - name: "Monitoring"
-            icon: "fas fa-chart-scatter-bubble"
+            icon: "fas fa-project-diagram"
             items:
               - name: "Alertmanager"
                 logo: "assets/tools/prometheus.png"
