@@ -65,7 +65,7 @@ spec:
 
         title: "K8S Home Dashboard"
         subtitle: "K8S"
-        logo: "tools/k8s.png"
+        logo: "assets/tools/k8s.png"
 
         header: true
         footer: false
@@ -103,6 +103,10 @@ spec:
             icon: "fab fa-github"
             url: "https://github.com/jr0dd/k8s-gitops"
             target: "_blank"
+          - name: "KaH"
+            icon: "fab fa-github"
+            url: "https://github.com/k8s-at-home"
+            target: "_blank"
 
         services:
           - name: "Devices"
@@ -125,6 +129,7 @@ spec:
                 tag: "device"
                 url: "http://ipmi.${SECRET_DOMAIN}"
                 target: "_blank"
+        
           - name: "Media"
             icon: "fas fa-photo-video"
             items:
@@ -146,6 +151,7 @@ spec:
                 tag: "app"
                 url: "https://tautulli.${SECRET_DOMAIN}"
                 target: "_blank"
+          
           - name: "Downloads"
             icon: "fas fa-cloud-download-alt"
             items:
@@ -185,6 +191,7 @@ spec:
                 tag: "app"
                 url: "https://sonarr.${SECRET_DOMAIN}"
                 target: "_blank"
+          
           - name: "Monitoring"
             icon: "fas fa-chart-scatter"
             items:
@@ -220,10 +227,11 @@ spec:
                 target: "_blank"
               # - name: "Thanos"
               #   logo: "assets/tools/thanos.png"
-              #   subtitle: "Thanose"
+              #   subtitle: "Thanos"
               #   tag: "app"
               #   url: "https://thanos.${SECRET_DOMAIN}"
               #   target: "_blank"
+        
           - name: "Misc"
             icon: "fas fa-hashtag"
             items:
