@@ -69,10 +69,10 @@ spec:
 
         header: true
         footer: false
-        columns: 4
+        columns: "5"
 
         # Optional theme customization
-        theme: default
+        theme: dark
         colors:
           light:
             highlight-primary: "#3367d6"
