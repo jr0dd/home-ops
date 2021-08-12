@@ -186,7 +186,7 @@ spec:
                 url: "https://sonarr.${SECRET_DOMAIN}"
                 target: "_blank"
           - name: "Monitoring"
-            icon: "fas fa-chart-network"
+            icon: "fas fa-chart-scatter"
             items:
               - name: "Alertmanager"
                 logo: "assets/tools/prometheus.png"
