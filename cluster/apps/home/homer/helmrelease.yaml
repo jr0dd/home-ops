@@ -67,10 +67,9 @@ spec:
         subtitle: "K8s"
         logo: "assets/tools/k8s.png"
 
-        background-image: "assets/tools/chain_matrix.png"
-
         header: true
         footer: false
+        
         connectivityCheck: true
         columns: "5"
 
@@ -89,6 +88,7 @@ spec:
             text-subtitle: "#424242"
             card-shadow: rgba(0, 0, 0, 0.1)
             link-hover: "#363636"
+            background-image: "assets/tools/chain_matrix.png"
           dark:
             highlight-primary: "#3367d6"
             highlight-secondary: "#4285f4"
