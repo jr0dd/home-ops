@@ -39,7 +39,7 @@ spec:
             storageClassName: openebs-zfspv
         secrets:
           enabled: true
-          name: minio-secret
+          name: minio-creds
           accessKey: "${SECRET_MINIO_ACCESSKEY}"
           secretKey: "${SECRET_MINIO_SECRETKEY}"
         metrics:
