@@ -67,7 +67,7 @@ spec:
         subtitle: "K8s"
         logo: "assets/tools/k8s.png"
 
-        background-image: "assets/tools/chain_matrix.jpg"
+        background-image: "assets/tools/chain_matrix.png"
 
         header: true
         footer: false
@@ -189,16 +189,16 @@ spec:
                 tag: "app"
                 url: "https://radarr.${SECRET_DOMAIN}"
                 target: "_blank"
-                type: "Radarr"
-                apikey: "${SECRET_RADARR_APIKEY}"
+                # type: "Radarr"
+                # apikey: "${SECRET_RADARR_APIKEY}"
               - name: "Sonarr"
                 logo: "assets/tools/sonarr.png"
                 # subtitle: "Sonarr"
                 tag: "app"
                 url: "https://sonarr.${SECRET_DOMAIN}"
                 target: "_blank"
-                type: "Sonarr"
-                apikey: "${SECRET_SONARR_APIKEY}"
+                # type: "Sonarr"
+                # apikey: "${SECRET_SONARR_APIKEY}"
 
           - name: "Monitoring"
             icon: "fas fa-project-diagram"

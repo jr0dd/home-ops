@@ -1,6 +1,0 @@
-Log file created at: 2021/08/12 23:23:38
-Running on machine: truenas
-Binary: Built with gc go1.16.5 for linux/amd64
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-I0812 23:23:38.570718 3427406 proxy.go:68] proxy command started
-W0812 23:23:38.589555 3427406 proxy.go:71] serviceaccounts "console-sa" not found
