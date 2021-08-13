@@ -49,10 +49,8 @@ spec:
           bucketDNS: true
         env:
           - name: MINIO_IDENTITY_OPENID_CONFIG_URL
-            value: "https://your-extenal-idp.com/.well-known/openid-configuration" # Your external identity provide configuration
+            value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
           - name: MINIO_IDENTITY_OPENID_CLIENT_ID
             value: "${SECRET_MINIO_OPENID}"
           - name: MINIO_IDENTITY_OPENID_SCOPES
             value: "openid,profile,email,minio"
-          - name: MINIO_IDENTITY_OPENID_CLAIM_NAME
-            value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
