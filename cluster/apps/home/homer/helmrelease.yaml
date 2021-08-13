@@ -74,7 +74,7 @@ spec:
         columns: "5"
 
         # Optional theme customization
-        theme: dark
+        theme: default
         colors:
           light:
             highlight-primary: "#3367d6"
@@ -101,6 +101,7 @@ spec:
             text-subtitle: "#f5f5f5"
             card-shadow: rgba(0, 0, 0, 0.4)
             link-hover: "#ffdd57"
+            background-image: "assets/tools/chain_matrix.png"
 
         links:
           - name: "GitOps"
