@@ -30,7 +30,7 @@ spec:
             hosts:
               - "minio.${SECRET_DOMAIN}"
     tenants:
-      - name: minio
+      - name: tenant0
         namespace: minio
         pools:
           - servers: 1
