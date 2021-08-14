@@ -46,9 +46,9 @@ spec:
       compactor:
         working_directory: /data/loki/compactor
         shared_store: filesystem
-      persistence:
-        enabled: true
-        type: pvc
-        existingClaim: loki
+    persistence:
+      enabled: true
+      type: pvc
+      existingClaim: loki
     serviceMonitor:
       enabled: true

@@ -8,12 +8,12 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://jr0dd.github.io/charts/
+      # renovate: registryUrl=https://operator.min.io/
       chart: minio-operator
-      version: 4.1.8
+      version: 4.1.7
       sourceRef:
         kind: HelmRepository
-        name: jr0dd-charts
+        name: minio-charts
         namespace: flux-system
       interval: 5m
   values:
@@ -29,30 +29,30 @@ spec:
           - secretName: minio-tls
             hosts:
               - "minio.${SECRET_DOMAIN}"
-    tenants:
-      - name: tenant0
-        namespace: minio
-        pools:
-          - servers: 1
-            volumesPerServer: 4
-            size: 10Gi
-            storageClassName: openebs-zfspv
-        secrets:
-          enabled: true
-          name: minio-creds
-          accessKey: "${MINIO_ACCESSKEY}"
-          secretKey: "${MINIO_SECRETKEY}"
-        metrics:
-          enabled: false
-          port: 9000
-        s3:
-          bucketDNS: true
-        env:                                                 
-          - name: MINIO_IDENTITY_OPENID_CONFIG_URL
-            value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
-          - name: MINIO_IDENTITY_OPENID_CLIENT_ID
-            value: "${MINIO_CLIENT_ID}"
-          - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
-            value: "${MINIO_CLIENT_SECRET}"
-          - name: MINIO_IDENTITY_OPENID_SCOPES
-            value: "openid,profile,email,minio"
+    tenants: {}
+      # - name: tenant0
+      #   namespace: minio
+      #   pools:
+      #     - servers: 1
+      #       volumesPerServer: 4
+      #       size: 10Gi
+      #       storageClassName: openebs-zfspv
+      #   secrets:
+      #     enabled: true
+      #     name: minio-creds
+      #     accessKey: "${MINIO_ACCESSKEY}"
+      #     secretKey: "${MINIO_SECRETKEY}"
+      #   metrics:
+      #     enabled: false
+      #     port: 9000
+      #   s3:
+      #     bucketDNS: true
+      #   env:                                                 
+      #     - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+      #       value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
+      #     - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+      #       value: "${MINIO_CLIENT_ID}"
+      #     - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
+      #       value: "${MINIO_CLIENT_SECRET}"
+      #     - name: MINIO_IDENTITY_OPENID_SCOPES
+      #       value: "openid,profile,email,minio"
