@@ -1,0 +1,28 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ipmi
+  namespace: networking
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`ipmi.${SECRET_DOMAIN}`)
+    kind: Rule
+    services:
+    - name: ipmi
+      port: 80
+    middlewares:
+    - name: rfc1918-ips
+  tls:
+    secretName: "${SECRET_DOMAIN/./-}-tls"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ipmi
+  namespace: networking
+spec:
+  type: ExternalName
+  externalName: "ipmi.${SECRET_DOMAIN}"

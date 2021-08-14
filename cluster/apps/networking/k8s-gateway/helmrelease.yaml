@@ -22,7 +22,7 @@ spec:
       repository: oriedge/k8s_gateway
       tag: v0.1.7
     domain: "${SECRET_DOMAIN}"
-    ttl: 60
+    ttl: 1
     service:
       type: LoadBalancer
       port: 53

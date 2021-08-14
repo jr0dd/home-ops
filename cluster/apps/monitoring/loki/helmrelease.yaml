@@ -31,21 +31,6 @@ spec:
         #   cache_location: /data/loki/index_cache
         #   resync_interval: 5s
         #   shared_store: s3
-        boltdb_shipper:
-          active_index_directory: /data/loki/index
-          cache_location: /data/loki/cache
-          cache_ttl: 12h
-          shared_store: filesystem
-        filesystem:
-          directory: /data/loki/chunks
-      chunk_store_config:
-        max_look_back_period: 0s
-      table_manager:
-        retention_deletes_enabled: true
-        retention_period: 336h
-      compactor:
-        working_directory: /data/loki/compactor
-        shared_store: filesystem
     persistence:
       enabled: true
       type: pvc
