@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
 - helmrelease.yaml
 - dashboard
-- external
 - middlewares
 - monitoring
 - tlsstore
