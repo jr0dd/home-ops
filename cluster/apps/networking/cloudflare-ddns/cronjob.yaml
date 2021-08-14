@@ -6,11 +6,13 @@ metadata:
   name: cloudflare-ddns
 spec:
   schedule: "0 * * * *"
-  failedJobsHistoryLimit: 1
+  concurrencyPolicy: "Forbid"
   successfulJobsHistoryLimit: 3
-  concurrencyPolicy: Forbid
+  failedJobsHistoryLimit: 5
   jobTemplate:
     spec:
+      backoffLimit: 3
+      ttlSecondsAfterFinished: 300
       template:
         spec:
           restartPolicy: Never
