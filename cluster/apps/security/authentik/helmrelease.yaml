@@ -47,9 +47,9 @@ spec:
         port: 587
         use_tls: true
         username: "${SECRET_EMAIL}"
-        password: "${SECRET_AUTHENTIK_EMAIL_PASSWORD}"
+        password: "${AUTHENTIK_EMAIL_PASSWORD}"
         from: "${SECRET_EMAIL}"
-      secret_key: "${SECRET_AUTHENTIK_SECRET_KEY}"
+      secret_key: "${AUTHENTIK_SECRET_KEY}"
       log_level: debug
       outposts:
         docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
@@ -57,7 +57,7 @@ spec:
         host: authentik-postgresql
         name: authentik
         user: authentik
-        password: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
+        password: "${AUTHENTIK_POSTGRES_PASSWORD}"
       redis:
         host: authentik-redis-master
     postgresql:
@@ -67,7 +67,7 @@ spec:
         existingClaim: authentik
       postgresqlUsername: authentik
       postgresqlDatabase: authentik
-      postgresqlPassword: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"    
+      postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"    
     redis:
       enabled: true
       master:

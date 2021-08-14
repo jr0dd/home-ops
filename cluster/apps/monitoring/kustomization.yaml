@@ -9,5 +9,5 @@ resources:
 - network-ups-tools
 - nut-exporter
 - promtail
-- snmp-exporter
+- snmp-exporter-mikrotik
 - speedtest-exporter

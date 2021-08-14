@@ -26,7 +26,7 @@ spec:
       config:
         global:
           resolve_timeout: 5m
-          smtp_from: "${SECRET_ALERTMANAGER_EMAIL}"
+          smtp_from: "${ALERTMANAGER_EMAIL}"
           smtp_smarthost: "${SECRET_SMTP}:587"
           smtp_auth_username: "${SECRET_EMAIL}"
           smtp_auth_identity: "${SECRET_EMAIL}"
