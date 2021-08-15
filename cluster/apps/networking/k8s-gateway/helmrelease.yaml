@@ -19,7 +19,7 @@ spec:
   values:
     nameOverride: k8s-gateway
     image:
-      repository: oriedge/k8s_gateway
+      repository: quay.io/oriedge/k8s_gateway
       tag: v0.1.7
     domain: "${SECRET_DOMAIN}"
     ttl: 1
