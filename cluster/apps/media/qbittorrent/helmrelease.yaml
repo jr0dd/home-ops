@@ -73,7 +73,7 @@ spec:
           - "qb.${SECRET_DOMAIN}"
     additionalContainers:
     - name: exporter
-      image: esanchezm/prometheus-qbittorrent-exporter:latest
+      image: ghcr.io/esanchezm/prometheus-qbittorrent-exporter:v1.2.0
       imagePullPolicy: IfNotPresent
       env:
       - name: QBITTORRENT_HOST
