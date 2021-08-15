@@ -43,7 +43,7 @@ spec:
           accessKey: "${MINIO_ACCESSKEY}"
           secretKey: "${MINIO_SECRETKEY}"
         metrics:
-          enabled: false
+          enabled: true
           port: 9000
         s3:
           bucketDNS: true

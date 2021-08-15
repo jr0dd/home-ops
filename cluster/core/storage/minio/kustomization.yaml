@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
 - helmrelease.yaml
 # - prometheusrules.yaml
-# - podmonitor.yaml
+- secret.sops.yaml
