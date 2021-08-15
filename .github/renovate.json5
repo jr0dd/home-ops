@@ -109,6 +109,7 @@
     },
     {
       "matchDatasources": ["docker"],
+      "semanticCommitScope": "images",
       "separateMinorPatch": true
     },
     // add labels according to package and update types
