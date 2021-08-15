@@ -21,7 +21,6 @@ disable-cloud-controller: true
 disable-kube-proxy: true
 EOF                                                                                                                                                                                                                         
     echo "k3s config patched"
-    systemctl daemon-reload
     systemctl restart k3s.service
   else
     echo "k3s config already patched"
