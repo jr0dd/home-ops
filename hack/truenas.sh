@@ -3,14 +3,28 @@
 # Patch and install necessary packages. Source it in .zshrc/.bashrc or run
 # periodically with a cronjob as this will not persist through a system upgrade.                                                                                                                                                                                            
 
-# lb fix
-if ! grep -q 'servicelb' /lib/systemd/system/k3s.service; then
-    sed -i 's/\(disable=\)/\1servicelb,/' /lib/systemd/system/k3s.service
-    echo "servicelb patched"
+## add feature flags
+if ! grep -q servicelb /etc/rancher/k3s/config.yaml; then
+cat <<- 'EOF' >> /etc/rancher/k3s/config.yaml
+kubelet-arg:
+- "feature-gates=GracefulNodeShutdown=true"
+- "feature-gates=MixedProtocolLBService=true"
+flannel-backend: "none"
+disable:
+- flannel
+- traefik
+- servicelb
+- metrics-server
+- local-storage
+disable-network-policy: true
+disable-cloud-controller: true
+disable-kube-proxy: true
+EOF                                                                                                                                                                                                                         
+    echo "k3s config patched"
     systemctl daemon-reload
     systemctl restart k3s.service
   else
-    echo "servicelb already patched"
+    echo "k3s config already patched"
 fi
 
 # kustomize
