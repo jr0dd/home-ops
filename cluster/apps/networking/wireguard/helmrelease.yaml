@@ -48,6 +48,7 @@ spec:
         type: custom
         mountPath: /etc/wireguard/wg0.conf
         subPath: wg0.conf
+        readOnly: true
         volumeSpec:
           secret:
             defaultMode: 0600
