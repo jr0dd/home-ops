@@ -11,7 +11,6 @@ resources:
 - loki.yaml
 - mailu.yaml
 - media.yaml
-- minio.yaml
 - mkvtoolnix.yaml
 - overseerr.yaml
 - plex.yaml
@@ -21,3 +20,4 @@ resources:
 - radarr.yaml
 - sonarr.yaml
 - tautulli.yaml
+- thanos.yaml

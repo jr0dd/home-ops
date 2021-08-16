@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: thanos
+  namespace: monitoring
+spec:
+  storageClassName: openebs-zfspv
+  volumeName: thanos
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
