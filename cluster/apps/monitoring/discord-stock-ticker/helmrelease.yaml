@@ -37,7 +37,7 @@ spec:
     persistence:
       config:
         enabled: true
-        mountPath: /config
+        mountPath: /config/payload.sh
         type: custom
         volumeSpec:
           configMap:
