@@ -42,3 +42,13 @@ spec:
             enabled: true
             port: 51820
             protocol: UDP
+    persistence:
+      config:
+        enabled: true
+        type: custom
+        mountPath: /etc/wireguard/wg0.conf
+        subPath: wg0.conf
+        volumeSpec:
+          secret:
+            defaultMode: 0600
+            secretName: wireguard-config
