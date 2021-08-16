@@ -8,12 +8,12 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://jr0dd.github.io/charts/
+     # renovate: registryUrl=https://operator.min.io/
       chart: minio-operator
-      version: 4.1.8
+      version: 4.1.7
       sourceRef:
         kind: HelmRepository
-        name: jr0dd-charts
+        name: minio-charts
         namespace: flux-system
       interval: 5m
   values:
@@ -56,3 +56,5 @@ spec:
             value: "${MINIO_CLIENT_SECRET}"
           - name: MINIO_IDENTITY_OPENID_SCOPES
             value: "openid,profile,email,minio"
+          - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
+            value: "https://minio.${SECRET_DOMAIN}/minio/login/openid"
