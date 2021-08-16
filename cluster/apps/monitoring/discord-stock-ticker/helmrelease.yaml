@@ -29,15 +29,11 @@ spec:
     envFrom:
       - secretRef:
           name: discord-tokens
-    service:
-      main:
-        ports:
-          http:
-            port: 8080
     persistence:
       config:
         enabled: true
         mountPath: /config/payload.sh
+        subPath: payload.sh
         type: custom
         volumeSpec:
           configMap:

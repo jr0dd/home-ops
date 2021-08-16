@@ -4,7 +4,7 @@ metadata:
   name: discord-stock-ticker-config
   namespace: monitoring
 data:
-  config.sh: |
+  payload.sh: |
     #!/usr/bin/env bash
 
     set -eu
