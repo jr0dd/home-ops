@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     image:
-      repository: oznu/homebridge
+      repository: ghcr.io/oznu/homebridge
       tag: ubuntu
     controller:
       enabled: true
