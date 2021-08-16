@@ -102,8 +102,8 @@ spec:
         - secretName: prometheus-tls
           hosts:
           - "prometheus.${SECRET_DOMAIN}"
-      thanosService:
-        enabled: true
+      # thanosService:
+      #   enabled: true
       prometheusSpec:
         replicas: 1
         replicaExternalLabelName: "replica"
@@ -124,12 +124,12 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
-        thanos:
-          image: quay.io/thanos/thanos:v0.22.0
-          version: v0.22.0
-          objectStorageConfig:
-            name: thanos-objstore
-            key: objstore.yml
+        # thanos:
+        #   image: quay.io/thanos/thanos:v0.22.0
+        #   version: v0.22.0
+        #   objectStorageConfig:
+        #     name: thanos-objstore
+        #     key: objstore.yml
     prometheusOperator:
       enabled: true
       configReloaderCpu: 0
