@@ -27,8 +27,8 @@ spec:
     env:
       TZ: "America/New_York" 
     envFrom:
-    - secretRef:
-        name: discord-tokens
+      - secretRef:
+          name: discord-tokens
     service:
       main:
         ports:
@@ -37,10 +37,8 @@ spec:
     persistence:
       config:
         enabled: true
+        mountPath: /config
         type: custom
-        mountPath: /config/payload.sh
-        subPath: payload.sh
-        readOnly: true
         volumeSpec:
           configMap:
             defaultMode: 0755
