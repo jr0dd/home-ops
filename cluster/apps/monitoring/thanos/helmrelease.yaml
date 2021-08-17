@@ -48,7 +48,7 @@ spec:
       enabled: true
       persistence:
         enabled: true
-        size: 5Gi
+        existingClaim: thanos
     ruler:
       enabled: false
     metrics:

@@ -196,9 +196,6 @@ spec:
         thanos-sidecar:
           url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/sidecar.json
           datasource: Prometheus
-        thanos-rule:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/rule.json
-          datasource: Prometheus
         thanos-replicate:
           url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/bucket_replicate.json
           datasource: Prometheus
