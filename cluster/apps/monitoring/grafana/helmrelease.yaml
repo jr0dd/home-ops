@@ -147,7 +147,7 @@ spec:
           revision: 1
           datasource: Prometheus
 
-        # OG source: https://grafana.com/grafana/dashboards/12275
+        # Ref: https://grafana.com/grafana/dashboards/12275
         blackbox:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blackbox.json
           datasource: Prometheus
@@ -177,6 +177,30 @@ spec:
           datasource: Prometheus
         sonarr:
           url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
+          datasource: Prometheus
+        thanos-overview:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/overview.json
+          datasource: Prometheus
+        thanos-compact:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/compact.json
+          datasource: Prometheus
+        thanos-query:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/query.json
+          datasource: Prometheus
+        thanos-store:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/store.json
+          datasource: Prometheus
+        thanos-receive:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/receive.json
+          datasource: Prometheus
+        thanos-sidecar:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/sidecar.json
+          datasource: Prometheus
+        thanos-rule:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/rule.json
+          datasource: Prometheus
+        thanos-replicate:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/bucket_replicate.json
           datasource: Prometheus
         traefik:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/traefik.json
