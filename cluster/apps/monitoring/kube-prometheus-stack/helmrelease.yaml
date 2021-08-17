@@ -187,8 +187,3 @@ spec:
     grafana:
       enabled: false
       forceDeployDashboards: true
-      sidecar:
-        dashboards:
-          multicluster:
-            global:
-              enabled: true
