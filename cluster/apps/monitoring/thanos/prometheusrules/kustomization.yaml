@@ -3,7 +3,5 @@ kind: Kustomization
 resources:
 - thanos-compact.yaml
 - thanos-query.yaml
-- thanos-receive.yaml
-- thanos-replicate.yaml
 - thanos-sidecar.yaml
 - thanos-store.yaml
