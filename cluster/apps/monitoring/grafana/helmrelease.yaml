@@ -190,9 +190,6 @@ spec:
         thanos-store:
           url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/store.json
           datasource: Prometheus
-        thanos-receive:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/receive.json
-          datasource: Prometheus
         thanos-sidecar:
           url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/sidecar.json
           datasource: Prometheus

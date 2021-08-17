@@ -5,3 +5,4 @@ resources:
 - helmrelease.yaml
 - prometheusrules
 - secret.sops.yaml
+- sidecar-servicemonitor.yaml

@@ -47,13 +47,20 @@ spec:
     storegateway:
       enabled: true
       persistence:
-        enabled: true
-        existingClaim: thanos
+        enabled: false
     ruler:
-      enabled: false
-    receive:
       enabled: false
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
+    minio:
+      enabled: true
+      accessKey:
+        password: "${THANOS_MINIO_ACCESKEY}"
+      secretKey:
+        password: "${THANOS_MINIO_SECRETKEY}"
+      defaultBuckets: thanos
+      persistence:
+        enabled: true
+        existingClaim: thanos

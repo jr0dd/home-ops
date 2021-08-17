@@ -111,7 +111,7 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
-        retention: 6h
+        retention: 48h
         enableAdminAPI: true
         walCompression: true
         storageSpec:
