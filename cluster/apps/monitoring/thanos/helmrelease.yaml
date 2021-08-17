@@ -58,9 +58,14 @@ spec:
       enabled: true
       accessKey:
         password: "${THANOS_MINIO_ACCESKEY}"
+       forcePassword: true
       secretKey:
         password: "${THANOS_MINIO_SECRETKEY}"
+        forcePassword: true
       defaultBuckets: thanos
       persistence:
         enabled: true
         existingClaim: thanos
+      metrics:
+        serviceMonitor:
+          enabled: true
