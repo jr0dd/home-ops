@@ -47,8 +47,7 @@ spec:
     storegateway:
       enabled: true
       persistence:
-        enabled: true
-        existingClaim: thanos
+        enabled: false
     ruler:
       enabled: false
     receive:
