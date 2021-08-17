@@ -51,6 +51,8 @@ spec:
         existingClaim: thanos
     ruler:
       enabled: false
+    receive:
+      enabled: false
     metrics:
       enabled: true
       serviceMonitor:
