@@ -57,11 +57,9 @@ spec:
     minio:
       enabled: true
       accessKey:
-        password: "${THANOS_MINIO_ACCESKEY}"
-        forcePassword: true
+        password: "${THANOS_MINIO_ACCESSKEY}"
       secretKey:
         password: "${THANOS_MINIO_SECRETKEY}"
-        forcePassword: true
       defaultBuckets: thanos
       persistence:
         enabled: true
