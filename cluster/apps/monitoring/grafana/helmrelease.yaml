@@ -71,22 +71,22 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-production
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
       hosts:
-      - "grafana.${SECRET_DOMAIN}"
+        - "grafana.${SECRET_DOMAIN}"
       path: /
       tls:
-      - secretName: grafana-tls
-        hosts:
-        - "grafana.${SECRET_DOMAIN}"
+        - secretName: grafana-tls
+          hosts:
+            - "grafana.${SECRET_DOMAIN}"
     plugins:
-    - grafana-piechart-panel
-    - grafana-polystat-panel
-    - grafana-worldmap-panel
-    - grafana-clock-panel
-    - grafana-singlestat-panel
-    - mxswat-separator-panel
-    - farski-blendstat-panel
-    - speakyourcode-button-panel
-    - snuids-trafficlights-panel
+      - grafana-piechart-panel
+      - grafana-polystat-panel
+      - grafana-worldmap-panel
+      - grafana-clock-panel
+      - grafana-singlestat-panel
+      - mxswat-separator-panel
+      - farski-blendstat-panel
+      - speakyourcode-button-panel
+      - snuids-trafficlights-panel
     imageRenderer:
       enabled: true
     sidecar:
@@ -100,30 +100,30 @@ spec:
       datasources.yaml:
         apiVersion: 1
         deleteDatasources:
-        - name: Loki
-          orgId: 1
+          - name: Loki
+            orgId: 1
         datasources:
-        - name: Prometheus
-          type: prometheus
-          access: proxy
-          url: http://prometheus-prometheus:9090/
-          isDefault: true
-        - name: Loki
-          type: loki
-          access: proxy
-          url: http://loki:3100
+          - name: Prometheus
+            type: prometheus
+            access: proxy
+            url: http://prometheus-prometheus:9090/
+            isDefault: true
+          - name: Loki
+            type: loki
+            access: proxy
+            url: http://loki:3100
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-        - name: 'default'
-          orgId: 1
-          folder: ''
-          type: file
-          disableDeletion: false
-          editable: true
-          options:
-            path: /var/lib/grafana/dashboards/default
+          - name: 'default'
+            orgId: 1
+            folder: ''
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/default
     dashboards:
       default:
         # Ref: https://grafana.com/grafana/dashboards/13665

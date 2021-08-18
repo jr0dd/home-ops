@@ -8,7 +8,7 @@ spec:
   storageClassName: openebs-zfspv
   volumeName: mailu
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 2Gi

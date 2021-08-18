@@ -20,14 +20,14 @@ spec:
     fullnameOverride: snmp-exporter-mikrotik
     nameOverride: snmp-exporter-mikrotik
     extraArgs:
-    - "--config.file=/config/snmp.yaml"
+      - "--config.file=/config/snmp.yaml"
     extraConfigmapMounts:
-    - name: snmp-exporter-mikrotik
-      mountPath: /config/snmp.yaml
-      subPath: snmp.yaml
-      configMap: snmp-exporter-mikrotik
-      readOnly: true
-      defaultMode: 420
+      - name: snmp-exporter-mikrotik
+        mountPath: /config/snmp.yaml
+        subPath: snmp.yaml
+        configMap: snmp-exporter-mikrotik
+        readOnly: true
+        defaultMode: 420
     serviceMonitor:
       enabled: true
       namespace: monitoring
@@ -37,11 +37,11 @@ spec:
         enabled: true
         conf:
           module:
-          - mikrotik
+            - mikrotik
           target:
-          - 10.10.0.1
+            - 10.10.0.1
       path: /snmp
       scrapeTimeout: 30s
       relabelings:
-      - sourceLabels: [__param_target]
-        targetLabel: instance
+        - sourceLabels: [__param_target]
+          targetLabel: instance

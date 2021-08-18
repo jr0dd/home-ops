@@ -45,11 +45,11 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-        - host: "tautulli.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "tautulli.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: tautulli-tls
-          hosts:
-          - "tautulli.${SECRET_DOMAIN}"
+          - secretName: tautulli-tls
+            hosts:
+              - "tautulli.${SECRET_DOMAIN}"

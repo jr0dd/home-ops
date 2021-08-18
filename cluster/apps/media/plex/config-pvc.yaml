@@ -8,7 +8,7 @@ spec:
   storageClassName: openebs-zfspv
   volumeName: plex
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 100Gi

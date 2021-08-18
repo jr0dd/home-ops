@@ -56,11 +56,11 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
         hosts:
-        - host: "mkvtoolnix.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "mkvtoolnix.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: mkvtoolnix-tls
-          hosts:
-          - "mkvtoolnix.${SECRET_DOMAIN}"
+          - secretName: mkvtoolnix-tls
+            hosts:
+              - "mkvtoolnix.${SECRET_DOMAIN}"

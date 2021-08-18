@@ -19,7 +19,7 @@ metadata:
 spec:
   stripPrefixRegex:
     regex:
-    - "/[a-z0-9_]+"
+      - "/[a-z0-9_]+"
 
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -30,5 +30,5 @@ metadata:
 spec:
   chain:
     middlewares:
-    - name: redirect-regex
-    - name: strip-prefix-regex
+      - name: redirect-regex
+      - name: strip-prefix-regex

@@ -1,14 +1,15 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- blackbox-exporter
-- discord-stock-ticker
-- grafana
-- kube-prometheus-stack
-- loki
-- network-ups-tools
-- nut-exporter
-- promtail
-- snmp-exporter-mikrotik
-- speedtest-exporter
-- thanos
+  - blackbox-exporter
+  - discord-stock-ticker
+  - grafana
+  - kube-prometheus-stack
+  - loki
+  - network-ups-tools
+  - nut-exporter
+  - promtail
+  - snmp-exporter-mikrotik
+  - speedtest-exporter
+  - thanos

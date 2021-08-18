@@ -32,11 +32,11 @@ spec:
           smtp_auth_identity: "${SECRET_EMAIL}"
           smtp_auth_password: "${SECRET_EMAIL_PASSWORD}"
         receivers:
-        - name: "null"
-        - name: "email"
-          email_configs:
-          - to: "${SECRET_EMAIL}"
-            send_resolved: true
+          - name: "null"
+          - name: "email"
+            email_configs:
+              - to: "${SECRET_EMAIL}"
+                send_resolved: true
         route:
           receiver: email
           group_wait: 10s
@@ -44,19 +44,19 @@ spec:
           repeat_interval: 1h
           group_by: ['alertname', 'job']
           routes:
-          - match:
-              alertname: Watchdog
-            receiver: "null"
-          - match:
-              severity: critical
-            receiver: "email"
-            continue: true
+            - match:
+                alertname: Watchdog
+              receiver: "null"
+            - match:
+                severity: critical
+              receiver: "email"
+              continue: true
         inhibit_rules:
-        - source_match:
-            severity: critical
-          target_match:
-            severity: warning
-          equal: ['alertname', 'namespace']
+          - source_match:
+              severity: critical
+            target_match:
+              severity: warning
+            equal: ['alertname', 'namespace']
       ingress:
         enabled: true
         ingressClassName: traefik
@@ -64,21 +64,21 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-        - "alertmanager.${SECRET_DOMAIN}"
+          - "alertmanager.${SECRET_DOMAIN}"
         paths:
-        - /
+          - /
         pathType: Prefix
         tls:
-        - secretName: alertmanager-tls
-          hosts:
-          - "alertmanager.${SECRET_DOMAIN}"
+          - secretName: alertmanager-tls
+            hosts:
+              - "alertmanager.${SECRET_DOMAIN}"
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
             spec:
               volumeName: alertmanager
               accessModes:
-              - ReadWriteOnce
+                - ReadWriteOnce
               storageClassName: openebs-zfspv
               resources:
                 requests:
@@ -86,22 +86,22 @@ spec:
     prometheus:
       enabled: true
       logFormat: json
-      logLevel: error  
+      logLevel: error
       ingress:
         enabled: true
         ingressClassName: traefik
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure                                                      
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-        - "prometheus.${SECRET_DOMAIN}"
+          - "prometheus.${SECRET_DOMAIN}"
         paths:
-        - /
+          - /
         pathType: Prefix
         tls:
-        - secretName: prometheus-tls
-          hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+          - secretName: prometheus-tls
+            hosts:
+              - "prometheus.${SECRET_DOMAIN}"
       thanosService:
         enabled: true
       prometheusSpec:
@@ -119,7 +119,7 @@ spec:
             spec:
               volumeName: prometheus
               accessModes:
-              - ReadWriteOnce
+                - ReadWriteOnce
               storageClassName: openebs-zfspv
               resources:
                 requests:
@@ -142,32 +142,32 @@ spec:
       enabled: true
       serviceMonitor:
         relabelings:
-        - sourceLabels:
-          - __meta_kubernetes_namespace
-          - __meta_kubernetes_service_name
-          - __meta_kubernetes_endpoint_port_name
-          action: keep
-          regex: default;kubernetes;https
-        - targetLabel: __address__
-          replacement: kubernetes.default.svc:443
+          - sourceLabels:
+              - __meta_kubernetes_namespace
+              - __meta_kubernetes_service_name
+              - __meta_kubernetes_endpoint_port_name
+            action: keep
+            regex: default;kubernetes;https
+          - targetLabel: __address__
+            replacement: kubernetes.default.svc:443
     kubelet:
       enabled: true
       serviceMonitor:
         metricRelabelings:
-        - action: replace
-          sourceLabels:
-          - node
-          targetLabel: instance
+          - action: replace
+            sourceLabels:
+              - node
+            targetLabel: instance
     nodeExporter:
       enabled: true
       serviceMonitor:
         relabelings:
-        - action: replace
-          regex: (.*)
-          replacement: $1
-          sourceLabels:
-          - __meta_kubernetes_pod_node_name
-          targetLabel: kubernetes_node
+          - action: replace
+            regex: (.*)
+            replacement: $1
+            sourceLabels:
+              - __meta_kubernetes_pod_node_name
+            targetLabel: kubernetes_node
     prometheus-node-exporter:
       fullnameOverride: node-exporter
     kubeStateMetrics:

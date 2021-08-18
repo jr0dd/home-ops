@@ -8,7 +8,7 @@ spec:
   storageClassName: openebs-zfspv
   volumeName: overseerr
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 250Mi

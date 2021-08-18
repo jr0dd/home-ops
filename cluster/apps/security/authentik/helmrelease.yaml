@@ -33,14 +33,14 @@ spec:
         traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918-ips@kubernetescrd
         cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
-      - host: "id.${SECRET_DOMAIN}"
-        paths:
-        - path: /
-          pathType: Prefix
+        - host: "id.${SECRET_DOMAIN}"
+          paths:
+            - path: /
+              pathType: Prefix
       tls:
-      - secretName: authentik-tls
-        hosts:
-        - "id.${SECRET_DOMAIN}"
+        - secretName: authentik-tls
+          hosts:
+            - "id.${SECRET_DOMAIN}"
     authentik:
       email:
         host: "${SECRET_SMTP}"
@@ -67,7 +67,7 @@ spec:
         existingClaim: authentik
       postgresqlUsername: authentik
       postgresqlDatabase: authentik
-      postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"    
+      postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
     redis:
       enabled: true
       master:

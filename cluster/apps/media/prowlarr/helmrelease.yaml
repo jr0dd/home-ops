@@ -46,11 +46,11 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
         hosts:
-        - host: "prowlarr.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "prowlarr.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: prowlarr-tls
-          hosts:
-          - "prowlarr.${SECRET_DOMAIN}"
+          - secretName: prowlarr-tls
+            hosts:
+              - "prowlarr.${SECRET_DOMAIN}"

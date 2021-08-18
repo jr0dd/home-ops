@@ -47,14 +47,14 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-        - host: "homer.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "homer.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: homer-tls
-          hosts:
-          - "homer.${SECRET_DOMAIN}"
+          - secretName: homer-tls
+            hosts:
+              - "homer.${SECRET_DOMAIN}"
     podAnnotations:
       configmap.reloader.stakater.com/reload: "homer"
     configmap:
@@ -69,7 +69,7 @@ spec:
 
         header: true
         footer: false
-        
+
         connectivityCheck: true
         columns: "5"
 

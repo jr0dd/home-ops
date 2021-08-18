@@ -19,15 +19,15 @@ spec:
   values:
     configInline:
       peers:
-      - peer-address: "${GATEWAY_IP}"
-        peer-asn: 64550
-        my-asn: 64512
+        - peer-address: "${GATEWAY_IP}"
+          peer-asn: 64550
+          my-asn: 64512
       address-pools:
-      - name: mikrotik
-        protocol: bgp
-        avoid-buggy-ips: true
-        addresses:
-        - "${METALLB_POOL}"
+        - name: mikrotik
+          protocol: bgp
+          avoid-buggy-ips: true
+          addresses:
+            - "${METALLB_POOL}"
     prometheus:
       scrapeAnnotations: false
       metricsPort: 7472

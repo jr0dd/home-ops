@@ -13,10 +13,10 @@ spec:
       app.kubernetes.io/name: speedtest-exporter
   namespaceSelector:
     matchNames:
-    - monitoring
+      - monitoring
   endpoints:
-  - path: /metrics
-    targetPort: http
-    honorLabels: true
-    interval: 1h
-    scrapeTimeout: 1m
+    - path: /metrics
+      targetPort: http
+      honorLabels: true
+      interval: 1h
+      scrapeTimeout: 1m

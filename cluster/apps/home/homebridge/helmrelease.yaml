@@ -31,7 +31,7 @@ spec:
       HOMEBRIDGE_CONFIG_UI: 1
       HOMEBRIDGE_CONFIG_UI_PORT: 8051
     hostNetwork: true
-    dnsPolicy:  ClusterFirstWithHostNet
+    dnsPolicy: ClusterFirstWithHostNet
     service:
       main:
         ports:
@@ -52,12 +52,11 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
         hosts:
-        - host: "homebridge.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "homebridge.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: homebridge-tls
-          hosts:
-          - "homebridge.${SECRET_DOMAIN}"
-
+          - secretName: homebridge-tls
+            hosts:
+              - "homebridge.${SECRET_DOMAIN}"

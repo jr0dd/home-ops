@@ -8,7 +8,7 @@ spec:
   storageClassName: openebs-zfspv
   volumeName: grafana
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi

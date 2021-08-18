@@ -8,7 +8,7 @@ spec:
   storageClassName: openebs-zfspv
   volumeName: loki
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 20Gi

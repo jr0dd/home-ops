@@ -14,7 +14,7 @@ reclaimPolicy: Retain
 allowVolumeExpansion: true
 volumeBindingMode: WaitForFirstConsumer
 allowedTopologies:
-- matchLabelExpressions:
-  - key: kubernetes.io/hostname
-    values:
-    - ix-truenas
+  - matchLabelExpressions:
+      - key: kubernetes.io/hostname
+        values:
+          - ix-truenas

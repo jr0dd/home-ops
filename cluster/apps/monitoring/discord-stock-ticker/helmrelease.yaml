@@ -25,7 +25,7 @@ spec:
       replicas: 1
       strategy: RollingUpdate
     env:
-      TZ: "America/New_York" 
+      TZ: "America/New_York"
     envFrom:
       - secretRef:
           name: discord-tokens

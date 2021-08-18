@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: qbittorrent
   podMetricsEndpoints:
-  - interval: 15s
-    path: /metrics
-    port: metrics
-    scrapeTimeout: 5s
+    - interval: 15s
+      path: /metrics
+      port: metrics
+      scrapeTimeout: 5s

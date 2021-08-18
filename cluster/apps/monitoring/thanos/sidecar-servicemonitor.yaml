@@ -1,3 +1,4 @@
+---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -10,13 +11,13 @@ metadata:
   namespace: monitoring
 spec:
   endpoints:
-  - port: http
-    relabelings:
-    - separator: /
-      sourceLabels:
-      - namespace
-      - pod
-      targetLabel: instance
+    - port: http
+      relabelings:
+        - separator: /
+          sourceLabels:
+            - namespace
+            - pod
+          targetLabel: instance
   selector:
     matchLabels:
       app.kubernetes.io/component: prometheus-sidecar

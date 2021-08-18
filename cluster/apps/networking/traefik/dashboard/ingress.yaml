@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -9,17 +10,17 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
 spec:
   tls:
-  - secretName: traefik-tls
-    hosts:
-    - traefik.${SECRET_DOMAIN}
+    - secretName: traefik-tls
+      hosts:
+        - traefik.${SECRET_DOMAIN}
   rules:
-  - host: traefik.${SECRET_DOMAIN}
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: traefik
-            port:
-              number: 9000
+    - host: traefik.${SECRET_DOMAIN}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik
+                port:
+                  number: 9000

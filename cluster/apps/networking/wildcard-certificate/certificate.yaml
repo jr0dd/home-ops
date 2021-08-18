@@ -11,6 +11,5 @@ spec:
     name: letsencrypt-production
   commonName: "${SECRET_DOMAIN}"
   dnsNames:
-  - "${SECRET_DOMAIN}"
-  - "*.${SECRET_DOMAIN}"
-  
+    - "${SECRET_DOMAIN}"
+    - "*.${SECRET_DOMAIN}"

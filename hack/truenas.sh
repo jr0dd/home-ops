@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Patch and install necessary packages. Source it in .zshrc/.bashrc or run
-# periodically with a cronjob as this will not persist through a system upgrade.                                                                                                                                                                                            
+# periodically with a cronjob as this will not persist through a system upgrade.
 
 ## add feature flags
 if ! grep -q servicelb /etc/rancher/k3s/config.yaml; then
@@ -19,7 +19,7 @@ disable:
 disable-network-policy: true
 disable-cloud-controller: true
 disable-kube-proxy: true
-EOF                                                                                                                                                                                                                         
+EOF
     echo "k3s config patched"
     systemctl restart k3s.service
   else

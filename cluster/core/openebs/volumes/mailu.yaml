@@ -8,7 +8,7 @@ spec:
     storage: 2Gi
   volumeMode: Filesystem
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   storageClassName: openebs-zfspv
   hostPath:

@@ -66,23 +66,23 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918-ips@kubernetescrd
         hosts:
-        - host: "blocky.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: "blocky.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: blocky-tls
-          hosts:
-          - "blocky.${SECRET_DOMAIN}"
+          - secretName: blocky-tls
+            hosts:
+              - "blocky.${SECRET_DOMAIN}"
     prometheus:
       serviceMonitor:
         enabled: true
         targets:
-        - hostname: blocky.networking.svc.cluster.local
-          port: 4000
-          path: /metrics
-          interval: 10s
-          scrapeTimeout: 10s
+          - hostname: blocky.networking.svc.cluster.local
+            port: 4000
+            path: /metrics
+            interval: 10s
+            scrapeTimeout: 10s
     podAnnotations:
       configmap.reloader.stakater.com/reload: "blocky"
     config: |
