@@ -169,6 +169,9 @@ spec:
         lidarr:
           url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
           datasource: Prometheus
+        minio:
+          url: https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-overview.json
+          datasource: Prometheus
         qbittorrent:
           url: https://raw.githubusercontent.com/esanchezm/prometheus-qbittorrent-exporter/master/grafana/dashboard.json
           datasource: Prometheus
