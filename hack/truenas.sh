@@ -36,6 +36,7 @@ disable-cloud-controller: true
 disable-kube-proxy: true
 EOF
     echo "k3s config patched"
+    chattr +i /etc/rancher/k3s/config.yaml
     touch "${TMPFILE}"
   else
     echo "k3s config already patched"
