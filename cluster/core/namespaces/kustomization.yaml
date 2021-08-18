@@ -6,6 +6,7 @@ resources:
   - home.yaml
   - mail.yaml
   - media.yaml
+  - minio.yaml
   - monitoring.yaml
   - networking.yaml
   - openebs.yaml
