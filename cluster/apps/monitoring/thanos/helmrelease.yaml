@@ -58,7 +58,7 @@ spec:
       enabled: true
       accessKey:
         password: "${THANOS_MINIO_ACCESKEY}"
-       forcePassword: true
+        forcePassword: true
       secretKey:
         password: "${THANOS_MINIO_SECRETKEY}"
         forcePassword: true
