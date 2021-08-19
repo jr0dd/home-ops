@@ -18,7 +18,7 @@ spec:
       interval: 5m
   values:
     image:
-      repository: ghcr.io/oznu/homebridge
+      repository: oznu/homebridge
       tag: ubuntu-no-avahi
     controller:
       enabled: true
