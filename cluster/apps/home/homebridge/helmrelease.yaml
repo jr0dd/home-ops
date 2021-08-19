@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: ubuntu-no-avahi
+      tag: ubuntu
     controller:
       enabled: true
       replicas: 1
@@ -60,11 +60,11 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - "homebridge.${SECRET_DOMAIN}"
-    # podAnnotations:
-    #   configmap.reloader.stakater.com/reload: "homebridge-config"
-    # config: |
-    #   #!/bin/sh
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: "homebridge-config"
+    config: |
+      #!/bin/sh
 
-    #   npm install homebridge-myq
-    #   npm install homebridge-nest
-    #   npm install homebridge-platform-orbit
+      npm install homebridge-myq
+      npm install homebridge-nest
+      npm install homebridge-platform-orbit
