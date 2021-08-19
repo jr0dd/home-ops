@@ -92,6 +92,9 @@ until systemctl status kube-router.service | grep -q "active (running)"; do
     sleep 1
 done
 
+## For good measure ##
+sleep 15
+
 ## First run iptables -L INPUT to make sure you have right rule number
 ## In this example the ip address of the truenas server is 192.168.1.10
 ## and the iptables rule number is 4. Adjust for your scenario.
