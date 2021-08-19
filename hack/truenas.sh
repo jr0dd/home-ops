@@ -5,9 +5,6 @@
 
 TMPFILE='/tmp/syspatch.tmp'
 BACKUPDIR='full path of directory with your backup k3s binary'
-## If patching iptables adjust the following variables and uncomment.
-# SCALE='${SCALE}'
-# LAN='"${LAN}"'
 
 ## Optional ##
 ## If you are using the system-upgrade-controller you will need to back up
@@ -84,27 +81,4 @@ if ! dpkg-query -s sops | grep -q 'install ok installed'; then
     dpkg -i /tmp/sops.deb
   else
     echo "sops already installed"
-fi
-
-### Optional ###
-
-## If you want to access k3s from your lan and not have to
-## ssh in every time you need to update iptables currently
-until systemctl is-active --quiet kube-router.service; do
-    echo "waiting for kube-router to start"
-    sleep 1
-done
-
-if iptables -S INPUT 4 | grep -q "${SCALE}"; then
-    iptables -R INPUT 4 -s "${LAN}" -j ACCEPT -p tcp --dport 6443
-    echo "iptables patched"
-  elif iptables -S INPUT 4 | grep -q "${LAN}"; then
-      echo "iptables already patched"
-    else
-      until iptables -S INPUT 4 | grep -q "${SCALE}"; do
-          echo "waiting for middleware to create iptables"
-          sleep 1
-      done
-      iptables -R INPUT 4 -s "${LAN}" -j ACCEPT -p tcp --dport 6443
-      echo "iptables patched"
 fi
