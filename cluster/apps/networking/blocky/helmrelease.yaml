@@ -84,7 +84,7 @@ spec:
             interval: 10s
             scrapeTimeout: 10s
     podAnnotations:
-      configmap.reloader.stakater.com/reload: "blocky"
+      configmap.reloader.stakater.com/reload: "blocky-config"
     config: |
       httpPort: 4000
       logLevel: info

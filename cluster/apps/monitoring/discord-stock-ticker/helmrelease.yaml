@@ -46,4 +46,4 @@ spec:
       prometheusRule:
         enabled: true
     podAnnotations:
-      configmap.reloader.stakater.com/reload: "ticker"
+      configmap.reloader.stakater.com/reload: "discord-stock-ticker-config"

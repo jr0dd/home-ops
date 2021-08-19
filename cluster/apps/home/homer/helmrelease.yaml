@@ -56,7 +56,7 @@ spec:
             hosts:
               - "homer.${SECRET_DOMAIN}"
     podAnnotations:
-      configmap.reloader.stakater.com/reload: "homer"
+      configmap.reloader.stakater.com/reload: "homer-config"
     configmap:
       enabled: true
       config: |

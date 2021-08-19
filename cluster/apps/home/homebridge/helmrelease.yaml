@@ -60,6 +60,8 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - "homebridge.${SECRET_DOMAIN}"
+        podAnnotations:
+          configmap.reloader.stakater.com/reload: "homebridge-config"
         config: |
           #!/bin/sh
 
