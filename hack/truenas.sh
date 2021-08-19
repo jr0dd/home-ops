@@ -5,7 +5,11 @@
 
 TMPFILE='/tmp/syspatch.tmp'
 BACKUPDIR='full path of directory with your backup k3s binary'
+## If patching iptables adjust the following variables and uncomment.
+# SCALE='${SCALE}'
+# LAN='"${LAN}"'
 
+## Optional ##
 ## If you are using the system-upgrade-controller you will need to back up
 ## the current binary somewhere for restore after a truenas update because it will get over-written
 if [[ $(sha256sum /usr/local/bin/k3s |cut -d' ' -f1) != "c257e119158feee992dc4397be00490103f0dde5af4b014e8d0f17f9db35ef00" ]]; then
@@ -85,22 +89,22 @@ fi
 ### Optional ###
 
 ## If you want to access k3s from your lan and not have to
-## ssh in every time you need to update iptables. kube-router must be
-## running first to prevent a race condition with truenas middleware
-until systemctl status kube-router.service | grep -q "active (running)"; do
+## ssh in every time you need to update iptables currently
+until systemctl is-active --quiet kube-router.service; do
     echo "waiting for kube-router to start"
     sleep 1
 done
 
-## For good measure ##
-sleep 15
-
-## First run iptables -L INPUT to make sure you have right rule number
-## In this example the ip address of the truenas server is 192.168.1.10
-## and the iptables rule number is 4. Adjust for your scenario.
-if iptables -L INPUT | grep -q '192.168.1.10/32'; then
-    iptables -R INPUT 4 -s 192.168.1.0/24 -j ACCEPT -p tcp --dport 6443
+if iptables -S INPUT 4 | grep -q "${SCALE}"; then
+    iptables -R INPUT 4 -s "${LAN}" -j ACCEPT -p tcp --dport 6443
     echo "iptables patched"
-  else
-    echo "iptables already patched"
+  elif iptables -S INPUT 4 | grep -q "${LAN}"; then
+      echo "iptables already patched"
+    else
+      until iptables -S INPUT 4 | grep -q "${SCALE}"; do
+          echo "waiting for middleware to create iptables"
+          sleep 1
+      done
+      iptables -R INPUT 4 -s "${LAN}" -j ACCEPT -p tcp --dport 6443
+      echo "iptables patched"
 fi
