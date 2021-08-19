@@ -17,18 +17,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    console:
-      ingress:
-        enabled: true
-        ingressClassName: traefik
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        host: "minio.${SECRET_DOMAIN}"
-        tls:
-          - secretName: minio-tls
-            hosts:
-              - "minio.${SECRET_DOMAIN}"
     tenants:
       - name: tenant0
         namespace: minio
