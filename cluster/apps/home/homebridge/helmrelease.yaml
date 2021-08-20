@@ -30,8 +30,8 @@ spec:
       PGID: 568
       HOMEBRIDGE_CONFIG_UI: 1
       HOMEBRIDGE_CONFIG_UI_PORT: 8051
-    # hostNetwork: true
-    # dnsPolicy: ClusterFirstWithHostNet
+    hostNetwork: true
+    dnsPolicy: ClusterFirstWithHostNet
     service:
       main:
         ports:
