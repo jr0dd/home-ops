@@ -5,6 +5,6 @@ metadata:
   name: openebs-monitoring-charts
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 1h
   url: https://openebs.github.io/monitoring/
   timeout: 3m
