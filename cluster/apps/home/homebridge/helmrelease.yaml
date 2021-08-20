@@ -29,14 +29,14 @@ spec:
       PUID: 568
       PGID: 568
       HOMEBRIDGE_CONFIG_UI: 1
-      HOMEBRIDGE_CONFIG_UI_PORT: 8051
+      HOMEBRIDGE_CONFIG_UI_PORT: 8581
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
     service:
       main:
         ports:
           http:
-            port: 8051
+            port: 8581
     persistence:
       config:
         enabled: true
@@ -60,11 +60,11 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - "homebridge.${SECRET_DOMAIN}"
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: "homebridge-config"
-    config: |
-      #!/bin/sh
+    # podAnnotations:
+    #   configmap.reloader.stakater.com/reload: "homebridge-config"
+    # config: |
+    #   #!/bin/sh
 
-      npm install homebridge-myq
-      npm install homebridge-nest
-      npm install homebridge-platform-orbit
+    #   npm install homebridge-myq
+    #   npm install homebridge-nest
+    #   npm install homebridge-platform-orbit
