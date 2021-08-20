@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-## Patch and install necessary packages. Source it
-## in .zshrc/.bashrc or run after a system reboot
+## Patch and install necessary packages.
+## Add this as a post-init script under settings > advanced
 
 TMPFILE='/tmp/syspatch.tmp'
 BACKUPDIR='full path of directory with your backup k3s binary'
