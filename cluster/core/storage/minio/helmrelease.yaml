@@ -8,15 +8,28 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://jr0dd.github.io/charts/
+      # renovate: registryUrl=https://operator.min.io/
       chart: minio-operator
-      version: 4.1.8
+      version: 4.1.7
       sourceRef:
         kind: HelmRepository
-        name: jr0dd-charts
+        name: minio-charts
         namespace: flux-system
       interval: 5m
   values:
+    console:
+      ingress:
+        enabled: true
+        ingressClass: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        host: "console.${SECRET_DOMAIN}"
+        path: /
+        tls:
+          - secretName: minio-tls
+            hosts:
+              - "console.{SECRET_DOMAIN}"
     tenants:
       - name: tenant0
         namespace: minio
