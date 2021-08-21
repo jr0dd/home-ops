@@ -43,20 +43,22 @@
       ],
       "datasourceTemplate": "helm"
     },
-    // regexManager to read and process kube-prometheus-stack CRD's
+    // regexManager to read and process Kube Prometheus Stack and OpenEBS CRD's
     {
       "fileMatch": [
-        "cluster/crds/kube-prometheus-stack/.+\\.yaml$"
+        "cluster/crds/kube-prometheus-stack/.+\\.yaml$",
+        "cluster/crds/openebs/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
       ],
       "datasourceTemplate": "helm"
     },
-    // regexManager to read and process Traefik CRD's
+    // regexManager to read and process Traefik and MinIO Operator CRD's
     {
       "fileMatch": [
-        "cluster/crds/traefik/.+\\.yaml$"
+        "cluster/crds/traefik/.+\\.yaml$",
+        "cluster/crds/minio/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: v(?<currentValue>.*)\n"
@@ -73,25 +75,15 @@
       ],
       "datasourceTemplate": "helm"
     },
-    // regexManager to read and process OpenEBS CRD's
+    // regexManager to read and process External DNS CRD's
     {
       "fileMatch": [
-        "cluster/crds/openebs/.+\\.yaml$"
+        "cluster/crds/external-dns/.+\\.yaml$"
       ],
       "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
+        "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
       ],
-      "datasourceTemplate": "helm"
-    },
-    // regexManager to read and process Stakater CRD's
-    {
-      "fileMatch": [
-        "cluster/crds/stakater/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: v(?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
+      "datasourceTemplate": "github-releases"
     }
   ],
   "packageRules": [
@@ -204,10 +196,9 @@
       "separateMinorPatch": true
     },
     {
-      "matchPackageNames": [
-        "rancher/system-upgrade-controller"
-      ],
-      "groupName": "rancher/system-upgrade-controller",
+      "matchDatasources": ["github-tags", "docker"],
+      "matchPackagePatterns": ["rancher/system-upgrade-controller"],
+      "groupName": "system-upgrade-controller-suite",
       "additionalBranchPrefix": "",
       "separateMinorPatch": true
     }
