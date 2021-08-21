@@ -13,7 +13,7 @@ spec:
       version: 1.2.0
       sourceRef:
         kind: HelmRepository
-        name: kubernetes-sigs-external-dns-charts
+        name: external-dns-charts
         namespace: flux-system
       interval: 5m
   values:

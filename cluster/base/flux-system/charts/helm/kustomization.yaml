@@ -6,12 +6,13 @@ resources:
   - bitnami-charts.yaml
   - deliveryhero-charts.yaml
   - grafana-charts.yaml
+  - hajimari-charts.yaml
   - jetstack-charts.yaml
   - jr0dd-charts.yaml
   - k8s-at-home-charts.yaml
   - k8s-gateway.yaml
-  - kubernetes-sigs-descheduler-charts.yaml
-  - kubernetes-sigs-external-dns-charts.yaml
+  - descheduler-charts.yaml
+  - external-dns-charts.yaml
   - lwolf-charts.yaml
   - mailu-charts.yaml
   - metallb-charts.yaml

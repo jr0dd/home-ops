@@ -202,5 +202,3 @@ spec:
         traefik:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/traefik.json
           datasource: Prometheus
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: "grafana"
