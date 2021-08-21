@@ -20,9 +20,12 @@ spec:
     nameOverride: external-dns
     interval: "5m"
     logLevel: debug
-    envFrom:
-      - secretRef:
-          name: cloudflare-token
+    env:
+      - name: CF_API_TOKEN
+        valueFrom:
+          secretKeyRef:
+            key: token
+            name: cloudflare-token
     sources:
       - ingress
     provider: cloudflare
