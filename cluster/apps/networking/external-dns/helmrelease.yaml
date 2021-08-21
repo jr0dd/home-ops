@@ -27,6 +27,7 @@ spec:
       - ingress
     provider: cloudflare
     policy: sync
+    registry: txt
     txtPrefix: "k8s."
     domainFilters:
       - "${SECRET_DOMAIN}"
