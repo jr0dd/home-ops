@@ -17,9 +17,26 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    persistence:
-      enabled: true
-      type: pvc
-      existingClaim: loki
     serviceMonitor:
       enabled: true
+    # config:
+    #   storage_config:
+    #     aws:
+    #       s3: "s3://${MINIO_ACCESS_KEY}:${MINIO_SECRET_KEY}@minio.minio.svc.cluster.local:9000/loki"
+    #       s3forcepathstyle: true
+    #     boltdb_shipper:
+    #       active_index_directory: /data/loki/index
+    #       cache_location: /data/loki/index_cache
+    #       resync_interval: 5s
+    #       shared_store: s3
+    #   ruler:
+    #     storage:
+    #       type: local
+    #       local:
+    #         directory: /rules
+    #     rule_path: /tmp/scratch
+    #     alertmanager_url: http://prometheus-alertmanager:9093
+    #     ring:
+    #       kvstore:
+    #         store: inmemory
+    #     enable_api: true

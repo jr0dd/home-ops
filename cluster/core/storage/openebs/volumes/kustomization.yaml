@@ -9,7 +9,6 @@ resources:
   - homebridge.yaml
   - homer.yaml
   - lidarr.yaml
-  - loki.yaml
   - mailu.yaml
   - media.yaml
   - minio.yaml
@@ -22,4 +21,3 @@ resources:
   - radarr.yaml
   - sonarr.yaml
   - tautulli.yaml
-  - thanos.yaml
