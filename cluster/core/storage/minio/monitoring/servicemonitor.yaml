@@ -16,8 +16,7 @@ spec:
       - minio
   endpoints:
     - path: /minio/v2/metrics/cluster
-      # to-do change to name later
-      targetPort: 9000
+      targetPort: http-minio
       scheme: http
       params:
         target:
