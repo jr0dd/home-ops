@@ -33,6 +33,9 @@ spec:
     tenants:
       - name: tenant0
         namespace: minio
+        image:
+          repository: minio/minio
+          tag: RELEASE.2021-08-17T20-53-08Z
         pools:
           - servers: 1
             volumesPerServer: 4
@@ -48,14 +51,14 @@ spec:
           port: 9000
         s3:
           bucketDNS: true
-        env:
-          - name: MINIO_IDENTITY_OPENID_CONFIG_URL
-            value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
-          - name: MINIO_IDENTITY_OPENID_CLIENT_ID
-            value: "${MINIO_CLIENT_ID}"
-          - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
-            value: "${MINIO_CLIENT_SECRET}"
-          - name: MINIO_IDENTITY_OPENID_SCOPES
-            value: "openid,profile,email,minio"
-          - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
-            value: "https://minio.${SECRET_DOMAIN}/minio/login/openid"
+        # env:
+        #   - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+        #     value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
+        #   - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+        #     value: "${MINIO_CLIENT_ID}"
+        #   - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
+        #     value: "${MINIO_CLIENT_SECRET}"
+        #   - name: MINIO_IDENTITY_OPENID_SCOPES
+        #     value: "openid,profile,email,minio"
+        #   - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
+        #     value: "https://minio.${SECRET_DOMAIN}/minio/login/openid"
