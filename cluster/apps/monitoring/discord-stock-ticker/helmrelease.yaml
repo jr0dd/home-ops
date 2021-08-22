@@ -35,11 +35,11 @@ spec:
         type: custom
         mountPath: /app/payload.sh
         subPath: payload.sh
+        readOnly: true
         volumeSpec:
           configMap:
             name: payload
             defaultMode: 0755
-            readOnly: true
     prometheus:
       serviceMonitor:
         enabled: true
