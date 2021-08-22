@@ -7,4 +7,4 @@ metadata:
 spec:
   interval: 1h
   url: https://hajimari.io
-  timeout: 3
+  timeout: 3m
