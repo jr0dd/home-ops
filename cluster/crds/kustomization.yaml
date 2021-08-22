@@ -5,6 +5,6 @@ resources:
   - cert-manager
   - external-dns
   - kube-prometheus-stack
-  - minio
+  - minio-operator
   # - openebs
   - traefik

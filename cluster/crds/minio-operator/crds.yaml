@@ -8,7 +8,7 @@ spec:
   interval: 30m
   url: https://github.com/minio/operator.git
   ref:
-    # renovate: registryUrl=https://operator.min.io/
+    # renovate: registryUrl=https://operator.min.io/ chart=minio-operator
     tag: v4.1.3
   ignore: |
     # exclude all
