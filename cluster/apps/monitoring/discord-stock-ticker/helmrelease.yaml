@@ -46,5 +46,7 @@ spec:
         interval: 10s
       prometheusRule:
         enabled: true
+    configmap:
+      enabled: false
     podAnnotations:
       configmap.reloader.stakater.com/reload: "payload"
