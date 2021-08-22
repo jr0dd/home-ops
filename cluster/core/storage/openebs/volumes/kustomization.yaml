@@ -5,6 +5,7 @@ resources:
   - alertmanager.yaml
   - authentik.yaml
   - grafana.yaml
+  - hajimari.yaml
   - heimdall.yaml
   - homebridge.yaml
   - homer.yaml
