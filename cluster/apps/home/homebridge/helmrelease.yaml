@@ -60,7 +60,7 @@ spec:
             hosts:
               - "homebridge.{SECRET_DOMAIN}"
     configmap:
-      enabled: true
+      enabled: false
       config: |
         #!/bin/sh
 
