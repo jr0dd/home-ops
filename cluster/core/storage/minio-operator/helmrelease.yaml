@@ -49,6 +49,8 @@ spec:
         metrics:
           enabled: true
           port: 9000
+        certificate:
+          requestAutoCert: true
         s3:
           bucketDNS: true
         # env:
