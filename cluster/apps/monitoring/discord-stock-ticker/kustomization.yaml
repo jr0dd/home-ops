@@ -2,6 +2,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - configmap.yaml
   - helmrelease.yaml
   - secret.sops.yaml
+namespace: monitoring
+configMapGenerator:
+  - name: payload
+    files:
+      - payload.sh
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
