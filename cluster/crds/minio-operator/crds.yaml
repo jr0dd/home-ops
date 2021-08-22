@@ -9,7 +9,7 @@ spec:
   url: https://github.com/minio/operator.git
   ref:
     # renovate: registryUrl=https://operator.min.io/ chart=minio-operator
-    tag: v4.1.7
+    tag: v4.1.8
   ignore: |
     # exclude all
     /*
