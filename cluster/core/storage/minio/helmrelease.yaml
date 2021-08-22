@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://operator.min.io/
       chart: minio-operator
-      version: 4.1.7
+      version: 4.1.8
       sourceRef:
         kind: HelmRepository
         name: minio-charts
@@ -24,12 +24,12 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        host: "console.${SECRET_DOMAIN}"
+        host: "minio.${SECRET_DOMAIN}"
         path: /
         tls:
           - secretName: minio-tls
             hosts:
-              - "console.{SECRET_DOMAIN}"
+              - "minio.{SECRET_DOMAIN}"
     tenants:
       - name: tenant0
         namespace: minio
@@ -41,8 +41,8 @@ spec:
         secrets:
           enabled: true
           name: minio-creds
-          accessKey: "${MINIO_ACCESSKEY}"
-          secretKey: "${MINIO_SECRETKEY}"
+          accessKey: "${MINIO_ACCESS_KEY}"
+          secretKey: "${MINIO_SECRET_KEY}"
         metrics:
           enabled: true
           port: 9000
