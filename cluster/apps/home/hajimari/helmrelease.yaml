@@ -42,7 +42,8 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: hajimari-tls
+            hosts:
               - "hajimari.${SECRET_DOMAIN}"
     persistence:
       data:
