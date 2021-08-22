@@ -58,7 +58,7 @@
     {
       "fileMatch": [
         "cluster/crds/traefik/.+\\.yaml$",
-        "cluster/crds/minio/.+\\.yaml$"
+        "cluster/crds/minio-operator/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: v(?<currentValue>.*)\n"
