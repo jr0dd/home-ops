@@ -29,6 +29,7 @@ spec:
       PUID: 568
       PGID: 568
       HOMEBRIDGE_CONFIG_UI: 1
+      HOMEBRIDGE_CONFIG_UI_PORT: 8581
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
     service:
@@ -49,7 +50,7 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
+          # traefik.ingress.kubernetes.io/router.middlewares: networking-internal-auth@kubernetescrd
         hosts:
           - host: "homebridge.${SECRET_DOMAIN}"
             paths:
@@ -59,13 +60,6 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - "homebridge.${SECRET_DOMAIN}"
-    probes:
-      liveness:
-        enabled: false
-      readiness:
-        enabled: false
-      startup:
-        enabled: false
     configmap:
       enabled: false
       config: |
