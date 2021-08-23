@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: data3-tenant0-ss-0-0
+  name: data0-tenant0-ss-0-0
   namespace: minio
 spec:
   storageClassName: openebs-zfspv
