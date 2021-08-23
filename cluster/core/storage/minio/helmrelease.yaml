@@ -50,7 +50,7 @@ spec:
           enabled: true
           port: 9000
         certificate:
-          requestAutoCert: true
+          requestAutoCert: false
         s3:
           bucketDNS: false
         # env:
@@ -63,4 +63,4 @@ spec:
         #   - name: MINIO_IDENTITY_OPENID_SCOPES
         #     value: "openid,profile,email,minio"
         #   - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
-        #     value: "https://minio.${SECRET_DOMAIN}/minio/login/openid"
+        #     value: "https://minio.${SECRET_DOMAIN}/oauth_callback"
