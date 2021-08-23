@@ -52,7 +52,7 @@ spec:
         certificate:
           requestAutoCert: true
         s3:
-          bucketDNS: true
+          bucketDNS: false
         # env:
         #   - name: MINIO_IDENTITY_OPENID_CONFIG_URL
         #     value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
