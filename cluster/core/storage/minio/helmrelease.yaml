@@ -54,15 +54,15 @@ spec:
         s3:
           bucketDNS: false
         env:
-          - name: MINIO_IDENTITY_OPENID_CONFIG_URL
-            value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
-          - name: MINIO_IDENTITY_OPENID_CLIENT_ID
-            value: "${MINIO_CLIENT_ID}"
-          - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
-            value: "${MINIO_CLIENT_SECRET}"
-          - name: MINIO_IDENTITY_OPENID_SCOPES
-            value: "openid,profile,email,minio"
-          - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
-            value: "https://minio.${SECRET_DOMAIN}/oauth_callback"
+          # - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+          #   value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
+          # - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+          #   value: "${MINIO_CLIENT_ID}"
+          # - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
+          #   value: "${MINIO_CLIENT_SECRET}"
+          # - name: MINIO_IDENTITY_OPENID_SCOPES
+          #   value: "openid,profile,email,minio"
+          # - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
+          #   value: "https://minio.${SECRET_DOMAIN}/oauth_callback"
           - name: MINIO_BROWSER_REDIRECT_URL
             value: "https://minio.${SECRET_DOMAIN}"
