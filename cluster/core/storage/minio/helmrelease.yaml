@@ -50,7 +50,7 @@ spec:
           enabled: true
           port: 9000
         certificate:
-          requestAutoCert: false
+          requestAutoCert: true
         s3:
           bucketDNS: false
         env:
