@@ -59,6 +59,13 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - "homebridge.${SECRET_DOMAIN}"
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
     configmap:
       enabled: false
       config: |
