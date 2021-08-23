@@ -8,12 +8,12 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://jr0dd.github.io/charts/
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: homebridge
-      version: 4.2.1
+      version: 4.1.0
       sourceRef:
         kind: HelmRepository
-        name: jr0dd-charts
+        name: k8s-at-home-charts
         namespace: flux-system
       interval: 5m
   values:
@@ -30,8 +30,8 @@ spec:
       PGID: 568
       HOMEBRIDGE_CONFIG_UI: 1
       HOMEBRIDGE_CONFIG_UI_PORT: 8581
-    hostNetwork: true
-    dnsPolicy: ClusterFirstWithHostNet
+    # hostNetwork: true
+    # dnsPolicy: ClusterFirstWithHostNet
     service:
       main:
         ports:
