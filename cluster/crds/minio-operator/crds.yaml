@@ -6,10 +6,10 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
+  # renovate: datasource=github-releases
   url: https://github.com/minio/operator.git
   ref:
-    # renovate: registryUrl=https://operator.min.io/ chart=minio-operator
-    tag: v4.1.8
+    tag: v4.2.1
   ignore: |
     # exclude all
     /*

@@ -54,11 +54,10 @@
       ],
       "datasourceTemplate": "helm"
     },
-    // regexManager to read and process Traefik and MinIO Operator CRD's
+    // regexManager to read and process Traefik CRD's
     {
       "fileMatch": [
-        "cluster/crds/traefik/.+\\.yaml$",
-        "cluster/crds/minio-operator/.+\\.yaml$"
+        "cluster/crds/traefik/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: v(?<currentValue>.*)\n"
@@ -75,10 +74,11 @@
       ],
       "datasourceTemplate": "helm"
     },
-    // regexManager to read and process External DNS CRD's
+    // regexManager to read and process External DNS and MinIO Operator CRD's
     {
       "fileMatch": [
-        "cluster/crds/external-dns/.+\\.yaml$"
+        "cluster/crds/external-dns/.+\\.yaml$",
+        "cluster/crds/minio-operator/.+\\.yaml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
