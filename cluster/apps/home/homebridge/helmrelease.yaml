@@ -60,9 +60,9 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - "homebridge.${SECRET_DOMAIN}"
-      config: |
-        #!/bin/sh
+    config: |
+      #!/bin/sh
 
-        npm install homebridge-myq
-        npm install homebridge-nest
-        npm install homebridge-platform-orbit
+      npm install homebridge-myq
+      npm install homebridge-nest
+      npm install homebridge-platform-orbit
