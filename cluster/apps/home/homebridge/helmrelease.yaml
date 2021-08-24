@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: ubuntu-no-avahi
+      tag: debian-no-avahi
     controller:
       enabled: true
       replicas: 1
