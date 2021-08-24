@@ -12,9 +12,9 @@ spec:
   tls:
     - secretName: traefik-tls
       hosts:
-        - traefik.${SECRET_DOMAIN}
+        - "traefik.${SECRET_DOMAIN}"
   rules:
-    - host: traefik.${SECRET_DOMAIN}
+    - host: "traefik.${SECRET_DOMAIN}"
       http:
         paths:
           - path: /
