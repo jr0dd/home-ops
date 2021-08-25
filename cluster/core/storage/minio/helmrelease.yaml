@@ -35,7 +35,8 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      hosts: "minio.${SECRET_DOMAIN}"
+      hosts:
+        - "minio.${SECRET_DOMAIN}"
       path: /
       tls:
         - secretName: minio-tls
