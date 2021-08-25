@@ -71,4 +71,4 @@ spec:
           - name: MINIO_IDENTITY_OPENID_SCOPES
             value: "openid,profile,email,minio"
           - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
-            value: "https://minio.${SECRET_DOMAIN}:9443/oauth_callback"
+            value: "https://minio.${SECRET_DOMAIN}/oauth_callback"
