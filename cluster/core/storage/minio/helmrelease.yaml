@@ -57,7 +57,9 @@ spec:
           enabled: true
         certificate:
           requestAutoCert: false
-          externalCertSecret: minio-tls
+          externalCertSecret:
+            - name: minio-tls
+              type: kubernetes.io/tls
         env:
           - name: MINIO_IDENTITY_OPENID_CONFIG_URL
             value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
