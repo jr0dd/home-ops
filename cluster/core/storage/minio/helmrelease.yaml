@@ -59,7 +59,9 @@ spec:
           requestAutoCert: true
           certConfig:
             commonName: "minio.${SECRET_DOMAIN}"
-        # env:
+        env:
+          - name: MINIO_BROWSER_REDIRECT_URL
+            value: "https://minio.${SECRET_DOMAIN}"
         #   - name: MINIO_IDENTITY_OPENID_CONFIG_URL
         #     value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
         #   - name: MINIO_IDENTITY_OPENID_CLIENT_ID
@@ -70,5 +72,3 @@ spec:
         #     value: "openid,profile,email,minio"
         #   - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
         #     value: "https://minio.${SECRET_DOMAIN}/oauth_callback"
-        #   - name: MINIO_BROWSER_REDIRECT_URL
-        #     value: "https://minio.${SECRET_DOMAIN}"
