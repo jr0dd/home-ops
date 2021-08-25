@@ -25,40 +25,40 @@ spec:
       image:
         repository: minio/console
         tag: v0.9.4
-      # ingress:
-      #   enabled: true
-      #   ingressClass: traefik
-      #   annotations:
-      #     cert-manager.io/cluster-issuer: letsencrypt-production
-      #     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      #   host: "minio.${SECRET_DOMAIN}"
-      #   path: /
-      #   tls:
-      #     - secretName: minio-tls
-      #       hosts:
-      #         - "minio.${SECRET_DOMAIN}"
-    tenants:
-      - name: tenant0
-        image:
-          repository: minio/minio
-          tag: RELEASE.2021-08-25T00-41-18Z
-        namespace: minio
-        pools:
-          - servers: 1
-            volumesPerServer: 4
-            size: 20Gi
-            storageClassName: openebs-zfspv
-        secrets:
-          enabled: true
-          name: minio-creds
-          accessKey: "${MINIO_ACCESS_KEY}"
-          secretKey: "${MINIO_SECRET_KEY}"
-        metrics:
-          enabled: true
-        certificate:
-          requestAutoCert: true
-          certConfig:
-            commonName: "minio.${SECRET_DOMAIN}"
+      ingress:
+        enabled: true
+        ingressClass: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        host: "minio.${SECRET_DOMAIN}"
+        path: /
+        tls:
+          - secretName: minio-tls
+            hosts:
+              - "minio.${SECRET_DOMAIN}"
+    # tenants:
+    #   - name: tenant0
+    #     image:
+    #       repository: minio/minio
+    #       tag: RELEASE.2021-08-25T00-41-18Z
+    #     namespace: minio
+    #     pools:
+    #       - servers: 1
+    #         volumesPerServer: 4
+    #         size: 20Gi
+    #         storageClassName: openebs-zfspv
+    #     secrets:
+    #       enabled: true
+    #       name: minio-creds
+    #       accessKey: "${MINIO_ACCESS_KEY}"
+    #       secretKey: "${MINIO_SECRET_KEY}"
+    #     metrics:
+    #       enabled: true
+    #     certificate:
+    #       requestAutoCert: true
+    #       certConfig:
+    #         commonName: "minio.${SECRET_DOMAIN}"
         # env:
         #   - name: MINIO_BROWSER_REDIRECT_URL
         #     value: "https://minio.${SECRET_DOMAIN}"
