@@ -1,0 +1,63 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.min.io/
+      chart: minio
+      version: 1.0.4
+      sourceRef:
+        kind: HelmRepository
+        name: minio-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: minio/minio
+      tag: RELEASE.2021-08-25T00-41-18Z
+    mcImage:
+      repository: minio/mc
+      tag: RELEASE.2021-07-27T06-46-19Z
+    mode: standalone
+    rootUser: "${MINIO_ACCESS_KEY}"
+    rootPassword: "${MINIO_SECRET_KEY}"
+    consoleIngress:
+      enabled: true
+      ingressClass: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      hosts:
+        - "minio.${SECRET_DOMAIN}"
+      path: /
+      tls:
+        - secretName: minio-tls
+          hosts:
+            - "minio.${SECRET_DOMAIN}"
+    persistence:
+      enabled: true
+      existingClaim: minio
+    tls:
+      enabled: false
+      certSecret: minio-tls
+      publicCrt: tls.crt
+      privateKey: tls.key
+    buckets:
+      - name: thanos
+        policy: none
+        purge: false
+      - name: loki
+        policy: none
+        purge: false
+    environment:
+      MINIO_IDENTITY_OPENID_CONFIG_URL: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
+      MINIO_IDENTITY_OPENID_CLIENT_ID: "${MINIO_CLIENT_ID}"
+      MINIO_IDENTITY_OPENID_CLIENT_SECRET: "${MINIO_CLIENT_SECRET}"
+      MINIO_IDENTITY_OPENID_SCOPES: "openid,profile,email,minio"
+      MINIO_IDENTITY_OPENID_REDIRECT_URI: "https://minio.${SECRET_DOMAIN}/oauth_callback"
+      MINIO_BROWSER_REDIRECT_URL: "https://minio.${SECRET_DOMAIN}"

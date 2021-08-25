@@ -1,0 +1,27 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: minio
+  namespace: minio
+  labels:
+    app.kubernetes.io/name: minio
+spec:
+  jobLabel: minio
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: minio
+  namespaceSelector:
+    matchNames:
+      - minio
+  endpoints:
+    - path: /minio/v2/metrics/cluster
+      targetPort: http-minio
+      scheme: http
+      params:
+        target:
+          - minio.minio.svc.cluster.local:9000
+      relabelings:
+        - sourceLabels:
+            - __param_target
+          targetLabel: target

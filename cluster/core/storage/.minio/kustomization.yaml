@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - helmrelease.yaml
   # - monitoring
-  - tenant0-pvc.yaml
+  - data-pvc.yaml
