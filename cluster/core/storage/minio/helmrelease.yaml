@@ -42,6 +42,11 @@ spec:
     persistence:
       enabled: true
       existingClaim: minio
+    tls:
+      enabled: false
+      certSecret: minio-tls
+      publicCrt: tls.crt
+      privateKey: tls.key
     buckets:
       - name: thanos
         policy: none
