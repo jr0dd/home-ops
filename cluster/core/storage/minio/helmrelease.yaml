@@ -35,7 +35,7 @@ spec:
         namespace: minio
         image:
           repository: minio/minio
-          tag: RELEASE.2021-08-20T18-32-01Z
+          tag: RELEASE.2021-08-25T00-41-18Z
         pools:
           - servers: 1
             volumesPerServer: 4
