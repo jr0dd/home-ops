@@ -37,7 +37,7 @@ spec:
           - secretName: minio-tls
             hosts:
               - "minio.${SECRET_DOMAIN}"
-    # tenants:
+    tenants: {}
     #   - name: tenant0
     #     image:
     #       repository: minio/minio
