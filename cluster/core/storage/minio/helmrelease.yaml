@@ -26,9 +26,6 @@ spec:
     mode: standalone
     rootUser: "${MINIO_ROOT_USER}"
     rootPassword: "${MINIO_ROOT_PASSWORD}"
-    tls:
-      enabled: true
-      certSecret: minio-tls
     consoleIngress:
       enabled: true
       ingressClass: traefik
