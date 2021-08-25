@@ -13,6 +13,7 @@ resources:
   - mailu.yaml
   - media.yaml
   - minio.yaml
+  - minio-operator.yaml
   - mkvtoolnix.yaml
   - overseerr.yaml
   - plex.yaml
