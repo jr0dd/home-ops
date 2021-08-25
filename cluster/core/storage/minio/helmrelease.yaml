@@ -46,11 +46,9 @@ spec:
       - name: thanos
         policy: none
         purge: false
-        versioning: true
       - name: loki
         policy: none
         purge: false
-        versioning: true
     environment:
       MINIO_IDENTITY_OPENID_CONFIG_URL: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
       MINIO_IDENTITY_OPENID_CLIENT_ID: "${MINIO_CLIENT_ID}"
