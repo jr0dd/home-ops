@@ -61,7 +61,7 @@ spec:
             commonName: "minio.${SECRET_DOMAIN}"
         env:
           - name: MINIO_BROWSER_REDIRECT_URL
-            value: "https://minio.${SECRET_DOMAIN}"
+            value: "https://console.${SECRET_DOMAIN}"
           - name: MINIO_IDENTITY_OPENID_CONFIG_URL
             value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
           - name: MINIO_IDENTITY_OPENID_CLIENT_ID
@@ -71,4 +71,4 @@ spec:
           - name: MINIO_IDENTITY_OPENID_SCOPES
             value: "openid,profile,email,minio"
           - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
-            value: "https://minio.${SECRET_DOMAIN}/oauth_callback"
+            value: "https://console.${SECRET_DOMAIN}/oauth_callback"
