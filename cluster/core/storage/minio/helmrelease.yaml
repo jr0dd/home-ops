@@ -24,8 +24,8 @@ spec:
       repository: minio/mc
       tag: RELEASE.2021-07-27T06-46-19Z
     mode: standalone
-    rootUser: "${MINIO_ROOT_USER}"
-    rootPassword: "${MINIO_ROOT_PASSWORD}"
+    rootUser: "${MINIO_ACCESS_KEY}"
+    rootPassword: "${MINIO_SECRET_KEY}"
     consoleIngress:
       enabled: true
       ingressClass: traefik
@@ -52,15 +52,15 @@ spec:
         purge: false
         versioning: true
     environment:
-      # - name: MINIO_IDENTITY_OPENID_CONFIG_URL
-      #   value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
-      # - name: MINIO_IDENTITY_OPENID_CLIENT_ID
-      #   value: "${MINIO_CLIENT_ID}"
-      # - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
-      #   value: "${MINIO_CLIENT_SECRET}"
-      # - name: MINIO_IDENTITY_OPENID_SCOPES
-      #   value: "openid,profile,email,minio"
-      # - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
-      #   value: "https://minio.${SECRET_DOMAIN}/oauth_callback"
-      # - name: MINIO_BROWSER_REDIRECT_URL
-      #   value: "https://minio.${SECRET_DOMAIN}"
+      - name: MINIO_IDENTITY_OPENID_CONFIG_URL
+        value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
+      - name: MINIO_IDENTITY_OPENID_CLIENT_ID
+        value: "${MINIO_CLIENT_ID}"
+      - name: MINIO_IDENTITY_OPENID_CLIENT_SECRET
+        value: "${MINIO_CLIENT_SECRET}"
+      - name: MINIO_IDENTITY_OPENID_SCOPES
+        value: "openid,profile,email,minio"
+      - name: MINIO_IDENTITY_OPENID_REDIRECT_URI
+        value: "https://minio.${SECRET_DOMAIN}/oauth_callback"
+      - name: MINIO_BROWSER_REDIRECT_URL
+        value: "https://minio.${SECRET_DOMAIN}"
