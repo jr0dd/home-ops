@@ -40,12 +40,11 @@ spec:
           hosts:
             - "minio.${SECRET_DOMAIN}"
     replicas: 1
-    drivesPerNode: 4
+    drivesPerNode: 1
     pools: 1
     persistence:
       enabled: true
-      storageClass: openebs-zfspv
-      size: 20Gi
+      existingClaim: minio
     users: []
     tls:
       enabled: true
