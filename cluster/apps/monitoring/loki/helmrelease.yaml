@@ -33,14 +33,3 @@ spec:
       compactor:
         working_directory: /data/loki/compactor
         shared_store: s3
-      ruler:
-        storage:
-          type: local
-          local:
-            directory: /rules
-        rule_path: /tmp/scratch
-        alertmanager_url: http://prometheus-alertmanager:9093
-        ring:
-          kvstore:
-            store: inmemory
-        enable_api: true
