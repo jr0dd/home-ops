@@ -15,13 +15,7 @@ spec:
     matchNames:
       - minio
   endpoints:
-    - path: /minio/v2/metrics/cluster
-      targetPort: http-minio
-      scheme: http
-      params:
-        target:
-          - minio.minio.svc.cluster.local:9000
-      relabelings:
-        - sourceLabels:
-            - __param_target
-          targetLabel: target
+    - port: minio
+      path: /minio/v2/metrics/cluster
+      interval: 30s
+      scrapeTimeout: 30s
