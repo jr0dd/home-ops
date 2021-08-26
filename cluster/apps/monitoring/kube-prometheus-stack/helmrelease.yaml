@@ -111,7 +111,7 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
-        retention: 48h
+        retention: 6h
         enableAdminAPI: true
         walCompression: true
         storageSpec:
@@ -124,12 +124,12 @@ spec:
               resources:
                 requests:
                   storage: 10Gi
-        # thanos:
-        #   image: quay.io/thanos/thanos:v0.22.0
-        #   version: v0.22.0
-        #   objectStorageConfig:
-        #     name: thanos-objstore
-        #     key: objstore.yml
+        thanos:
+          image: quay.io/thanos/thanos:v0.22.0
+          version: v0.22.0
+          objectStorageConfig:
+            name: thanos-objstore
+            key: objstore.yml
     prometheusOperator:
       enabled: true
       configReloaderCpu: 0
