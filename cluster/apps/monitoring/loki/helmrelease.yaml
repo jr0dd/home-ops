@@ -30,6 +30,3 @@ spec:
           cache_ttl: 24h
           resync_interval: 5s
           shared_store: s3
-      compactor:
-        working_directory: /data/loki/compactor
-        shared_store: s3
