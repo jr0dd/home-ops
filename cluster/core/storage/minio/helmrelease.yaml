@@ -42,18 +42,14 @@ spec:
     persistence:
       enabled: true
       existingClaim: minio
-    users:
-      - accessKey: console
-        secretKey: console123
-        policy: consoleAdmin
-    tls:
-      enabled: true
-      certSecret: minio-tls
-      publicCrt: tls.crt
-      privateKey: tls.key
     resources:
       requests:
         memory: 2Gi
+    tls:
+      enabled: false
+      certSecret: minio-tls
+      publicCrt: tls.crt
+      privateKey: tls.key
     environment:
       MINIO_IDENTITY_OPENID_CONFIG_URL: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
       MINIO_IDENTITY_OPENID_CLIENT_ID: "${MINIO_CLIENT_ID}"
