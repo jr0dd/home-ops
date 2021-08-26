@@ -23,7 +23,7 @@ spec:
     mcImage:
       repository: minio/mc
       tag: RELEASE.2021-07-27T06-46-19Z
-    mode: distributed
+    mode: standalone
     rootUser: "${MINIO_ACCESS_KEY}"
     rootPassword: "${MINIO_SECRET_KEY}"
     consoleIngress:
@@ -39,9 +39,6 @@ spec:
         - secretName: minio-tls
           hosts:
             - "minio.${SECRET_DOMAIN}"
-    replicas: 1
-    drivesPerNode: 1
-    pools: 1
     persistence:
       enabled: true
       existingClaim: minio
