@@ -42,7 +42,10 @@ spec:
     persistence:
       enabled: true
       existingClaim: minio
-    users: []
+    users:
+      - accessKey: console
+        secretKey: console123
+        policy: consoleAdmin
     tls:
       enabled: true
       certSecret: minio-tls
