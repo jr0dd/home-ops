@@ -23,7 +23,7 @@ spec:
     mcImage:
       repository: minio/mc
       tag: RELEASE.2021-07-27T06-46-19Z
-    mode: standalone
+    mode: distributed
     rootUser: "${MINIO_ACCESS_KEY}"
     rootPassword: "${MINIO_SECRET_KEY}"
     consoleIngress:
@@ -39,14 +39,21 @@ spec:
         - secretName: minio-tls
           hosts:
             - "minio.${SECRET_DOMAIN}"
+    drivesPerNode: 4
+    pools: 1
     persistence:
       enabled: true
-      existingClaim: minio
+      storageClass: openebs-zfspv
+      size: 20Gi
+    users: []
     tls:
       enabled: false
       certSecret: minio-tls
       publicCrt: tls.crt
       privateKey: tls.key
+    resources:
+      requests:
+        memory: 2Gi
     environment:
       MINIO_IDENTITY_OPENID_CONFIG_URL: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
       MINIO_IDENTITY_OPENID_CLIENT_ID: "${MINIO_CLIENT_ID}"
