@@ -39,6 +39,7 @@ spec:
         - secretName: minio-tls
           hosts:
             - "minio.${SECRET_DOMAIN}"
+    replicas: 1
     drivesPerNode: 4
     pools: 1
     persistence:
@@ -47,7 +48,7 @@ spec:
       size: 20Gi
     users: []
     tls:
-      enabled: false
+      enabled: true
       certSecret: minio-tls
       publicCrt: tls.crt
       privateKey: tls.key
@@ -60,5 +61,4 @@ spec:
       MINIO_IDENTITY_OPENID_CLIENT_SECRET: "${MINIO_CLIENT_SECRET}"
       MINIO_IDENTITY_OPENID_SCOPES: "openid,profile,email,minio"
       MINIO_IDENTITY_OPENID_REDIRECT_URI: "https://minio.${SECRET_DOMAIN}/oauth_callback"
-      MINIO_BROWSER_REDIRECT_URL: "https://minio.${SECRET_DOMAIN}"
       MINIO_PROMETHEUS_AUTH_TYPE: "public"
