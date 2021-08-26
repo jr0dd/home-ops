@@ -3,15 +3,15 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    app.kubernetes.io/component: prometheus-sidecar
-    app.kubernetes.io/instance: prometheus-thanos-discovery
+    app.kubernetes.io/component: prometheus-thanos-discovery
+    app.kubernetes.io/instance: kube-prometheus-stack
     app.kubernetes.io/name: prometheus-thanos-discovery
     app.kubernetes.io/version: v0.22.0
-  name: thanos-sidecar
+  name: prometheus-thanos-discovery
   namespace: monitoring
 spec:
   endpoints:
-    - port: http
+    - port: grpc
       relabelings:
         - separator: /
           sourceLabels:
@@ -20,6 +20,6 @@ spec:
           targetLabel: instance
   selector:
     matchLabels:
-      app.kubernetes.io/component: prometheus-sidecar
-      app.kubernetes.io/instance: prometheus-thanos-discovery
+      app.kubernetes.io/component: prometheus-thanos-discovery
+      app.kubernetes.io/instance: kube-prometheus-stack
       app.kubernetes.io/name: prometheus-thanos-discovery
