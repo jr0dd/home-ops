@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - flux-system.yaml
   - home.yaml
-  - mail.yaml
   - media.yaml
   - minio.yaml
   - monitoring.yaml
