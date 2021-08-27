@@ -77,6 +77,12 @@ spec:
           volumeClaimTemplate:
             spec:
               volumeName: alertmanager
+              accessModes:
+                - ReadWriteOnce
+              storageClassName: openebs-zfspv
+              resources:
+                requests:
+                  storage: 250Mi
     prometheus:
       enabled: true
       logFormat: json
@@ -112,6 +118,12 @@ spec:
           volumeClaimTemplate:
             spec:
               volumeName: prometheus
+              accessModes:
+                - ReadWriteOnce
+              storageClassName: openebs-zfspv
+              resources:
+                requests:
+                  storage: 10Gi
         thanos:
           image: quay.io/thanos/thanos:v0.22.0
           version: v0.22.0
