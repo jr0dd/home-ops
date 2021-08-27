@@ -10,7 +10,6 @@ resources:
   - homebridge.yaml
   - homer.yaml
   - lidarr.yaml
-  - mailu.yaml
   - media.yaml
   - minio.yaml
   - minio-operator.yaml
