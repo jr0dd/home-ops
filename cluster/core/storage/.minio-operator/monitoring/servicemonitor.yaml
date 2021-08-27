@@ -7,21 +7,14 @@ metadata:
   labels:
     app.kubernetes.io/name: minio
 spec:
-  jobLabel: minio
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: minio
+  endpoints:
+    - port: http
+      path: /minio/v2/metrics/cluster
+      interval: 10s
+      scrapeTimeout: 10s
   namespaceSelector:
     matchNames:
       - minio
-  endpoints:
-    - path: /minio/v2/metrics/cluster
-      targetPort: http-minio
-      scheme: http
-      params:
-        target:
-          - minio.minio.svc.cluster.local:9000
-      relabelings:
-        - sourceLabels:
-            - __param_target
-          targetLabel: target
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: minio

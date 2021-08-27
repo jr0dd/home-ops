@@ -2,11 +2,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: prometheus-thanos-discovery.rules
+  name: thanos-sidecar.rules
   namespace: monitoring
 spec:
   groups:
-    - name: prometheus-thanos-discovery.rules
+    - name: thanos-sidecar.rules
       rules:
         - alert: ThanosSidecarIsDown
           annotations:
@@ -41,8 +41,8 @@ spec:
             severity: critical
         - alert: ThanosSidecarUnhealthy
           annotations:
-            description: Thanos Sidecar {{$labels.instance}} is unhealthy for more than {{$value}}
-              seconds.
+            description: Thanos Sidecar {{$labels.instance}} is unhealthy for more than
+              {{$value}} seconds.
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanossidecarunhealthy
             summary: Thanos Sidecar is unhealthy.
           expr: |
