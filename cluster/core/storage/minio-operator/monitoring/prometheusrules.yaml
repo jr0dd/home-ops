@@ -5,7 +5,7 @@ metadata:
   labels:
     app: minio-operator
   name: minio.rules
-  namespace: minio
+  namespace: minio-operator
 spec:
   groups:
     - name: minio.rules

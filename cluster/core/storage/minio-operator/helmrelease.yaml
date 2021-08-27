@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: minio-operator
-  namespace: minio
+  namespace: minio-operator
 spec:
   interval: 5m
   chart:
@@ -31,18 +31,18 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        host: "minio.${SECRET_DOMAIN}"
+        host: "console.${SECRET_DOMAIN}"
         path: /
         tls:
-          - secretName: minio-tls
+          - secretName: console-tls
             hosts:
-              - "minio.${SECRET_DOMAIN}"
+              - "console.${SECRET_DOMAIN}"
     tenants:
       - name: tenant0
         image:
           repository: minio/minio
           tag: RELEASE.2021-08-25T00-41-18Z
-        namespace: minio
+        namespace: minio-operator
         pools:
           - servers: 1
             volumesPerServer: 4
@@ -57,8 +57,8 @@ spec:
           enabled: true
         certificate:
           requestAutoCert: true
-          certConfig:
-            commonName: "minio.${SECRET_DOMAIN}"
+          # certConfig:
+          #   commonName: "minio.${SECRET_DOMAIN}"
         env:
           - name: MINIO_BROWSER_REDIRECT_URL
             value: "https://console.${SECRET_DOMAIN}"

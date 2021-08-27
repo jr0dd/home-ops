@@ -3,7 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: minio
-  namespace: minio
+  namespace: minio-operator
   labels:
     app.kubernetes.io/name: minio
 spec:
@@ -14,7 +14,7 @@ spec:
       scrapeTimeout: 10s
   namespaceSelector:
     matchNames:
-      - minio
+      - minio-operator
   selector:
     matchLabels:
       app.kubernetes.io/component: minio

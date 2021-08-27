@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: data0-tenant0-ss-0-0
-  namespace: minio
+  namespace: minio-operator
 spec:
   storageClassName: openebs-zfspv
   volumeName: minio-0
@@ -17,7 +17,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: data1-tenant0-ss-0-0
-  namespace: minio
+  namespace: minio-operator
 spec:
   storageClassName: openebs-zfspv
   volumeName: minio-1
@@ -31,7 +31,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: data2-tenant0-ss-0-0
-  namespace: minio
+  namespace: minio-operator
 spec:
   storageClassName: openebs-zfspv
   volumeName: minio-2
@@ -45,7 +45,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: data3-tenant0-ss-0-0
-  namespace: minio
+  namespace: minio-operator
 spec:
   storageClassName: openebs-zfspv
   volumeName: minio-3
