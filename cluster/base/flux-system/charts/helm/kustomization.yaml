@@ -14,7 +14,6 @@ resources:
   - descheduler-charts.yaml
   - external-dns-charts.yaml
   - lwolf-charts.yaml
-  - mailu-charts.yaml
   - metallb-charts.yaml
   - minio-charts.yaml
   - minio-operator-charts.yaml

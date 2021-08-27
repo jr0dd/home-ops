@@ -5,7 +5,6 @@ resources:
   - flux-system
   - home
   - kube-system
-  # - mail
   - media
   - monitoring
   - networking
