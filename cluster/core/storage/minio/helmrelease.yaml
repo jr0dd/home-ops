@@ -46,7 +46,7 @@ spec:
       requests:
         memory: 2Gi
     tls:
-      enabled: false
+      enabled: true
       certSecret: minio-tls
       publicCrt: tls.crt
       privateKey: tls.key
