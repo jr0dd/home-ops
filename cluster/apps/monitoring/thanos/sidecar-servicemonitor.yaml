@@ -19,6 +19,5 @@ spec:
           targetLabel: instance
   selector:
     matchLabels:
-      app.kubernetes.io/component: sidecar
+      app: prometheus-thanos-discovery
       app.kubernetes.io/instance: kube-prometheus-stack
-      app.kubernetes.io/name: thanos
