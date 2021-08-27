@@ -26,6 +26,7 @@ spec:
     mode: standalone
     rootUser: "${MINIO_ACCESS_KEY}"
     rootPassword: "${MINIO_SECRET_KEY}"
+    users: []
     consoleIngress:
       enabled: true
       ingressClass: traefik
@@ -44,12 +45,7 @@ spec:
       existingClaim: minio
     resources:
       requests:
-        memory: 2Gi
-    tls:
-      enabled: true
-      certSecret: minio-tls
-      publicCrt: tls.crt
-      privateKey: tls.key
+        memory: 1Gi
     environment:
       MINIO_IDENTITY_OPENID_CONFIG_URL: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
       MINIO_IDENTITY_OPENID_CLIENT_ID: "${MINIO_CLIENT_ID}"
