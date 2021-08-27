@@ -2,11 +2,11 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: thanos-sidecar.rules
+  name: prometheus-thanos-discovery.rules
   namespace: monitoring
 spec:
   groups:
-    - name: thanos-sidecar.rules
+    - name: prometheus-thanos-discovery.rules
       rules:
         - alert: ThanosSidecarIsDown
           annotations:
@@ -15,7 +15,7 @@ spec:
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanossidecarisdown
             summary: Thanos component has disappeared.
           expr: |
-            absent(up{job=~".*thanos-sidecar.*"} == 1)
+            absent(up{job=~".*thanos-discovery.*"} == 1)
           for: 5m
           labels:
             severity: critical
@@ -25,7 +25,7 @@ spec:
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanossidecarprometheusdown
             summary: Thanos Sidecar cannot connect to Prometheus
           expr: |
-            thanos_sidecar_prometheus_up{job=~".*thanos-sidecar.*"} == 0
+            thanos_sidecar_prometheus_up{job=~".*thanos-discovery.*"} == 0
           for: 5m
           labels:
             severity: critical
@@ -35,7 +35,7 @@ spec:
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanossidecarbucketoperationsfailed
             summary: Thanos Sidecar bucket operations are failing
           expr: |
-            sum by (job, instance) (rate(thanos_objstore_bucket_operation_failures_total{job=~".*thanos-sidecar.*"}[5m])) > 0
+            sum by (job, instance) (rate(thanos_objstore_bucket_operation_failures_total{job=~".*thanos-discovery.*"}[5m])) > 0
           for: 5m
           labels:
             severity: critical
@@ -46,7 +46,7 @@ spec:
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanossidecarunhealthy
             summary: Thanos Sidecar is unhealthy.
           expr: |
-            time() - max by (job, instance) (thanos_sidecar_last_heartbeat_success_time_seconds{job=~".*thanos-sidecar.*"}) >= 240
+            time() - max by (job, instance) (thanos_sidecar_last_heartbeat_success_time_seconds{job=~".*thanos-discovery.*"}) >= 240
           for: 5m
           labels:
             severity: critical

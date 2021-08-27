@@ -194,10 +194,7 @@ spec:
           url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/store.json
           datasource: Prometheus
         thanos-sidecar:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/sidecar.json
-          datasource: Prometheus
-        thanos-replicate:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/bucket_replicate.json
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/thanos-sidecar.json
           datasource: Prometheus
         traefik:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/traefik.json
