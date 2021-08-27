@@ -109,7 +109,6 @@ spec:
         targetPort: "http"
         labels:
           app.kubernetes.io/component: prometheus-sidecar
-          app.kubernetes.io/instance: thanos-sidecar
           app.kubernetes.io/name: thanos-sidecar
       prometheusSpec:
         replicas: 1
