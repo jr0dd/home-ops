@@ -104,6 +104,9 @@ spec:
               - "prometheus.${SECRET_DOMAIN}"
       thanosService:
         enabled: true
+        portName: http
+        port: 10902
+        targetPort: "http"
       prometheusSpec:
         replicas: 1
         replicaExternalLabelName: "replica"
