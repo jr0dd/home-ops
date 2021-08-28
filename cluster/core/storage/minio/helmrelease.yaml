@@ -42,7 +42,7 @@ spec:
         image:
           repository: minio/minio
           tag: RELEASE.2021-08-25T00-41-18Z
-        namespace: minio-operator
+        namespace: minio
         pools:
           - servers: 4
             volumesPerServer: 1
