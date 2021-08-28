@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: minio
 spec:
   endpoints:
-    - port: http
+    - port: https-minio
       path: /minio/v2/metrics/cluster
       interval: 10s
       scrapeTimeout: 10s
@@ -17,4 +17,4 @@ spec:
       - minio-operator
   selector:
     matchLabels:
-      app.kubernetes.io/component: minio
+      v1.min.io/tenant: tenant0
