@@ -58,12 +58,14 @@ spec:
         certificate:
           requestAutoCert: true
           certConfig:
-            commonName: "console.${SECRET_DOMAIN}"
+            commonName: "*.${SECRET_DOMAIN}"
         env:
           - name: MINIO_PROMETHEUS_AUTH_TYPE
             value: "public"
           - name: MINIO_BROWSER_REDIRECT_URL
             value: "https://console.${SECRET_DOMAIN}"
+          - name: CONSOLE_OPERATOR_MODE
+            value: "off"
           # - name: MINIO_IDENTITY_OPENID_CONFIG_URL
           #   value: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
           # - name: MINIO_IDENTITY_OPENID_CLIENT_ID
