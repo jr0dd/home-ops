@@ -57,9 +57,7 @@ spec:
           enabled: true
           port: 9000
         certificate:
-          requestAutoCert: true
-          certConfig:
-            commonName: "minio.${SECRET_DOMAIN}"
+          requestAutoCert: false
         env:
           - name: MINIO_PROMETHEUS_AUTH_TYPE
             value: "public"
