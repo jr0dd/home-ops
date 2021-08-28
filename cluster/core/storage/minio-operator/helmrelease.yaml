@@ -44,8 +44,8 @@ spec:
           tag: RELEASE.2021-08-25T00-41-18Z
         namespace: minio-operator
         pools:
-          - servers: 4
-            volumesPerServer: 1
+          - servers: 1
+            volumesPerServer: 4
             size: 20Gi
             storageClassName: openebs-zfspv
         secrets:
@@ -57,8 +57,8 @@ spec:
           enabled: true
         certificate:
           requestAutoCert: true
-          # certConfig:
-          #   commonName: "minio.${SECRET_DOMAIN}"
+          certConfig:
+            commonName: "console.${SECRET_DOMAIN}"
         env:
           - name: MINIO_PROMETHEUS_AUTH_TYPE
             value: "public"
