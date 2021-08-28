@@ -3,10 +3,10 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: data0-tenant0-ss-0-0
-  namespace: minio-operator
+  namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-0
+  volumeName: data0-tenant0-ss-0-0
   accessModes:
     - ReadWriteOnce
   resources:
@@ -16,11 +16,11 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: data1-tenant0-ss-0-0
-  namespace: minio-operator
+  name: data0-tenant0-ss-0-1
+  namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-1
+  volumeName: data0-tenant0-ss-0-1
   accessModes:
     - ReadWriteOnce
   resources:
@@ -30,11 +30,11 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: data2-tenant0-ss-0-0
-  namespace: minio-operator
+  name: data0-tenant0-ss-0-2
+  namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-2
+  volumeName: data0-tenant0-ss-0-2
   accessModes:
     - ReadWriteOnce
   resources:
@@ -44,11 +44,11 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: data3-tenant0-ss-0-0
-  namespace: minio-operator
+  name: data0-tenant0-ss-0-3
+  namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-3
+  volumeName: data0-tenant0-ss-0-3
   accessModes:
     - ReadWriteOnce
   resources:

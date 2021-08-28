@@ -15,7 +15,6 @@ resources:
   - external-dns-charts.yaml
   - lwolf-charts.yaml
   - metallb-charts.yaml
-  - minio-charts.yaml
   - minio-operator-charts.yaml
   - openebs-monitoring-charts.yaml
   - openebs-zfslocalpv-charts.yaml
