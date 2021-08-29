@@ -6,11 +6,13 @@ metadata:
     app.kubernetes.io/instance: traefik
     app.kubernetes.io/managed-by: goauthentik.io
     app.kubernetes.io/name: authentik-proxy
+    app.kubernetes.io/version: 2021.8.3
+    goauthentik.io/outpost-uuid: 713317080d5644cc976d9045a11d74e6
   name: authentik-forward-auth
   namespace: security
 spec:
   forwardAuth:
-    address: https://ak-outpost-authentik-embedded-outpost.security.svc.cluster.local:4180/akprox/auth?traefik
+    address: http://ak-outpost-authentik-embedded-outpost.security:4180/akprox/auth?traefik
     authResponseHeaders:
       - Set-Cookie
       - X-Auth-Username
