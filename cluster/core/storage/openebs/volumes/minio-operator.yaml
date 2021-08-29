@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data0-tenant0-ss-0-0
+  name: minio-tenant0-ss-0-0
 spec:
   capacity:
     storage: 20Gi
@@ -12,12 +12,12 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: openebs-zfspv
   hostPath:
-    path: /mnt/deadpool/containous/datastore/data0-tenant0-ss-0-0
+    path: /mnt/deadpool/containous/datastore/minio-tenant0-ss-0-0
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data0-tenant0-ss-0-1
+  name: minio-tenant0-ss-0-1
 spec:
   capacity:
     storage: 20Gi
@@ -27,12 +27,12 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: openebs-zfspv
   hostPath:
-    path: /mnt/deadpool/containous/datastore/data0-tenant0-ss-0-1
+    path: /mnt/deadpool/containous/datastore/minio-tenant0-ss-0-1
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data0-tenant0-ss-0-2
+  name: minio-tenant0-ss-0-2
 spec:
   capacity:
     storage: 20Gi
@@ -42,12 +42,12 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: openebs-zfspv
   hostPath:
-    path: /mnt/deadpool/containous/datastore/data0-tenant0-ss-0-2
+    path: /mnt/deadpool/containous/datastore/minio-tenant0-ss-0-2
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: data0-tenant0-ss-0-3
+  name: minio-tenant0-ss-0-3
 spec:
   capacity:
     storage: 20Gi
@@ -57,4 +57,19 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: openebs-zfspv
   hostPath:
-    path: /mnt/deadpool/containous/datastore/data0-tenant0-ss-0-3
+    path: /mnt/deadpool/containous/datastore/minio-tenant0-ss-0-3
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minio-tenant0-prometheus
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: openebs-zfspv
+  hostPath:
+    path: /mnt/deadpool/containous/datastore/minio-tenant0-prometheus
