@@ -85,12 +85,12 @@ spec:
               # log:
               #   image: minio/logsearchapi:v4.2.2
               #   audit:
-              #     diskCapacityGB: 5
+              #     diskCapacityGB: 10
               prometheus:
                 image: "prom/prometheus"
                 sidecarimage: "alpine"
                 initimage: "busybox"
-                diskCapacityGB: 5
+                diskCapacityGB: 10
               prometheusOperator:
                 labels:
                   app: tenant0
