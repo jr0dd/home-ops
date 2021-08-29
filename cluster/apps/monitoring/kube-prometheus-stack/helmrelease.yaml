@@ -21,7 +21,7 @@ spec:
     nameOverride: prometheus
     alertmanager:
       enabled: true
-      logFormat: json
+      # logFormat: json
       logLevel: error
       config:
         global:
@@ -85,7 +85,7 @@ spec:
                   storage: 250Mi
     prometheus:
       enabled: true
-      logFormat: json
+      # logFormat: json
       logLevel: error
       ingress:
         enabled: true

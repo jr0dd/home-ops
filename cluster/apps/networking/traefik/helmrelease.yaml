@@ -27,11 +27,11 @@ spec:
       - "--serverstransport.insecureskipverify=true"
     logs:
       general:
-        format: json
+        # format: json
         level: DEBUG
       access:
         enabled: true
-        format: json
+        # format: json
     ingressClass:
       enabled: true
       isDefaultClass: true
