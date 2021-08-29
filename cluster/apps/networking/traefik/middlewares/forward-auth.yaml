@@ -1,0 +1,21 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  labels:
+    app.kubernetes.io/instance: traefik
+    app.kubernetes.io/managed-by: goauthentik.io
+    app.kubernetes.io/name: authentik-proxy
+  name: authentik-forwardauth
+  namespace: security
+spec:
+  forwardAuth:
+    address: https://id.${SECRET_DOMAIN}:9000/akprox/auth?traefik
+    authResponseHeaders:
+      - Set-Cookie
+      - X-Auth-Username
+      - X-Auth-Groups
+      - X-Forwarded-Email
+      - X-Forwarded-Preferred-Username
+      - X-Forwarded-User
+    trustForwardHeader: true

@@ -4,9 +4,10 @@ kind: Kustomization
 resources:
   - basic-auth.yaml
   - cloudflare.yaml
-  - secure-headers.yaml
   - external-auth.yaml
+  - forward-auth.yaml
   - internal-auth.yaml
   - redirect.yaml
   - rfc1918.yaml
   - secret.sops.yaml
+  - secure-headers.yaml
