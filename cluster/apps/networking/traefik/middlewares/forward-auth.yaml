@@ -10,7 +10,7 @@ metadata:
   namespace: security
 spec:
   forwardAuth:
-    address: https://id.${SECRET_DOMAIN}:9000/akprox/auth?traefik
+    address: https://id.${SECRET_DOMAIN}:80/akprox/auth?traefik
     authResponseHeaders:
       - Set-Cookie
       - X-Auth-Username
