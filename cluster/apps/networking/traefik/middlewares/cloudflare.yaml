@@ -29,3 +29,7 @@ spec:
       - 2405:8100::/32
       - 2a06:98c0::/29
       - 2c0f:f248::/32
+      # rfc-1918 ips until traefik supports chaining multiple whitelists
+      - 10.0.0.0/8
+      - 172.16.0.0/12
+      - 192.168.0.0/16
