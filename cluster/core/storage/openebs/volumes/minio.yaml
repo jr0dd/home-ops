@@ -73,18 +73,3 @@ spec:
   storageClassName: openebs-zfspv
   hostPath:
     path: /mnt/deadpool/containous/datastore/minio/tenant0-prometheus
----                                                          
-apiVersion: v1                                               
-kind: PersistentVolume                                       
-metadata:                                                    
-  name: tenant0-logs                                   
-spec:                                                        
-  capacity:                                                  
-    storage: 5Gi                                             
-  volumeMode: Filesystem                                     
-  accessModes:                                               
-    - ReadWriteOnce                                          
-  persistentVolumeReclaimPolicy: Retain                      
-  storageClassName: openebs-zfspv                            
-  hostPath:                                                  
-    path: /mnt/deadpool/containous/datastore/minio/tenant0-logs

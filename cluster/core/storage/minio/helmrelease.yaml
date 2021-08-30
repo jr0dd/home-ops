@@ -81,14 +81,10 @@ spec:
               namespace: minio
             spec:
               prometheus:
-                image: quay.io/prometheus/prometheus:v2.29.2
+                image: quay.io/prometheus/prometheus
                 sidecarimage: alpine
                 initimage: busybox
                 diskCapacityGB: 5
               prometheusOperator:
                 labels:
                   app: tenant0
-              log:
-                image: minio/logsearchapi:v4.2.3
-                audit:
-                  diskCapacityGB: 5
