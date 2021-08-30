@@ -11,7 +11,7 @@ resources:
   - homer.yaml
   - lidarr.yaml
   - media.yaml
-  - minio-operator.yaml
+  - minio.yaml
   - mkvtoolnix.yaml
   - overseerr.yaml
   - plex.yaml
