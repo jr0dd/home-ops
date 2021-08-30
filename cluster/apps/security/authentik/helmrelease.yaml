@@ -23,6 +23,7 @@ spec:
     image:
       repository: beryju.org/authentik/server
       tag: gh-next
+      pullPolicy: Always
     geoip:
       enabled: false
     ingress:
