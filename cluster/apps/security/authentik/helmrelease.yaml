@@ -53,7 +53,7 @@ spec:
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       log_level: debug
       outposts:
-        docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
+        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-%(build_hash)s
       postgresql:
         host: authentik-postgresql
         name: authentik
