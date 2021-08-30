@@ -6,5 +6,4 @@ resources:
   - external-dns
   - kube-prometheus-stack
   - minio-operator
-  # - openebs-zfslocalpv
   - traefik
