@@ -80,10 +80,6 @@ spec:
               name: tenant0
               namespace: minio
             spec:
-              log:
-                image: minio/logsearchapi:v4.2.2
-                audit:
-                  diskCapacityGB: 5
               prometheus:
                 image: "prom/prometheus"
                 sidecarimage: "alpine"
