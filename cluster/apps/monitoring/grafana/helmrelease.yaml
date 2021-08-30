@@ -158,7 +158,7 @@ spec:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
           datasource: Prometheus
         coredns:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/coredns/dashboards/coredns.json
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/coredns.json
           datasource: Prometheus
         flux-cluster:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
@@ -170,7 +170,7 @@ spec:
           url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
           datasource: Prometheus
         minio:
-          url: https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-overview.json
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
           datasource: Prometheus
         qbittorrent:
           url: https://raw.githubusercontent.com/esanchezm/prometheus-qbittorrent-exporter/master/grafana/dashboard.json
