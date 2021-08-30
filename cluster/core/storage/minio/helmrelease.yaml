@@ -19,11 +19,11 @@ spec:
   values:
     operator:
       image:
-        repository: minio/operator
+        repository: quay.io/minio/operator
         tag: v4.2.2
     console:
       image:
-        repository: minio/console
+        repository: quay.io/minio/console
         tag: v0.9.5
       ingress:
         enabled: true
@@ -40,7 +40,7 @@ spec:
     tenants:
       - name: tenant0
         image:
-          repository: minio/minio
+          repository: quay.io/minio/minio
           tag: RELEASE.2021-08-25T00-41-18Z
         namespace: minio
         pools:
@@ -81,9 +81,9 @@ spec:
               namespace: minio
             spec:
               prometheus:
-                image: "prom/prometheus"
-                sidecarimage: "alpine"
-                initimage: "busybox"
+                image: quay.io/prometheus/prometheus
+                sidecarimage: alpine
+                initimage: busybox
                 diskCapacityGB: 5
               prometheusOperator:
                 labels:
