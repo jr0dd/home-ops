@@ -95,10 +95,13 @@ spec:
               namespace: minio
             spec:
               rules:
-                - http:
+                - host: "https://minio.${SECRET_DOMAIN}"
+                  http:
                     paths:
                       - backend:
                           service:
                             name: tenant0-console
                             port:
                               name: https-console
+                        path: /
+                        pathType: Prefix
