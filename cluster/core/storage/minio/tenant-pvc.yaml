@@ -6,7 +6,7 @@ metadata:
   namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-tenant0-ss-0-0
+  volumeName: data0-tenant0-ss-0-0
   accessModes:
     - ReadWriteOnce
   resources:
@@ -20,7 +20,7 @@ metadata:
   namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-tenant0-ss-0-1
+  volumeName: data0-tenant0-ss-0-1
   accessModes:
     - ReadWriteOnce
   resources:
@@ -34,7 +34,7 @@ metadata:
   namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-tenant0-ss-0-2
+  volumeName: data0-tenant0-ss-0-2
   accessModes:
     - ReadWriteOnce
   resources:
@@ -48,7 +48,7 @@ metadata:
   namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-tenant0-ss-0-3
+  volumeName: data0-tenant0-ss-0-3
   accessModes:
     - ReadWriteOnce
   resources:
@@ -62,7 +62,7 @@ metadata:
   namespace: minio
 spec:
   storageClassName: openebs-zfspv
-  volumeName: minio-tenant0-prometheus
+  volumeName: tenant0-prometheus
   accessModes:
     - ReadWriteOnce
   resources:
