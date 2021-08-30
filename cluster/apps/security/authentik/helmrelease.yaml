@@ -21,7 +21,7 @@ spec:
     worker:
       replicas: 1
     image:
-      repository: ghcr.io/goauthentik/server
+      repository: beryju.org/authentik/server
       tag: gh-next
     geoip:
       enabled: false
