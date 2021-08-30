@@ -81,7 +81,7 @@ spec:
               namespace: minio
             spec:
               prometheus:
-                image: quay.io/prometheus/prometheus
+                image: quay.io/prometheus/prometheus:v2.29.2
                 sidecarimage: alpine
                 initimage: busybox
                 diskCapacityGB: 5
