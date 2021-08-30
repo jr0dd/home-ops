@@ -5,7 +5,6 @@ resources:
   - basic-auth.yaml
   - cloudflare.yaml
   - external-auth.yaml
-  - forward-auth.yaml
   - internal-auth.yaml
   - redirect.yaml
   - rfc1918.yaml
