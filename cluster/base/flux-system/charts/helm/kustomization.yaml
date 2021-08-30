@@ -17,7 +17,6 @@ resources:
   - metallb-charts.yaml
   - minio-operator-charts.yaml
   - openebs-monitoring-charts.yaml
-  - openebs-zfslocalpv-charts.yaml
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
   - traefik-charts.yaml
