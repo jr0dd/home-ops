@@ -95,7 +95,7 @@ spec:
               namespace: minio
             spec:
               rules:
-                - host: "https://minio.${SECRET_DOMAIN}"
+                - host: "minio.${SECRET_DOMAIN}"
                   http:
                     paths:
                       - backend:
