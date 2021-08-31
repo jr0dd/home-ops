@@ -10,7 +10,6 @@ resources:
   - network-ups-tools
   - nut-exporter
   - promtail
-  - pushgateway
   - snmp-exporter-mikrotik
   - speedtest-exporter
   - thanos
