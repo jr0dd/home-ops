@@ -60,7 +60,7 @@ spec:
     ports:
       traefik:
         expose: true
-        port: 9000
+        port: 9999
       web:
         expose: true
         port: 80
