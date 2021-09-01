@@ -97,22 +97,6 @@ spec:
         type: emptyDir
         medium: Memory
         mountPath: /transcode
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: traefik
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        hosts:
-          - host: "plex.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - secretName: plex-tls
-            hosts:
-              - "plex.${SECRET_DOMAIN}"
     addons:
       promtail:
         enabled: true

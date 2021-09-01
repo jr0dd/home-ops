@@ -57,28 +57,11 @@ spec:
             port: 53
             protocol: UDP
             targetPort: 53
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: traefik
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: networking-rfc1918-ips@kubernetescrd
-        hosts:
-          - host: "blocky.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - secretName: blocky-tls
-            hosts:
-              - "blocky.${SECRET_DOMAIN}"
     prometheus:
       serviceMonitor:
         enabled: true
         targets:
-          - hostname: blocky.networking.svc.cluster.local
+          - hostname: blocky.networking
             port: 4000
             path: /metrics
             interval: 10s
@@ -88,20 +71,16 @@ spec:
     config: |
       httpPort: 4000
       logLevel: info
-
       upstream:
         default:
         - tcp-tls://1.1.1.1
         - tcp-tls://9.9.9.9
         - tcp-tls://1.0.0.1
-
       conditional:
         mapping:
           ${SECRET_DOMAIN}: udp:${LB_K8S_GATEWAY_IP}
-
       clientLookup:
-        upstream: tcp+udp:${GATEWAY_IP}
-
+        upstream: udp:${GATEWAY_IP}
       blocking:
         blackLists:
           ads:
@@ -117,7 +96,6 @@ spec:
           - ads
           - fakenews
         blockType: zeroIp
-
       prometheus:
         enable: true
         path: /metrics
