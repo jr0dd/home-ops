@@ -60,8 +60,7 @@ spec:
     ports:
       traefik:
         expose: true
-        port: 9999
-        exposedPort: 9999
+        port: 9000
       web:
         expose: true
         port: 80
@@ -71,7 +70,7 @@ spec:
         port: 443
         tls:
           enabled: true
-          options: "default"
+          options: default
       metrics:
         expose: true
         port: 9100
@@ -88,4 +87,4 @@ spec:
         enabled: true
       kubernetesGateway:
         enabled: false
-        appLabelSelector: "traefik"
+        appLabelSelector: traefik
