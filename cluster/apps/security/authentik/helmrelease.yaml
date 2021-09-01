@@ -52,6 +52,8 @@ spec:
       log_level: debug
       outposts:
         docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-next
+      error_reporting:
+        enabled: true
       postgresql:
         host: authentik-postgresql
         name: authentik
