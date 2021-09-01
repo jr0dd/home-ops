@@ -73,3 +73,6 @@ spec:
       postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
     redis:
       enabled: true
+      architecture: standalone
+      auth:
+        enabled: false
