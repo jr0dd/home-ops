@@ -88,20 +88,3 @@ spec:
               prometheusOperator:
                 labels:
                   app: tenant0
-          - kind: Ingress
-            apiVersion: networking.k8s.io/v1
-            metadata:
-              name: minio-operator-console
-              namespace: minio
-            spec:
-              rules:
-                - host: "minio.${SECRET_DOMAIN}"
-                  http:
-                    paths:
-                      - backend:
-                          service:
-                            name: tenant0-console
-                            port:
-                              name: https-console
-                        path: /
-                        pathType: Prefix
