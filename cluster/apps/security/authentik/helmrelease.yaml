@@ -21,11 +21,8 @@ spec:
     worker:
       replicas: 1
     image:
-      repository: beryju.org/authentik/server
-      tag: gh-next
-      pullPolicy: Always
-    geoip:
-      enabled: false
+      repository: ghcr.io/goauthentik/server
+      tag: 2021.8.3
     ingress:
       enabled: true
       ingressClassName: traefik
@@ -53,12 +50,17 @@ spec:
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       log_level: debug
       outposts:
-        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-next
+        docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
       postgresql:
         host: authentik-postgresql
         name: authentik
         user: authentik
         password: "${AUTHENTIK_POSTGRES_PASSWORD}"
+        s3_backup:
+          access_key: "${MINIO_TENANT_ACCESS_KEY}"
+          secret_key: "${MINIO_TENANT_SECRET_KEY}"
+          bucket: authentik
+          host: https://minio.minio:443
       redis:
         host: authentik-redis-master
     postgresql:
@@ -71,7 +73,3 @@ spec:
       postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
     redis:
       enabled: true
-      master:
-        persistence:
-          enabled: true
-          existingClaim: authentik
