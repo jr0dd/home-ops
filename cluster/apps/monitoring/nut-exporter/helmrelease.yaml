@@ -39,7 +39,7 @@ spec:
       serviceMonitor:
         enabled: true
         targets:
-          - hostname: network-ups-tools.monitoring.svc.cluster.local
+          - hostname: network-ups-tools
             port: 3493
             interval: 15s
             scrapeTimeout: 10s
