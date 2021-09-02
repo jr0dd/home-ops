@@ -67,17 +67,17 @@ spec:
       redis:
         host: authentik-redis-master
         password: "${AUTHENTIK_REDIS_PASSWORD}"
-      prometheus:
-        serviceMonitor:
-          create: false
-          interval: 30s
-          scrapeTimeout: 3s
-          secret:
-            name: "authentik-sm"
-            usernameKey: monitor
-            passwordKey: "${AUTHENTIK_SECRET_KEY}"
-        rules:
-          create: true
+    prometheus:
+      serviceMonitor:
+        create: false
+        interval: 30s
+        scrapeTimeout: 3s
+        secret:
+          name: "authentik-sm"
+          usernameKey: monitor
+          passwordKey: "${AUTHENTIK_SECRET_KEY}"
+      rules:
+        create: true
     postgresql:
       enabled: true
       persistence:
