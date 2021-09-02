@@ -69,7 +69,7 @@ spec:
         password: "${AUTHENTIK_REDIS_PASSWORD}"
     prometheus:
       serviceMonitor:
-        create: true
+        create: false
         interval: 30s
         scrapeTimeout: 3s
         secret:
