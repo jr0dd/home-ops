@@ -91,5 +91,10 @@ spec:
               log:
                 db:
                   image: minio/logsearchapi:v4.2.3
-                audit:
-                  diskCapacityGB: 5
+                  volumeClaimTemplate:
+                    spec:
+                      accessModes:
+                        - ReadWriteOnce
+                      resources:
+                        requests:
+                          storage: 5Gi
