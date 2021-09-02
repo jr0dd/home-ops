@@ -88,3 +88,8 @@ spec:
               prometheusOperator:
                 labels:
                   app: tenant0
+              log:
+                db:
+                  image: minio/logsearchapi:v4.2.3
+                  audit:
+                    diskCapacityGB:
