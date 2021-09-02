@@ -22,7 +22,7 @@ spec:
       replicas: 1
     image:
       repository: beryju.org/authentik/server
-      tag: gh-next
+      tag: gh-master
       pullPolicy: Always
     ingress:
       enabled: true
@@ -51,7 +51,7 @@ spec:
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       log_level: debug
       outposts:
-        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-next
+        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-master
       error_reporting:
         enabled: true
       postgresql:
@@ -69,7 +69,7 @@ spec:
         password: "${AUTHENTIK_REDIS_PASSWORD}"
     prometheus:
       serviceMonitor:
-        create: false
+        create: true
         interval: 30s
         scrapeTimeout: 3s
         secret:
@@ -78,6 +78,8 @@ spec:
           passwordKey: "${AUTHENTIK_SECRET_KEY}"
       rules:
         create: true
+    env:
+      AUTHENTIK_POSTGRESQL__S3_BACKUP__INSECURE_SKIP_VERIFY: true
     postgresql:
       enabled: true
       persistence:
