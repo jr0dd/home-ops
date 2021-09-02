@@ -68,3 +68,18 @@ spec:
   resources:
     requests:
       storage: 5Gi
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: tenant0-log-tenant0-log-0
+  namespace: minio
+spec:
+  storageClassName: openebs-zfspv
+  volumeName: tenant0-logs
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+      
