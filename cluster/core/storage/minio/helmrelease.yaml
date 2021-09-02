@@ -24,7 +24,7 @@ spec:
     console:
       image:
         repository: quay.io/minio/console
-        tag: v0.9.5
+        tag: v0.9.6
       ingress:
         enabled: true
         ingressClass: traefik
