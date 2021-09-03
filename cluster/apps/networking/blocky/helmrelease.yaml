@@ -61,7 +61,7 @@ spec:
       serviceMonitor:
         enabled: true
         targets:
-          - hostname: blocky.networking.svc.cluster.local
+          - hostname: blocky.networking
             port: 4000
             path: /metrics
             interval: 10s
