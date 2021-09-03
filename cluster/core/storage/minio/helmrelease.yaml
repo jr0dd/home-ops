@@ -61,6 +61,11 @@ spec:
         env:
           - name: MINIO_BROWSER_REDIRECT_URL
             value: "https://minio.${SECRET_DOMAIN}"
+        securityContext:
+          fsGroup: 0
+          runAsGroup: 0
+          runAsNonRoot: false
+          runAsUser: 0
   postRenderers:
     - kustomize:
         patchesStrategicMerge:
