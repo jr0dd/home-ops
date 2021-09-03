@@ -20,7 +20,7 @@ spec:
     operator:
       image:
         repository: quay.io/minio/operator
-        tag: v4.2.3
+        tag: v4.2.4
     console:
       image:
         repository: quay.io/minio/console
