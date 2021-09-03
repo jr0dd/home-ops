@@ -18,7 +18,7 @@ spec:
             severity: critical
         - alert: SnmpExporterScrapeSlow
           annotations:
-            description: SNMP Exporter is experiencing slow scraping of {{ $label.job }}
+            description: SNMP Exporter is experiencing slow scraping of {{ $labels.job }}
               with a duration of {{ $value }} seconds.
             summary: SNMP Exporter slow scraping.
           expr: |
