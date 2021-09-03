@@ -48,11 +48,6 @@ spec:
             volumesPerServer: 1
             size: 20Gi
             storageClassName: openebs-zfspv
-            securityContext:
-              fsGroup: 0
-              runAsGroup: 0
-              runAsNonRoot: false
-              runAsUser: 0
         secrets:
           enabled: true
           name: minio-creds
