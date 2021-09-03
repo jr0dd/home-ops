@@ -41,7 +41,7 @@ spec:
       - name: tenant0
         image:
           repository: quay.io/minio/minio
-          tag: RELEASE.2021-09-03T03-56-13Z
+          tag: RELEASE.2021-08-31T05-46-54Z
         namespace: minio
         pools:
           - servers: 4
