@@ -41,13 +41,18 @@ spec:
       - name: tenant0
         image:
           repository: quay.io/minio/minio
-          tag: RELEASE.2021-08-31T05-46-54Z
+          tag: RELEASE.2021-09-03T03-56-13Z
         namespace: minio
         pools:
           - servers: 4
             volumesPerServer: 1
             size: 20Gi
             storageClassName: openebs-zfspv
+            securityContext:
+              fsGroup: 0
+              runAsGroup: 0
+              runAsNonRoot: false
+              runAsUser: 0
         secrets:
           enabled: true
           name: minio-creds
@@ -61,11 +66,6 @@ spec:
         env:
           - name: MINIO_BROWSER_REDIRECT_URL
             value: "https://minio.${SECRET_DOMAIN}"
-        securityContext:
-          fsGroup: 0
-          runAsGroup: 0
-          runAsNonRoot: false
-          runAsUser: 0
   postRenderers:
     - kustomize:
         patchesStrategicMerge:
