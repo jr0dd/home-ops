@@ -5,5 +5,5 @@ resources:
   - helmrelease.yaml
   - letsencrypt-production.yaml
   - letsencrypt-staging.yaml
-  - prometheusrules.yaml
+  - monitoring
   - secret.sops.yaml
