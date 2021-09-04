@@ -1,0 +1,19 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: wireguard-exporter
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: wireguard
+  podMetricsEndpoints:
+    - interval: 15s
+      path: /metrics
+      port: metrics
+      scrapeTimeout: 5s
+      relabelings:
+        - sourceLabels: ['namespace', 'job']
+          regex: ".+/(.*)"
+          targetLabel: "job"
+          replacement: "$1"
