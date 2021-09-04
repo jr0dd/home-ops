@@ -7,7 +7,7 @@ spec:
   groups:
     - name: flux
       rules:
-        - alert: ReconciliationFailure
+        - alert: FluxReconciliationFailure
           annotations:
             description: '{{ $labels.kind }} {{ $labels.namespace }}/{{ $labels.name }} reconciliation has been failing
               for more than ten minutes.'
