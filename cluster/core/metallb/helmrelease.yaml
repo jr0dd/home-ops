@@ -33,7 +33,11 @@ spec:
       metricsPort: 7472
       podMonitor:
         enabled: true
-        jobLabel: "metallb"
+        relabelings:
+          - sourceLabels: ['namespace', 'job']
+            regex: ".+/(.*)"
+            targetLabel: "job"
+            replacement: "$1"
       prometheusRule:
         enabled: true
         # MetalLBStaleConfig
