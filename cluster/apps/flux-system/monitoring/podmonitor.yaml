@@ -3,7 +3,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: flux-system
-  namespace: flux-system
   labels:
     app.kubernetes.io/part-of: flux
 spec:
@@ -21,3 +20,8 @@ spec:
           - notification-controller
   podMetricsEndpoints:
     - port: http-prom
+      relabelings:
+        - sourceLabels: ['namespace', 'job']
+          regex: ".+/(.*)"
+          targetLabel: "job"
+          replacement: "$1"
