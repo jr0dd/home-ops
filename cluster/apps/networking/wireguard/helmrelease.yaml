@@ -62,3 +62,8 @@ spec:
         ports:
           - name: metrics
             containerPort: 9586
+        securityContext:
+          capabilities:
+            add:
+              - NET_ADMIN
+              - SYS_MODULE
