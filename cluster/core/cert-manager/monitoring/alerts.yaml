@@ -18,8 +18,6 @@ spec:
           for: 10m
           labels:
             severity: critical
-    - name: certificates
-      rules:
         - alert: CertManagerCertExpirySoon
           annotations:
             description: The domain that this cert covers will be unavailable after
@@ -30,7 +28,7 @@ spec:
               from expiry, it should have renewed over a week ago.
           expr: |
             avg by (exported_namespace, namespace, name) (
-            certmanager_certificate_expiration_timestamp_seconds - time())
+              certmanager_certificate_expiration_timestamp_seconds - time())
               < (21 * 24 * 3600)
           for: 1h
           labels:
@@ -44,7 +42,7 @@ spec:
             summary: The cert {{ $labels.name }} is not ready to serve traffic.
           expr: |
             max by (name, exported_namespace, namespace, condition) (
-            certmanager_certificate_ready_status{condition!="True"} == 1)
+              certmanager_certificate_ready_status{condition!="True"} == 1)
           for: 10m
           labels:
             severity: critical

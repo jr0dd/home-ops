@@ -1,0 +1,19 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: qbittorrent-exporter
+spec:
+  groups:
+    - name: qbittorrent-exporter
+      rules:
+        - alert: qBittorrentExporterAbsent
+          annotations:
+            description: qBittorrent Exporter has disappeared from Prometheus
+              service discovery.
+            summary: qBittorrent Exporter is down.
+          expr: |
+            absent(up{job="qbittorrent-exporter"} == 1)
+          for: 5m
+          labels:
+            severity: critical

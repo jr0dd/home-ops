@@ -5,7 +5,7 @@ metadata:
   name: flux
 spec:
   groups:
-    - name: GitOpsToolkit
+    - name: flux
       rules:
         - alert: ReconciliationFailure
           annotations:
