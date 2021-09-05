@@ -17,3 +17,12 @@ spec:
           for: 5m
           labels:
             severity: critical
+        - alert: qBittorrentDown
+          annotations:
+            description: qBittorrent service is down.
+            summary: qBittorrent is down.
+          expr: |
+            qbittorrent_up == 0
+          for: 5m
+          labels:
+            severity: critical
