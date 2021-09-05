@@ -67,8 +67,23 @@ spec:
       redis:
         host: authentik-redis-master
         password: "${AUTHENTIK_REDIS_PASSWORD}"
+      prometheus:
+        serviceMonitor:
+          create: true
+          interval: 30s
+          scrapeTimeout: 3s
+          secret:
+            name: ak-monitoring
+            usernameKey: username
+            passwordKey: password
+        rules:
+          create: true
     postgresql:
       enabled: true
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
       persistence:
         enabled: true
         existingClaim: authentik
@@ -77,6 +92,11 @@ spec:
       postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
     redis:
       enabled: true
+      architecture: standalone
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
       auth:
         enabled: true
         password: "${AUTHENTIK_REDIS_PASSWORD}"
