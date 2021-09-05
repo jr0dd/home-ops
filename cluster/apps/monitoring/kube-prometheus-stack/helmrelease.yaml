@@ -136,6 +136,16 @@ spec:
           objectStorageConfig:
             name: thanos-objstore
             key: objstore.yml
+      additionalServiceMonitors:
+        - name: thanos-sidecar
+          additionalLabels:
+            app.kubernetes.io/component: sidecar
+            app.kubernetes.io/name: thanos
+          endpoints:
+            - port: http
+          selector:
+            matchLabels:
+              app: prometheus-thanos-discovery
     prometheusOperator:
       enabled: true
       configReloaderCpu: 0
