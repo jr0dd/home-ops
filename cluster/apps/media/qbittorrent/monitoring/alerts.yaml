@@ -13,7 +13,7 @@ spec:
               service discovery.
             summary: qBittorrent Exporter is down.
           expr: |
-            absent(up{job="qbittorrent-exporter"} == 1)
+            absent(up{job=~".*qbittorrent.*"} == 1)
           for: 5m
           labels:
             severity: critical
