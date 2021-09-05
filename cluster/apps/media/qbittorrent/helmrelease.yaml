@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: qbittorrent
-      version: 12.0.0
+      version: 12.1.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -71,25 +71,11 @@ spec:
           - secretName: qbittorrent-tls
             hosts:
               - "qb.${SECRET_DOMAIN}"
-    additionalContainers:
-      - name: exporter
-        image: ghcr.io/k8s-at-home/prometheus-qbittorrent-exporter:v1.2.0
-        imagePullPolicy: IfNotPresent
-        env:
-          - name: QBITTORRENT_HOST
-            value: "http://localhost"
-          - name: QBITTORRENT_PORT
-            value: "8080"
-          - name: QBITTORRENT_USER
-            value: "${QB_USER}"
-          - name: QBITTORRENT_PASS
-            value: "${QB_PASSWORD}"
-          - name: EXPORTER_PORT
-            value: "9022"
-          - name: EXPORTER_LOG_LEVEL
-            value: "INFO"
-          - name: METRICS_PREFIX
-            value: "qbittorrent"
-        ports:
-          - name: metrics
-            containerPort: 9022
+    exporter:
+      enabled: true
+      image:
+        repository: ghcr.io/k8s-at-home/prometheus-qbittorrent-exporter
+        tag: v1.2.0
+      env:
+        user: "${QB_USER}"
+        password: "${QB_PASSWORD}"
