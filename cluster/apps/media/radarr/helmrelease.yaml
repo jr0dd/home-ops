@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: radarr
-      version: 13.0.0
+      version: 14.0.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -59,31 +59,12 @@ spec:
           - secretName: radarr-tls
             hosts:
               - "radarr.${SECRET_DOMAIN}"
-    prometheus:
-      podMonitor:
-        enabled: true
-        interval: 3m
-        scrapeTimeout: 1m
-    additionalContainers:
-      - name: exportarr
-        image: ghcr.io/onedr0p/exportarr:v0.6.1
-        imagePullPolicy: IfNotPresent
-        args: ["exportarr", "radarr"]
-        env:
-          - name: PORT
-            value: "32123"
-          - name: URL
-            value: "http://localhost"
-          - name: CONFIG
-            value: "/config/config.xml"
-          - name: ENABLE_UNKNOWN_QUEUE_ITEMS
-            value: "true"
-          - name: ENABLE_ADDITIONAL_METRICS
-            value: "true"
-        ports:
-          - name: exportarr
-            containerPort: 32123
-        volumeMounts:
-          - name: config
-            mountPath: /config
-            readOnly: true
+    exporter:
+      enabled: true
+      image:
+        repository: ghcr.io/onedr0p/exportarr
+        tag: v0.6.1
+      env:
+        port: 9040
+        additionalMetrics: true
+        unknownQueueItems: true
