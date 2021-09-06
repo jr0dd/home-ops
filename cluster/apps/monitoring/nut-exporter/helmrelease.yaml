@@ -18,8 +18,8 @@ spec:
       interval: 5m
   values:
     image:
-      repository: hon95/prometheus-nut-exporter
-      tag: 1.1.1
+      repository: ghcr.io/druggeri/nut_exporter
+      tag: 2.2.3
     fullnameOverride: nut-exporter
     nameOverride: nut-exporter
     controller:
@@ -28,16 +28,19 @@ spec:
       strategy: RollingUpdate
     env:
       TZ: "America/New_York"
-      HTTP_PATH: "/nut"
-      RUST_LOG: "debug"
+      NUT_EXPORTER_USERNAME: "upsmon"
+      NUT_EXPORTER_PASSWORD: "${NUT_PASSWORD}"
+      NUT_EXPORTER_SERVER: "network-ups-tools"
+      NUT_EXPORTER_WEB_LISTEN_ADDRESS: ":9199"
+      NUT_EXPORTER_WEB_TELEMETRY_PATH: "/ups_metrics"
     service:
       main:
         ports:
           http:
-            port: 9995
+            port: 9199
     prometheus:
       serviceMonitor:
-        enabled: true
+        enabled: false
         targets:
           - hostname: network-ups-tools
             port: 3493

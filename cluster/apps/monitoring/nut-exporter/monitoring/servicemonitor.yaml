@@ -1,0 +1,20 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: nut-exporter
+spec:
+  endpoints:
+    - interval: 15s
+      params:
+        target:
+          - network-ups-tools:3493
+      path: /ups_metrics
+      port: http
+      relabelings:
+        - sourceLabels: [__param_target]
+          targetLabel: target
+      scrapeTimeout: 10s
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nut-exporter
