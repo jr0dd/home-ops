@@ -89,7 +89,7 @@ spec:
             severity: warning
         - alert: PostgresqlDeadLocks
           annotations:
-            description: PostgreSQL is reporting deadlocks on {{ $label.datid }}
+            description: PostgreSQL is reporting deadlocks on {{ $labels.datid }}
             summary: Postgresql deadlocks.
           expr: |
             increase(pg_stat_database_deadlocks{datname!~"template.*|postgres"}[1m])
