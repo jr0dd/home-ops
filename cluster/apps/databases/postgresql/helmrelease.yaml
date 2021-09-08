@@ -18,7 +18,8 @@ spec:
       interval: 5m
   values:
     postgresqlUsername: postgres
-    postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
+    postgresqlPassword: "${POSTGRES_PASSWORD}"
+    postgresqlDatabase: authentik
     metrics:
       enabled: true
       serviceMonitor:
