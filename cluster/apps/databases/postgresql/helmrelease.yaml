@@ -19,7 +19,7 @@ spec:
   values:
     postgresqlUsername: postgres
     postgresqlPostgresPassword: "${POSTGRES_PASSWORD}"
-    postgresqlDatabase: ''
+    postgresqlDatabase: authentik
     metrics:
       enabled: true
       serviceMonitor:
