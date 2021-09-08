@@ -66,8 +66,8 @@ spec:
           host: https://minio.minio:443
           insecure_skip_verify: true
       redis:
-        host: authentik-redis-master
-        password: "${AUTHENTIK_REDIS_PASSWORD}"
+        host: redis-master.databases
+        password: "${REDIS_PASSWORD}"
     prometheus:
       serviceMonitor:
         create: true
@@ -92,12 +92,4 @@ spec:
       postgresqlDatabase: authentik
       postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
     redis:
-      enabled: true
-      architecture: standalone
-      metrics:
-        enabled: true
-        serviceMonitor:
-          enabled: true
-      auth:
-        enabled: true
-        password: "${AUTHENTIK_REDIS_PASSWORD}"
+      enabled: false
