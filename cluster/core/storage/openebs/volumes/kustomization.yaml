@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - alertmanager.yaml
   - authentik.yaml
-  - grafana.yaml
   - hajimari.yaml
   - heimdall.yaml
   - homebridge.yaml
@@ -15,9 +14,11 @@ resources:
   - mkvtoolnix.yaml
   - overseerr.yaml
   - plex.yaml
+  - postgresql.yaml
   - prometheus.yaml
   - prowlarr.yaml
   - qbittorrent.yaml
   - radarr.yaml
+  - redis.yaml
   - sonarr.yaml
   - tautulli.yaml
