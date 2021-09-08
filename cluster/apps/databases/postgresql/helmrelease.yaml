@@ -17,3 +17,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    postgresqlUsername: postgres
+    postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    persistence:
+      size: 5Gi
+      existingClaim: postgresql

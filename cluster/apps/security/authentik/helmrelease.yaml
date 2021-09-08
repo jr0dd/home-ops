@@ -55,10 +55,10 @@ spec:
       error_reporting:
         enabled: true
       postgresql:
-        host: authentik-postgresql
+        host: postgresql.database
         name: authentik
-        user: authentik
-        password: "${AUTHENTIK_POSTGRES_PASSWORD}"
+        user: postgres
+        password: "${POSTGRES_PASSWORD}"
         s3_backup:
           access_key: "${MINIO_TENANT_ACCESS_KEY}"
           secret_key: "${MINIO_TENANT_SECRET_KEY}"
@@ -80,16 +80,6 @@ spec:
       rules:
         create: true
     postgresql:
-      enabled: true
-      metrics:
-        enabled: true
-        serviceMonitor:
-          enabled: true
-      persistence:
-        enabled: true
-        existingClaim: authentik
-      postgresqlUsername: authentik
-      postgresqlDatabase: authentik
-      postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
+      enabled: false
     redis:
       enabled: false
