@@ -17,6 +17,10 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      registry: quay.io
+      repository: bitnami/postgresql
+      tag: 13.4.0-debian-10-r27
     postgresqlPostgresPassword: "${POSTGRES_PASSWORD}"
     postgresqlUsername: authentik
     postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
