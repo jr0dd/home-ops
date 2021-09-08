@@ -12,7 +12,7 @@ spec:
             description: Postgresql Exporter has disappeared from Prometheus target discovery.
             summary: Postgresql is down.
           expr: |
-            pg_up == 0
+            pg_up != 0
           for: 0m
           labels:
             severity: critical
