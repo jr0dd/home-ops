@@ -17,9 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    postgresqlUsername: authentik
-    postgresqlPassword: "${AUTHENTIK_POSTGRES_PASSWORD}"
-    postgresqlPostgresPassword: "${POSTGRES_PASSWORD}"
+    postgresqlUsername: postgres
+    postgresqlPassword: "${POSTGRES_PASSWORD}"
     postgresqlDatabase: authentik
     metrics:
       enabled: true
