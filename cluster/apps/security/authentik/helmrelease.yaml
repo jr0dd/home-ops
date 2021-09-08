@@ -58,7 +58,7 @@ spec:
         host: postgresql.databases
         name: authentik
         user: authentik
-        password: "${POSTGRES_PASSWORD}"
+        password: "${AUTHENTIK_POSTGRES_PASSWORD}"
         s3_backup:
           access_key: "${MINIO_TENANT_ACCESS_KEY}"
           secret_key: "${MINIO_TENANT_SECRET_KEY}"
