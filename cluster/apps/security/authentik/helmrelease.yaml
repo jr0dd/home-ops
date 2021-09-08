@@ -55,7 +55,7 @@ spec:
       error_reporting:
         enabled: true
       postgresql:
-        host: postgresql.database
+        host: postgresql.databases
         name: authentik
         user: postgres
         password: "${POSTGRES_PASSWORD}"
