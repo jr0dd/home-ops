@@ -22,7 +22,7 @@ spec:
       replicas: 1
     image:
       repository: beryju.org/authentik/server
-      tag: gh-next
+      tag: gh-master
       pullPolicy: Always
     ingress:
       enabled: true
@@ -51,7 +51,7 @@ spec:
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       log_level: debug
       outposts:
-        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-next
+        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-master
       error_reporting:
         enabled: true
       postgresql:
