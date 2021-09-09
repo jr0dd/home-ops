@@ -123,8 +123,8 @@ spec:
             description: Postgres seems to be processing very few transactions.
             summary: Postgresql commit rate low.
           expr: |
-            rate(pg_stat_database_xact_commit[1m])
-              < 10
+            sum(rate(pg_stat_database_xact_commit{datname!~"template.*",datid!~"0"}[1m]))
+              < 1
           for: 2m
           labels:
             severity: critical

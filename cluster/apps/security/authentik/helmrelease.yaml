@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.goauthentik.io
       chart: authentik
-      version: 2.3.2
+      version: 3.0.0
       sourceRef:
         kind: HelmRepository
         name: authentik-charts
@@ -73,10 +73,6 @@ spec:
         create: true
         interval: 30s
         scrapeTimeout: 3s
-        secret:
-          name: ak-monitoring
-          usernameKey: username
-          passwordKey: password
       rules:
         create: true
     postgresql:
