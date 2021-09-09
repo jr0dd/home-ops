@@ -7,7 +7,7 @@ spec:
   groups:
     - name: nut-exporter
       rules:
-        - alert: NutExporterDown
+        - alert: NutExporterAbsent
           annotations:
             description: NUT Exporter has disappeared from Prometheus target discovery.
             summary: NUT Exporter is down.

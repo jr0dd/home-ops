@@ -7,6 +7,15 @@ spec:
   groups:
     - name: speedtest-exporter
       rules:
+        - alert: SpeedtestExporterAbsent
+          annotations:
+            description: Speedtest Exporter has disappeared from Prometheus target discovery.
+            summary: Speedtest Exporter is down.
+          expr: |
+            absent(up{job=~".*speedtest.*"} == 1)
+          for: 5m
+          labels:
+            severity: critical
         - alert: SpeedtestSlowInternetDownload
           annotations:
             description: Internet download speed is averaging {{ humanize $value }} Mbps.

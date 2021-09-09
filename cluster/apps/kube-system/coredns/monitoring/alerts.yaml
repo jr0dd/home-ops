@@ -7,7 +7,7 @@ spec:
   groups:
     - name: coredns
       rules:
-        - alert: CoreDNSDown
+        - alert: CoreDNSAbsent
           annotations:
             description: CoreDNS has disappeared from Prometheus target discovery.
             runbook_url: https://github.com/povilasv/coredns-mixin/tree/master/runbook.md#alert-name-corednsdown

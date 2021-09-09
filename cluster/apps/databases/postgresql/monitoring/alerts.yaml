@@ -7,9 +7,18 @@ spec:
   groups:
     - name: postgres-exporter
       rules:
+        - alert: PostgresqlExporterAbsent
+          annotations:
+            description: Postgresql Exporter has disappeared from Prometheus target discovery.
+            summary: Postgresql Exporter is down.
+          expr: |
+            absent(up{job=~".*postgres.*"} == 1)
+          for: 5m
+          labels:
+            severity: critical
         - alert: PostgresqlDown
           annotations:
-            description: Postgresql has disappeared from Prometheus target discovery.
+            description: Postgresql service is down.
             summary: Postgresql is down.
           expr: |
             pg_up == 0

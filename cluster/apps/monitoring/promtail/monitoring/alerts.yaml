@@ -7,6 +7,15 @@ spec:
   groups:
     - name: promtail
       rules:
+        - alert: PromtailAbsent
+          annotations:
+            description: Promtail has disappeared from Prometheus target discovery.
+            summary: Promtail is down.
+          expr: |
+            absent(up{job=~".*promtail.*"} == 1)
+          for: 5m
+          labels:
+            severity: critical
         - alert: PromtailRequestsErrors
           annotations:
             description: Promtail host {{ $labels.host }} is experiencing {{ $value | humanizePercentage }} errors.

@@ -9,7 +9,7 @@ spec:
       rules:
         - alert: MinioAbsent
           annotations:
-            description: MinIO has dissapeared from Prometheus service discovery.
+            description: MinIO component has dissapeared from Prometheus service discovery.
             summary: MinIO component has disappeared.
           expr: |
             absent(up{job=~".*minio.*"} == 1)

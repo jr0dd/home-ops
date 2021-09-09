@@ -9,11 +9,11 @@ spec:
       rules:
         - expr: |
             histogram_quantile(0.99, sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, job))
+              by (le, job))
           record: job:loki_request_duration_seconds:99quantile
         - expr: |
             histogram_quantile(0.50, sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, job))
+              by (le, job))
           record: job:loki_request_duration_seconds:50quantile
         - expr: |
             sum(rate(loki_request_duration_seconds_sum[1m])) by (job)
@@ -22,7 +22,7 @@ spec:
           record: job:loki_request_duration_seconds:avg
         - expr: |
             sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, job)
+              by (le, job)
           record: job:loki_request_duration_seconds_bucket:sum_rate
         - expr: |
             sum(rate(loki_request_duration_seconds_sum[1m])) by (job)
@@ -32,11 +32,11 @@ spec:
           record: job:loki_request_duration_seconds_count:sum_rate
         - expr: |
             histogram_quantile(0.99, sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, job, route))
+              by (le, job, route))
           record: job_route:loki_request_duration_seconds:99quantile
         - expr: |
             histogram_quantile(0.50, sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, job, route))
+              by (le, job, route))
           record: job_route:loki_request_duration_seconds:50quantile
         - expr: |
             sum(rate(loki_request_duration_seconds_sum[1m])) by (job, route)
@@ -45,7 +45,7 @@ spec:
           record: job_route:loki_request_duration_seconds:avg
         - expr: |
             sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, job, route)
+              by (le, job, route)
           record: job_route:loki_request_duration_seconds_bucket:sum_rate
         - expr: |
             sum(rate(loki_request_duration_seconds_sum[1m])) by (job, route)
@@ -55,11 +55,11 @@ spec:
           record: job_route:loki_request_duration_seconds_count:sum_rate
         - expr: |
             histogram_quantile(0.99, sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, namespace, job, route))
+              by (le, namespace, job, route))
           record: namespace_job_route:loki_request_duration_seconds:99quantile
         - expr: |
             histogram_quantile(0.50, sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, namespace, job, route))
+              by (le, namespace, job, route))
           record: namespace_job_route:loki_request_duration_seconds:50quantile
         - expr: |
             sum(rate(loki_request_duration_seconds_sum[1m])) by (namespace, job, route)
@@ -68,13 +68,13 @@ spec:
           record: namespace_job_route:loki_request_duration_seconds:avg
         - expr: |
             sum(rate(loki_request_duration_seconds_bucket[1m]))
-            by (le, namespace, job, route)
+              by (le, namespace, job, route)
           record: namespace_job_route:loki_request_duration_seconds_bucket:sum_rate
         - expr: |
             sum(rate(loki_request_duration_seconds_sum[1m]))
-            by (namespace, job, route)
+              by (namespace, job, route)
           record: namespace_job_route:loki_request_duration_seconds_sum:sum_rate
         - expr: |
             sum(rate(loki_request_duration_seconds_count[1m]))
-            by (namespace, job, route)
+              by (namespace, job, route)
           record: namespace_job_route:loki_request_duration_seconds_count:sum_rate

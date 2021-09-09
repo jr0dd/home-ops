@@ -35,8 +35,7 @@ spec:
               panics on {{ $labels.job }}.
             summary: Loki request panics.
           expr: |
-            sum(increase(loki_panic_total[10m])) by (namespace, job)
-              > 0
+            sum(increase(loki_panic_total[10m])) by (namespace, job) > 0
           labels:
             severity: critical
         - alert: LokiRequestLatency
@@ -45,8 +44,7 @@ spec:
               {{ $labels.job }} {{ $labels.route }}.
             summary: Loki request latency.
           expr: |
-            namespace_job_route:loki_request_duration_seconds:99quantile{route!~"(?i).*tail.*"}
-              > 1
+            namespace_job_route:loki_request_duration_seconds:99quantile{route!~"(?i).*tail.*"} > 1
           for: 15m
           labels:
             severity: critical

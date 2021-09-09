@@ -7,9 +7,18 @@ spec:
   groups:
     - name: redis-exporter
       rules:
-        - alert: RedisDown
+        - alert: RedisExporterAbsent
           annotations:
             description: Redis Exporter has disappeared from Prometheus target discovery.
+            summary: Redis Exporter is down.
+          expr: |
+            absent(up{job=~".*redis.*"} == 1)
+          for: 5m
+          labels:
+            severity: critical
+        - alert: RedisDown
+          annotations:
+            description: Redis service is down.
             summary: Redis is down.
           expr: |
             redis_up == 0

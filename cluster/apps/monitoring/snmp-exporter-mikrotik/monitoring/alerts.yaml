@@ -7,12 +7,12 @@ spec:
   groups:
     - name: snmp-exporter
       rules:
-        - alert: SnmpExporterDown
+        - alert: SnmpExporterAbsent
           annotations:
             description: SNMP Exporter has disappeared from Prometheus target discovery.
             summary: SNMP Exporter is down.
           expr: |
-            absent(up{job=~".*snmp-exporter.*"} == 1)
+            absent(up{job=".*snmp-exporter.*"} == 1)
           for: 5m
           labels:
             severity: critical
