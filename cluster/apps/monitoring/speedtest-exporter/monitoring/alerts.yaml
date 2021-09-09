@@ -13,7 +13,7 @@ spec:
             summary: Speedtest Exporter is down.
           expr: |
             absent(up{job=~".*speedtest.*"} == 1)
-          for: 5m
+          for: 1h
           labels:
             severity: critical
         - alert: SpeedtestSlowInternetDownload
