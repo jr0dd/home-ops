@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.goauthentik.io
       chart: authentik
-      version: 3.0.0
+      version: 2.3.2
       sourceRef:
         kind: HelmRepository
         name: authentik-charts
@@ -70,11 +70,11 @@ spec:
         password: "${REDIS_PASSWORD}"
     prometheus:
       serviceMonitor:
-        create: true
+        create: false
         interval: 30s
         scrapeTimeout: 3s
       rules:
-        create: true
+        create: false
     postgresql:
       enabled: false
     redis:
