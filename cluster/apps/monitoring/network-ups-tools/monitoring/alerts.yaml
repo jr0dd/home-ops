@@ -21,7 +21,7 @@ spec:
             description: UPS {{ $labels.ups }} is reporting a status of unknown.
             summary: UPS status unknown.
           expr: |
-            nut_status{job="nut-exporter"} == 0
+            nut_status == 0
           for: 10s
           labels:
             severity: critical
@@ -30,7 +30,7 @@ spec:
             description: UPS {{ $labels.ups }} has lost power and is running on battery.
             summary: UPS is running on battery.
           expr: |
-            nut_status{job="nut-exporter"} == 2
+            nut_status == 2
           for: 10s
           labels:
             severity: critical
@@ -40,7 +40,7 @@ spec:
               ready to shutdown.
             summary: UPS battery is low.
           expr: |
-            nut_status{job="nut-exporter"} == 3
+            nut_status == 3
           for: 5s
           labels:
             severity: critical

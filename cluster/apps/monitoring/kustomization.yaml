@@ -8,7 +8,6 @@ resources:
   - kube-prometheus-stack
   - loki
   - network-ups-tools
-  - nut-exporter
   - promtail
   - snmp-exporter-mikrotik
   - speedtest-exporter
