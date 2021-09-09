@@ -27,9 +27,12 @@ Currently I only have a single node with this running on [TrueNAS SCALE](https:/
 
 For more information, head on over to my [docs](https://jr0dd.github.io/k8s-gitops/). ***Not ready yet***
 
+## Prometheus Rules
+All my prometheus recording/alerting rules found in this repo can be found in my [prometheus-rules](https://github.com/jr0dd/prometheus-rules) repo.
+
 ## :handshake:&nbsp; Community
 
 Thanks to all the people who donate their time to the [k8s@home](https://github.com/k8s-at-home/) community.
 This repo would not exist if it wasn't for their work.
 
-If you want to learn more start [here](https://github.com/k8s-at-home/template-cluster-k3s/)
+If you want to learn more start with this template [here](https://github.com/k8s-at-home/template-cluster-k3s/)
