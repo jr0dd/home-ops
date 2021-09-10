@@ -5,3 +5,4 @@ resources:
   - config-pvc.yaml
   - helmrelease.yaml
   - rbac.yaml
+  - secret.sops.yaml

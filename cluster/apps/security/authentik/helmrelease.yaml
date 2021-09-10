@@ -73,6 +73,8 @@ spec:
         create: true
         interval: 30s
         scrapeTimeout: 3s
+        secret:
+          name: ak-monitoring
       rules:
         create: true
     serviceAccount:
