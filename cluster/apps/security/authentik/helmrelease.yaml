@@ -70,11 +70,13 @@ spec:
         password: "${REDIS_PASSWORD}"
     prometheus:
       serviceMonitor:
-        create: false
+        create: true
         interval: 30s
         scrapeTimeout: 3s
       rules:
-        create: false
+        create: true
+    serviceAccount:
+      create: false
     postgresql:
       enabled: false
     redis:
