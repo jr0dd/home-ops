@@ -76,9 +76,3 @@ spec:
           name: ak-monitoring
       rules:
         create: true
-    serviceAccount:
-      create: false
-    postgresql:
-      enabled: false
-    redis:
-      enabled: false
