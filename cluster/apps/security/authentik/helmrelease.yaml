@@ -69,10 +69,10 @@ spec:
         password: "${REDIS_PASSWORD}"
     prometheus:
       serviceMonitor:
-        create: true
+        create: false
         interval: 30s
         scrapeTimeout: 3s
         secret:
           name: ak-monitoring
       rules:
-        create: true
+        create: false
