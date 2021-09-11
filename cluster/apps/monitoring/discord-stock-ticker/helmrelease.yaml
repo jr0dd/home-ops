@@ -27,6 +27,7 @@ spec:
     env:
       TZ: "America/New_York"
       CACHE: "true"
+      LOGLEVEL: "1"
       REDISADDRESS: "redis-master.databases:6379"
       REDISDB: "1"
       REDISPASSWORD: "${REDIS_PASSWORD}"
