@@ -21,8 +21,9 @@ spec:
     worker:
       replicas: 1
     image:
-      repository: ghcr.io/goauthentik/server
-      tag: 2021.8.5
+      repository: beryju.org/authentik/server
+      tag: gh-master-1631312541-6dc8aa396c31f38ba55f72af23c595bdaa5ed07b
+      pullPolicy: Always
     ingress:
       enabled: true
       ingressClassName: traefik
@@ -50,7 +51,7 @@ spec:
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       log_level: debug
       outposts:
-        docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
+        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-%(build_hash)s
       error_reporting:
         enabled: true
       postgresql:
