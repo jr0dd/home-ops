@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: lidarr
-      version: 12.0.1
+      version: 13.0.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -54,12 +54,14 @@ spec:
           - secretName: lidarr-tls
             hosts:
               - "lidarr.${SECRET_DOMAIN}"
-    exporter:
+    metrics:
       enabled: true
-      image:
-        repository: ghcr.io/onedr0p/exportarr
-        tag: v0.6.1
-      env:
-        port: 9040
-        additionalMetrics: true
-        unknownQueueItems: true
+      prometheusRule:
+        enabled: true
+      exporter:
+        image:
+          repository: ghcr.io/onedr0p/exportarr
+          tag: v0.6.1
+        env:
+          additionalMetrics: true
+          unknownQueueItems: true

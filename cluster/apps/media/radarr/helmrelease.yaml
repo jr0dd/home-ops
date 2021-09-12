@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: radarr
-      version: 14.0.0
+      version: 15.0.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -59,12 +59,14 @@ spec:
           - secretName: radarr-tls
             hosts:
               - "radarr.${SECRET_DOMAIN}"
-    exporter:
+    metrics:
       enabled: true
-      image:
-        repository: ghcr.io/onedr0p/exportarr
-        tag: v0.6.1
-      env:
-        port: 9040
-        additionalMetrics: true
-        unknownQueueItems: true
+      prometheusRule:
+        enabled: true
+      exporter:
+        image:
+          repository: ghcr.io/onedr0p/exportarr
+          tag: v0.6.1
+        env:
+          additionalMetrics: true
+          unknownQueueItems: true
