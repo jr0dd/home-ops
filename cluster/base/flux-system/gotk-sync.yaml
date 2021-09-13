@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    branch: storage-migration
+    branch: main
   url: https://github.com/jr0dd/k8s-gitops
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
