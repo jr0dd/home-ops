@@ -1,0 +1,83 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts
+      chart: velero
+      version: 2.23.7
+      sourceRef:
+        kind: HelmRepository
+        name: vmware-tanzu-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: velero/velero
+      tag: v1.6.3
+    configuration:
+      extraEnvVars:
+        TZ: "America/New_York"
+      provider: aws
+      backupStorageLocation:
+        name: default
+        bucket: velero
+        config:
+          region: minio
+          s3ForcePathStyle: true
+          s3Url: https://minio.minio:443
+      volumeSnapshotLocation:
+        name: zfspv
+        provider: openebs.io/zfspv-blockstore
+        config:
+          bucket: velero
+          prefix: zfs
+          namespace: openebs
+          provider: aws
+          region: minio
+          s3ForcePathStyle: true
+          s3Url: https://minio.minio:443
+      resticTimeout: 6h
+    initContainers:
+      - name: velero-plugin-for-aws
+        image: velero/velero-plugin-for-aws:v1.2.1
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /target
+            name: plugins
+      - name: velero-plugin-for-zfs
+        image: openebs/velero-plugin:2.2.0
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - mountPath: /target
+            name: plugins
+    credentials:
+      existingSecret: velero-s3-creds
+    schedules:
+      daily-backup:
+        schedule: "0 6 * * *"
+        template:
+          ttl: "120h"
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    snapshotsEnabled: true
+    upgradeCRDs: false
+    cleanUpCRDs: false
+    kubectl:
+      image:
+        repository: ghcr.io/k8s-at-home/kubectl
+        tag: v1.22.1
+    deployRestic: true
+    restic:
+      podVolumePath: /var/lib/kubelet/pods
+      privileged: false
+      tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"

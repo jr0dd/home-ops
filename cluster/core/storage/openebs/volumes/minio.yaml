@@ -5,7 +5,7 @@ metadata:
   name: data0-tenant0-ss-0-0
 spec:
   capacity:
-    storage: 20Gi
+    storage: 160Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -20,7 +20,7 @@ metadata:
   name: data0-tenant0-ss-0-1
 spec:
   capacity:
-    storage: 20Gi
+    storage: 160Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -35,7 +35,7 @@ metadata:
   name: data0-tenant0-ss-0-2
 spec:
   capacity:
-    storage: 20Gi
+    storage: 160Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -50,7 +50,7 @@ metadata:
   name: data0-tenant0-ss-0-3
 spec:
   capacity:
-    storage: 20Gi
+    storage: 160Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce

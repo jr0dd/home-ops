@@ -43,10 +43,11 @@
       ],
       "datasourceTemplate": "helm"
     },
-    // regexManager to read and process Kube Prometheus Stack and OpenEBS CRD's
+    // regexManager to read and process Kube Prometheus Stack Velero and OpenEBS CRD's
     {
       "fileMatch": [
         "cluster/crds/kube-prometheus-stack/.+\\.yaml$",
+        "cluster/crds/velero/.+\\.yaml$",
         "cluster/crds/openebs-zfslocalpv/.+\\.yaml$"
       ],
       "matchStrings": [

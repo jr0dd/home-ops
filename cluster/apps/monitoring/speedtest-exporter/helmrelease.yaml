@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://k8s-at-home.com/charts/
       chart: speedtest-exporter
-      version: 4.0.1
+      version: 5.0.0
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -20,14 +20,20 @@ spec:
     image:
       repository: ghcr.io/miguelndecarvalho/speedtest-exporter
       tag: v3.3.2
-    fullnameOverride: speedtest-exporter
-    nameOverride: speedtest-exporter
     controller:
       enabled: true
       replicas: 1
       strategy: RollingUpdate
     env:
       TZ: "America/New_York"
-    prometheus:
+    metrics:
+      enabled: true
       serviceMonitor:
+        interval: 1h
+        scrapeTimeout: 1m
+      prometheusRule:
         enabled: true
+        downloadLimit: 450
+        uploadLimit: 450
+        pingLimit: 10
+        jitterLimit: 30

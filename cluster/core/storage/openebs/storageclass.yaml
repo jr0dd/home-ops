@@ -18,3 +18,21 @@ allowedTopologies:
       - key: kubernetes.io/hostname
         values:
           - ix-truenas
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-zfspv-ssd
+parameters:
+  fstype: zfs
+  poolname: k8s/containous/datastore
+  shared: "yes"
+provisioner: zfs.csi.openebs.io
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer
+allowedTopologies:
+  - matchLabelExpressions:
+      - key: kubernetes.io/hostname
+        values:
+          - ix-truenas
