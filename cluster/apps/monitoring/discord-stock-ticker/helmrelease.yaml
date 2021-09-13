@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://jr0dd.github.io/charts/
       chart: discord-stock-ticker
-      version: 12.3.0
+      version: 13.0.0
       sourceRef:
         kind: HelmRepository
         name: jr0dd-charts
@@ -40,12 +40,10 @@ spec:
           configMap:
             name: payload
             defaultMode: 0755
-    prometheus:
-      serviceMonitor:
-        enabled: true
-        interval: 10s
+    metrics:
+      enabled: true
       prometheusRule:
-        enabled: false
+        enabled: true
     configmap:
       enabled: false
     podAnnotations:
