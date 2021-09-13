@@ -28,9 +28,6 @@ spec:
       TZ: "America/New_York"
     metrics:
       enabled: true
-      serviceMonitor:
-        interval: 1h
-        scrapeTimeout: 1m
       prometheusRule:
         enabled: true
         downloadLimit: 450
