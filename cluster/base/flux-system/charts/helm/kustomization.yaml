@@ -18,3 +18,4 @@ resources:
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
   - traefik-charts.yaml
+  - vmware-tanzu-charts.yaml
