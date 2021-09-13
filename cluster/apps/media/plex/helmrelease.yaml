@@ -85,7 +85,7 @@ spec:
       config:
         enabled: true
         type: pvc
-        existingClaim: plex
+        existingClaim: plex-config-v1
         mountPath: /config
       media:
         enabled: true

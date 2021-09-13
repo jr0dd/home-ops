@@ -2,13 +2,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: hajimari
+  name: hajimari-config-v1
   namespace: home
 spec:
-  storageClassName: openebs-zfspv
-  volumeName: hajimari
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
+  storageClassName: openebs-zfspv

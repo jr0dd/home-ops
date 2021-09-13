@@ -76,13 +76,12 @@ spec:
         storage:
           volumeClaimTemplate:
             spec:
-              volumeName: alertmanager
               accessModes:
                 - ReadWriteOnce
-              storageClassName: openebs-zfspv
+              storageClassName: openebs-zfspv-ssd
               resources:
                 requests:
-                  storage: 250Mi
+                  storage: 1Gi
     prometheus:
       enabled: true
       # logFormat: json
@@ -123,10 +122,9 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              volumeName: prometheus
               accessModes:
                 - ReadWriteOnce
-              storageClassName: openebs-zfspv
+              storageClassName: openebs-zfspv-ssd
               resources:
                 requests:
                   storage: 10Gi

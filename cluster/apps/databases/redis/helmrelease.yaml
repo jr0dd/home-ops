@@ -25,7 +25,7 @@ spec:
     master:
       persistence:
         size: 5Gi
-        existingClaim: redis
+        existingClaim: redis-config-v1
     sentinal:
       enabled: true
       masterSet: redis-master

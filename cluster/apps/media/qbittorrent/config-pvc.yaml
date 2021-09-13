@@ -2,13 +2,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: qbittorrent
+  name: qbittorrent-config-v1
   namespace: media
 spec:
-  storageClassName: openebs-zfspv
-  volumeName: qbittorrent
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 250Mi
+      storage: 1Gi
+  storageClassName: openebs-zfspv

@@ -37,11 +37,6 @@ spec:
           http:
             port: 5800
     persistence:
-      config:
-        enabled: true
-        type: pvc
-        existingClaim: mkvtoolnix
-        mountPath: /config
       media:
         enabled: true
         type: pvc

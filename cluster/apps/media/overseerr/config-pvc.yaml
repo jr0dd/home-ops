@@ -2,13 +2,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: overseerr
+  name: overseerr-config-v1
   namespace: media
 spec:
-  storageClassName: openebs-zfspv
-  volumeName: overseerr
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 250Mi
+      storage: 2Gi
+  storageClassName: openebs-zfspv

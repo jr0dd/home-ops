@@ -31,7 +31,7 @@ spec:
         enabled: true
         type: pvc
         mountPath: /config
-        existingClaim: lidarr
+        existingClaim: lidarr-config-v1
       media:
         enabled: true
         type: pvc

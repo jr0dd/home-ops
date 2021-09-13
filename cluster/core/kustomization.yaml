@@ -5,5 +5,5 @@ resources:
   - cert-manager
   - metallb
   - namespaces
-  - storage
+  - openebs
   - system-upgrade
