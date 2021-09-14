@@ -11,3 +11,4 @@ resources:
   - networking.yaml
   - openebs.yaml
   - security.yaml
+  - velero.yaml

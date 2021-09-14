@@ -36,7 +36,7 @@ spec:
         enabled: true
         type: pvc
         mountPath: /config
-        existingClaim: prowlarr
+        existingClaim: prowlarr-config-v1
     ingress:
       main:
         enabled: true

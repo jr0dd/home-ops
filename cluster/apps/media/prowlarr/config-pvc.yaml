@@ -2,13 +2,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: prowlarr
+  name: prowlarr-config-v1
   namespace: media
 spec:
-  storageClassName: openebs-zfspv
-  volumeName: prowlarr
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 250Mi
+      storage: 1Gi
+  storageClassName: openebs-zfspv

@@ -2,13 +2,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: plex
+  name: plex-config-v1
   namespace: media
 spec:
-  storageClassName: openebs-zfspv
-  volumeName: plex
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 150Gi
+  storageClassName: openebs-zfspv

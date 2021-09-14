@@ -37,7 +37,7 @@ spec:
       config:
         enabled: true
         type: pvc
-        existingClaim: homebridge
+        existingClaim: homebridge-config-v1
         mountPath: /homebridge
     ingress:
       main:

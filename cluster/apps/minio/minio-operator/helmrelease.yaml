@@ -46,7 +46,7 @@ spec:
         pools:
           - servers: 4
             volumesPerServer: 1
-            size: 20Gi
+            size: 160Gi
             storageClassName: openebs-zfspv
         secrets:
           enabled: true
@@ -71,10 +71,20 @@ spec:
               namespace: minio
             spec:
               prometheus:
-                image: quay.io/prometheus/prometheus:v2.29.2
-                sidecarimage: alpine
-                initimage: busybox
-                diskCapacityGB: 5
+                diskCapacityGB: 10
+                storageClassName: openebs-zfspv-ssd
               prometheusOperator:
                 labels:
                   app: tenant0
+              log:
+                audit:
+                  diskCapacityGB: 10
+                db:
+                  volumeClaimTemplate:
+                    spec:
+                      storageClassName: openebs-zfspv-ssd
+                      accessModes:
+                        - ReadWriteOnce
+                      resources:
+                        requests:
+                          storage: 10Gi

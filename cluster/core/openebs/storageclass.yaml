@@ -6,7 +6,10 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
   name: openebs-zfspv
 parameters:
-  fstype: zfs
+  recordsize: "4k"
+  compression: "off"
+  dedup: "off"
+  fstype: "zfs"
   poolname: deadpool/containous/datastore
   shared: "yes"
 provisioner: zfs.csi.openebs.io
@@ -24,7 +27,10 @@ kind: StorageClass
 metadata:
   name: openebs-zfspv-ssd
 parameters:
-  fstype: zfs
+  recordsize: "4k"
+  compression: "off"
+  dedup: "off"
+  fstype: "zfs"
   poolname: k8s/containous/datastore
   shared: "yes"
 provisioner: zfs.csi.openebs.io

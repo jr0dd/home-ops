@@ -31,4 +31,4 @@ spec:
         enabled: true
     persistence:
       size: 5Gi
-      existingClaim: postgresql
+      existingClaim: postgresql-config-v1

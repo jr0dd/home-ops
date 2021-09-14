@@ -48,7 +48,7 @@ spec:
       config:
         enabled: true
         type: pvc
-        existingClaim: qbittorrent
+        existingClaim: qbittorrent-config-v1
         mountPath: /config
       media:
         enabled: true
