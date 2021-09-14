@@ -31,6 +31,7 @@ spec:
           region: minio
           s3ForcePathStyle: true
           s3Url: https://minio.minio:443
+          insecureSkipTLSVerify: true
       volumeSnapshotLocation:
         name: zfspv-incr
         provider: openebs.io/zfspv-blockstore
@@ -43,6 +44,7 @@ spec:
           region: minio
           s3ForcePathStyle: true
           s3Url: https://minio.minio:443
+          insecureSkipTLSVerify: true
       resticTimeout: 6h
     initContainers:
       - name: velero-plugin-for-aws
