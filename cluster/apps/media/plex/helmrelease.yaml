@@ -84,9 +84,7 @@ spec:
     persistence:
       config:
         enabled: true
-        type: pvc
         existingClaim: plex-config-v1
-        mountPath: /config
       media:
         enabled: true
         type: pvc
@@ -96,7 +94,6 @@ spec:
         enabled: true
         type: emptyDir
         medium: Memory
-        mountPath: /transcode
     addons:
       promtail:
         enabled: true

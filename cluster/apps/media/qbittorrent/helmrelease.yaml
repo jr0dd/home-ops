@@ -47,14 +47,12 @@ spec:
     persistence:
       config:
         enabled: true
-        type: pvc
         existingClaim: qbittorrent-config-v1
-        mountPath: /config
       media:
         enabled: true
         type: pvc
-        existingClaim: media
         mountPath: /media
+        existingClaim: media
     ingress:
       main:
         enabled: true

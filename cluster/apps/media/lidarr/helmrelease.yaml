@@ -32,6 +32,8 @@ spec:
         existingClaim: lidarr-config-v1
       media:
         enabled: true
+        type: pvc
+        mountPath: /media
         existingClaim: media
     ingress:
       main:
