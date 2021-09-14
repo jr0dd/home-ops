@@ -4,13 +4,10 @@ kind: Kustomization
 resources:
   - alertmanager.yaml
   - hajimari.yaml
-  - heimdall.yaml
   - homebridge.yaml
-  - homer.yaml
   - lidarr.yaml
   - media.yaml
   - minio.yaml
-  - mkvtoolnix.yaml
   - overseerr.yaml
   - plex.yaml
   - postgresql.yaml
