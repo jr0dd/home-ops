@@ -29,13 +29,9 @@ spec:
     persistence:
       config:
         enabled: true
-        type: pvc
-        mountPath: /config
         existingClaim: lidarr-config-v1
       media:
         enabled: true
-        type: pvc
-        mountPath: /media
         existingClaim: media
     ingress:
       main:
