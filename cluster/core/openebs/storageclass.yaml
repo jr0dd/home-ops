@@ -15,8 +15,7 @@ parameters:
 provisioner: zfs.csi.openebs.io
 reclaimPolicy: Retain
 allowVolumeExpansion: true
-volumeBindingMode: Immediate
-# volumeBindingMode: WaitForFirstConsumer
+volumeBindingMode: WaitForFirstConsumer
 allowedTopologies:
   - matchLabelExpressions:
       - key: kubernetes.io/hostname
@@ -37,8 +36,7 @@ parameters:
 provisioner: zfs.csi.openebs.io
 reclaimPolicy: Retain
 allowVolumeExpansion: true
-volumeBindingMode: Immediate
-# volumeBindingMode: WaitForFirstConsumer
+volumeBindingMode: WaitForFirstConsumer
 allowedTopologies:
   - matchLabelExpressions:
       - key: kubernetes.io/hostname
