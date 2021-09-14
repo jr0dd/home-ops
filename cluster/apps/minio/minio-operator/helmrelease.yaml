@@ -21,6 +21,9 @@ spec:
       image:
         repository: quay.io/minio/operator
         tag: v4.2.7
+      env:
+        - name: MINIO_PROMETHEUS_URL
+          value: "https://prometheus.${SECRET_DOMAIN}"
     console:
       image:
         repository: quay.io/minio/console
