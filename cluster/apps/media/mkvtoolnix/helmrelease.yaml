@@ -41,7 +41,7 @@ spec:
         enabled: true
         type: pvc
         existingClaim: media
-        mountPath: /storage
+        mountPath: /media
     ingress:
       main:
         enabled: true

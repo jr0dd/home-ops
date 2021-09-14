@@ -59,11 +59,11 @@ spec:
             name: plugins
     credentials:
       existingSecret: velero-s3-creds
-    # schedules:
-    #   daily-backup:
-    #     schedule: "0 6 * * *"
-    #     template:
-    #       ttl: "120h"
+    schedules:
+      daily-backup:
+        schedule: "0 6 * * *"
+        template:
+          ttl: "120h"
     metrics:
       enabled: true
       serviceMonitor:

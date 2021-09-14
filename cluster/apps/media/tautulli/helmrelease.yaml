@@ -34,9 +34,7 @@ spec:
     persistence:
       config:
         enabled: true
-        type: pvc
         existingClaim: tautulli-config-v1
-        mountPath: /config
     ingress:
       main:
         enabled: true
