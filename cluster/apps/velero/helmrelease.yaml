@@ -30,7 +30,8 @@ spec:
         config:
           region: minio
           s3ForcePathStyle: true
-          s3Url: https://minio.minio:443
+          s3Url: https://minio.minio.svc.cluster.local:443
+          publicUrl: https://s3.${SECRET_DOMAIN}
           insecureSkipTLSVerify: true
       volumeSnapshotLocation:
         name: zfspv-incr
@@ -38,12 +39,12 @@ spec:
         config:
           bucket: velero
           prefix: zfs
-          incrBackupCount: 10
+          incrBackupCount: 6
           namespace: openebs
           provider: aws
           region: minio
           s3ForcePathStyle: true
-          s3Url: https://minio.minio:443
+          s3Url: https://minio.minio.svc.cluster.local:443
           insecureSkipTLSVerify: true
       resticTimeout: 6h
     initContainers:

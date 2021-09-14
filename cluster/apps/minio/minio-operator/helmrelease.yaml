@@ -21,9 +21,6 @@ spec:
       image:
         repository: quay.io/minio/operator
         tag: v4.2.7
-      env:
-        - name: MINIO_PROMETHEUS_URL
-          value: "https://prometheus.${SECRET_DOMAIN}"
     console:
       image:
         repository: quay.io/minio/console
@@ -34,12 +31,12 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        host: "minio.${SECRET_DOMAIN}"
+        host: "s3.${SECRET_DOMAIN}"
         path: /
         tls:
           - secretName: minio-tls
             hosts:
-              - "minio.${SECRET_DOMAIN}"
+              - "s3.${SECRET_DOMAIN}"
     tenants:
       - name: tenant0
         image:
@@ -63,7 +60,9 @@ spec:
           requestAutoCert: true
         env:
           - name: MINIO_BROWSER_REDIRECT_URL
-            value: "https://minio.${SECRET_DOMAIN}"
+            value: "https://s3.${SECRET_DOMAIN}"
+          - name: MINIO_PROMETHEUS_URL
+            value: "https://prometheus.${SECRET_DOMAIN}"
   postRenderers:
     - kustomize:
         patchesStrategicMerge:
@@ -79,15 +78,3 @@ spec:
               prometheusOperator:
                 labels:
                   app: tenant0
-              log:
-                audit:
-                  diskCapacityGB: 10
-                db:
-                  volumeClaimTemplate:
-                    spec:
-                      storageClassName: openebs-zfspv-ssd
-                      accessModes:
-                        - ReadWriteOnce
-                      resources:
-                        requests:
-                          storage: 10Gi
