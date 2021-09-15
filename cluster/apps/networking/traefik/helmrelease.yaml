@@ -58,22 +58,12 @@ spec:
       annotations:
         external-dns.alpha.kubernetes.io/hostname: "ipv4.${SECRET_DOMAIN}"
     ports:
-      traefik:
-        expose: true
-        port: 9000
       web:
-        expose: true
-        port: 80
         redirectTo: websecure
       websecure:
-        expose: true
-        port: 443
         tls:
           enabled: true
           options: default
-      metrics:
-        expose: true
-        port: 9100
     tlsOptions:
       default:
         minVersion: VersionTLS12
