@@ -62,7 +62,7 @@ spec:
           - name: MINIO_BROWSER_REDIRECT_URL
             value: "https://s3.${SECRET_DOMAIN}"
           - name: MINIO_PROMETHEUS_URL
-            value: "http://prometheus-prometheus.monitoring"
+            value: "http://prometheus-prometheus.monitoring:9090"
   postRenderers:
     - kustomize:
         patchesStrategicMerge:
