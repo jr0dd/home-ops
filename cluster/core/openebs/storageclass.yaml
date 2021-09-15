@@ -42,3 +42,19 @@ allowedTopologies:
       - key: kubernetes.io/hostname
         values:
           - ix-truenas
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-zfspv-block
+parameters:
+  poolname: deadpool/containous/datastore
+provisioner: zfs.csi.openebs.io
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer
+allowedTopologies:
+  - matchLabelExpressions:
+      - key: kubernetes.io/hostname
+        values:
+          - ix-truenas
