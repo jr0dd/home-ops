@@ -134,6 +134,12 @@ spec:
           objectStorageConfig:
             name: thanos-objstore
             key: objstore.yml
+        # additionalScrapeConfigs:
+        #   - job_name: "mikrotik-coredns"
+        #     honor_timestamps: true
+        #     static_configs:
+        #       - targets:
+        #           - ${GATEWAY_IP}:9153
       additionalServiceMonitors:
         - name: thanos-sidecar
           additionalLabels:
