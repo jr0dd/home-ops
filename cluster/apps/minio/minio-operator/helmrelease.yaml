@@ -73,7 +73,7 @@ spec:
               namespace: minio
             spec:
               prometheus:
-                diskCapacityGB: 10
+                diskCapacityGB: 3
                 storageClassName: openebs-zfspv-ssd
               prometheusOperator:
                 labels:

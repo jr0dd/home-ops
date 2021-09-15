@@ -68,9 +68,6 @@ spec:
         schedule: "0 6 * * *"
         template:
           ttl: "120h"
-          includeResources:
-            - pv
-            - pvc
     metrics:
       enabled: true
       serviceMonitor:
