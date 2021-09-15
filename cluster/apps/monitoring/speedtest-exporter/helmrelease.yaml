@@ -32,5 +32,5 @@ spec:
         enabled: true
         downloadLimit: 450
         uploadLimit: 450
-        pingLimit: 10
-        jitterLimit: 30
+        pingLimit: 25
+        jitterLimit: 10
