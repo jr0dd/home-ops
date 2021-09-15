@@ -63,18 +63,20 @@ spec:
             value: "https://s3.${SECRET_DOMAIN}"
           - name: MINIO_PROMETHEUS_URL
             value: "http://prometheus-prometheus.monitoring:9090"
-  postRenderers:
-    - kustomize:
-        patchesStrategicMerge:
-          - kind: Tenant
-            apiVersion: minio.min.io/v2
-            metadata:
-              name: tenant0
-              namespace: minio
-            spec:
-              prometheus:
-                diskCapacityGB: 3
-                storageClassName: openebs-zfspv-ssd
-              prometheusOperator:
-                labels:
-                  app: tenant0
+          - name: CONSOLE_PROMETHEUS_URL
+            value: "http://prometheus-prometheus.monitoring:9090"
+  # postRenderers:
+  #   - kustomize:
+  #       patchesStrategicMerge:
+  #         - kind: Tenant
+  #           apiVersion: minio.min.io/v2
+  #           metadata:
+  #             name: tenant0
+  #             namespace: minio
+  #           spec:
+  #             prometheus:
+  #               diskCapacityGB: 3
+  #               storageClassName: openebs-zfspv-ssd
+  #             prometheusOperator:
+  #               labels:
+  #                 app: tenant0
