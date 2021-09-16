@@ -63,8 +63,8 @@ spec:
             value: "https://s3.${SECRET_DOMAIN}"
           - name: MINIO_PROMETHEUS_AUTH_TYPE
             value: "public"
-          - value: MINIO_PROMETHEUS_JOB_ID
-            name: "minio"
+          - name: MINIO_PROMETHEUS_JOB_ID
+            value: "minio"
           - name: MINIO_PROMETHEUS_URL
             value: "http://prometheus-prometheus.monitoring:9090"
           - name: CONSOLE_PROMETHEUS_URL
