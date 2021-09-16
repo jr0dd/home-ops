@@ -10,4 +10,4 @@ spec:
   resources:
     requests:
       storage: 5Gi
-  storageClassName: zfspv-ssd
+  storageClassName: openebs-zfspv-ssd

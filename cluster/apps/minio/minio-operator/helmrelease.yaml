@@ -47,7 +47,7 @@ spec:
           - servers: 4
             volumesPerServer: 1
             size: 160Gi
-            storageClassName: zfspv-pool
+            storageClassName: openebs-zfspv-pool
         secrets:
           enabled: true
           name: minio-creds

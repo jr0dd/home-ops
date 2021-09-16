@@ -10,4 +10,4 @@ spec:
   resources:
     requests:
       storage: 150Gi
-  storageClassName: zfspv-pool
+  storageClassName: openebs-zfspv-pool

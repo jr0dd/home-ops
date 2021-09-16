@@ -4,7 +4,7 @@ kind: StorageClass
 metadata:
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
-  name: zfspv-pool
+  name: openebs-zfspv-pool
 parameters:
   recordsize: "4k"
   compression: "off"
@@ -20,7 +20,7 @@ volumeBindingMode: Immediate
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: zfspv-ssd
+  name: openebs-zfspv-ssd
 parameters:
   recordsize: "4k"
   compression: "off"
@@ -36,7 +36,7 @@ volumeBindingMode: Immediate
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: zfspv-block
+  name: openebs-zfspv-block
 parameters:
   poolname: deadpool/containous/datastore
 provisioner: zfs.csi.openebs.io

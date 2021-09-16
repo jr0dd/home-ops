@@ -14,4 +14,4 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /mnt/deadpool/media
-  storageClassName: zfspv-pool
+  storageClassName: openebs-zfspv-pool
