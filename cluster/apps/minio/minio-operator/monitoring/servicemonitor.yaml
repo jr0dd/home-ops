@@ -19,8 +19,12 @@ spec:
       scrapeTimeout: 10s
       path: /minio/v2/metrics/cluster
       scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
     - port: https-minio
       interval: 30s
       scrapeTimeout: 10s
       path: /minio/v2/metrics/node
       scheme: https
+      tlsConfig:
+        insecureSkipVerify: true
