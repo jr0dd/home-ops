@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    release:
+      version: 1.9.3
     zfsNode:
       kubeletDir: "/var/lib/kubelet/"
     zfsPlugin:
@@ -24,6 +26,6 @@ spec:
         registry: quay.io/
         repository: openebs/zfs-driver
         pullPolicy: IfNotPresent
-        tag: 1.9.1
+        tag: 1.9.3
     crd:
       enableInstall: false
