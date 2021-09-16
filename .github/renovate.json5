@@ -48,7 +48,7 @@
       "fileMatch": [
         "cluster/crds/kube-prometheus-stack/.+\\.yaml$",
         "cluster/crds/velero/.+\\.yaml$",
-        "cluster/crds/openebs-zfslocalpv/.+\\.yaml$"
+        "cluster/crds/openebs-zfs-localpv/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"

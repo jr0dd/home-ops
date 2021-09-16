@@ -14,6 +14,7 @@ resources:
   - external-dns-charts.yaml
   - metallb-charts.yaml
   - minio-operator-charts.yaml
+  - openebs-zfs-localpv-charts.yaml
   - openebs-monitoring-charts.yaml
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
