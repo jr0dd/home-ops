@@ -7,7 +7,7 @@ metadata:
   name: openebs-zfspv-pool
 parameters:
   recordsize: "4k"
-  compression: "off"
+  compression: "lz4"
   dedup: "off"
   fstype: "zfs"
   poolname: deadpool/containous/datastore
@@ -23,7 +23,7 @@ metadata:
   name: openebs-zfspv-ssd
 parameters:
   recordsize: "4k"
-  compression: "off"
+  compression: "lz4"
   dedup: "off"
   fstype: "zfs"
   poolname: k8s/containous/datastore
