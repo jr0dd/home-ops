@@ -4,7 +4,7 @@ kind: StorageClass
 metadata:
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
-  name: openebs-zfspv
+  name: zfspv-pool
 parameters:
   recordsize: "4k"
   compression: "off"
@@ -16,16 +16,11 @@ provisioner: zfs.csi.openebs.io
 reclaimPolicy: Retain
 allowVolumeExpansion: true
 volumeBindingMode: Immediate
-allowedTopologies:
-  - matchLabelExpressions:
-      - key: kubernetes.io/nodename
-        values:
-          - ix-truenas
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: openebs-zfspv-ssd
+  name: zfspv-ssd
 parameters:
   recordsize: "4k"
   compression: "off"
@@ -37,24 +32,14 @@ provisioner: zfs.csi.openebs.io
 reclaimPolicy: Retain
 allowVolumeExpansion: true
 volumeBindingMode: Immediate
-allowedTopologies:
-  - matchLabelExpressions:
-      - key: kubernetes.io/nodename
-        values:
-          - ix-truenas
 ---
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
-  name: openebs-zfspv-block
+  name: zfspv-block
 parameters:
   poolname: deadpool/containous/datastore
 provisioner: zfs.csi.openebs.io
 reclaimPolicy: Delete
 allowVolumeExpansion: true
 volumeBindingMode: Immediate
-allowedTopologies:
-  - matchLabelExpressions:
-      - key: kubernetes.io/nodename
-        values:
-          - ix-truenas

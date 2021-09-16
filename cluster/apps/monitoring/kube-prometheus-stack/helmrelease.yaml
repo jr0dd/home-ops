@@ -78,7 +78,7 @@ spec:
             spec:
               accessModes:
                 - ReadWriteOnce
-              storageClassName: openebs-zfspv-ssd
+              storageClassName: zfspv-ssd
               resources:
                 requests:
                   storage: 1Gi
@@ -124,7 +124,7 @@ spec:
             spec:
               accessModes:
                 - ReadWriteOnce
-              storageClassName: openebs-zfspv-ssd
+              storageClassName: zfspv-ssd
               resources:
                 requests:
                   storage: 10Gi

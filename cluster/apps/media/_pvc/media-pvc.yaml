@@ -7,10 +7,10 @@ metadata:
   labels:
     velero.io/exclude-from-backup: "true"
 spec:
-  storageClassName: openebs-zfspv
   volumeName: media
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 100Gi
+  storageClassName: zfspv-pool
