@@ -4,12 +4,12 @@ kind: ServiceMonitor
 metadata:
   name: minio
   labels:
-    app.kubernetes.io/name: minio
+    v1.min.io/tenant: tenant0
 spec:
   jobLabel: minio
   selector:
     matchLabels:
-      app.kubernetes.io/name: minio
+      v1.min.io/tenant: tenant0
   namespaceSelector:
     matchNames:
       - minio
