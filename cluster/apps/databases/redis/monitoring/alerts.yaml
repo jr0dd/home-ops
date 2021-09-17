@@ -78,15 +78,15 @@ spec:
           for: 2m
           labels:
             severity: critical
-        - alert: RedisMissingBackup
-          annotations:
-            description: Redis has not been backuped for 24 hours.
-            summary: Redis missing backup.
-          expr: |
-            time() - redis_rdb_last_save_timestamp_seconds > 60 * 60 * 24
-          for: 0m
-          labels:
-            severity: critical
+        # - alert: RedisMissingBackup
+        #   annotations:
+        #     description: Redis has not been backuped for 24 hours.
+        #     summary: Redis missing backup.
+        #   expr: |
+        #     time() - redis_rdb_last_save_timestamp_seconds > 60 * 60 * 24
+        #   for: 0m
+        #   labels:
+        #     severity: critical
         - alert: RedisOutOfSystemMemory
           annotations:
             description: Redis is running out of system memory (> 90%).
