@@ -39,6 +39,7 @@ spec:
           bucket: velero
           prefix: zfs
           namespace: openebs
+          incrBackupCount: 3
           provider: aws
           region: minio
           s3ForcePathStyle: true
@@ -64,7 +65,7 @@ spec:
       daily-backup:
         schedule: "0 6 * * *"
         template:
-          ttl: "240h"
+          ttl: "120h"
     metrics:
       enabled: true
       serviceMonitor:
