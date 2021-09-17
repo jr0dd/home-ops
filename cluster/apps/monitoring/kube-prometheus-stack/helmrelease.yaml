@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
-      version: 18.0.9
+      version: 18.0.10
       sourceRef:
         kind: HelmRepository
         name: prometheus-community-charts
@@ -103,12 +103,8 @@ spec:
               - "prometheus.${SECRET_DOMAIN}"
       thanosService:
         enabled: true
-        portName: http
-        port: 10902
-        targetPort: "http"
-        labels:
-          app.kubernetes.io/component: sidecar
-          app.kubernetes.io/name: thanos
+      thanosServiceMonitor:
+        enabled: true
       prometheusSpec:
         replicas: 1
         replicaExternalLabelName: "replica"
@@ -140,16 +136,6 @@ spec:
         #     static_configs:
         #       - targets:
         #           - ${GATEWAY_IP}:9153
-      additionalServiceMonitors:
-        - name: thanos-sidecar
-          additionalLabels:
-            app.kubernetes.io/component: sidecar
-            app.kubernetes.io/name: thanos
-          endpoints:
-            - port: http
-          selector:
-            matchLabels:
-              app: prometheus-thanos-discovery
     prometheusOperator:
       enabled: true
       configReloaderCpu: 0
