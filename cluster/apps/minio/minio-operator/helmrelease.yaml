@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://operator.min.io/
       chart: minio-operator
-      version: 4.2.8
+      version: 4.2.9
       sourceRef:
         kind: HelmRepository
         name: minio-operator-charts
@@ -20,7 +20,7 @@ spec:
     operator:
       image:
         repository: quay.io/minio/operator
-        tag: v4.2.8
+        tag: v4.2.9
     console:
       image:
         repository: quay.io/minio/console
