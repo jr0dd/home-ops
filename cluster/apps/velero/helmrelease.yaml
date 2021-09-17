@@ -33,12 +33,11 @@ spec:
           s3Url: https://minio.minio:443
           insecureSkipTLSVerify: true
       volumeSnapshotLocation:
-        name: zfspv-incr
+        name: zfspv
         provider: openebs.io/zfspv-blockstore
         config:
           bucket: velero
           prefix: zfs
-          incrBackupCount: 6
           namespace: openebs
           provider: aws
           region: minio
