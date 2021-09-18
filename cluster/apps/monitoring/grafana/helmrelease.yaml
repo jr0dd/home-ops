@@ -199,3 +199,6 @@ spec:
         traefik:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/traefik.json
           datasource: Prometheus
+        zfs-localpv:
+          url: https://raw.githubusercontent.com/openebs/monitoring/openebs-monitoring-0.4.7/deploy/charts/dashboards/zfsLocalPV/zfslocalpv.json
+          datasource: Prometheus
