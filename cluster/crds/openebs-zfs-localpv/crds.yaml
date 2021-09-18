@@ -9,7 +9,7 @@ spec:
   url: https://github.com/openebs/zfs-localpv.git
   ref:
     # renovate: registryUrl=https://openebs.github.io/zfs-localpv
-    tag: zfs-localpv-1.9.7
+    tag: zfs-localpv-1.9.8
   ignore: |
     # exclude all
     /*
