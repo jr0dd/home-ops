@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://openebs.github.io/zfs-localpv
       chart: zfs-localpv
-      version: 1.9.7
+      version: 1.9.8
       sourceRef:
         kind: HelmRepository
         name: openebs-zfs-localpv-charts
