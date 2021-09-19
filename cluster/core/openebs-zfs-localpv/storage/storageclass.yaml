@@ -6,12 +6,12 @@ metadata:
     storageclass.kubernetes.io/is-default-class: "true"
   name: openebs-zfspv-pool
 parameters:
-  recordsize: "4k"
-  compression: "lz4"
-  dedup: "off"
-  fstype: "zfs"
+  recordsize: 4k
+  compression: lz4
+  dedup: off
+  fstype: zfs
   poolname: deadpool/containous/datastore
-  shared: "yes"
+  shared: yes
 provisioner: zfs.csi.openebs.io
 reclaimPolicy: Retain
 allowVolumeExpansion: true
@@ -22,12 +22,27 @@ kind: StorageClass
 metadata:
   name: openebs-zfspv-ssd
 parameters:
-  recordsize: "4k"
-  compression: "lz4"
-  dedup: "off"
-  fstype: "zfs"
+  recordsize: 4k
+  compression: lz4
+  dedup: off
+  fstype: zfs
   poolname: k8s/containous/datastore
-  shared: "yes"
+  shared: yes
+provisioner: zfs.csi.openebs.io
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-zfspv-zvol
+parameters:
+  volblocksize: 4k
+  compression: lz4
+  dedup: off
+  fstype: ext4
+  poolname: deadpool/containous/datastore
 provisioner: zfs.csi.openebs.io
 reclaimPolicy: Retain
 allowVolumeExpansion: true
