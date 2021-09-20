@@ -169,6 +169,7 @@ spec:
       extraArgs:
         - --collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker/.+)($|/)
         - --collector.filesystem.ignored-fs-types=^(tmpfs|autofs|binfmt_misc|cgroup|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|mqueue|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|sysfs|tracefs)$
+        - --collector.diskstats.ignored-devices=^(ram|loop|fd|(h|s|v|xv)d[a-z]+|nvme\\d+n\\d+p)\\d+$
     kubeStateMetrics:
       enabled: true
     kube-state-metrics:
