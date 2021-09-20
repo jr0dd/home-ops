@@ -166,6 +166,8 @@ spec:
             targetLabel: kubernetes_node
     prometheus-node-exporter:
       fullnameOverride: node-exporter
+      extraArgs:
+        - --collector.zfs
     kubeStateMetrics:
       enabled: true
     kube-state-metrics:
