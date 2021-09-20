@@ -20,7 +20,7 @@ spec:
     image:
       repository: quay.io/minio/minio
       tag: RELEASE.2021-09-18T18-09-59Z
-    additionalLabels:
+    podLabels:
       velero.io/exclude-from-backup: "true"
     rootUser: "${MINIO_ACCESS_KEY}"
     rootPassword: "${MINIO_SECRET_KEY}"
@@ -31,6 +31,10 @@ spec:
     persistence:
       enabled: true
       existingClaim: minio-config-v1
+    users:
+      - accessKey: "${MINIO_BUCKET_ACCESS_KEY}"
+        secretKey: "${MINIO_BUCKET_SECRET_KEY}"
+        policy: readwrite
     consoleIngress:
       enabled: true
       ingressClass: traefik

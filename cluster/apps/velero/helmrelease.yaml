@@ -30,7 +30,7 @@ spec:
         config:
           region: minio
           s3ForcePathStyle: true
-          s3Url: https://minio.minio:443
+          s3Url: http://minio.minio:9000
           insecureSkipTLSVerify: true
       volumeSnapshotLocation:
         name: zfspv
@@ -43,12 +43,12 @@ spec:
           provider: aws
           region: minio
           s3ForcePathStyle: true
-          s3Url: https://minio.minio:443
+          s3Url: http://minio.minio:9000
           insecureSkipTLSVerify: true
       resticTimeout: 6h
     initContainers:
       - name: velero-plugin-for-aws
-        image: velero/velero-plugin-for-aws:v1.2.1
+        image: velero/velero-plugin-for-aws:v1.3.0
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /target

@@ -23,9 +23,9 @@ spec:
       storage_config:
         aws:
           bucketnames: loki
-          endpoint: minio.minio:443
-          access_key_id: "${MINIO_TENANT_ACCESS_KEY}"
-          secret_access_key: "${MINIO_TENANT_SECRET_KEY}"
+          endpoint: minio.minio:9000
+          access_key_id: "${MINIO_BUCKET_ACCESS_KEY}"
+          secret_access_key: "${MINIO_BUCKET_SECRET_KEY}"
           insecure: false
           s3forcepathstyle: true
           http_config:
