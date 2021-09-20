@@ -13,6 +13,7 @@ resources:
   - descheduler-charts.yaml
   - external-dns-charts.yaml
   - metallb-charts.yaml
+  - minio-charts.yaml
   - minio-operator-charts.yaml
   - openebs-zfs-localpv-charts.yaml
   - openebs-monitoring-charts.yaml
