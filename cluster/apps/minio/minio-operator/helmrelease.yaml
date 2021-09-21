@@ -69,3 +69,7 @@ spec:
             value: "http://thanos-query.monitoring:9090"
           - name: CONSOLE_PROMETHEUS_URL
             value: "http://thanos-query.monitoring:9090"
+          - name: CONSOLE_ACCESS_KEY
+            value: "${MINIO_STORAGE_ACCESS_KEY}"
+          - name: CONSOLE_SECRET_KEY
+            value: "${MINIO_STORAGE_SECRET_KEY}"

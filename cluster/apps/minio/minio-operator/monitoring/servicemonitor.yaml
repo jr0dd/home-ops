@@ -4,12 +4,12 @@ kind: ServiceMonitor
 metadata:
   name: minio
   labels:
-    v1.min.io/tenant: tenant0
+    v1.min.io/tenant: storage
 spec:
   jobLabel: minio
   selector:
     matchLabels:
-      v1.min.io/tenant: tenant0
+      v1.min.io/tenant: storage
   namespaceSelector:
     matchNames:
       - minio
