@@ -11,5 +11,7 @@ spec:
     name: selfsigned-issuer
   commonName: "minio.${SECRET_DOMAIN}"
   dnsNames:
+    - minio
+    - minio.minio.svc.cluster.local
     - storage-hl-svc
-    - storage-hl-svc.default.svc.cluster.local
+    - storage-hl-svc.minio.svc.cluster.local
