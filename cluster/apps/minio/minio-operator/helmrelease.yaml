@@ -69,8 +69,3 @@ spec:
             value: "http://thanos-query.monitoring:9090"
           - name: CONSOLE_PROMETHEUS_URL
             value: "http://thanos-query.monitoring:9090"
-        serviceMetadata:
-          minioServiceAnnotations:
-            traefik.ingress.kubernetes.io/service.serversscheme: https
-          consoleServiceAnnotations:
-            traefik.ingress.kubernetes.io/service.serversscheme: https
