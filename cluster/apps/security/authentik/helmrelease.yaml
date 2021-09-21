@@ -63,7 +63,6 @@ spec:
           secret_key: "${MINIO_BUCKET_SECRET_KEY}"
           bucket: authentik
           host: http://minio.minio:9000
-          insecure_skip_verify: true
       redis:
         host: redis-master.databases
         password: "${REDIS_PASSWORD}"
