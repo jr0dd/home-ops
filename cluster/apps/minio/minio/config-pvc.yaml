@@ -4,6 +4,8 @@ apiVersion: v1
 metadata:
   name: minio-config-v1
   namespace: minio
+  labels:
+    velero.io/exclude-from-backup: "true"
 spec:
   accessModes:
     - ReadWriteOnce
