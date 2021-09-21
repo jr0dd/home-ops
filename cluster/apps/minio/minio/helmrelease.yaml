@@ -1,0 +1,66 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.min.io/
+      chart: minio
+      version: 3.1.4
+      sourceRef:
+        kind: HelmRepository
+        name: minio-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: quay.io/minio/minio
+      tag: RELEASE.2021-09-18T18-09-59Z
+    podLabels:
+      velero.io/exclude-from-backup: "true"
+    rootUser: "${MINIO_ACCESS_KEY}"
+    rootPassword: "${MINIO_SECRET_KEY}"
+    mode: gateway
+    gateway:
+      type: nas
+      replicas: 1
+    persistence:
+      enabled: true
+      existingClaim: minio-config-v1
+    users:
+      - accessKey: "${MINIO_STORAGE_ACCESS_KEY}"
+        secretKey: "${MINIO_STORAGE_SECRET_KEY}"
+        policy: readwrite
+    consoleIngress:
+      enabled: true
+      ingressClass: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      path: /
+      hosts:
+        - "s3.${SECRET_DOMAIN}"
+      tls:
+        - secretName: minio-tls
+          hosts:
+            - "s3.${SECRET_DOMAIN}"
+    resources:
+      requests:
+        memory: 1Gi
+    metrics:
+      serviceMonitor:
+        enabled: true
+    environment:
+      MINIO_BROWSER_REDIRECT_URL: "https://s3.${SECRET_DOMAIN}"
+      CONSOLE_PROMETHEUS_JOB_ID: "minio"
+      CONSOLE_PROMETHEUS_URL: "http://thanos-query.monitoring:9090"
+      MINIO_LOG_QUERY_URL: "http://postgresql.databases"
+      MINIO_IDENTITY_OPENID_CONFIG_URL: "https://id.${SECRET_DOMAIN}/application/o/minio/.well-known/openid-configuration"
+      MINIO_IDENTITY_OPENID_CLIENT_ID: "${MINIO_OAUTH_CLIENT_ID}"
+      MINIO_IDENTITY_OPENID_CLIENT_SECRET: "${MINIO_OAUTH_CLIENT_SECRET}"
+      MINIO_IDENTITY_OPENID_SCOPES: "openid,profile,email,minio"
+      MINIO_IDENTITY_OPENID_REDIRECT_URI: "https://s3.${SECRET_DOMAIN}/oauth_callback"

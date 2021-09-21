@@ -62,8 +62,7 @@ spec:
           access_key: "${MINIO_STORAGE_ACCESS_KEY}"
           secret_key: "${MINIO_STORAGE_SECRET_KEY}"
           bucket: authentik
-          host: https://minio.minio:443
-          insecure_skip_verify: true
+          host: http://minio.minio:9000
       redis:
         host: redis-master.databases
         password: "${REDIS_PASSWORD}"
