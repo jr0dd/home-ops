@@ -44,9 +44,9 @@ spec:
           tag: RELEASE.2021-09-18T18-09-59Z
         namespace: minio
         pools:
-          - servers: 2
-            volumesPerServer: 2
-            size: 150Gi
+          - servers: 1
+            volumesPerServer: 4
+            size: 100Gi
             storageClassName: openebs-zfspv-pool
         secrets:
           enabled: true
