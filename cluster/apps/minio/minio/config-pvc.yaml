@@ -9,5 +9,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 400Gi
+      storage: 300Gi
   storageClassName: openebs-zfspv-pool
