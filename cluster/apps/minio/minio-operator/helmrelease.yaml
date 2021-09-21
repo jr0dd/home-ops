@@ -44,8 +44,8 @@ spec:
           tag: RELEASE.2021-09-18T18-09-59Z
         namespace: minio
         pools:
-          - servers: 1
-            volumesPerServer: 4
+          - servers: 4
+            volumesPerServer: 1
             size: 150Gi
             storageClassName: openebs-zfspv-pool
         secrets:
@@ -57,7 +57,7 @@ spec:
           enabled: true
           port: 9000
         certificate:
-          requestAutoCert: false
+          requestAutoCert: true
         env:
           - name: MINIO_BROWSER_REDIRECT_URL
             value: "https://s3.${SECRET_DOMAIN}"
