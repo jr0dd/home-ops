@@ -23,13 +23,10 @@ spec:
       storage_config:
         aws:
           bucketnames: loki
-          endpoint: minio.minio:9000
+          endpoint: http://minio.minio:9000
           access_key_id: "${MINIO_BUCKET_ACCESS_KEY}"
           secret_access_key: "${MINIO_BUCKET_SECRET_KEY}"
-          insecure: false
           s3forcepathstyle: true
-          http_config:
-            insecure_skip_verify: true
         boltdb_shipper:
           active_index_directory: /data/loki/index
           cache_location: /data/loki/index_cache
