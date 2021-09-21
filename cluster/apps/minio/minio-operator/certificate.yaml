@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: storage-tls
+  namespace: minio
+spec:
+  secretName: storage-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: selfsigned-issuer
+  commonName: "minio.${SECRET_DOMAIN}"
+  dnsNames:
+    - storage-hl-svc
+    - storage-hl-svc.default.svc.cluster.local
