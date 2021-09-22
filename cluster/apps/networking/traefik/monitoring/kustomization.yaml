@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - alerts.yaml
   - servicemonitor.yaml
-namespace: networking

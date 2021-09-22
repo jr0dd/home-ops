@@ -6,4 +6,3 @@ resources:
   - query
   - sidecar
   - store-gateway
-namespace: monitoring

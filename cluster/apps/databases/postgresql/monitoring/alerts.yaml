@@ -3,6 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: postgres-exporter
+  namespace: databases
 spec:
   groups:
     - name: postgres-exporter

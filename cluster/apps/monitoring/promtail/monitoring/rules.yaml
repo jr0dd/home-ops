@@ -3,6 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: promtail.rules
+  namespace: monitoring
 spec:
   groups:
     - name: promtail.rules

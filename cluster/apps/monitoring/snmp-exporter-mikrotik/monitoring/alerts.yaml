@@ -3,6 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: snmp-exporter
+  namespace: monitoring
 spec:
   groups:
     - name: snmp-exporter

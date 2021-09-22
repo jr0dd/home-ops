@@ -3,6 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: thanos-sidecar
+  namespace: monitoring
 spec:
   groups:
     - name: thanos-sidecar

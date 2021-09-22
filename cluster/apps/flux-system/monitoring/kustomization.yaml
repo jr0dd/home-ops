@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - alerts.yaml
   - podmonitor.yaml
-namespace: flux-system

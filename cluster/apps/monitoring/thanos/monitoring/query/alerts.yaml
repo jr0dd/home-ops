@@ -3,6 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: thanos-query
+  namespace: monitoring
 spec:
   groups:
     - name: thanos-query
