@@ -27,8 +27,9 @@ spec:
       backupStorageLocation:
         name: default
         bucket: velero
+        default: true
         config:
-          region: minio
+          region: us-east-1
           s3ForcePathStyle: true
           s3Url: https://minio.minio:443
           insecureSkipTLSVerify: true
@@ -36,16 +37,9 @@ spec:
         name: zfspv
         provider: openebs.io/zfspv-blockstore
         config:
-          bucket: velero
-          prefix: zfs
           namespace: openebs
-          incrBackupCount: 5
-          provider: aws
-          region: minio
-          s3ForcePathStyle: true
-          s3Url: https://minio.minio:443
-          insecureSkipTLSVerify: true
-      resticTimeout: 6h
+          local: true
+      resticTimeout: 4h
     initContainers:
       - name: velero-plugin-for-aws
         image: velero/velero-plugin-for-aws:v1.2.1
@@ -65,7 +59,7 @@ spec:
       daily-backup:
         schedule: "0 5 * * *"
         template:
-          ttl: "120h"
+          ttl: "168h"
     metrics:
       enabled: true
       serviceMonitor:
