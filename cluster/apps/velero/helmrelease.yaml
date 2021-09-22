@@ -48,7 +48,7 @@ spec:
           - mountPath: /target
             name: plugins
       - name: velero-plugin-for-zfs
-        image: openebs/velero-plugin:3.0.0
+        image: openebs/velero-plugin:v2.1.2
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /target
