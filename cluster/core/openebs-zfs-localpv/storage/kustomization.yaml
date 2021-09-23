@@ -2,5 +2,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - media.yaml
-  - storageclass.yaml
+  - media-pv.yaml
+  - storage-class.yaml
+  - volume-snapshot-class.yaml
