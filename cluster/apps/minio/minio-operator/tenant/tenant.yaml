@@ -41,8 +41,7 @@ spec:
           resources:
             requests:
               storage: 160Gi
-          storageClassName: openebs-zfspv-pool
-        status: {}
+          storageClassName: openebs-zfspv-minio
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000

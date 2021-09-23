@@ -51,6 +51,22 @@ volumeBindingMode: Immediate
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
+  name: openebs-zfspv-minio
+parameters:
+  recordsize: "4k"
+  compression: "lz4"
+  dedup: "off"
+  fstype: "zfs"
+  poolname: deadpool/containous/datastore
+  shared: "yes"
+provisioner: zfs.csi.openebs.io
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
   name: openebs-zfspv-block
 parameters:
   poolname: deadpool/containous/datastore
