@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - _pvc
   - lidarr
-  - mkvtoolnix
   - plex
   - prowlarr
   - qbittorrent
