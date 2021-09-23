@@ -33,18 +33,18 @@ spec:
           s3ForcePathStyle: true
           s3Url: https://minio.minio:443
           insecureSkipTLSVerify: true
-      volumeSnapshotLocation:
-        name: zfspv
-        provider: openebs.io/zfspv-blockstore
-        config:
-          bucket: velero
-          prefix: zfs
-          namespace: openebs
-          provider: aws
-          region: us-east-1
-          s3ForcePathStyle: true
-          s3Url: https://minio.minio:443
-          insecureSkipTLSVerify: true
+      # volumeSnapshotLocation:
+      #   name: zfspv-remote
+      #   provider: openebs.io/zfspv-blockstore
+      #   config:
+      #     bucket: velero
+      #     prefix: zfs
+      #     namespace: openebs
+      #     provider: aws
+      #     region: us-east-1
+      #     s3ForcePathStyle: true
+      #     s3Url: https://minio.minio:443
+      #     insecureSkipTLSVerify: true
       resticTimeout: 4h
     initContainers:
       - name: velero-plugin-for-aws
@@ -70,7 +70,7 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-    snapshotsEnabled: false
+    snapshotsEnabled: true
     upgradeCRDs: false
     cleanUpCRDs: false
     kubectl:
