@@ -23,6 +23,7 @@ spec:
     name: minio-creds
   podManagementPolicy: Parallel
   requestAutoCert: true
+  serviceAccountName: minio-operator
   prometheusOperator:
     labels:
       app: minio
@@ -30,8 +31,6 @@ spec:
     - servers: 4
       volumesPerServer: 1
       volumeClaimTemplate:
-        apiVersion: v1
-        kind: persistentvolumeclaims
         metadata:
           name: minio
           labels:
@@ -43,3 +42,9 @@ spec:
             requests:
               storage: 160Gi
           storageClassName: openebs-zfspv-pool
+        status: {}
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        fsGroup: 1000
