@@ -37,8 +37,14 @@ spec:
         name: zfspv
         provider: openebs.io/zfspv-blockstore
         config:
+          bucket: velero
+          prefix: zfs
           namespace: openebs
-          local: true
+          provider: aws
+          region: us-east-1
+          s3ForcePathStyle: true
+          s3Url: https://minio.minio:443
+          insecureSkipTLSVerify: true
       resticTimeout: 4h
     initContainers:
       - name: velero-plugin-for-aws
@@ -64,7 +70,7 @@ spec:
       enabled: true
       serviceMonitor:
         enabled: true
-    snapshotsEnabled: true
+    snapshotsEnabled: false
     upgradeCRDs: false
     cleanUpCRDs: false
     kubectl:
