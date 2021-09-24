@@ -23,11 +23,7 @@ spec:
     name: minio-creds
   podManagementPolicy: Parallel
   requestAutoCert: true
-  serviceAccountName: minio-operator
   mountPath: /export
-  prometheusOperator:
-    labels:
-      app: minio
   pools:
     - servers: 4
       volumesPerServer: 1
@@ -41,5 +37,5 @@ spec:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 160Gi
-          storageClassName: openebs-zfspv-minio
+              storage: 150Gi
+          storageClassName: openebs-zfspv-pool

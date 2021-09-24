@@ -10,7 +10,7 @@ parameters:
   poolname: deadpool/containous/datastore
   shared: "yes"
 provisioner: zfs.csi.openebs.io
-reclaimPolicy: Retain
+reclaimPolicy: Delete
 allowVolumeExpansion: true
 volumeBindingMode: Immediate
 ---
@@ -23,7 +23,7 @@ parameters:
   poolname: k8s/containous/datastore
   shared: "yes"
 provisioner: zfs.csi.openebs.io
-reclaimPolicy: Retain
+reclaimPolicy: Delete
 allowVolumeExpansion: true
 volumeBindingMode: Immediate
 ---
@@ -33,18 +33,6 @@ metadata:
   name: openebs-zfspv-zvol
 parameters:
   fstype: "ext4"
-  poolname: deadpool/containous/datastore
-provisioner: zfs.csi.openebs.io
-reclaimPolicy: Retain
-allowVolumeExpansion: true
-volumeBindingMode: Immediate
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: openebs-zfspv-minio
-parameters:
-  fstype: "zfs"
   poolname: deadpool/containous/datastore
 provisioner: zfs.csi.openebs.io
 reclaimPolicy: Delete

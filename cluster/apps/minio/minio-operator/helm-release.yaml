@@ -37,4 +37,34 @@ spec:
           - secretName: minio-tls
             hosts:
               - "minio.${SECRET_DOMAIN}"
-    tenants: {}
+    tenants:
+      - name: storage
+        image:
+          repository: quay.io/minio/minio
+          tag: RELEASE.2021-09-23T04-46-24Z
+          pullPolicy: IfNotPresent
+        namespace: minio
+        pools:
+          - servers: 1
+            volumesPerServer: 4
+            size: 150Gi
+            storageClassName: openebs-zfspv-pool
+        mountPath: /export
+        subPath: ""
+        secrets:
+          enabled: true
+          name: minio-creds
+          accessKey: "${MINIO_ACCESS_KEY}"
+          secretKey: "${MINIO_SECRET_KEY}"
+        metrics:
+          enabled: true
+          port: 9000
+        certificate:
+          requestAutoCert: true
+        env:
+          - name: MINIO_BROWSER_REDIRECT_URL
+            value: "https://minio.${SECRET_DOMAIN}"
+          - name: MINIO_PROMETHEUS_URL
+            value: "http://thanos-query.monitoring:9090"
+          - name: MINIO_PROMETHEUS_JOB_ID
+            value: "minio"
