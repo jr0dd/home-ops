@@ -31,10 +31,10 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        host: "s3.${SECRET_DOMAIN}"
+        host: "minio.${SECRET_DOMAIN}"
         path: /
         tls:
           - secretName: minio-tls
             hosts:
-              - "s3.${SECRET_DOMAIN}"
+              - "minio.${SECRET_DOMAIN}"
     tenants: {}

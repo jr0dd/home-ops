@@ -24,6 +24,8 @@ spec:
   podManagementPolicy: Parallel
   requestAutoCert: true
   serviceAccountName: minio-operator
+  mountPath: /export
+  subPath: ""
   prometheusOperator:
     labels:
       app: minio
@@ -41,7 +43,7 @@ spec:
           resources:
             requests:
               storage: 160Gi
-          storageClassName: openebs-zfspv-minio
+          storageClassName: openebs-zfspv-pool
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
