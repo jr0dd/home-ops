@@ -52,8 +52,13 @@ spec:
         mountPath: /export
         subPath: ""
         secrets:
-          enabled: false
+          enabled: true
+          name: minio1-secret
+          accessKey: minio
+          secretKey: minio123
         metrics:
           enabled: true
           port: 9000
+        certificate:
+          requestAutoCert: true
         env: {}
