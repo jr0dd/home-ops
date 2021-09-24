@@ -37,4 +37,23 @@ spec:
           - secretName: minio-tls
             hosts:
               - "minio.${SECRET_DOMAIN}"
-    tenants: {}
+    tenants:
+      - name: storage
+        image:
+          repository: quay.io/minio/minio
+          tag: RELEASE.2021-09-23T04-46-24Z
+          pullPolicy: IfNotPresent
+        namespace: minio
+        pools:
+          - servers: 4
+            volumesPerServer: 1
+            size: 100Gi
+            storageClassName: openebs-zfspv-minio
+        mountPath: /export
+        subPath: ""
+        secrets:
+          enabled: false
+        metrics:
+          enabled: true
+          port: 9000
+        env: {}
