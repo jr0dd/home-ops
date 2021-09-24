@@ -25,7 +25,6 @@ spec:
   requestAutoCert: true
   serviceAccountName: minio-operator
   mountPath: /export
-  subPath: ""
   prometheusOperator:
     labels:
       app: minio
@@ -34,7 +33,7 @@ spec:
       volumesPerServer: 1
       volumeClaimTemplate:
         metadata:
-          name: minio
+          name: data
           labels:
             velero.io/exclude-from-backup: "true"
         spec:
@@ -44,8 +43,3 @@ spec:
             requests:
               storage: 160Gi
           storageClassName: openebs-zfspv-minio
-      securityContext:
-        runAsUser: 1000
-        runAsGroup: 1000
-        runAsNonRoot: true
-        fsGroup: 1000
