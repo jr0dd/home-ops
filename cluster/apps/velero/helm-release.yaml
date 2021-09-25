@@ -34,23 +34,18 @@ spec:
           s3Url: http://minio.minio:9000
           publicUrl: https://s3.${SECRET_DOMAIN}
       volumeSnapshotLocation:
-        name: zfspv
+        name: zfspv-full
         provider: openebs.io/zfspv-blockstore
         config:
+          bucket: velero
+          prefix: zfs
           namespace: openebs
-          local: "true"
-      # volumeSnapshotLocation:
-      #   name: zfspv
-      #   provider: openebs.io/zfspv-blockstore
-      #   config:
-      #     bucket: velero
-      #     prefix: zfs
-      #     namespace: openebs
-      #     provider: aws
-      #     region: minio
-      #     s3ForcePathStyle: true
-      #     s3Url: http://minio.minio:9000
-      #     publicUrl: https://s3.${SECRET_DOMAIN}
+          provider: aws
+          region: minio
+          s3ForcePathStyle: true
+          s3Url: http://minio.minio:9000
+          publicUrl: https://s3.${SECRET_DOMAIN}
+          restApiTimeout: 90s
       resticTimeout: 4h
     initContainers:
       - name: velero-plugin-for-aws
@@ -72,10 +67,15 @@ spec:
         schedule: "0 5 * * *"
         template:
           ttl: "168h"
+          storageLocation: default
+          snapshotVolumes: true
+          volumeSnapshotLocations:
+            - zfspv-full
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
+    backupsEnabled: true
     snapshotsEnabled: true
     upgradeCRDs: false
     cleanUpCRDs: false
