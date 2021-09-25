@@ -37,14 +37,20 @@ spec:
         name: zfspv
         provider: openebs.io/zfspv-blockstore
         config:
-          bucket: velero
-          prefix: zfs
           namespace: openebs
-          provider: aws
-          region: minio
-          s3ForcePathStyle: true
-          s3Url: http://minio.minio:9000
-          publicUrl: https://s3.${SECRET_DOMAIN}
+          local: "true"
+      # volumeSnapshotLocation:
+      #   name: zfspv
+      #   provider: openebs.io/zfspv-blockstore
+      #   config:
+      #     bucket: velero
+      #     prefix: zfs
+      #     namespace: openebs
+      #     provider: aws
+      #     region: minio
+      #     s3ForcePathStyle: true
+      #     s3Url: http://minio.minio:9000
+      #     publicUrl: https://s3.${SECRET_DOMAIN}
       resticTimeout: 4h
     initContainers:
       - name: velero-plugin-for-aws
