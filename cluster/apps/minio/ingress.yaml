@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: minio-console
+  name: minio
   namespace: minio
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
@@ -12,8 +12,19 @@ spec:
     - secretName: minio-tls
       hosts:
         - "s3.${SECRET_DOMAIN}"
+        - "minio.${SECRET_DOMAIN}"
   rules:
     - host: "s3.${SECRET_DOMAIN}"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: minio
+                port:
+                  number: 9000
+    - host: "minio.${SECRET_DOMAIN}"
       http:
         paths:
           - path: /

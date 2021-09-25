@@ -4,14 +4,13 @@ kind: Kustomization
 resources:
   - authentik-charts.yaml
   - bitnami-charts.yaml
+  - external-dns-charts.yaml
   - grafana-charts.yaml
   - hajimari-charts.yaml
   - jetstack-charts.yaml
   - jr0dd-charts.yaml
   - k8s-at-home-charts.yaml
   - k8s-gateway-charts.yaml
-  - descheduler-charts.yaml
-  - external-dns-charts.yaml
   - metallb-charts.yaml
   - minio-charts.yaml
   - openebs-zfs-localpv-charts.yaml
