@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: minio
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://charts.min.io/
+      chart: minio
+      version: 3.1.4
+      sourceRef:
+        kind: HelmRepository
+        name: minio-charts
+        namespace: flux-system
+      interval: 5m
+  valuesFrom:
+    - kind: Secret
+      name: minio-config
+  values:
+    image:
+      repository: quay.io/minio/minio
+      tag: RELEASE.2021-09-24T00-24-24Z
+    mode: standalone
+    existingSecret: minio-config
+    drivesPerNode: 1
+    replicas: 1
+    pools: 1
+    persistence:
+      enabled: true
+      existingClaim: minio-config-v1
+    users: []
+    resources:
+      requests:
+        memory: 1Gi
+    metrics:
+      serviceMonitor:
+        enabled: true
+    podAnnotations:
+      secret.reloader.stakater.com/reload: "minio-config"

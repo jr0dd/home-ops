@@ -2,14 +2,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: minio-tenant-console
+  name: minio-console
   namespace: minio
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
 spec:
   tls:
-    - secretName: tenant-tls
+    - secretName: minio-tls
       hosts:
         - "s3.${SECRET_DOMAIN}"
   rules:
@@ -20,6 +20,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: storage-console
+                name: minio-console
                 port:
-                  number: 9443
+                  number: 9001
