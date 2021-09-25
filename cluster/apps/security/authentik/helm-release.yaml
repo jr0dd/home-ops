@@ -21,9 +21,8 @@ spec:
     worker:
       replicas: 1
     image:
-      repository: beryju.org/authentik/server
-      tag: gh-master
-      pullPolicy: Always
+      repository: ghcr.io/goauthentik/server
+      tag: 2021.9.2
     ingress:
       enabled: true
       ingressClassName: traefik
@@ -51,7 +50,7 @@ spec:
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       log_level: debug
       outposts:
-        docker_image_base: beryju.org/authentik/outpost-%(type)s:gh-%(version)s
+        docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
       error_reporting:
         enabled: true
       postgresql:
@@ -63,8 +62,7 @@ spec:
           access_key: "${MINIO_USER_ACCESS_KEY}"
           secret_key: "${MINIO_USER_SECRET_KEY}"
           bucket: authentik
-          host: https://minio.minio:443
-          insecure_skip_verify: true
+          host: http://minio.minio:9000
       redis:
         host: redis-master.databases
         password: "${REDIS_PASSWORD}"
