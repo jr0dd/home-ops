@@ -5,9 +5,15 @@ vars:
   PROJECT_DIR:
     sh: "git rev-parse --show-toplevel"
   CLUSTER_DIR: "{{.PROJECT_DIR}}/cluster"
+  ANSIBLE_DIR: "{{.PROJECT_DIR}}/provision/ansible"
+
+env:
+  KUBECONFIG: "{{.PROJECT_DIR}}/kubeconfig"
 
 includes:
+  ansible: .taskfiles/ansible.yml
   blocky: .taskfiles/blocky.yml
+  cluster: .taskfiles/cluster.yml
   flux: .taskfiles/flux.yml
   format: .taskfiles/format.yml
   lint: .taskfiles/lint.yml

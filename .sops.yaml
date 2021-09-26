@@ -1,7 +1,13 @@
 ---
 creation_rules:
+  - path_regex: provision/.*\.sops\.ya?ml
+    unencrypted_regex: "^(kind)$"
+    # macbook
+    pgp: >-
+      AFE6721008A3DA5B6A027947B8C7431C430C6D24
   - path_regex: cluster/.*\.ya?ml
     encrypted_regex: '^(data|stringData)$'
+    # flux, macbook
     pgp: >-
       90D70EF82A524A486F33D8EF787289B5A6C8ED92,
       AFE6721008A3DA5B6A027947B8C7431C430C6D24

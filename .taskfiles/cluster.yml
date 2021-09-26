@@ -1,0 +1,44 @@
+---
+version: "3"
+
+vars:
+  K3S_PRIMARY_MASTER_NODE_USERNAME: "ubuntu"
+  K3S_PRIMARY_MASTER_NODE_ADDR: "10.10.0.10"
+  K3S_LB_ADDR: "10.10.0.1"
+
+tasks:
+  kubeconfig:
+    desc: Remotely fetch kubeconfig from k3s
+    cmds:
+      - rsync --verbose --progress --partial --rsync-path="sudo rsync" {{.K3S_PRIMARY_MASTER_NODE_USERNAME}}@{{.K3S_PRIMARY_MASTER_NODE_ADDR}}:/etc/rancher/k3s/k3s.yaml ./kubeconfig
+      - sed -i '' 's/127.0.0.1/{{.K3S_LB_ADDR}}/g' ./kubeconfig
+      - chmod go-r kubeconfig
+    silent: true
+
+  pause:
+    desc: Pause all Helm Releases that rely on NFS storage
+    cmds:
+      - flux suspend hr -n media lidarr
+      - kubectl scale -n media deploy/lidarr --replicas 0
+      - flux suspend hr -n media plex
+      - kubectl scale -n media deploy/plex --replicas 0
+      - flux suspend hr -n media qbittorrent
+      - kubectl scale -n media deploy/qbittorrent --replicas 0
+      - flux suspend hr -n media radarr
+      - kubectl scale -n media deploy/radarr --replicas 0
+      - flux suspend hr -n media sonarr
+      - kubectl scale -n media deploy/sonarr --replicas 0
+
+  resume:
+    desc: Resume all Helm Releases that rely on NFS storage
+    cmds:
+      - flux resume hr -n media lidarr
+      - kubectl scale -n media deploy/lidarr --replicas 1
+      - flux resume hr -n media plex
+      - kubectl scale -n media deploy/plex --replicas 1
+      - flux resume hr -n media qbittorrent
+      - kubectl scale -n media deploy/qbittorrent --replicas 1
+      - flux resume hr -n media radarr
+      - kubectl scale -n media deploy/radarr --replicas 1
+      - flux resume hr -n media sonarr
+      - kubectl scale -n media deploy/sonarr --replicas 1
