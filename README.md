@@ -1,8 +1,20 @@
 <div align="center">
 
+<img src="https://camo.githubusercontent.com/5b298bf6b0596795602bd771c5bddbb963e83e0f/68747470733a2f2f692e696d6775722e636f6d2f7031527a586a512e706e67" align="center" width="144px" height="144px"/>
+
 ### My home Kubernetes cluster :sailboat:
 
-This repo is being archived as I am migrating from TrueNAS to Ubuntu. I wanted to keep this as is for TrueNAS SCALE users to have a reference for GitOps on TrueNAS.
+_... managed with Flux and Renovate_ :robot:
+
+</div>
+
+<br/>
+
+<div align="center">
+
+[![k3s](https://img.shields.io/badge/k3s-v1.21.4-brightgreen?style=for-the-badge&logo=kubernetes&logoColor=white)](https://k3s.io/)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge)](https://github.com/pre-commit/pre-commit)
+[![renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?style=for-the-badge&logo=renovatebot&logoColor=white)](https://github.com/renovatebot/renovate)
 
 </div>
 
