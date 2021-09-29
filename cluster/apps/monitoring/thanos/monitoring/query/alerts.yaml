@@ -73,7 +73,7 @@ spec:
             summary: Thanos Query is failing to send requests.
           expr: |
             (
-              sum by (job) (rate(grpc_client_handled_total{grpc_code!="OK", job=~".*thanos-query.*"}[5m]))
+              sum by (job) (rate(grpc_client_handled_total{grpc_code!~"OK|Unimplemented", job=~".*thanos-query.*"}[5m]))
             /
               sum by (job) (rate(grpc_client_started_total{job=~".*thanos-query.*"}[5m]))
             ) * 100 > 5
