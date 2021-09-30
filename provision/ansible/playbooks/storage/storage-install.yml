@@ -1,0 +1,90 @@
+- hosts:
+    - storage
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      pause:
+        seconds: 5
+    
+    - name: Installing extra packages
+      apt:
+        update-cache: true
+        state: present
+        pkg:
+          - dmraid
+          - git
+          - gnupg2
+          - ipmitool
+          - msmtp
+          - msmtp-mta
+          - nfs-common
+          - nfs-kernel-server
+          - rclone
+          - tmux
+          - tree
+          - uidmap
+          - zfs-zed
+          - zfsutils-linux
+          - zsh
+
+    - name: Add group for home users
+      ansible.builtin.group:
+        name: "{{ samba_group }}"
+        state: present
+        gid: "{{ samba_group_id }}"
+
+    - name: Add "{{ samba_user0 }}" user account
+      ansible.builtin.user:
+        name: "{{ samba_user0 }}"
+        state: present
+        uid: "{{ samba_user0_id }}"
+        group: "{{ samba_group }}"
+        create_home: no
+        password: "{{ samba_user0_passwd }}"
+
+    - name: Add "{{ samba_user1 }}" user account
+      ansible.builtin.user:
+        name: "{{ samba_user1 }}"
+        state: present
+        uid: "{{ samba_user1_id }}"
+        group: "{{ samba_group }}"
+        create_home: no
+        password: "{{ samba_user1_passwd }}"
+
+    - name: Add "{{ samba_user2 }}" user account
+      ansible.builtin.user:
+        name: "{{ samba_user2 }}"
+        state: present
+        uid: "{{ samba_user2_id }}"
+        group: "{{ samba_group }}"
+        create_home: no
+        password: "{{ samba_user2_passwd }}"
+
+  tasks:
+    - name: Setup samba sharing
+      include_role:
+        name: bertvv.samba
+        public: true
+
+    - name: Configure smartd
+      ansible.builtin.copy:
+        src: templates/smartd.conf.j2
+        dest: /etc/smartd.conf
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Start smartd service
+      ansible.builtin.systemd:
+        name: smartd
+        enabled: true
+        state: started
+
+    - name: Restart smartd service
+      ansible.builtin.service:
+        name: smartd.service
+        daemon_reload: true
+        enabled: true
+        state: restarted

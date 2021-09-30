@@ -1,0 +1,36 @@
+---
+samba_apple_extensions: true
+samba_wins_support: false
+samba_global_include: samba-global.conf
+
+samba_group: home_users
+samba_group_id: 1042
+samba_user0_id: 2000
+samba_user1_id: 2001
+samba_user2_id: 2002
+
+samba_users:
+  - name: "{{ samba_user0 }}"
+    password: "{{ samba_user0_passwd }}"
+  - name: "{{ samba_user1 }}"
+    password: "{{ samba_user1_passwd }}"
+  - name: "{{ samba_user2 }}"
+    password: "{{ samba_user2_passwd }}"
+
+samba_shares:
+  - name: media
+    comment: 'media'
+    group: "{{ samba_group }}"
+    write_list: "{{ samba_user0 }}"
+    path: /deadpool/media
+  - name: backups
+    comment: 'backups'
+    group: "{{ samba_group }}"
+    write_list: "@{{ samba_group }}"
+    path: /deadpool/backups
+  - name: timemachines
+    comment: 'time machine'
+    group: "{{ samba_group }}"
+    write_list: "@{{ samba_group }}"
+    path: /deadpool/timemachine/%U
+    include_file: samba-timemachine.conf

@@ -1,0 +1,30 @@
+---
+- name: Add group for home users
+  ansible.builtin.group:
+    name: home-users
+    state: present
+    gid: 1042
+
+- name: Add {{ user0 }} user account
+  ansible.builtin.user:
+    name: "{{ user0 }}"
+    uid: 2000
+    group: home-users
+    create_home: no
+    password: "{{ user0_passwd }}"
+
+- name: Add {{ user1 }} user account
+  ansible.builtin.user:
+    name: "{{ user1 }}"
+    uid: 2001
+    group: home-users
+    create_home: no
+    password: "{{ user1_passwd }}"
+
+- name: Add {{ user2 }} user account
+  ansible.builtin.user:
+    name: "{{ user2 }}"
+    uid: 2002
+    group: home-users
+    create_home: no
+    password: "{{ user2_passwd }}"

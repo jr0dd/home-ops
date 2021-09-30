@@ -21,67 +21,76 @@ tasks:
     desc: List all the hosts
     dir: provision/ansible
     cmds:
-      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml --list-hosts"
-    silent: true
-
-  ping:
-    desc: Ping all the hosts
-    dir: provision/ansible
-    cmds:
-      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml --one-line -m 'ping'"
-    silent: true
-
-  uptime:
-    desc: Uptime of all the hosts
-    dir: provision/ansible
-    cmds:
-      - ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml --one-line -a 'uptime'
+      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --list-hosts"
     silent: true
 
   clean-images:
     desc: Clean up stale container images
     dir: provision/ansible
     cmds:
-      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml --one-line -a 'k3s crictl rmi --prune' --become"
+      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'k3s crictl rmi --prune' --become"
     silent: true
 
   purge-manifests:
     desc: Delete all manifests under /var/lib/rancher/k3s/server/manifests
     dir: provision/ansible
     cmds:
-      - "ansible master -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml --one-line -a 'rm /var/lib/rancher/k3s/server/manifests/*' --become"
+      - "ansible master -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'rm /var/lib/rancher/k3s/server/manifests/*' --become"
 
-  reboot:
-    desc: Reboot all the k8s nodes
+  playbook:storage-install:
+    desc: Prepare storage node for k8s cluster
     dir: provision/ansible
     cmds:
-      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml -a '/usr/bin/systemctl reboot' --become"
-    silent: true
-
-  poweroff:
-    desc: Shutdown all the k8s nodes
-    dir: provision/ansible
-    cmds:
-      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml -a '/usr/bin/systemctl poweroff' --become"
+      - "ansible-playbook -vvv -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/storage/storage-install.yml"
     silent: true
 
   playbook:ubuntu-prepare:
     desc: Prepare all the k8s nodes for running k3s
     dir: provision/ansible
     cmds:
-      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/kubernetes/ubuntu-prepare.yml"
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/kubernetes/ubuntu-prepare.yml"
     silent: true
 
   playbook:ubuntu-upgrade:
     desc: Upgrade all the k8s nodes operating system
     dir: provision/ansible
     cmds:
-      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/kubernetes/ubuntu-upgrade.yml"
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/kubernetes/ubuntu-upgrade.yml"
     silent: true
 
-  playbook:cluster-install:
+  playbook:k3s-install:
     desc: Install Kubernetes on the nodes
     dir: provision/ansible
     cmds:
-      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/home/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/kubernetes/k3s-install.yml"
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/kubernetes/k3s-install.yml"
     silent: true
+
+  playbook:k3s-nuke:
+    desc: Install Kubernetes on the nodes
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/kubernetes/k3s-nuke.yml"
+
+  adhoc:ping:
+    desc: Ping all the hosts
+    dir: provision/ansible
+    cmds:
+      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -m 'ping'"
+
+  adhoc:uptime:
+    desc: Uptime of all the hosts
+    dir: provision/ansible
+    cmds:
+      - ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'uptime'
+
+  adhoc:reboot:
+    desc: Reboot all the k8s nodes
+    dir: provision/ansible
+    cmds:
+      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become"
+
+  adhoc:poweroff:
+    desc: Shutdown all the k8s nodes
+    dir: provision/ansible
+    cmds:
+      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl poweroff' --become"

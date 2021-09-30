@@ -1,0 +1,18 @@
+---
+apt_install_packages:
+  - dmraid
+  - git
+  - gnupg2
+  - ipmitool
+  - msmtp
+  - msmtp-mta
+  - nfs-common
+  - nfs-kernel-server
+  - rclone
+  - tmux
+  - tree
+  - uidmap
+  - zfs-zed
+  - zfsutils-linux
+  - zsh
+  - nano
