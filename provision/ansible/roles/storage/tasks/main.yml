@@ -1,0 +1,20 @@
+---
+- include: disks.yml
+  tags:
+    - disks
+
+- include: packages.yml
+  tags:
+    - packages
+
+- include: power.yml
+  tags:
+    - power
+
+- include: group.yml
+  tags:
+    - group
+
+- include: user.yml
+  tags:
+    - user

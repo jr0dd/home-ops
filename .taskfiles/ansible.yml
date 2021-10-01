@@ -41,7 +41,7 @@ tasks:
     desc: Prepare storage node for k8s cluster
     dir: provision/ansible
     cmds:
-      - "ansible-playbook -vvv -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/storage/storage-install.yml"
+      - "ansible-playbook -v -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/storage/storage-install.yml"
     silent: true
 
   playbook:ubuntu-prepare:

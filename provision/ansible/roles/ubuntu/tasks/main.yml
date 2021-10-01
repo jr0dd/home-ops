@@ -23,10 +23,6 @@
   tags:
     - disks
 
-- include: power.yml
-  tags:
-    - power
-
 - include: security.yml
   tags:
     - security

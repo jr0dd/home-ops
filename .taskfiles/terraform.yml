@@ -20,4 +20,3 @@ tasks:
     dir: provision/terraform/cloudflare
     cmds:
       - "terraform apply"
-      

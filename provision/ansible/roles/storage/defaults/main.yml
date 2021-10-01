@@ -1,18 +1,21 @@
 ---
 apt_install_packages:
+  - avahi-daemon
   - dmraid
   - git
   - gnupg2
   - ipmitool
+  - lm-sensors
   - msmtp
   - msmtp-mta
   - nfs-common
   - nfs-kernel-server
   - rclone
+  - samba
+  - samba-vfs-modules
   - tmux
   - tree
   - uidmap
   - zfs-zed
   - zfsutils-linux
   - zsh
-  - nano
