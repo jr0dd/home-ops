@@ -23,6 +23,10 @@
   tags:
     - disks
 
+- include: power.yml
+  tags:
+    - power
+
 - include: security.yml
   tags:
     - security
@@ -30,6 +34,10 @@
 - include: unattended-upgrades.yml
   tags:
     - unattended-upgrades
+
+- include: group.yml
+  tags:
+    - group
 
 - include: user.yml
   tags:

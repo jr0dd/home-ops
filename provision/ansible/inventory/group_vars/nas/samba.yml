@@ -1,7 +1,4 @@
 ---
-samba_wins_support: no
-samba_global_include: samba-global.conf
-
 samba_users:
   - name: "{{ user0 }}"
     password: "{{ user0_passwd }}"
@@ -9,24 +6,3 @@ samba_users:
     password: "{{ user1_passwd }}"
   - name: "{{ user2 }}"
     password: "{{ user2_passwd }}"
-
-samba_shares:
-  - name: media
-    comment: 'Media'
-    group: home_users
-    valid_users: j_r0dd
-    write_list: j_r0dd
-    browseable: yes
-    path: /deadpool/media
-  - name: backups
-    comment: 'Backups'
-    group: home_users
-    write_list: home_users
-    browseable: yes
-    path: /deadpool/backups
-  - name: timemachine
-    comment: 'Time Machine'
-    group: home_users
-    write_list: home_users
-    path: /deadpool/timemachine/%U
-    include_file: samba-timemachine.conf

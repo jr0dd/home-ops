@@ -13,7 +13,7 @@ bin
 .logs/
 .task/
 # Ansible
-bertvv.samba*
+mrlesmithjr.zfs*
 xanmanning.k3s*
 # Terraform
 .terraform

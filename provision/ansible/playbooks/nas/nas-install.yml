@@ -1,0 +1,130 @@
+- hosts:
+    - nas
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      pause:
+        seconds: 5
+
+    - name: Gather installed packages
+      ansible.builtin.package_facts:
+        manager: auto
+
+    - name: Upgrade all system packages
+      ansible.builtin.apt:
+        upgrade: full
+        update_cache: true
+        cache_valid_time: 3600
+        autoclean: true
+        autoremove: true
+      register: apt_upgrade
+      retries: 5
+      until: apt_upgrade is success
+
+    - name: Install common packages
+      ansible.builtin.apt:
+        name: "{{ apt_install_packages }}"
+        install_recommends: false
+        update_cache: true
+        cache_valid_time: 3600
+        autoclean: true
+        autoremove: true
+      register: apt_install_common
+      retries: 5
+      until: apt_install_common is success
+      when:
+        - apt_install_packages is defined
+        - apt_install_packages is iterable
+        - apt_install_packages | length > 0
+
+    - name: check if reboot required
+      stat:
+        path: /var/run/reboot-required
+      register: reboot_required_file
+
+    - name: Remove packages
+      block:
+        - name: Remove packages
+          ansible.builtin.apt:
+            name: "{{ apt_remove_packages }}"
+            state: absent
+            autoremove: true
+      when:
+        - apt_remove_packages is defined
+        - apt_remove_packages is iterable
+        - apt_remove_packages | length > 0
+
+    - name: Manage system groups
+      ansible.builtin.group:
+        name: "{{ group.name | default(group) }}"
+        gid: "{{ group.gid | default(omit) }}"
+        state: "{{ group.state | default('present') }}"
+      loop: "{{ managed_groups }}"
+      loop_control:
+        label: "{{ group.name | default(group) }}"
+        loop_var: group
+
+    - name: Manage system users
+      ansible.builtin.user:
+        name: "{{ user.name | default(user) }}"
+        append: "{{ user.append | default(omit) }}"
+        create_home: "{{ user.create_home | default('yes') }}"
+        group: "{{ user.group | default(omit) }}"
+        groups: "{{ user.groups | default(omit) }}"
+        password: "{{ user.password | password_hash('sha512', 'A512') }}"
+        shell: "{{ user.shell | default('/bin/bash') }}"
+        state: "{{ user.state | default('present') }}"
+        uid: "{{ user.uid | default(omit) }}"
+        update_password: "{{ user.update_password | default('on_create') }}"
+      loop: "{{ managed_users }}"
+      loop_control:
+        label: "{{ user.name | default(user) }}"
+        loop_var: user
+
+  tasks:
+    - name: Install ZFS Features
+      include_role:
+        name: mrlesmithjr.zfs
+        public: true
+
+    - name: Configure smartd
+      ansible.builtin.template:
+        src: smartd.conf.j2
+        dest: /etc/smartd.conf
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Restart smartd service
+      ansible.builtin.service:
+        name: smartd.service
+        daemon_reload: true
+        enabled: true
+        state: restarted
+
+    - name: Create Samba users if they don't exist yet
+      shell: >
+        (pdbedit --user={{ item.name }} 2>&1 > /dev/null) \
+        || (echo {{ item.password }}; echo {{ item.password }}) \
+        | smbpasswd -s -a {{ item.name }}
+      with_items: "{{ samba_users }}"
+      no_log: true
+      register: create_user_output
+      changed_when: "'Added user' in create_user_output.stdout"
+
+    - name: Configure samba
+      ansible.builtin.template:
+        src: smb.conf.j2
+        dest: /etc/samba/smb.conf
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Restart samba service
+      ansible.builtin.service:
+        name: smbd.service
+        daemon_reload: true
+        enabled: true
+        state: restarted

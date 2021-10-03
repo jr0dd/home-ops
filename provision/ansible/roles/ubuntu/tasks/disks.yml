@@ -1,18 +1,11 @@
 ---
-
-# DEVICESCAN : smartd scans for disks and monitors all it finds
-# -a : monitor all attributes
-# -o : on enable automatic offline data collection
-# -S : on enable automatic attribute autosave
-# -n : standby,q do not check if disk is in standby, and suppress log message to that effect so as not to cause a write to disk
-# -s ... : schedule short and long self-tests
-# -W ... : monitor temperature
-
 - name: Configure smartd
-  ansible.builtin.copy:
+  ansible.builtin.template:
+    src: smartd.conf.j2
     dest: /etc/smartd.conf
-    content: |
-      DEVICESCAN -a -o on -S on -n standby,q -s (S/../.././02|L/../../6/03) -W 4,35,40
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Start smartd service
   ansible.builtin.systemd:

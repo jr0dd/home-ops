@@ -39,7 +39,6 @@ spec:
         config:
           bucket: velero
           prefix: zfs
-          incrBackupCount: 4
           namespace: openebs
           provider: aws
           region: minio

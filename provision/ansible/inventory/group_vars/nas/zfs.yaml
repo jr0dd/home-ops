@@ -1,0 +1,10 @@
+---
+zfs_install_update: false
+zfs_enable_nfs: false
+zfs_manage_filesystem_permissions: true
+zfs_enable_samba: false
+zfs_enable_performance_tuning: true
+zfs_create_pools: true
+zfs_create_filesystems: true
+zfs_pools: []
+zfs_filesystems: []

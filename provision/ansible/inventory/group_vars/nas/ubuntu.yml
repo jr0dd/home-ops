@@ -1,5 +1,23 @@
 ---
-# Groups to create on server
+apt_install_packages:
+  - avahi-daemon
+  - dmraid
+  - git
+  - gnupg2
+  - ipmitool
+  - lm-sensors
+  - msmtp
+  - msmtp-mta
+  - rclone
+  - samba
+  - samba-vfs-modules
+  - tmux
+  - tree
+  - uidmap
+  - zfs-zed
+  - zfsutils-linux
+  - zsh
+  
 managed_groups:
   - name: home_users
     gid: 1042
