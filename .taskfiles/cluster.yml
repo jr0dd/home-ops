@@ -3,8 +3,8 @@ version: "3"
 
 vars:
   K3S_PRIMARY_MASTER_NODE_USERNAME: "ubuntu"
-  K3S_PRIMARY_MASTER_NODE_ADDR: "10.10.0.43"
-  K3S_LB_ADDR: "10.10.4.5"
+  K3S_PRIMARY_MASTER_NODE_ADDR: "10.10.0.10"
+  K3S_LB_ADDR: "10.10.2.5"
 
 tasks:
   kubeconfig:

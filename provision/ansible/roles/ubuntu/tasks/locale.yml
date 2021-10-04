@@ -2,3 +2,35 @@
 - name: Set timezone
   community.general.timezone:
     name: "{{ timezone | default('America/New_York') }}"
+
+- name: locale | copy timesyncd config
+  ansible.builtin.template:
+    src: timesyncd.conf.j2
+    dest: /etc/systemd/timesyncd.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: locale | start systemd service
+  ansible.builtin.systemd:
+    name: systemd-timesyncd
+    enabled: true
+    state: started
+
+- name: locale | restart systemd service
+  ansible.builtin.systemd:
+    name: systemd-timesyncd
+    daemon_reload: true
+    enabled: true
+    state: restarted
+
+- name: locale | run timedatectl status
+  ansible.builtin.command: /usr/bin/timedatectl show
+  changed_when: false
+  check_mode: false
+  register: timedatectl_result
+
+- name: locale | enable ntp
+  ansible.builtin.command: /usr/bin/timedatectl set-ntp true
+  when:
+    - "'NTP=no' in timedatectl_result.stdout"

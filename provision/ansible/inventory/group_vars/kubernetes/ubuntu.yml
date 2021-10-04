@@ -2,6 +2,11 @@
 # Timezone for the servers
 timezone: "America/New_York"
 
+# Add cloudflare ntp server
+ntp_servers:
+  primary:
+    - time.cloudflare.com
+
 # Additional ssh public keys to add to the nodes
 ssh_authorized_keys:
   # MacBook
