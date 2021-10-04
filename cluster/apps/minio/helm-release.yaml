@@ -16,15 +16,12 @@ spec:
         name: minio-charts
         namespace: flux-system
       interval: 5m
-  valuesFrom:
-    - kind: Secret
-      name: minio-config
   values:
     image:
       repository: quay.io/minio/minio
       tag: RELEASE.2021-10-02T16-31-05Z
     mode: standalone
-    existingSecret: minio-config
+    existingSecret: minio-creds
     drivesPerNode: 1
     replicas: 1
     pools: 1
@@ -39,4 +36,27 @@ spec:
       serviceMonitor:
         enabled: true
     podAnnotations:
-      secret.reloader.stakater.com/reload: "minio-config"
+      secret.reloader.stakater.com/reload: "minio-config-env"
+  postRenderers:
+    - kustomize:
+        patchesStrategicMerge:
+          - kind: Deployment
+            apiVersion: apps/v1
+            metadata:
+              name: minio
+              namespace: minio
+            spec:
+              template:
+                spec:
+                  containers:
+                    - name: minio
+                      volumeMounts:
+                        - mountPath: /run/secrets/config.env
+                          name: minio-config-env
+                          readOnly: true
+                          subPath: config.env
+                  volumes:
+                    - name: minio-config-env
+                      secret:
+                        defaultMode: 420
+                        secretName: minio-config-env

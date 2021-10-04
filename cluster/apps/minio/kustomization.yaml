@@ -3,7 +3,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - config-pvc.yaml
+  - creds.sops.yaml
+  - env.sops.yaml
   - helm-release.yaml
   - ingress.yaml
   - monitoring
-  - secret.sops.yaml
