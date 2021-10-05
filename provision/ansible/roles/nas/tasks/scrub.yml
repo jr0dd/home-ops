@@ -4,18 +4,12 @@
     src: zfs-scrub@.service.j2
     dest: /lib/systemd/system/zfs-scrub@.service
     mode: 0644
-  when: >
-    zfs_enable_systemd_timer is defined and
-    zfs_enable_systemd_timer
 
 - name: Copy ZFS scrub timer
   ansible.builtin.template:
     src: zfs-scrub@.timer.j2
     dest: /lib/systemd/system/zfs-scrub@.timer
     mode: 0644
-  when: >
-    zfs_enable_systemd_timer is defined and
-    zfs_enable_systemd_timer
 
 - name: Start ZFS scrub timer
   ansible.builtin.systemd:
@@ -24,6 +18,3 @@
     enabled: true
     state: started
   with_items: "{{ zfs_pools }}"
-  when: >
-    zfs_enable_systemd_timer is defined and
-    zfs_enable_systemd_timer

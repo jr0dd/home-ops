@@ -3,9 +3,17 @@ zfs_manage_filesystem_permissions: true
 zfs_enable_performance_tuning: true
 zfs_create_pools: true
 zfs_create_filesystems: true
+zfs_enable_nfs: false
+zfs_enable_samba: true
 
+# enable email alerts
+zfs_email_alerts: false
+# enable smartd monitoring
+zfs_enable_smartd: true
+# enable zfs-zed monitoring. needs email configured to work.
+zfs_enable_zed: false
 # Use systemd timers instead of cron for scrubs
-zfs_enable_systemd_timer: true
+zfs_enable_systemd_scrub: true
 # systemd timer settings
 zfs_scrub_pools:
   # Run every month on the 1st and 15th at 1am

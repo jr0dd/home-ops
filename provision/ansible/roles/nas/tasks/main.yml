@@ -1,7 +1,13 @@
 ---
 - include: disks.yml
+  when: zfs_enable_smartd
   tags:
     - disks
+
+- include: email.yml
+  when: zfs_email_alerts
+  tags:
+    - email
 
 - name: nas | install zfs features
   include_role:
@@ -9,9 +15,16 @@
     public: true
 
 - include: scrub.yml
+  when: zfs_enable_systemd_scrub
   tags:
     - scrub
 
 - include: samba.yml
+  when: zfs_enable_samba
   tags:
     - samba
+
+- include: zed.yml
+  when: zfs_enable_zed
+  tags:
+    - zed

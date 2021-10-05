@@ -1,0 +1,9 @@
+---
+# enable email alerts
+zfs_email_alerts: false
+# enable smartd monitoring
+zfs_enable_smartd: false
+# enable zfs-zed monitoring. needs email configured to work.
+zfs_enable_zed: false
+# Use systemd timers instead of cron for scrubs
+zfs_enable_systemd_scrub: false
