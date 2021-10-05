@@ -1,0 +1,23 @@
+---
+- name: Create Samba users if they don't exist yet
+  shell: >
+    (pdbedit --user={{ item.name }} 2>&1 > /dev/null) \
+    || (echo {{ item.password }}; echo {{ item.password }}) \
+    | smbpasswd -s -a {{ item.name }}
+  with_items: "{{ samba_users }}"
+  no_log: true
+  register: create_user_output
+  changed_when: "'Added user' in create_user_output.stdout"
+
+- name: Configure samba
+  ansible.builtin.copy:
+    src: smb.conf
+    dest: /etc/samba/smb.conf
+    mode: 0644
+
+- name: Restart samba service
+  ansible.builtin.systemd:
+    name: smbd
+    daemon_reload: true
+    enabled: true
+    state: restarted

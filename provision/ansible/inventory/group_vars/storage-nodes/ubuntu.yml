@@ -1,0 +1,15 @@
+---
+apt_install_packages:
+  - dmraid
+  - git
+  - gnupg2
+  - ipmitool
+  - lm-sensors
+  - msmtp
+  - msmtp-mta
+  - rclone
+  - tmux
+  - tree
+  - uidmap
+  - zfs-zed
+  - zfsutils-linux

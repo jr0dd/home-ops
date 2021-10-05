@@ -1,0 +1,151 @@
+---
+zfs_manage_filesystem_permissions: true
+zfs_enable_performance_tuning: true
+zfs_create_pools: true
+zfs_create_filesystems: true
+
+# Use systemd timers instead of cron for scrubs
+zfs_enable_systemd_timer: true
+# systemd timer settings
+zfs_scrub_pools:
+  # Run every month on the 1st and 15th at 1am
+  on_calendar: "*-*-1,15 01:00:00"
+  accuracy: 1h
+
+zfs_pools:
+  - name: deadpool
+    action: create
+    atime: on
+    compression: lz4
+    devices:
+      - "ata-WDC_WD8004FRYZ-01VAEB0_VGKMJNWG"
+      - "ata-WDC_WD4000F9YZ-09N20L1_WD-WCC5D2SUA7ZL"
+      - "ata-WDC_WD4000F9YZ-09N20L1_WD-WCC5D3CC14CK"
+      - "ata-WDC_WD8004FRYZ-01VAEB0_VGHPA2YG"
+      - "ata-WDC_WD4000F9YZ-09N20L1_WD-WMC5D0D9LS0V"
+      - "ata-WDC_WD4000F9YZ-09N20L1_WD-WCC5D2SUA7XF"
+      - "ata-HGST_HUH721008ALE604_7SHP1UKW"
+      - "ata-WDC_WD8004FRYZ-01VAEB0_VGHHKTBK"
+      - "ata-WDC_WD8004FRYZ-01VAEB0_VGKN370G"
+      - "ata-WDC_WD4000F9YZ-09N20L1_WD-WMC5D0D6800V"
+    type: raidz2
+    state: present
+  - name: k8s
+    action: create
+    atime: on
+    compression: lz4
+    devices:
+      - "ata-CT250MX500SSD4_2008E28E25B9"
+    type: basic
+    state: present
+
+zfs_filesystems:
+  - name: backups
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 775
+    mountpoint: /deadpool/backups
+
+  - name: containous
+    pool: deadpool
+    state: present
+    owner: root
+    group: root
+    mode: 775
+    mountpoint: /deadpool/containous
+  - name: containous/datastore
+    pool: deadpool
+    state: present
+    owner: root
+    group: root
+    mode: 775
+    mountpoint: /deadpool/containous/datastore
+
+  - name: media
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 775
+    mountpoint: /deadpool/media
+  - name: media/audiobooks
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 775
+    mountpoint: /deadpool/media/audiobooks
+  - name: media/downloads
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 775
+    mountpoint: /deadpool/media/downloads
+  - name: media/music
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 775
+    mountpoint: /deadpool/media/music
+  - name: media/pictures
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 775
+    mountpoint: /deadpool/media/pictures
+  - name: media/videos
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 775
+    mountpoint: /deadpool/media/videos
+
+  - name: timemachine
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 770
+    mountpoint: /deadpool/timemachine
+  - name: timemachine/j_r0dd
+    pool: deadpool
+    state: present
+    owner: j_r0dd
+    group: home_users
+    mode: 700
+    mountpoint: /deadpool/timemachine/j_r0dd
+  - name: timemachine/waleska
+    pool: deadpool
+    state: present
+    owner: waleska
+    group: home_users
+    mode: 700
+    mountpoint: /deadpool/timemachine/waleska
+  - name: timemachine/nathan
+    pool: deadpool
+    state: present
+    owner: nathan
+    group: home_users
+    mode: 700
+    mountpoint: /deadpool/timemachine/nathan
+
+  - name: containous
+    pool: k8s
+    state: present
+    owner: root
+    group: root
+    mode: 775
+    mountpoint: /k8s/containous
+  - name: containous/datastore
+    pool: k8s
+    state: present
+    owner: root
+    group: root
+    mode: 775
+    mountpoint: /k8s/containous/datastore

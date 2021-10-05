@@ -1,0 +1,17 @@
+---
+- include: checks.yml
+  tags:
+    - checks
+
+- name: Install Kubernetes
+  include_role:
+    name: xanmanning.k3s
+    public: true
+
+- include: cleanup.yml
+  tags:
+    - cleanup
+
+- include: kubeconfig.yml
+  tags:
+    - kubeconfig

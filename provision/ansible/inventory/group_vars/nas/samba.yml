@@ -1,8 +1,0 @@
----
-samba_users:
-  - name: "{{ user0 }}"
-    password: "{{ user0_passwd }}"
-  - name: "{{ user1 }}"
-    password: "{{ user1_passwd }}"
-  - name: "{{ user2 }}"
-    password: "{{ user2_passwd }}"

@@ -31,8 +31,8 @@
     state: started
 
 - name: Restart unattended-upgrades service
-  ansible.builtin.service:
-    name: unattended-upgrades.service
+  ansible.builtin.systemd:
+    name: unattended-upgrades
     daemon_reload: true
     enabled: true
     state: restarted

@@ -9,7 +9,7 @@
 
 - name: power-button | restart logind systemd service
   ansible.builtin.systemd:
-    name: systemd-logind.service
+    name: systemd-logind
     daemon_reload: true
     enabled: true
     state: restarted

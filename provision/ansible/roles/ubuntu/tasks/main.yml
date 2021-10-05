@@ -20,6 +20,7 @@
     - filesystem
 
 - include: disks.yml
+  when: inventory_hostname not in groups['storage-nodes']
   tags:
     - disks
 

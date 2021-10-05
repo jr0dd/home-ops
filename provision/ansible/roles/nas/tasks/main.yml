@@ -1,0 +1,17 @@
+---
+- include: disks.yml
+  tags:
+    - disks
+
+- name: nas | install zfs features
+  include_role:
+    name: mrlesmithjr.zfs
+    public: true
+
+- include: scrub.yml
+  tags:
+    - scrub
+
+- include: samba.yml
+  tags:
+    - samba

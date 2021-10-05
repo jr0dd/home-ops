@@ -1,0 +1,19 @@
+---
+# Timezone for the servers
+timezone: "America/New_York"
+
+# Add cloudflare ntp server
+ntp_servers:
+  primary:
+    - "time.cloudflare.com"
+  falback:
+    - "0.us.pool.ntp.org"
+    - "1.us.pool.ntp.org"
+    - "2.us.pool.ntp.org"
+
+# Additional ssh public keys to add to the nodes
+ssh_authorized_keys:
+  # MacBook
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFJavnCHDj6nsfkpDdfKxQN6hlYnXfQmx6TEe4W8dErN j_r0dd@mb-pro.local"
+  # iPhone
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAfQEufDi4o/kO8EH7J7QB7ikM4CCsgsUJd9cwdOEXv8 j_r0dd@icloud.com"
