@@ -26,6 +26,9 @@ spec:
       strategy: RollingUpdate
     env:
       TZ: "America/New_York"
+    podSecurityContext:
+      supplementalGroups:
+        - 1042
     service:
       main:
         enabled: true

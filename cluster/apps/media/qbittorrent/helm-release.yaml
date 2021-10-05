@@ -28,6 +28,9 @@ spec:
       automaticPortSetup: true
     env:
       TZ: "America/New_York"
+    podSecurityContext:
+      supplementalGroups:
+        - 1042
     service:
       main:
         ports:
