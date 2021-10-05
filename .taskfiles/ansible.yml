@@ -37,11 +37,31 @@ tasks:
     cmds:
       - "ansible master -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'rm /var/lib/rancher/k3s/server/manifests/*' --become"
 
+  playbook:k3s-install:
+    desc: Install Kubernetes on the nodes
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s/install.yml"
+    silent: true
+
+  playbook:k3s-nuke:
+    desc: Install Kubernetes on the nodes
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s/nuke.yml"
+
   playbook:nas-install:
     desc: Prepare storage node for k8s cluster
     dir: provision/ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/nas/install.yml"
+    silent: true
+
+  playbook:pvc-snapshot:
+    desc: Take a ZFS snapshot of PVC's
+    dir: provision/ansible
+    cmds:
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s/pvc-snapshot.yml"
     silent: true
 
   playbook:ubuntu-prepare:
@@ -57,19 +77,6 @@ tasks:
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu/upgrade.yml"
     silent: true
-
-  playbook:k3s-install:
-    desc: Install Kubernetes on the nodes
-    dir: provision/ansible
-    cmds:
-      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s/install.yml"
-    silent: true
-
-  playbook:k3s-nuke:
-    desc: Install Kubernetes on the nodes
-    dir: provision/ansible
-    cmds:
-      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s/nuke.yml"
 
   adhoc:ping:
     desc: Ping all the hosts

@@ -15,6 +15,7 @@ managed_users:
     uid: 2000
     shell: /bin/zsh
     group: home_users
+    groups: sudo,adm
   - name: waleska
     password: "{{ waleska_passwd }}"
     uid: 2001
