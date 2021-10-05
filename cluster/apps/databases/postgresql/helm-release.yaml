@@ -21,8 +21,6 @@ spec:
       registry: quay.io
       repository: bitnami/postgresql
       tag: 13.4.0
-    # postgresqlPostgresPassword: "${POSTGRES_PASSWORD}"
-    # postgresqlUsername: authentik
     postgresqlPassword: "${POSTGRES_PASSWORD}"
     postgresqlDatabase: authentik
     metrics:
