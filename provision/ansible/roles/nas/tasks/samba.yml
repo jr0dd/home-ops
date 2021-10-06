@@ -11,7 +11,7 @@
 
 - name: Configure samba
   ansible.builtin.copy:
-    src: smb.conf
+    src: etc/samba/smb.conf
     dest: /etc/samba/smb.conf
     mode: 0644
 

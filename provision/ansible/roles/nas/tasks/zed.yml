@@ -1,7 +1,7 @@
 ---
 - name: Configure ZED
   ansible.builtin.template:
-    src: zed.rc.j2
+    src: etc/zfs/zed.d/zed.rc.j2
     dest: /etc/zfs/zed.d/zed.rc
     mode: 0644
 

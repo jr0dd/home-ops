@@ -1,0 +1,63 @@
+- hosts:
+    - k8s-0
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      pause:
+        seconds: 5
+  vars:
+    pvc_zfs_snapshots:
+      - name: postgresql
+        namespace: databases
+        pvc: postgresql-config-v1
+      - name: redis
+        namespace: databases
+        pvc: redis-config-v1
+      - name: hajimari
+        namespace: home
+        pvc: hajimari-config-v1
+      - name: homebridge
+        namespace: home
+        pvc: homebridge-config-v1
+      - name: lidarr
+        namespace: media
+        pvc: lidarr-config-v1
+      - name: overseerr
+        namespace: media
+        pvc: overseerr-config-v1
+      - name: plex
+        namespace: media
+        pvc: plex-config-v1
+      - name: prowlarr
+        namespace: media
+        pvc: prowlarr-config-v1
+      - name: qbittorrent
+        namespace: media
+        pvc: qbittorrent-config-v1
+      - name: radarr
+        namespace: media
+        pvc: radarr-config-v1
+      - name: sonarr
+        namespace: media
+        pvc: sonarr-config-v1
+      - name: tautulli
+        namespace: media
+        pvc: tautulli-config-v1
+  tasks:
+    - name: Create ZFS SNapshots of PVC's
+      community.kubernetes.k8s:
+        kubeconfig: /etc/rancher/k3s/k3s.yaml
+        state: present
+        definition:
+          apiVersion: snapshot.storage.k8s.io/v1
+          kind: VolumeSnapshot
+          metadata:
+            name: "{{ item.name }}-{{ ansible_date_time.date }}"
+            namespace: "{{ item.namespace }}"
+          spec:
+            volumeSnapshotClassName: zfspv-snapclass
+            source:
+              persistentVolumeClaimName: "{{ item.pvc }}"
+      with_items: "{{ pvc_zfs_snapshots }}"

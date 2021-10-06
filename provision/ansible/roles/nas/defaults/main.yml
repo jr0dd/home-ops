@@ -7,3 +7,19 @@ zfs_enable_smartd: false
 zfs_enable_zed: false
 # Use systemd timers instead of cron for scrubs
 zfs_enable_systemd_scrub: false
+
+apt_install_packages:
+  - dmraid
+  - git
+  - gnupg2
+  - ipmitool
+  - lm-sensors
+  - mailutils
+  - msmtp
+  - msmtp-mta
+  - rclone
+  - tmux
+  - tree
+  - uidmap
+  - zfs-zed
+  - zfsutils-linux

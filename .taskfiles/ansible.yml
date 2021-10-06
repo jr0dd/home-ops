@@ -61,7 +61,7 @@ tasks:
     desc: Take a ZFS snapshot of PVC's
     dir: provision/ansible
     cmds:
-      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s/pvc-snapshot.yml"
+      - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/nas/pvc-snapshot.yml"
     silent: true
 
   playbook:ubuntu-prepare:

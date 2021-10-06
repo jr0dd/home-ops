@@ -4,6 +4,10 @@
   tags:
     - disks
 
+- include: packages.yml
+  tags:
+    - packages
+
 - include: email.yml
   when: zfs_email_alerts
   tags:

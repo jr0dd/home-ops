@@ -1,7 +1,7 @@
 ---
 - name: Configure smartd
   ansible.builtin.template:
-    src: smartd.conf.j2
+    src: etc/smartd.conf.j2
     dest: /etc/smartd.conf
     mode: 0644
 

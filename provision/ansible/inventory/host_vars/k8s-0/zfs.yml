@@ -7,11 +7,11 @@ zfs_enable_nfs: false
 zfs_enable_samba: true
 
 # enable email alerts
-zfs_email_alerts: false
+zfs_email_alerts: true
 # enable smartd monitoring
 zfs_enable_smartd: true
 # enable zfs-zed monitoring. needs email configured to work.
-zfs_enable_zed: false
+zfs_enable_zed: true
 # Use systemd timers instead of cron for scrubs
 zfs_enable_systemd_scrub: true
 # systemd timer settings
@@ -61,15 +61,8 @@ zfs_filesystems:
     state: present
     owner: root
     group: root
-    mode: 775
+    mode: 755
     mountpoint: /deadpool/containous
-  - name: containous/datastore
-    pool: deadpool
-    state: present
-    owner: root
-    group: root
-    mode: 775
-    mountpoint: /deadpool/containous/datastore
 
   - name: media
     pool: deadpool
@@ -92,6 +85,13 @@ zfs_filesystems:
     group: home_users
     mode: 775
     mountpoint: /deadpool/media/downloads
+  - name: media/games
+    pool: deadpool
+    state: present
+    owner: root
+    group: home_users
+    mode: 775
+    mountpoint: /deadpool/media/games
   - name: media/music
     pool: deadpool
     state: present
@@ -148,12 +148,5 @@ zfs_filesystems:
     state: present
     owner: root
     group: root
-    mode: 775
+    mode: 755
     mountpoint: /k8s/containous
-  - name: containous/datastore
-    pool: k8s
-    state: present
-    owner: root
-    group: root
-    mode: 775
-    mountpoint: /k8s/containous/datastore

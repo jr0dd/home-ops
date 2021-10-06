@@ -32,12 +32,19 @@ tasks:
       - kubectl get secret $(kubectl get serviceaccount console-sa -n minio -o jsonpath="{.secrets[0].name}") -n minio -o jsonpath="{.data.token}" | base64 --decode
 
   pause:
-    desc: Pause all Helm Releases that rely on NFS storage
+    desc: Pause all Helm Releases that rely on ZFS storage
     cmds:
-      - flux suspend hr -n home frigate
-      - kubectl scale -n home deploy/frigate --replicas 0
-      - flux suspend hr -n media jellyfin
-      - kubectl scale -n media deploy/jellyfin --replicas 0
+      - flux suspend ks apps
+      - flux suspend hr -n minio minio
+      - kubectl scale -n minio deploy/minio --replicas 0
+      - flux suspend hr -n databases postgresql
+      - kubectl scale -n databases statefulset/postgresql-postgresql --replicas 0
+      - flux suspend hr -n databases redis
+      - kubectl scale -n databases statefulset/redis-master --replicas 0
+      - flux suspend hr -n home homebridge
+      - kubectl scale -n home deploy/homebridge --replicas 0
+      - flux suspend hr -n home hajimari
+      - kubectl scale -n home deploy/hajimari --replicas 0
       - flux suspend hr -n media lidarr
       - kubectl scale -n media deploy/lidarr --replicas 0
       - flux suspend hr -n media plex
@@ -46,31 +53,46 @@ tasks:
       - kubectl scale -n media deploy/qbittorrent --replicas 0
       - flux suspend hr -n media radarr
       - kubectl scale -n media deploy/radarr --replicas 0
-      - flux suspend hr -n media readarr
-      - kubectl scale -n media deploy/readarr --replicas 0
-      - flux suspend hr -n media sabnzbd
-      - kubectl scale -n media deploy/sabnzbd --replicas 0
+      - flux suspend hr -n media prowlarr
+      - kubectl scale -n media deploy/prowlarr --replicas 0
       - flux suspend hr -n media sonarr
       - kubectl scale -n media deploy/sonarr --replicas 0
-
+      - flux suspend hr -n media overseerr
+      - kubectl scale -n media deploy/overseerr --replicas 0
+      - flux suspend hr -n media tautulli
+      - kubectl scale -n media deploy/tautulli --replicas 0
+      - flux suspend hr -n monitoring loki
+      - kubectl scale -n monitoring statefulset/loki --replicas 0
+      - flux suspend hr -n monitoring thanos
+      - kubectl scale -n monitoring deploy/thanos-query --replicas 0
+      - kubectl scale -n monitoring deploy/thanos-bucketweb --replicas 0
+      - kubectl scale -n monitoring deploy/thanos-compactor --replicas 0
+      - kubectl scale -n monitoring statefulset/thanos-storegateway --replicas 0
+      - flux suspend hr -n monitoring kube-prometheus-stack
+      - kubectl scale -n monitoring statefulset/alertmanager-prometheus-alertmanager --replicas 0
+      - kubectl scale -n monitoring statefulset/prometheus-prometheus-prometheus --replicas 0
+      - kubectl scale -n monitoring deploy/prometheus-operator --replicas 0
+      - flux suspend hr -n security authentik
+      - kubectl scale -n security deploy/authentik-server --replicas 0
+      - kubectl scale -n security deploy/authentik-worker --replicas 0
   resume:
-    desc: Resume all Helm Releases that rely on NFS storage
+    desc: Resume all Helm Releases that rely on ZFS storage
     cmds:
-      - flux resume hr -n home frigate
-      - kubectl scale -n home deploy/frigate --replicas 1
-      - flux resume hr -n media jellyfin
-      - kubectl scale -n media deploy/jellyfin --replicas 1
+      - flux resume ks apps
+      - flux resume hr -n minio minio
+      - flux resume hr -n databases postgresql
+      - flux resume hr -n databases redis
+      - flux resume hr -n home homebridge
+      - flux resume hr -n home hajimari
       - flux resume hr -n media lidarr
-      - kubectl scale -n media deploy/lidarr --replicas 1
       - flux resume hr -n media plex
-      - kubectl scale -n media deploy/plex --replicas 1
       - flux resume hr -n media qbittorrent
-      - kubectl scale -n media deploy/qbittorrent --replicas 1
       - flux resume hr -n media radarr
-      - kubectl scale -n media deploy/radarr --replicas 1
-      - flux resume hr -n media readarr
-      - kubectl scale -n media deploy/readarr --replicas 1
-      - flux resume hr -n media sabnzbd
-      - kubectl scale -n media deploy/sabnzbd --replicas 1
+      - flux resume hr -n media prowlarr
       - flux resume hr -n media sonarr
-      - kubectl scale -n media deploy/sonarr --replicas 1
+      - flux resume hr -n media overseerr
+      - flux resume hr -n media tautulli
+      - flux resume hr -n monitoring loki
+      - flux resume hr -n monitoring kube-prometheus-stack
+      - flux resume hr -n monitoring thanos
+      - flux resume hr -n security authentik
