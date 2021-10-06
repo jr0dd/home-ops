@@ -1,4 +1,6 @@
 ---
+# Samba users to add. Must have existing system accounts.
+samba_enabled: true
 samba_users:
   - name: j_r0dd
     password: "{{ j_r0dd_passwd }}"

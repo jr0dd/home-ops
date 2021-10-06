@@ -24,7 +24,7 @@
     - scrub
 
 - include: samba.yml
-  when: zfs_enable_samba
+  when: samba_enabled
   tags:
     - samba
 

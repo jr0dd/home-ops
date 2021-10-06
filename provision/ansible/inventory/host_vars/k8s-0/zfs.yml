@@ -4,7 +4,8 @@ zfs_enable_performance_tuning: true
 zfs_create_pools: true
 zfs_create_filesystems: true
 zfs_enable_nfs: false
-zfs_enable_samba: true
+# This is disabled to use my own task for samba
+zfs_enable_samba: false
 
 # enable email alerts
 zfs_email_alerts: true
