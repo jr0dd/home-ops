@@ -19,4 +19,4 @@ metadata:
 data:
   # add 1+ key-value pairs here, where the key is the old
   # node name and the value is the new node name.
-  ix-truenas: k8s-0
+  ix-truenas: k8s-0-nas

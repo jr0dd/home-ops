@@ -3,7 +3,7 @@
   ansible.builtin.template:
     src: etc/zfs/zed.d/zed.rc.j2
     dest: /etc/zfs/zed.d/zed.rc
-    mode: 0644
+    mode: 0600
 
 - name: Restart ZED service
   ansible.builtin.systemd:

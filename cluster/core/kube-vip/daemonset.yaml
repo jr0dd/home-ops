@@ -44,15 +44,15 @@ spec:
             - name: bgp_enable
               value: "true"
             - name: bgp_routerinterface
-              value: "{{ KUBE_VIP_IFACE }}"
+              value: "enp1s0f0"
             - name: bgp_as
               value: "64550"
             - name: bgp_peeraddress
-              value: "{{ GATEWAY_IP }}"
+              value: "${GATEWAY_IP}"
             - name: bgp_peeras
               value: "64560"
             - name: vip_address
-              value: "{{ KUBE_VIP_IP }}"
+              value: "${KUBE_VIP_IP}"
           securityContext:
             capabilities:
               add:

@@ -28,14 +28,14 @@ tasks:
     desc: Clean up stale container images
     dir: provision/ansible
     cmds:
-      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'k3s crictl rmi --prune' --become"
+      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'k3s crictl rmi --prune' --become"
     silent: true
 
   purge-manifests:
     desc: Delete all manifests under /var/lib/rancher/k3s/server/manifests
     dir: provision/ansible
     cmds:
-      - "ansible master -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'rm /var/lib/rancher/k3s/server/manifests/*' --become"
+      - "ansible master-nodes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'rm /var/lib/rancher/k3s/server/manifests/*' --become"
 
   playbook:k3s-install:
     desc: Install Kubernetes on the nodes
@@ -94,10 +94,10 @@ tasks:
     desc: Reboot all the k8s nodes
     dir: provision/ansible
     cmds:
-      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become"
+      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become"
 
   adhoc:poweroff:
     desc: Shutdown all the k8s nodes
     dir: provision/ansible
     cmds:
-      - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl poweroff' --become"
+      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl poweroff' --become"

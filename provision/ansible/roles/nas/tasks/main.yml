@@ -1,8 +1,8 @@
 ---
-- include: disks.yml
+- include: smart.yml
   when: zfs_enable_smartd
   tags:
-    - disks
+    - smart
 
 - include: packages.yml
   tags:

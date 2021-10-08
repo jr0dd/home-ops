@@ -1,2 +1,0 @@
-# Ansible managed
-set mta=/usr/bin/msmtp

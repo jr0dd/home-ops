@@ -1,10 +1,4 @@
 ---
-apt_install_packages:
-  - avahi-daemon
-  - samba
-  - samba-vfs-modules
-  - zsh
-
 managed_groups:
   - name: home_users
     gid: 1042

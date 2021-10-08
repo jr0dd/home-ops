@@ -1,3 +1,4 @@
+# zpool import -o feature@com.ixsystems:xattr_compat=disabled deadpool
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -29,7 +30,7 @@ spec:
         - key: openebs.io/nodeid
           operator: In
           values:
-          - ix-truenas
+          - k8s-0-nas
   persistentVolumeReclaimPolicy: Delete
   storageClassName: openebs-zfspv-rust
   volumeMode: Filesystem
@@ -44,7 +45,7 @@ metadata:
   - zfs.openebs.io/finalizer
   generation: 2
   labels:
-    kubernetes.io/nodename: ix-truenas
+    kubernetes.io/nodename: k8s-0-nas
   name: pvc-ba8ae954-ff23-44cc-bc46-804fec3cf454
   namespace: openebs
   resourceVersion: "15234874"
@@ -52,7 +53,7 @@ metadata:
 spec:
   capacity: "268435456000"
   fsType: zfs
-  ownerNodeID: ix-truenas
+  ownerNodeID: k8s-0-nas
   poolName: deadpool/containous
   shared: "yes"
   volumeType: DATASET

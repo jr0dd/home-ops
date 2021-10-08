@@ -1,0 +1,20 @@
+---
+- name: ubuntu | installing zfs ({{ ansible_distribution_version }} >= 16.04)
+  apt:
+    name: zfsutils-linux
+    state: present
+
+- name: ubuntu | enabling zfs module
+  modprobe:
+    name: zfs
+    state: present
+
+- name: ubuntu | configuring ZFS
+  template:
+    src: etc/default/zfs.j2
+    dest: /etc/default/zfs
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - start zfs-share

@@ -12,8 +12,8 @@
     mode: 0644
 
 - name: Configure mail
-  ansible.builtin.copy:
-    src: etc/mail.rc
+  ansible.builtin.template:
+    src: etc/mail.rc.j2
     dest: /etc/mail.rc
     mode: 0644
 

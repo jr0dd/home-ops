@@ -48,3 +48,4 @@ apt_remove_packages:
   - tmux
   - ubuntu-advantage-tools
   - ufw
+  - vim.tiny

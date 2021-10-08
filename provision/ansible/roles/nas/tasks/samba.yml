@@ -10,8 +10,8 @@
   changed_when: "'Added user' in create_user_output.stdout"
 
 - name: Configure samba
-  ansible.builtin.copy:
-    src: etc/samba/smb.conf
+  ansible.builtin.template:
+    src: etc/samba/smb.conf.j2
     dest: /etc/samba/smb.conf
     mode: 0644
 

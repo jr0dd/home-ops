@@ -1,0 +1,84 @@
+---
+- name: manage_zfs | checking existing zpool(s)
+  shell: "zpool list | awk 'FNR >1' | awk '{print $1}'"
+  changed_when: false
+  register: zpools
+  check_mode: no
+  when: zfs_pools is defined
+
+- name: manage_zfs | Gather ZPool Status
+  shell: zpool status
+  changed_when: false
+  register: zpool_devices
+  check_mode: no
+  when: zfs_pools is defined
+
+- name: manage_zfs | creating basic zpool(s)
+  command: "zpool create {{ item.options | join (' ') if item.options is defined else '' }} {{ item.name }} {{ item.devices|join (' ') }}"
+  register: zpool_created
+  with_items: "{{ zfs_pools }}"
+  when: >
+        zfs_pools is defined and
+        zfs_create_pools and
+        (item.type == "basic" and
+        item.name not in zpools.stdout and
+        item.state == "present") and
+        item.devices[0] not in zpool_devices.stdout and
+        item.action|lower == "create"
+
+- name: manage_zfs | adding basic zpool(s)
+  command: "zpool add {{ item.options | join (' ') if item.options is defined else '' }} {{ item.name }} {{ item.devices|join (' ') }}"
+  with_items: "{{ zfs_pools }}"
+  when: >
+        zfs_pools is defined and
+        zfs_create_pools and
+        (item.type == "basic" and
+        item.state == "present") and
+        (item.devices[0]|basename) not in zpool_devices.stdout and
+        item.action|lower == "add" and
+        (zpool_created.changed or item.name in zpools.stdout)
+
+- name: manage_zfs | creating mirror/zraid zpool(s)
+  command: "zpool create {{ item.options | join (' ') if item.options is defined else '' }} {{ item.name }} {{ item.type }} {{ item.devices|join (' ') }}"
+  with_items: "{{ zfs_pools }}"
+  register: zpool_created
+  when: >
+        zfs_pools is defined and
+        zfs_create_pools and
+        (item.type != "basic" and
+        item.name not in zpools.stdout and
+        item.state == "present") and
+        item.devices[0] not in zpool_devices.stdout and
+        item.action|lower == "create"
+
+- name: manage_zfs | adding mirror/zraid zpool(s)
+  command: "zpool add {{ item.options | join (' ') if item.options is defined else '' }} {{ item.name }} {{ item.type }} {{ item.devices|join (' ') }}"
+  with_items: "{{ zfs_pools }}"
+  when: >
+        zfs_pools is defined and
+        zfs_create_pools and
+        (item.type != "basic" and
+        item.state == "present") and
+        (item.devices[0]|basename) not in zpool_devices.stdout and
+        item.action|lower == "add" and
+        (zpool_created.changed or item.name in zpools.stdout)
+
+- name: manage_zfs | managing pools
+  zfs:
+    name: "{{ item.name }}"
+    extra_zfs_properties:
+      atime: "{{ item.atime|default(omit) }}"
+      compression: "{{ item.compression|default(omit) }}"
+      dedup: "{{ item.dedup|default(omit) }}"
+      logbias: "{{ item.logbias|default(omit) }}"
+      mountpoint: "{{ item.mountpoint|default(omit) }}"
+      primarycache: "{{ item.primarycache|default(omit) }}"
+      quota: "{{ item.quota|default(omit) }}"
+      recordsize: "{{ item.recordsize|default(omit) }}"
+      sharenfs: "{{ item.sharenfs|default(omit) }}"
+      sync: "{{ item.sync|default(omit) }}"
+      snapdev: "{{ item.snapdev|default('hidden')}}"
+      snapdir: "{{ item.snapdir|default('hidden')}}"
+    state: "{{ item.state }}"
+  with_items: "{{ zfs_pools }}"
+  when: zfs_create_pools
