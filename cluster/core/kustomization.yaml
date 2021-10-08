@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - cert-manager
   - kube-vip
-  # - metallb
   - namespaces
   - openebs-zfs-localpv
   - system-upgrade

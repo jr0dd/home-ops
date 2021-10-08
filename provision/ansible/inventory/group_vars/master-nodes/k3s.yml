@@ -9,7 +9,6 @@ k3s_control_node: true
 k3s_server:
   node-ip: "{{ ansible_host }}"
   tls-san:
-    # kube-vip
     - "{{ kubevip_address }}"
   docker: false
   flannel-backend: "none" # This needs to be in quotes
@@ -39,6 +38,3 @@ k3s_server:
     - "address=0.0.0.0"
     - "bind-address=0.0.0.0"
   etcd-expose-metrics: false
-  # Required for HAProxy health-checks
-  kube-apiserver-arg:
-    - "anonymous-auth=true"

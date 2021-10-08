@@ -1,0 +1,10 @@
+---
+cilium_bgp_as_number: 64512
+
+cilium_bgp_peer_ip: 10.10.0.1
+
+cilium_bgp_peer_as_number: 64512 
+
+cilium_bgp_pool_name: mikrotik
+
+cilium_bgp_pool_cidr: 10.10.2.0/24
