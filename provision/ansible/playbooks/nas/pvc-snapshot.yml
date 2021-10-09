@@ -1,3 +1,4 @@
+---
 - hosts:
     - k8s-0
   become: true

@@ -28,16 +28,16 @@ zfs_pools:
     atime: on
     compression: lz4
     devices:
-      - "scsi-SATA_WDC_WD8004FRYZ-0_VGKMJNWG"
-      - "scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7ZL"
-      - "scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D3CC14CK"
-      - "scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7XF"
-      - "scsi-SATA_WDC_WD8004FRYZ-0_VGHPA2YG"
-      - "scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D9LS0V"
-      - "scsi-SATA_HGST_HUH721008AL_7SHP1UKW"
-      - "scsi-SATA_WDC_WD8004FRYZ-0_VGHHKTBK"
-      - "scsi-SATA_WDC_WD8004FRYZ-0_VGKN370G"
-      - "scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D6800V"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D6800V"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7ZL"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D3CC14CK"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7XF"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D9LS0V"
+      - "/dev/disk/by-id/scsi-SATA_HGST_HUH721008AL_7SHP1UKW"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKMJNWG"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHHKTBK"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN370G"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHPA2YG"
     type: raidz2
     state: present
   - name: k8s
@@ -45,7 +45,7 @@ zfs_pools:
     atime: on
     compression: lz4
     devices:
-      - "scsi-SATA_CT250MX500SSD4_2008E28E2924"
+      - "/dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E2924"
     type: basic
     state: present
 

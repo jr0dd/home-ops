@@ -55,7 +55,7 @@ apt_remove_packages:
 # # Defines if ZFS pool(s) are created
 # zfs_create_pools: false
 
-# # Install/Update zfs packates 
+# # Install/Update zfs packates
 # # Set to false to avoid updates on runtime
 # zfs_install_update: false
 

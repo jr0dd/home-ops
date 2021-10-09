@@ -28,7 +28,7 @@
       quota: "{{ item.quota|default(omit) }}"
       primarycache: "{{ item.primarycache|default(omit) }}"
       recordsize: "{{ item.recordsize|default(omit) }}"
-  #    shareiscsi: "{{ item.shareiscsi|default(omit) }}"
+      # shareiscsi: "{{ item.shareiscsi|default(omit) }}"
       sync: "{{ item.sync|default(omit) }}"
       logbias: "{{ item.logbias|default(omit) }}"
       volsize: "{{ item.volsize|default(omit) }}"
