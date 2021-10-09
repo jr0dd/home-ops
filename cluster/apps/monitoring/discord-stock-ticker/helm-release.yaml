@@ -30,7 +30,7 @@ spec:
       - secretRef:
           name: discord-tokens
     persistence:
-      config:
+      payload:
         enabled: true
         type: custom
         mountPath: /app/payload.sh
