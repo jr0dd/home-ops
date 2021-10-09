@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://helm.cilium.io/
+      # renovate: registryUrl=https://helm.traefik.io/traefik
       chart: cilium
       version: 1.10.4
       sourceRef:
