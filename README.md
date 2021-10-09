@@ -23,9 +23,11 @@
 
 This is home to my personal Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches this Git repository and makes the changes to my cluster based on the manifests in the [cluster](./cluster/) directory. [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/) protects my secrets so I can keep everything on a public repo.
 
-Currently I only have a single node with this running on TrueNAS SCALE. Which I am in the process of prepping for migration to Ubuntu for all teh freedoms. If you use this repo to install on TrueNAS be prepared for some manual intervention since their middleware prevents certain system changes to persist updates and/or reboots. Please see the truenas.sh script in the [hack](./hack) directory. I disabled the bundled [openebs-zfs-localpv](https://github.com/openebs/zfs-localpv) so I had more freedom with updates by using the helm chart.
+Currently I only have a single node running on Ubuntu 21.04 as the master-node and storage-node.
 
-For more information, head on over to my [docs](https://jr0dd.github.io/k8s-gitops/). ***Not ready yet***
+**The Ansible NAS role still needs some love. Merging features from mrlessmith.zfs role into my NAS role. 
+
+For more information, head on over to my [docs](https://jr0dd.github.io/home-cluster/). ***Not ready yet***
 
 ## Prometheus Rules
 All my prometheus recording/alerting rules found in this repo can be found in my [prometheus-rules](https://github.com/jr0dd/prometheus-rules) repo.
