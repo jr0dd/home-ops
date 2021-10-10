@@ -16,6 +16,8 @@ spec:
         name: cilium-charts
         namespace: flux-system
       interval: 5m
+  upgrade:
+    force: true
   values:
     image:
       repository: quay.io/cilium/cilium
@@ -32,10 +34,16 @@ spec:
       enabled: true
       announce:
         loadbalancerIP: true
-    bpf:
-      clockProbe: true
     externalIPs:
       enabled: false
+    bpf:
+      clockProbe: true
+      masquerade: true
+      hostRouting: false
+    cni:
+      install: true
+      chainingMode: none
+      exclusive: true
     containerRuntime:
       integration: containerd
       socketPath: /var/run/k3s/containerd/containerd.sock
@@ -67,6 +75,12 @@ spec:
     proxy:
       prometheus:
         enabled: true
+    preflight:
+      enabled: true
+    loadBalancer:
+      standalone: false
+      algorithm: maglev
+      mode: dsr
     hubble:
       enabled: true
       metrics:
@@ -80,6 +94,11 @@ spec:
           - http
         serviceMonitor:
           enabled: true
+      tls:
+        enabled: true
+        auto:
+          enabled: true
+          method: certmanager
       relay:
         enabled: true
         rollOutPods: true
