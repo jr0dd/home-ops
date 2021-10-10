@@ -13,6 +13,7 @@
   ansible.builtin.template:
     src: etc/samba/smb.conf.j2
     dest: /etc/samba/smb.conf
+    validate: 'testparm -s %s'
     mode: 0644
 
 - name: Restart samba service
