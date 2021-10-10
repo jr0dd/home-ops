@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: quay.io/minio/minio
-      tag: RELEASE.2021-10-08T23-58-24Z
+      tag: RELEASE.2021-10-10T16-53-30Z
     mode: standalone
     existingSecret: minio-creds
     drivesPerNode: 1
