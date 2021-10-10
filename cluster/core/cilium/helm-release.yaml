@@ -75,8 +75,6 @@ spec:
     proxy:
       prometheus:
         enabled: true
-    preflight:
-      enabled: true
     loadBalancer:
       standalone: false
       algorithm: maglev
@@ -94,11 +92,6 @@ spec:
           - http
         serviceMonitor:
           enabled: true
-      tls:
-        enabled: true
-        auto:
-          enabled: true
-          method: certmanager
       relay:
         enabled: true
         rollOutPods: true
