@@ -25,7 +25,7 @@ This is home to my personal Kubernetes cluster. [Flux](https://github.com/fluxcd
 
 Currently I only have a single node running on Ubuntu 21.04 as the master-node and storage-node.
 
-**The Ansible NAS role still needs some love. Merging features from mrlessmith.zfs role into my NAS role. 
+**The Ansible NAS role still needs some love. Merging features from mrlessmith.zfs role into my NAS role.
 
 For more information, head on over to my [docs](https://jr0dd.github.io/home-cluster/). ***Not ready yet***
 
