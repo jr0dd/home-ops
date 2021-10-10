@@ -39,11 +39,11 @@ spec:
             - name: bgp_routerinterface
               value: "${KUBE_VIP_IFACE}"
             - name: bgp_as
-              value: "64512"
+              value: "64534"
             - name: bgp_peeraddress
               value: "${GATEWAY_IP}"
             - name: bgp_peeras
-              value: "64512"
+              value: "64530"
             - name: vip_address
               value: "${KUBE_VIP_IP}"
           securityContext:
