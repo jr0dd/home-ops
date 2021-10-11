@@ -6,6 +6,7 @@
       - mailutils
       - msmtp
       - msmtp-mta
+      - bsd-mailx
     state: present
 
 - name: Configure aliases
