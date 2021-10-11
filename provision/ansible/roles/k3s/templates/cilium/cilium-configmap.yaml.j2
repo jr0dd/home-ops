@@ -57,6 +57,7 @@ data:
   # Specifies the ratio (0.0-1.0) of total system memory to use for dynamic
   # sizing of the TCP CT, non-TCP CT, NAT and policy BPF maps.
   bpf-map-dynamic-size-ratio: "0.0025"
+  enable-host-legacy-routing: "false"
   # bpf-policy-map-max specifies the maximum number of entries in endpoint
   # policy map (per endpoint)
   bpf-policy-map-max: "16384"
@@ -116,11 +117,12 @@ data:
   enable-local-redirect-policy: "false"
 
   kube-proxy-replacement:  "strict"
-  kube-proxy-replacement-healthz-bind-address: ""
+  kube-proxy-replacement-healthz-bind-address: "0.0.0.0:10256"
   enable-health-check-nodeport: "true"
   node-port-bind-protection: "true"
   enable-auto-protect-node-port-range: "true"
   enable-session-affinity: "true"
+  k8s-require-ipv4-pod-cidr: "true"
   enable-endpoint-health-checking: "true"
   enable-health-checking: "true"
   enable-well-known-identities: "false"
@@ -136,9 +138,7 @@ data:
   hubble-tls-cert-file: /var/lib/cilium/tls/hubble/server.crt
   hubble-tls-key-file: /var/lib/cilium/tls/hubble/server.key
   hubble-tls-client-ca-files: /var/lib/cilium/tls/hubble/client-ca.crt
-  ipam: "cluster-pool"
-  cluster-pool-ipv4-cidr: "{{ cluster-cidr }}"
-  cluster-pool-ipv4-mask-size: "24"
+  ipam: "kubernetes"
   disable-cnp-status-updates: "true"
   bgp-announce-lb-ip: "true"
   cgroup-root: "/run/cilium/cgroupv2"

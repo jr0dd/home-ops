@@ -1,4 +1,11 @@
 ---
+- name: Install NFS
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - zfs-zed
+    state: present
+
 - name: Configure ZED
   ansible.builtin.template:
     src: etc/zfs/zed.d/zed.rc.j2

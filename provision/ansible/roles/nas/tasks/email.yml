@@ -1,20 +1,29 @@
 ---
+- name: Install email packages
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - mailutils
+      - msmtp
+      - msmtp-mta
+    state: present
+
 - name: Configure aliases
   ansible.builtin.template:
     src: etc/aliases.j2
     dest: /etc/aliases
     mode: 0644
 
-- name: Configure msmtpd
-  ansible.builtin.template:
-    src: etc/msmtprc.j2
-    dest: /etc/msmtprc
-    mode: 0644
-
 - name: Configure mail
   ansible.builtin.template:
     src: etc/mail.rc.j2
     dest: /etc/mail.rc
+    mode: 0644
+
+- name: Configure msmtpd
+  ansible.builtin.template:
+    src: etc/msmtprc.j2
+    dest: /etc/msmtprc
     mode: 0644
 
 - name: Restart msmtpd service

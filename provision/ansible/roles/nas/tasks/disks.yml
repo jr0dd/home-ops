@@ -1,9 +1,19 @@
 ---
+- name: Install smartd
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - smartmontools
+    state: present
+
 - name: Configure smartd
   ansible.builtin.template:
     src: etc/smartd.conf.j2
     dest: /etc/smartd.conf
     mode: 0644
+  when:
+    - smartd_config
+    - smartd_config | length > 0
 
 - name: Restart smartd service
   ansible.builtin.systemd:

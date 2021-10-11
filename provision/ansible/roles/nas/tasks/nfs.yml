@@ -1,30 +1,28 @@
 ---
-- name: ubuntu | installing NFS (if enabled)
-  apt:
-    name: nfs-kernel-server
+- name: Install NFS
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - nfs-common
+      - nfs-kernel-server
     state: present
-  when: >
-        zfs_enable_nfs is defined and
-        zfs_enable_nfs
 
-- name: ubuntu | un-installing NFS (if not enabled)
-  apt:
-    name: nfs-kernel-server
-    state: absent
-  when: >
-        zfs_enable_nfs is defined and
-        not zfs_enable_nfs
-
-- name: ubuntu | configuring NFS Kernel Server
-  template:
+- name: Configure NFS
+  ansible.builtin.template:
     src: etc/exports.j2
     dest: /etc/exports
-    owner: root
-    group: root
     mode: 0644
-  notify:
-    - restart nfs-kernel-server
-    - start zfs-share
-  when: >
-        zfs_enable_nfs is defined and
-        zfs_enable_nfs
+  when:
+    - nfs_exports
+    - nfs_exports | length > 0
+
+- name: Reload NFS exports
+  ansible.builtin.command:
+    cmd: 'exportfs -ar'
+
+- name: Restart NFS service
+  ansible.builtin.systemd:
+    name: nfs-kernel-server
+    daemon_reload: true
+    enabled: true
+    state: restarted

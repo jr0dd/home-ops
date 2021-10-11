@@ -24,6 +24,8 @@ spec:
   template:
     metadata:
       annotations:
+        # ensure pods roll when configmap updates
+        cilium.io/cilium-configmap-checksum: "42f0240bfb547a2e3c5fb33f81463add8997a31ccea46f000e5ed115cd986929"
       labels:
         io.cilium/app: operator
         name: cilium-operator
@@ -63,6 +65,10 @@ spec:
               key: debug
               name: cilium-config
               optional: true
+        - name: KUBERNETES_SERVICE_HOST
+          value: {{ kubevip_address | default(ansible_host) }}
+        - name: KUBERNETES_SERVICE_PORT
+          value: "6443"
         image: "quay.io/cilium/operator-generic:v1.10.4@sha256:c49a14e34634ff1a494c84b718641f27267fb3a0291ce3d74352b44f8a8d2f93"
         imagePullPolicy: IfNotPresent
         name: cilium-operator

@@ -3,8 +3,8 @@
 Description=zpool scrub on %i
 
 [Timer]
-OnCalendar={{ zfs_scrub_pools.on_calendar | default('*-*-1,15 01:00:00') }}
-AccuracySec={{ zfs_scrub_pools.accuracy | default('1h') }}
+OnCalendar={{ scrub_pools_timer.on_calendar | default('*-*-1,15 01:00:00') }}
+AccuracySec={{ scrub_pools_timer.accuracy | default('1h') }}
 Persistent=true
 
 [Install]

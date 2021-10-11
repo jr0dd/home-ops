@@ -9,7 +9,7 @@ k3s_control_node: true
 k3s_server:
   node-ip: "{{ ansible_host }}"
   tls-san:
-    - "{{ kubevip_address }}"
+    - "{{ kubevip_address | default(omit) }}"
   docker: false
   flannel-backend: "none" # This needs to be in quotes
   disable:
@@ -20,6 +20,7 @@ k3s_server:
     - local-storage
   disable-network-policy: true
   disable-cloud-controller: true
+  disable-kube-proxy: true
   write-kubeconfig-mode: "644"
   # Network CIDR to use for pod IPs
   cluster-cidr: "172.20.0.0/16"

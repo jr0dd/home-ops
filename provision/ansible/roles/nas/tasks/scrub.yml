@@ -14,7 +14,6 @@
 - name: Start ZFS scrub timer
   ansible.builtin.systemd:
     name: "zfs-scrub@{{ item.name }}.timer"
-    daemon_reload: true
     enabled: true
     state: started
   with_items: "{{ zfs_pools }}"

@@ -1,15 +1,15 @@
 ---
-- include: smart.yml
-  when: zfs_enable_smartd
+- include: disks.yml
+  when: zfs_monitoring.smartd_alerts
   tags:
-    - smart
+    - disks
 
 - include: packages.yml
   tags:
     - packages
 
 - include: email.yml
-  when: zfs_email_alerts
+  when: zfs_monitoring.email_alerts
   tags:
     - email
 
@@ -19,16 +19,29 @@
     public: true
 
 - include: scrub.yml
-  when: zfs_enable_systemd_scrub
+  when: zfs_monitoring.systemd_scrub_timer
   tags:
     - scrub
 
+- include: nfs.yml
+  when: zfs_sharing.nfs_enabled
+  tags:
+    - nfs
+
 - include: samba.yml
-  when: samba_enabled
+  when: zfs_sharing.samba_enabled
   tags:
     - samba
 
+- include: avahi.yml
+  when:
+    - zfs_sharing.samba_enabled
+    - zfs_sharing.timemachine_enabled
+  tags:
+    - samba
+    - avahi
+
 - include: zed.yml
-  when: zfs_enable_zed
+  when: zfs_monitoring.zed_alerts
   tags:
     - zed

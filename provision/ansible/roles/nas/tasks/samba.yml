@@ -1,4 +1,12 @@
 ---
+- name: Install samba
+  ansible.builtin.apt:
+    update_cache: yes
+    pkg:
+      - samba
+      - samba-vfs-modules
+    state: present
+
 - name: Create Samba users if they don't exist yet
   shell: >
     (pdbedit --user={{ item.name }} 2>&1 > /dev/null) \
@@ -8,6 +16,9 @@
   no_log: true
   register: create_user_output
   changed_when: "'Added user' in create_user_output.stdout"
+  when:
+    - samba_users
+    - samba_users | length > 0
 
 - name: Configure samba
   ansible.builtin.template:
@@ -15,6 +26,11 @@
     dest: /etc/samba/smb.conf
     validate: 'testparm -s %s'
     mode: 0644
+  when:
+    - samba_global
+    - samba_global | length > 0
+    - samba_shares
+    - samba_shares | length > 0
 
 - name: Restart samba service
   ansible.builtin.systemd:
