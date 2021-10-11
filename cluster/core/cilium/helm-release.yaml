@@ -28,7 +28,6 @@ spec:
     # change to kube-vip in future
     k8sServiceHost: 10.10.0.10
     k8sServicePort: 6443
-    nativeRoutingCIDR: ${NETWORK_K8S_CLUSTER_CIDR}
     rollOutCiliumPods: true
     bgp:
       enabled: true
