@@ -37,15 +37,15 @@ spec:
             - name: bgp_enable
               value: "true"
             - name: bgp_routerinterface
-              value: "${KUBE_VIP_IFACE}"
+              value: "enp1s0f0"
             - name: bgp_as
               value: "64512"
             - name: bgp_peeraddress
-              value: "${GATEWAY_IP}"
+              value: "10.10.0.1"
             - name: bgp_peeras
               value: "64512"
             - name: vip_address
-              value: "${KUBE_VIP_IP}"
+              value: "10.10.15.5"
           securityContext:
             capabilities:
               add:

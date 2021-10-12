@@ -21,11 +21,11 @@
 ---
 ## :book:&nbsp; Overview
 
-This is home to my personal Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches this Git repository and makes the changes to my cluster based on the manifests in the [cluster](./cluster/) directory. [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/) protects my secrets so I can keep everything on a public repo.
+This is home to my personal Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches this Git repository and makes the changes to my cluster based on the manifests in the [cluster](./cluster/) directory. [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/) encrypts the secrets so everything can be kept in a public repo as transparent as possible.
 
-Currently I only have a single node running on Ubuntu 21.04 as the master-node and storage-node.
+Currently I only have a single node running on Ubuntu 21.04 as the master-node and storage-node. This was recently migrated from TrueNAS SCALE using the NAS role I have been working on.
 
-**The Ansible NAS role still needs some love. Merging features from mrlessmith.zfs role into my NAS role.
+***The Ansible NAS role is still a wip and will eventually move into it's own repo.***
 
 For more information, head on over to my [docs](https://jr0dd.github.io/home-cluster/). ***Not ready yet***
 
@@ -35,6 +35,6 @@ All my prometheus recording/alerting rules found in this repo can be found in my
 ## :handshake:&nbsp; Community
 
 Thanks to all the people who donate their time to the [k8s@home](https://github.com/k8s-at-home/) community.
-This repo would not exist if it wasn't for their work.
+This repo would not exist if it wasn't for the shared knowledge.
 
 If you want to learn more start with this template [here](https://github.com/k8s-at-home/template-cluster-k3s/)
