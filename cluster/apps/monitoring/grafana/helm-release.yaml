@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://grafana.github.io/helm-charts
       chart: grafana
-      version: 6.16.13
+      version: 6.16.14
       sourceRef:
         kind: HelmRepository
         name: grafana-charts
@@ -126,6 +126,21 @@ spec:
               path: /var/lib/grafana/dashboards/default
     dashboards:
       default:
+        # Ref: https://grafana.com/grafana/dashboards/14500
+        cilium-agent:
+          gnetId: 14500
+          revision: 1
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/14501
+        cilium-operator:
+          gnetId: 14501
+          revision: 1
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/14502
+        cilium-hubble:
+          gnetId: 14502
+          revision: 1
+          datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/13665
         speedtest:
           gnetId: 13665
