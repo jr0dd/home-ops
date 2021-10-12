@@ -20,10 +20,12 @@ spec:
           args:
             - manager
           env:
+            - name: address
+              value: "k8s.${SECRET_DOMAIN}"
             - name: vip_arp
               value: "false"
             - name: vip_interface
-              value: lo
+              value: "lo"
             - name: port
               value: "6443"
             - name: vip_cidr
@@ -31,21 +33,21 @@ spec:
             - name: cp_enable
               value: "true"
             - name: cp_namespace
-              value: kube-system
+              value: "kube-system"
             - name: vip_loglevel
               value: "5"
             - name: bgp_enable
               value: "true"
-            - name: bgp_routerinterface
-              value: "enp1s0f0"
+            - name: bgp_source_ip
+              value: "10.10.0.254"
             - name: bgp_as
               value: "64512"
+            - name: bgp_routerinterface
+              value: "enp1s0f0"
             - name: bgp_peeraddress
-              value: "10.10.0.1"
+              value: "${GATEWAY_IP}"
             - name: bgp_peeras
               value: "64512"
-            - name: vip_address
-              value: "10.10.15.5"
           securityContext:
             capabilities:
               add:
