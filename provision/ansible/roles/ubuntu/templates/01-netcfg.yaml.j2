@@ -1,0 +1,15 @@
+---
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    {{ hostvars[inventory_hostname]["ansible_default_ipv4"]["interface"] }}:
+      addresses:
+        - {{ hostvars[inventory_hostname]["ansible_default_ipv4"]["address"] }}/24
+      routes:
+        - to: default
+          via: {{ hostvars[inventory_hostname]["ansible_default_ipv4"]["gateway"] }}
+      nameservers:
+        addresses:
+          - {{ hostvars[inventory_hostname]["ansible_default_ipv4"]["gateway"] }}
+        search: []

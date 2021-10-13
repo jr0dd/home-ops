@@ -7,12 +7,12 @@ metadata:
 data:
   config.yaml: |
     peers:
-      - peer-address: "{{ cilium_bgp_peer_ip }}"
-        peer-asn: {{ cilium_bgp_peer_as_number }}
-        my-asn: {{ cilium_bgp_as_number }}
+      - peer-address: {{ cilium_peer_ip }}
+        peer-asn: {{ cilium_peer_asn }}
+        my-asn: {{ cilium_asn }}
     address-pools:
-      - name: "{{ cilium_bgp_pool_name | default('default') }}"
+      - name: "{{ cilium_pool_name | default('default') }}"
         protocol: bgp
         avoid-buggy-ips: true
         addresses:
-          - "{{ cilium_bgp_pool_cidr }}"
+          - "{{ cilium_cidr }}"

@@ -9,7 +9,7 @@
 
 - name: Configure NFS
   ansible.builtin.template:
-    src: etc/exports.j2
+    src: exports.j2
     dest: /etc/exports
     mode: 0644
   when:

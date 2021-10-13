@@ -15,10 +15,10 @@ spec:
       args:
         - manager
       env:
-        - name: vip_arp
-          value: "false"
+        - name: address
+          value: "{{ kubevip_address }}"
         - name: vip_interface
-          value: lo
+          value: "lo"
         - name: port
           value: "6443"
         - name: vip_cidr
@@ -26,23 +26,21 @@ spec:
         - name: cp_enable
           value: "true"
         - name: cp_namespace
-          value: kube-system
-        - name: vip_startleader
-          value: "false"
+          value: "kube-system"
         - name: vip_loglevel
           value: "5"
         - name: bgp_enable
           value: "true"
+        # - name: bgp_source_ip
+        #   value: "{{ kubevip_source_ip }}"
+        - name: bgp_as
+          value: "{{ kubevip_asn }}"
         - name: bgp_routerinterface
           value: "{{ kubevip_interface }}"
-        - name: bgp_as
-          value: "{{ kubevip_bgp_as_number }}"
         - name: bgp_peeraddress
-          value: "{{ kubevip_bgp_peer_ip }}"
+          value: "{{ kubevip_peer_ip }}"
         - name: bgp_peeras
-          value: "{{ kubevip_bgp_peer_as_number }}"
-        - name: vip_address
-          value: "{{ kubevip_address }}"
+          value: "{{ kubevip_peer_asn }}"
       securityContext:
         capabilities:
           add:
