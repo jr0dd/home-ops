@@ -6,6 +6,10 @@ kind: DaemonSet
 metadata:
   labels:
     k8s-app: cilium
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-name: cilium
+    meta.helm.sh/release-namespace: kube-system
   name: cilium
   namespace: kube-system
 spec:

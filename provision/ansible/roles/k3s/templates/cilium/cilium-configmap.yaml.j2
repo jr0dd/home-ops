@@ -5,6 +5,11 @@ kind: ConfigMap
 metadata:
   name: cilium-config
   namespace: kube-system
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    meta.helm.sh/release-name: cilium
+    meta.helm.sh/release-namespace: kube-system
 data:
 
   # Identity allocation mode selects how identities are shared between cilium
