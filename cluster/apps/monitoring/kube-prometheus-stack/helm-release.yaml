@@ -21,7 +21,6 @@ spec:
     nameOverride: prometheus
     alertmanager:
       enabled: true
-      # logFormat: json
       logLevel: error
       config:
         global:
@@ -84,7 +83,6 @@ spec:
                   storage: 1Gi
     prometheus:
       enabled: true
-      # logFormat: json
       logLevel: error
       ingress:
         enabled: true
@@ -165,6 +163,7 @@ spec:
             targetLabel: kubernetes_node
     prometheus-node-exporter:
       fullnameOverride: node-exporter
+      extraArgs: []
     kubeStateMetrics:
       enabled: true
     kube-state-metrics:
