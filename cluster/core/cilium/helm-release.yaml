@@ -21,7 +21,7 @@ spec:
   values:
     image:
       repository: quay.io/cilium/cilium
-      tag: v1.10.4
+      tag: v1.10.5
       pullPolicy: IfNotPresent
       digest: "sha256:7d354052ccf2a7445101d78cebd14444c7c40129ce7889f2f04b89374dbf8a1d"
       useDigest: true
