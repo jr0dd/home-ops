@@ -1,5 +1,5 @@
 ---
-- name: Copy 20auto-upgrades unattended-upgrades config
+- name: unattended-upgrades | copy 20auto-upgrades config
   ansible.builtin.blockinfile:
     path: /etc/apt/apt.conf.d/20auto-upgrades
     mode: 0644
@@ -10,7 +10,7 @@
       APT::Periodic::AutocleanInterval "7";
       APT::Periodic::Unattended-Upgrade "1";
 
-- name: Copy 50unattended-upgrades unattended-upgrades config
+- name: unattended-upgrades | copy 50unattended-upgrades config
   ansible.builtin.blockinfile:
     path: /etc/apt/apt.conf.d/50unattended-upgrades
     mode: 0644
@@ -24,13 +24,7 @@
           "${distro_id} ${distro_codename}-updates";
       };
 
-- name: Start unattended-upgrades service
-  ansible.builtin.systemd:
-    name: unattended-upgrades
-    enabled: true
-    state: started
-
-- name: Restart unattended-upgrades service
+- name: unattended-upgrades | restart unattended-upgrades service
   ansible.builtin.systemd:
     name: unattended-upgrades
     daemon_reload: true

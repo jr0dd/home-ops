@@ -1,0 +1,3 @@
+---
+kubevip_source_ip: 10.10.0.201
+kubevip_interface: ens33

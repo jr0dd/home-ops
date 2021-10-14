@@ -1,5 +1,5 @@
 ---
-- name: Manage groups
+- name: system | manage groups
   ansible.builtin.group:
     name: "{{ group.name | default(group) }}"
     gid: "{{ group.gid | default(omit) }}"

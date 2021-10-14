@@ -1,15 +1,19 @@
+# {{ ansible_managed }}
 ---
 network:
   version: 2
   renderer: networkd
   ethernets:
-    {{ hostvars[inventory_hostname]["ansible_default_ipv4"]["interface"] }}:
+    {{ ansible_default_ipv4.interface }}:
       addresses:
-        - {{ hostvars[inventory_hostname]["ansible_default_ipv4"]["address"] }}/24
+        - {{ ansible_default_ipv4.address }}/24
+        {% if kubevip_source_ip is defined %}
+        - {{ kubevip_source_ip }}/24
+        {% endif %}
       routes:
         - to: default
-          via: {{ hostvars[inventory_hostname]["ansible_default_ipv4"]["gateway"] }}
+          via: {{ ansible_default_ipv4.gateway }}
       nameservers:
         addresses:
-          - {{ hostvars[inventory_hostname]["ansible_default_ipv4"]["gateway"] }}
+          - {{ ansible_default_ipv4.gateway }}
         search: []

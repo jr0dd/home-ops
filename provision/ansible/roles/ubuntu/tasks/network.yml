@@ -1,11 +1,11 @@
 ---
-- name: Set hostname to inventory hostname
+- name: network | hostname to inventory hostname
   ansible.builtin.hostname:
     name: "{{ inventory_hostname }}"
   when:
     - ansible_hostname != inventory_hostname
 
-- name: Update /etc/hosts to include hostname
+- name: network | update /etc/hosts to include hostname
   ansible.builtin.blockinfile:
     path: /etc/hosts
     create: true
@@ -21,12 +21,12 @@
       ff02::2 ip6-allrouters
       ff02::3 ip6-allhosts
 
-- name: Check for bridge-nf-call-iptables
+- name: network | check for bridge-nf-call-iptables
   ansible.builtin.stat:
     path: /proc/sys/net/bridge/bridge-nf-call-iptables
   register: bridge_nf_call_iptables_result
 
-- name: Set Kubernetes network configuration
+- name: network | set kubernetes network configuration
   ansible.builtin.blockinfile:
     path: /etc/sysctl.d/99-kubernetes-cri.conf
     mode: 0644
@@ -40,25 +40,23 @@
     - bridge_nf_call_iptables_result.stat.exists
   register: sysctl_network
 
-- name: Reload Kubernetes network configuration
+- name: network | reload kubernetes network configuration
   ansible.builtin.shell: sysctl -p /etc/sysctl.d/99-kubernetes-cri.conf
   when:
     - sysctl_network.changed
     - bridge_nf_call_iptables_result.stat.exists
 
-- name: netplan | check original netplan
+- name: network | check original netplan
   ansible.builtin.stat:
     path: /etc/netplan/00-installer-config.yaml
   register: original_netplan
 
-- name: netplan | remove original netplan
+- name: network | remove original netplan
   ansible.builtin.shell: 'rm -f /etc/netplan/00-installer-config.yaml'
 
-- name: netplan | install new netplan
+- name: network | install new netplan
   ansible.builtin.template:
     src: 01-netcfg.yaml.j2
     dest: /etc/netplan/01-netcfg.yaml
     lstrip_blocks: true
-
-- name: netplan | apply netplan
-  ansible.builtin.command: 'netplan apply'
+    validate: 'netplan apply %s'

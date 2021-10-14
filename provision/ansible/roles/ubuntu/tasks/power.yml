@@ -1,5 +1,5 @@
 ---
-- name: power-button | disable single power button press shutdown
+- name: power | disable single power button press shutdown
   ansible.builtin.lineinfile:
     path: /etc/systemd/logind.conf
     regexp: "{{ item.setting }}"
@@ -7,7 +7,7 @@
   loop:
     - { setting: HandlePowerKey, value: ignore }
 
-- name: power-button | restart logind systemd service
+- name: power | restart logind systemd service
   ansible.builtin.systemd:
     name: systemd-logind
     daemon_reload: true

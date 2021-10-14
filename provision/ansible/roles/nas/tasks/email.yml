@@ -1,5 +1,5 @@
 ---
-- name: Install email packages
+- name: email | install mail packages
   ansible.builtin.apt:
     update_cache: yes
     pkg:
@@ -9,25 +9,25 @@
       - bsd-mailx
     state: present
 
-- name: Configure aliases
+- name: email | configure aliases
   ansible.builtin.template:
     src: aliases.j2
     dest: /etc/aliases
     mode: 0644
 
-- name: Configure mail
+- name: email | configure mail
   ansible.builtin.template:
     src: mail.rc.j2
     dest: /etc/mail.rc
     mode: 0644
 
-- name: Configure msmtpd
+- name: email | configure msmtpd
   ansible.builtin.template:
     src: msmtprc.j2
     dest: /etc/msmtprc
     mode: 0644
 
-- name: Restart msmtpd service
+- name: email | restart msmtpd service
   ansible.builtin.systemd:
     name: msmtpd
     daemon_reload: true

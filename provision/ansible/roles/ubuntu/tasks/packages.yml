@@ -1,5 +1,5 @@
 ---
-- name: Disable APT recommends
+- name: packages | disable apt recommends
   ansible.builtin.blockinfile:
     path: /etc/apt/apt.conf.d/02norecommends
     mode: 0644
@@ -10,7 +10,7 @@
       APT::Get::Install-Recommends "false";
       APT::Get::Install-Suggests "false";
 
-- name: Upgrade all system packages
+- name: packages | upgrade all system packages
   ansible.builtin.apt:
     upgrade: full
     update_cache: true
@@ -21,7 +21,7 @@
   retries: 5
   until: apt_upgrade is success
 
-- name: Install common packages
+- name: packages | install common packages
   ansible.builtin.apt:
     name: "{{ apt_install_packages }}"
     install_recommends: false
@@ -37,20 +37,20 @@
     - apt_install_packages is iterable
     - apt_install_packages | length > 0
 
-- name: Gather installed packages
+- name: packages | gather installed packages
   ansible.builtin.package_facts:
     manager: auto
 
-- name: Remove packages
+- name: packages | remove packages
   block:
-    - name: Check if snap is installed
+    - name: packages | check if snap is installed
       ansible.builtin.debug:
         msg: "snapd is installed"
       register: snapd_check
       when:
         - "'snapd' in apt_remove_packages"
         - "'snapd' in ansible_facts.packages"
-    - name: Remove snap packages
+    - name: packages | remove snap packages
       ansible.builtin.command: snap remove {{ item }}
       loop:
         - lxd
@@ -61,12 +61,12 @@
         - "'snapd' in apt_remove_packages"
         - "'snapd' in ansible_facts.packages"
         - snapd_check.failed is defined
-    - name: Remove packages
+    - name: packages | remove packages
       ansible.builtin.apt:
         name: "{{ apt_remove_packages }}"
         state: absent
         autoremove: true
-    - name: Remove files
+    - name: packages | remove files
       ansible.builtin.file:
         state: absent
         path: "{{ item }}"

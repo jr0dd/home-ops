@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: "True"
 ---
 apiVersion: apps/v1
 kind: DaemonSet
@@ -20,7 +21,7 @@ spec:
     spec:
       containers:
         - name: kube-vip
-          image: ghcr.io/kube-vip/kube-vip:v0.3.8
+          image: ghcr.io/kube-vip/kube-vip:v0.3.9
           imagePullPolicy: IfNotPresent
           args:
             - manager
@@ -41,8 +42,10 @@ spec:
               value: "5"
             - name: bgp_enable
               value: "true"
-            # - name: bgp_source_ip
-            #   value: "{{ kubevip_source_ip }}"
+            {% if kubevip_source_ip is defined %}
+            - name: bgp_source_ip
+              value: "{{ kubevip_source_ip }}"
+            {% endif %}
             - name: bgp_as
               value: "{{ kubevip_asn }}"
             - name: bgp_routerinterface

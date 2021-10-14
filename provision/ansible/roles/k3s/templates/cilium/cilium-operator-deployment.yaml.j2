@@ -1,3 +1,4 @@
+#jinja2: lstrip_blocks: "True"
 ---
 # Source: cilium/templates/cilium-operator-deployment.yaml
 apiVersion: apps/v1
@@ -25,7 +26,7 @@ spec:
     metadata:
       annotations:
         # ensure pods roll when configmap updates
-        cilium.io/cilium-configmap-checksum: "42f0240bfb547a2e3c5fb33f81463add8997a31ccea46f000e5ed115cd986929"
+        cilium.io/cilium-configmap-checksum: "1923bbaf423b0dd7071f976296d99404920572276b093371474810817f45e011"
       labels:
         io.cilium/app: operator
         name: cilium-operator
@@ -65,11 +66,13 @@ spec:
               key: debug
               name: cilium-config
               optional: true
+        {% if kubevip_address is defined %}
         - name: KUBERNETES_SERVICE_HOST
-          value: {{ kubevip_address | default(ansible_host) }}
+          value: {{ kubevip_address }}
         - name: KUBERNETES_SERVICE_PORT
           value: "6443"
-        image: "quay.io/cilium/operator-generic:v1.10.4@sha256:c49a14e34634ff1a494c84b718641f27267fb3a0291ce3d74352b44f8a8d2f93"
+        {% endif %}
+        image: "quay.io/cilium/operator-generic:v1.10.5@sha256:2d2f730f219d489ff0702923bf24c0002cd93eb4b47ba344375566202f56d972"
         imagePullPolicy: IfNotPresent
         name: cilium-operator
         livenessProbe:

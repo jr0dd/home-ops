@@ -1,5 +1,5 @@
 ---
-- name: Set timezone
+- name: locale | set timezone
   community.general.timezone:
     name: "{{ timezone | default('America/New_York') }}"
 

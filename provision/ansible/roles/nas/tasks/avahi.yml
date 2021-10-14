@@ -1,12 +1,12 @@
 ---
-- name: Install avahi
+- name: avahi | install avahi service
   ansible.builtin.apt:
     update_cache: yes
     pkg:
       - avahi-daemon
     state: present
 
-- name: Restart avahi service
+- name: avahi | restart avahi service
   ansible.builtin.systemd:
     name: avahi-daemon
     daemon_reload: true

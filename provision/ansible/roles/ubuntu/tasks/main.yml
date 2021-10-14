@@ -28,9 +28,9 @@
   tags:
     - power
 
-- include: security.yml
+- include: grub.yml
   tags:
-    - security
+    - grub
 
 - include: unattended-upgrades.yml
   tags:

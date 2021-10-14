@@ -1,5 +1,5 @@
 ---
-- name: Install NFS
+- name: nfs | install nfs packages
   ansible.builtin.apt:
     update_cache: yes
     pkg:
@@ -7,7 +7,7 @@
       - nfs-kernel-server
     state: present
 
-- name: Configure NFS
+- name: nfs | configure nfs exports
   ansible.builtin.template:
     src: exports.j2
     dest: /etc/exports
@@ -16,11 +16,11 @@
     - nfs_exports
     - nfs_exports | length > 0
 
-- name: Reload NFS exports
+- name: nfs | reload nfs exports
   ansible.builtin.command:
     cmd: 'exportfs -ar'
 
-- name: Restart NFS service
+- name: nfs | restart nfs service
   ansible.builtin.systemd:
     name: nfs-kernel-server
     daemon_reload: true

@@ -1,5 +1,5 @@
 ---
-- name: Upgrade all system packages
+- name: packages | upgrade all system packages
   ansible.builtin.apt:
     upgrade: full
     update_cache: true
@@ -10,11 +10,11 @@
   retries: 5
   until: apt_upgrade is success
 
-- name: Gather installed packages
+- name: packages | gather installed packages
   ansible.builtin.package_facts:
     manager: auto
 
-- name: Install common packages
+- name: packages | install common packages
   ansible.builtin.apt:
     name: "{{ apt_install_packages }}"
     install_recommends: false

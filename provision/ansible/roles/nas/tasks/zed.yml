@@ -1,18 +1,18 @@
 ---
-- name: Install ZED
+- name: zed | install zed packages
   ansible.builtin.apt:
     update_cache: yes
     pkg:
       - zfs-zed
     state: present
 
-- name: Configure ZED
+- name: zed | configure zed service
   ansible.builtin.template:
     src: zed.rc.j2
     dest: /etc/zfs/zed.d/zed.rc
     mode: 0600
 
-- name: Restart ZED service
+- name: zed | restart zed service
   ansible.builtin.systemd:
     name: zfs-zed
     daemon_reload: true
