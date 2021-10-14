@@ -28,6 +28,8 @@ spec:
           env:
             - name: address
               value: "{{ kubevip_address }}"
+            - name: vip_arp
+              value: "false"
             - name: vip_interface
               value: "lo"
             - name: port
