@@ -1,0 +1,38 @@
+---
+# basic helm values to generate ansible templates
+autoDirectNodeRoutes: true
+k8sServiceHost: "k8s.${SECRET_DOMAIN}"
+k8sServicePort: 6443
+nativeRoutingCIDR: 172.20.0.0/16
+rollOutCiliumPods: true
+tunnel: disabled
+kubeProxyReplacement: "strict"
+kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
+installIptablesRules: true
+installNoConntrackIptablesRules: false
+l7Proxy: true
+localRedirectPolicy: false
+enableIPv4Masquerade: true
+bgp:
+  enabled: true
+  announce:
+    loadbalancerIP: true
+bpf:
+  clockProbe: true
+  masquerade: true
+  hostRouting: false
+cni:
+  install: true
+  chainingMode: none
+  exclusive: true
+containerRuntime:
+  integration: containerd
+  socketPath: /var/run/k3s/containerd/containerd.sock
+ipam:
+  mode: "kubernetes"
+k8s:
+  requireIPv4PodCIDR: true
+operator:
+  enabled: true
+  rollOutPods: true
+  replicas: 1

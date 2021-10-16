@@ -16,8 +16,6 @@ spec:
         name: cilium-charts
         namespace: flux-system
       interval: 5m
-  upgrade:
-    force: true
   values:
     image:
       repository: quay.io/cilium/cilium
@@ -25,15 +23,23 @@ spec:
       pullPolicy: IfNotPresent
       digest: "sha256:7d354052ccf2a7445101d78cebd14444c7c40129ce7889f2f04b89374dbf8a1d"
       useDigest: true
+    autoDirectNodeRoutes: true
     k8sServiceHost: "k8s.${SECRET_DOMAIN}"
     k8sServicePort: 6443
+    nativeRoutingCIDR: "${NETWORK_K8S_CLUSTER_CIDR}"
     rollOutCiliumPods: true
+    tunnel: disabled
+    kubeProxyReplacement: "strict"
+    kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
+    installIptablesRules: true
+    installNoConntrackIptablesRules: false
+    l7Proxy: true
+    localRedirectPolicy: false
+    enableIPv4Masquerade: true
     bgp:
       enabled: true
       announce:
         loadbalancerIP: true
-    externalIPs:
-      enabled: false
     bpf:
       clockProbe: true
       masquerade: true
@@ -49,14 +55,11 @@ spec:
       mode: "kubernetes"
     k8s:
       requireIPv4PodCIDR: true
-    kubeProxyReplacement: "strict"
-    kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
-    installIptablesRules: true
-    installNoConntrackIptablesRules: false
-    l7Proxy: true
-    localRedirectPolicy: false
-    enableIPv4Masquerade: true
-    enableIPv6Masquerade: true
+    loadBalancer:
+      standalone: false
+      acceleration: native
+      algorithm: maglev
+      mode: dsr
     operator:
       enabled: true
       rollOutPods: true
@@ -73,12 +76,6 @@ spec:
     proxy:
       prometheus:
         enabled: true
-    tunnel: disabled
-    loadBalancer:
-      standalone: false
-      acceleration: native
-      algorithm: maglev
-      mode: dsr
     hubble:
       enabled: true
       metrics:
