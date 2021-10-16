@@ -5,7 +5,7 @@
 #
 
 # Use a specific version of k3s
-k3s_release_version: "v1.21.5+k3s2"
+k3s_release_version: "v1.22.2+k3s2"
 
 # Install using hard links rather than symbolic links.
 # ...if you are using the system-upgrade-controller you will need to use hard links rather than symbolic links as the controller will not be able to follow symbolic links.
@@ -18,21 +18,23 @@ k3s_become_for_all: true
 k3s_debug: false
 
 # Enabled embedded etcd
-k3s_etcd_datastore: false
+k3s_etcd_datastore: true
 
 # Enable for single or even number of masters
-k3s_use_unsupported_config: false
+k3s_use_unsupported_config: true
 
 # Control Plane registration address
 k3s_registration_address: "{{ kubevip_address }}"
 
+# A list of templates used for configuring the server.
+k3s_server_config_yaml_d_files:
+  - "10-etcd-snapshots.yaml.j2"
+
 # /var/lib/rancher/k3s/server/manifests
 k3s_server_manifests_templates:
   - "home-dns/home-dns-rbac.yaml.j2"
-  - "cilium/cilium-agent-daemonset.yaml.j2"
-  - "cilium/cilium-bgp-configmap.yaml.j2"
-  - "cilium/cilium-configmap.yaml.j2"
-  - "cilium/cilium-operator-deployment.yaml.j2"
   - "cilium/cilium-rbac.yaml.j2"
+  - "cilium/cilium-bgp-config.yaml.j2"
+  - "cilium/cilium-installation.yaml.j2"
   - "kube-vip/kube-vip-rbac.yaml.j2"
   - "kube-vip/kube-vip-daemonset.yaml.j2"

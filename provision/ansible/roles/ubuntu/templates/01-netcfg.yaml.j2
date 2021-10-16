@@ -4,11 +4,16 @@ network:
   version: 2
   renderer: networkd
   ethernets:
-    {{ ansible_default_ipv4.interface }}:
+    eno0:
+      match:
+        macaddress: {{ ansible_default_ipv4.macaddress }}
+      set-name: eno0
+    eno0:
+      link: eno0
       addresses:
         - {{ ansible_default_ipv4.address }}/24
-        {% if kubevip_source_ip is defined %}
-        - {{ kubevip_source_ip }}/24
+        {% if kubevip_advertised_ip is defined %}
+        - {{ kubevip_advertised_ip }}/24
         {% endif %}
       routes:
         - to: default
