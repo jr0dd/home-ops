@@ -43,7 +43,7 @@ spec:
             - name: bgp_as
               value: "64512"
             - name: bgp_routerinterface
-              value: "enp1s0f0"
+              value: "eno0"
             - name: bgp_peeraddress
               value: "${GATEWAY_IP}"
             - name: bgp_peeras
