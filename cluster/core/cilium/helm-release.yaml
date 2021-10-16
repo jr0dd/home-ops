@@ -73,10 +73,8 @@ spec:
     proxy:
       prometheus:
         enabled: true
-    tunnel: disabled
     loadBalancer:
       standalone: false
-      acceleration: native
       algorithm: maglev
       mode: dsr
     hubble:

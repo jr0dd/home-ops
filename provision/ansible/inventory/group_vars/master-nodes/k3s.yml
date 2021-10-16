@@ -5,13 +5,6 @@
 # Define the host as control plane nodes
 k3s_control_node: true
 
-# S3 snapshot settings for etcd
-etcd-snapshot-schedule-cron: "0 */4 * * *"
-etcd-snapshot-retention: 12
-etcd-s3: {{ etcd_s3 }}
-etcd-s3-endpoint: "minio.minio:9000"
-etcd-s3-bucket: "etcd"
-
 # k3s settings for all control-plane nodes
 k3s_server:
   node-ip: "{{ ansible_host }}"
@@ -45,4 +38,4 @@ k3s_server:
   kube-scheduler-arg:
     - "address=0.0.0.0"
     - "bind-address=0.0.0.0"
-  etcd-expose-metrics: true
+  etcd-expose-metrics: false

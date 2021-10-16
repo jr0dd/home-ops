@@ -3,4 +3,3 @@ kubevip_address: 'k8s.{{ domain }}'
 kubevip_asn: 64512
 kubevip_peer_ip: 10.10.0.1
 kubevip_peer_asn: 64512
-kubevip_interface: eno0
