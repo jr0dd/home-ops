@@ -12,4 +12,4 @@ resources:
   - networking
   - security
   - system-upgrade
-  # - velero
+  - velero
