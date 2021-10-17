@@ -10,6 +10,7 @@ etcd_snapshot_schedule_cron: "0 */4 * * *"
 etcd_snapshot_retention: 12
 etcd_s3_endpoint: "minio.minio:9000"
 etcd_s3_bucket: "etcd"
+etcd_s3: true
 
 # k3s settings for all control-plane nodes
 k3s_server:
