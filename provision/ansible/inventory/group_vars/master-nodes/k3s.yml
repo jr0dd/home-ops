@@ -29,10 +29,10 @@ k3s_server:
   disable-cloud-controller: true
   disable-kube-proxy: true
   write-kubeconfig-mode: "644"
-  # Network CIDR to use for pod IPs
-  cluster-cidr: "172.20.0.0/16"
-  # Network CIDR to use for service IPs
-  service-cidr: "172.22.0.0/16"
+
+  cluster-cidr: "{{ k3s_cluster_cidr }}"
+  service-cidr: "{{ k3s_service_cidr }}"
+
   kubelet-arg:
     - "feature-gates=GracefulNodeShutdown=true"
     - "feature-gates=MixedProtocolLBService=true"

@@ -121,7 +121,7 @@ data:
   auto-direct-node-routes: "true"
   enable-bandwidth-manager: "false"
   enable-local-redirect-policy: "false"
-  native-routing-cidr: "{{ cluster-cidr }}"
+  native-routing-cidr: "{{ k3s_cluster_cidr }}"
 
   kube-proxy-replacement:  "strict"
   kube-proxy-replacement-healthz-bind-address: "0.0.0.0:10256"
