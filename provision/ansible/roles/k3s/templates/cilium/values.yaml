@@ -8,31 +8,14 @@ rollOutCiliumPods: true
 tunnel: disabled
 kubeProxyReplacement: "strict"
 kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
-installIptablesRules: true
-installNoConntrackIptablesRules: false
-l7Proxy: true
-localRedirectPolicy: false
-enableIPv4Masquerade: true
 bgp:
   enabled: true
   announce:
     loadbalancerIP: true
-bpf:
-  clockProbe: true
-  masquerade: true
-  hostRouting: false
-cni:
-  install: true
-  chainingMode: none
-  exclusive: true
 containerRuntime:
   integration: containerd
-  socketPath: /var/run/k3s/containerd/containerd.sock
 ipam:
   mode: "kubernetes"
-k8s:
-  requireIPv4PodCIDR: true
 operator:
-  enabled: true
   rollOutPods: true
   replicas: 1

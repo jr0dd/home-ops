@@ -8,7 +8,7 @@ k3s_control_node: true
 # S3 snapshot settings for etcd
 etcd_snapshot_schedule_cron: "0 */4 * * *"
 etcd_snapshot_retention: 12
-etcd_s3_endpoint: "minio.minio:9000"
+etcd_s3_endpoint: "s3.{{ domain }}"
 etcd_s3_bucket: "etcd"
 etcd_s3: true
 

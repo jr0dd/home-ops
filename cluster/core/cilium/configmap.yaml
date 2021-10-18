@@ -15,4 +15,4 @@ data:
         protocol: bgp
         avoid-buggy-ips: true
         addresses:
-          - ${NETWORK_K8S_LB_CIDR}
+          - ${K8S_LB_CIDR}
