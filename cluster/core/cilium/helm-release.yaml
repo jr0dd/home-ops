@@ -17,12 +17,12 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    # autoDirectNodeRoutes: true
+    autoDirectNodeRoutes: true
     k8sServiceHost: "${K8S_CONTROL_PLANE}"
     k8sServicePort: 6443
     nativeRoutingCIDR: "${K8S_CLUSTER_CIDR}"
     rollOutCiliumPods: true
-    # tunnel: disabled
+    tunnel: disabled
     kubeProxyReplacement: "strict"
     kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
     containerRuntime:
@@ -31,11 +31,11 @@ spec:
       mode: "kubernetes"
     k8s:
       requireIPv4PodCIDR: true
-    # loadBalancer:
-    #   standalone: false
-    #   acceleration: native
-    #   algorithm: maglev
-    #   mode: dsr
+    loadBalancer:
+      standalone: false
+      acceleration: native
+      algorithm: maglev
+      mode: dsr
     bgp:
       enabled: true
       announce:
