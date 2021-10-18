@@ -31,7 +31,7 @@ spec:
       mode: "kubernetes"
     loadBalancer:
       standalone: false
-      acceleration: native
+      # acceleration: native
       algorithm: maglev
       mode: dsr
     bgp:
