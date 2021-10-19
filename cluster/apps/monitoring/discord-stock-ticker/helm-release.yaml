@@ -83,9 +83,9 @@ spec:
         curl -X POST \
         "localhost:8080/ticker" \
         -H "Content-Type: application/json" \
-        -d "{\"ticker\":\"ZRX\", \
-            \"name\":\"0x\", \
-            \"discord_bot_token\":\"$ZRX\", \
+        -d "{\"ticker\":\"SHIB\", \
+            \"name\":\"shiba-inu\", \
+            \"discord_bot_token\":\"$SHIB\", \
             \"crypto\":true, \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
