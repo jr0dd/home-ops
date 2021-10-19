@@ -103,17 +103,19 @@ spec:
             \"discord_bot_token\":\"$INDICES\", \
             \"items\": [\"SPY\", \"^VIX\", \"IWM\", \"^NDX\"], \
             \"frequency\":$FREQ, \
+            \"percentage\": true, \
             \"set_nickname\":$NICK, \
             \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
 
         curl -X POST \
-        "localhost:8080/ticker" \
+        "localhost:8080/tickerboard" \
         -H "Content-Type: application/json" \
-        -d "{\"ticker\":\"AMC\", \
-            \"name\":\"AMC\", \
-            \"discord_bot_token\":\"$AMC\", \
+        -d "{\"name\":\"MEMES\", \
+            \"discord_bot_token\":\"$MEMES\", \
+            \"items\": [\"PLTR\", \"MVIS\", \"TLRY\", \"BB\", \"GME\", \"AMC\", \"WISH\", \"CLNE\", \"NOK\", \"RKT\", \"BBBY\", \"KOSS\", \"CLOV\", \"SPCE\"], \
             \"frequency\":$FREQ, \
+            \"percentage\": true, \
             \"set_nickname\":$NICK, \
             \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
