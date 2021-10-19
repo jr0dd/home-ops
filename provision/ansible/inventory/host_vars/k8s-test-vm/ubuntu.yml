@@ -10,11 +10,3 @@ managed_users:
     shell: /bin/zsh
     group: home_users
     groups: sudo,adm
-  - name: waleska
-    password: "{{ waleska_passwd }}"
-    uid: 2001
-    group: home_users
-  - name: nathan
-    password: "{{ nathan_passwd }}"
-    uid: 2002
-    group: home_users

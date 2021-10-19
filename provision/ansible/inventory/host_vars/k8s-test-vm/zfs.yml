@@ -1,7 +1,7 @@
 ---
-#-- my role --#
+#-- nas role --#
 zfs_sharing:
-  nfs_enabled: false
+  nfs_enabled: true
   samba_enabled: true
   timemachine_enabled: true
 
@@ -32,115 +32,12 @@ zfs_pools:
       - '/dev/sdb'
     type: basic
     state: present
-  - name: k8s
-    action: create
-    atime: on
-    compression: lz4
-    devices:
-      - '/dev/sdc'
-    type: basic
-    state: present
 
 zfs_filesystems:
-  - name: backups
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 775
-    mountpoint: /deadpool/backups
-
-  - name: containous
+  - name: ansible
     pool: deadpool
     state: present
     owner: root
     group: root
     mode: 755
-    mountpoint: /deadpool/containous
-
-  - name: media
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 775
-    mountpoint: /deadpool/media
-  - name: media/audiobooks
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 775
-    mountpoint: /deadpool/media/audiobooks
-  - name: media/downloads
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 775
-    mountpoint: /deadpool/media/downloads
-  - name: media/games
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 775
-    mountpoint: /deadpool/media/games
-  - name: media/music
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 775
-    mountpoint: /deadpool/media/music
-  - name: media/pictures
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 775
-    mountpoint: /deadpool/media/pictures
-  - name: media/videos
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 775
-    mountpoint: /deadpool/media/videos
-
-  - name: timemachine
-    pool: deadpool
-    state: present
-    owner: root
-    group: home_users
-    mode: 770
-    mountpoint: /deadpool/timemachine
-  - name: timemachine/j_r0dd
-    pool: deadpool
-    state: present
-    owner: j_r0dd
-    group: home_users
-    mode: 700
-    mountpoint: /deadpool/timemachine/j_r0dd
-  - name: timemachine/waleska
-    pool: deadpool
-    state: present
-    owner: waleska
-    group: home_users
-    mode: 700
-    mountpoint: /deadpool/timemachine/waleska
-  - name: timemachine/nathan
-    pool: deadpool
-    state: present
-    owner: nathan
-    group: home_users
-    mode: 700
-    mountpoint: /deadpool/timemachine/nathan
-
-  - name: containous
-    pool: k8s
-    state: present
-    owner: root
-    group: root
-    mode: 755
-    mountpoint: /k8s/containous
+    mountpoint: /deadpool/ansible

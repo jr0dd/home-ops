@@ -4,7 +4,6 @@
     update_cache: yes
     pkg:
       - samba
-      - samba-common
       - samba-vfs-modules
     state: present
 
@@ -27,11 +26,6 @@
     dest: /etc/samba/smb.conf
     validate: 'testparm -s %s'
     mode: 0644
-  when:
-    - samba_global
-    - samba_global | length > 0
-    - samba_shares
-    - samba_shares | length > 0
 
 - name: samba | restart samba service
   ansible.builtin.systemd:

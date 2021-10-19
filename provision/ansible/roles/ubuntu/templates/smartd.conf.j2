@@ -1,2 +1,6 @@
 # {{ ansible_managed }}
-DEVICESCAN -a -o on -S on -n standby,q -s (S/../.././02|L/../../6/03) -W 4,35,40 -m root
+{% if smartd_config is defined %}
+{{ smartd_config }}
+{% else %}
+DEVICESCAN -a -o on -S on -n standby,q -s (L/../../6/03|S/../.././02) -W 4,35,40 -m root
+{% endif %}

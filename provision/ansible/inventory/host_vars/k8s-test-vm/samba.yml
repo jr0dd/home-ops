@@ -2,36 +2,12 @@
 samba_users:
   - name: j_r0dd
     password: "{{ j_r0dd_passwd }}"
-  - name: waleska
-    password: "{{ waleska_passwd }}"
-  - name: nathan
-    password: "{{ nathan_passwd }}"
 
 samba_shares: |-
-  [media]
-    comment = Media
-    path = /deadpool/media
+  [ansible]
+    comment = Ansible
+    path = /deadpool/ansible
     public = no
     read only = no
     valid users= j_r0dd
     force group = home_users
-
-  [backups]
-    comment = Backups
-    path = /deadpool/backups
-    public = no
-    read only = no
-    valid users= @home_users
-    force group = home_users
-
-  [timemachine]
-    comment = Time Machine
-    path = /deadpool/timemachine/%U
-    public = no
-    read only = no
-    valid users= @home_users
-    browseable = False
-    create mode = 0600
-    directory mode = 0700
-    fruit:time machine = yes
-    fruit:time machine max size = 750G
