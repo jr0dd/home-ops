@@ -114,6 +114,16 @@ spec:
         curl -X POST \
         "localhost:8080/ticker" \
         -H "Content-Type: application/json" \
+        -d "{\"ticker\":\"DPW\", \
+            \"name\":\"DPW\", \
+            \"discord_bot_token\":\"$DPW\", \
+            \"frequency\":$FREQ, \
+            \"set_nickname\":$NICK, \
+            \"set_color\":$COLOR}"
+
+        curl -X POST \
+        "localhost:8080/ticker" \
+        -H "Content-Type: application/json" \
         -d "{\"ticker\":\"TSLA\", \
             \"name\":\"TSLA\", \
             \"discord_bot_token\":\"$TSLA\", \
