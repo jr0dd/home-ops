@@ -46,6 +46,7 @@ spec:
         FREQ="10"
         NICK="true"
         COLOR="true"
+        ARROWS="true"
 
         curl -X POST \
         "localhost:8080/ticker" \
@@ -56,6 +57,7 @@ spec:
             \"crypto\":true, \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
 
         curl -X POST \
@@ -67,6 +69,7 @@ spec:
             \"crypto\":true, \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
 
         curl -X POST \
@@ -78,6 +81,7 @@ spec:
             \"crypto\":true, \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
 
         curl -X POST \
@@ -89,6 +93,18 @@ spec:
             \"crypto\":true, \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
+            \"set_color\":$COLOR}"
+
+        curl -X POST \
+        "localhost:8080/tickerboard" \
+        -H "Content-Type: application/json" \
+        -d "{\"name\":\"INDICES\", \
+            \"discord_bot_token\":\"$INDICES\", \
+            \"items\": [\"SPY\", \"^VIX\", \"IWM\", \"^NDX\"], \
+            \"frequency\":$FREQ, \
+            \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
 
         curl -X POST \
@@ -99,6 +115,7 @@ spec:
             \"discord_bot_token\":\"$AMC\", \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
 
         curl -X POST \
@@ -109,6 +126,7 @@ spec:
             \"discord_bot_token\":\"$AAPL\", \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
 
         curl -X POST \
@@ -119,6 +137,7 @@ spec:
             \"discord_bot_token\":\"$DPW\", \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
 
         curl -X POST \
@@ -129,4 +148,5 @@ spec:
             \"discord_bot_token\":\"$TSLA\", \
             \"frequency\":$FREQ, \
             \"set_nickname\":$NICK, \
+            \"arrows\":$ARROWS, \
             \"set_color\":$COLOR}"
