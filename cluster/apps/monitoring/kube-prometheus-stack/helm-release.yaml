@@ -168,11 +168,16 @@ spec:
       enabled: true
     kube-state-metrics:
       fullnameOverride: kube-state-metrics
+    kubeEtcd:
+      enabled: true
+      endpoints:
+        - 10.10.0.10
+      service:
+        enabled: true
+        port: 2381
     kubeControllerManager:
       enabled: false
     kubeDns:
-      enabled: false
-    kubeEtcd:
       enabled: false
     kubeProxy:
       enabled: false
