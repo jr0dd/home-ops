@@ -43,11 +43,6 @@ spec:
         set -o nounset
         set -o errexit
 
-        FREQ="10"
-        NICK="true"
-        COLOR="true"
-        ARROWS="true"
-
         curl -X POST \
         "localhost:8080/ticker" \
         -H "Content-Type: application/json" \
@@ -113,7 +108,7 @@ spec:
         -H "Content-Type: application/json" \
         -d "{\"name\":\"FUTURES\", \
             \"discord_bot_token\":\"$FUTURES\", \
-            \"items\": [\"ES\=F\", \"RTY\=F\", \"NQ\=F\", \"YM\=F\"], \
+            \"items\": [\"ES=F\", \"RTY=F\", \"NQ=F\", \"YM=F\"], \
             \"frequency\":5, \
             \"percentage\": true, \
             \"set_nickname\":true, \
