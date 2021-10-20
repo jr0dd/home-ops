@@ -55,10 +55,10 @@ spec:
             \"name\":\"bitcoin\", \
             \"discord_bot_token\":\"$BTC\", \
             \"crypto\":true, \
-            \"frequency\":$FREQ, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"frequency\":5, \
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
 
         curl -X POST \
         "localhost:8080/ticker" \
@@ -67,10 +67,10 @@ spec:
             \"name\":\"dogecoin\", \
             \"discord_bot_token\":\"$DOGE\", \
             \"crypto\":true, \
-            \"frequency\":$FREQ, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"frequency\":5, \
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
 
         curl -X POST \
         "localhost:8080/ticker" \
@@ -79,10 +79,10 @@ spec:
             \"name\":\"ethereum\", \
             \"discord_bot_token\":\"$ETH\", \
             \"crypto\":true, \
-            \"frequency\":$FREQ, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"frequency\":5, \
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
 
         curl -X POST \
         "localhost:8080/ticker" \
@@ -91,10 +91,10 @@ spec:
             \"name\":\"shiba-inu\", \
             \"discord_bot_token\":\"$SHIB\", \
             \"crypto\":true, \
-            \"frequency\":$FREQ, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"frequency\":5, \
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
 
         curl -X POST \
         "localhost:8080/tickerboard" \
@@ -102,11 +102,23 @@ spec:
         -d "{\"name\":\"INDICES\", \
             \"discord_bot_token\":\"$INDICES\", \
             \"items\": [\"SPY\", \"^VIX\", \"IWM\", \"^NDX\"], \
-            \"frequency\":$FREQ, \
+            \"frequency\":5, \
             \"percentage\": true, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
+
+        curl -X POST \
+        "localhost:8080/tickerboard" \
+        -H "Content-Type: application/json" \
+        -d "{\"name\":\"FUTURES\", \
+            \"discord_bot_token\":\"$FUTURES\", \
+            \"items\": [\"ES\=F\", \"RTY\=F\", \"NQ\=F\", \"YM\=F\"], \
+            \"frequency\":5, \
+            \"percentage\": true, \
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
 
         curl -X POST \
         "localhost:8080/tickerboard" \
@@ -114,11 +126,11 @@ spec:
         -d "{\"name\":\"MEMES\", \
             \"discord_bot_token\":\"$MEMES\", \
             \"items\": [\"PLTR\", \"MVIS\", \"TLRY\", \"BB\", \"GME\", \"AMC\", \"WISH\", \"CLNE\", \"NOK\", \"RKT\", \"BBBY\", \"KOSS\", \"CLOV\", \"SPCE\"], \
-            \"frequency\":$FREQ, \
+            \"frequency\":5, \
             \"percentage\": true, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
 
         curl -X POST \
         "localhost:8080/ticker" \
@@ -126,10 +138,10 @@ spec:
         -d "{\"ticker\":\"AAPL\", \
             \"name\":\"AAPL\", \
             \"discord_bot_token\":\"$AAPL\", \
-            \"frequency\":$FREQ, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"frequency\":5, \
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
 
         curl -X POST \
         "localhost:8080/ticker" \
@@ -137,10 +149,10 @@ spec:
         -d "{\"ticker\":\"DPW\", \
             \"name\":\"DPW\", \
             \"discord_bot_token\":\"$DPW\", \
-            \"frequency\":$FREQ, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"frequency\":5, \
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
 
         curl -X POST \
         "localhost:8080/ticker" \
@@ -148,7 +160,7 @@ spec:
         -d "{\"ticker\":\"TSLA\", \
             \"name\":\"TSLA\", \
             \"discord_bot_token\":\"$TSLA\", \
-            \"frequency\":$FREQ, \
-            \"set_nickname\":$NICK, \
-            \"arrows\":$ARROWS, \
-            \"set_color\":$COLOR}"
+            \"frequency\":5, \
+            \"set_nickname\":true, \
+            \"arrows\":true, \
+            \"set_color\":true}"
