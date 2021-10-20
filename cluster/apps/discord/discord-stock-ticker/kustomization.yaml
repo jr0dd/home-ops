@@ -4,3 +4,12 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - secret.sops.yaml
+namespace: discord
+configMapGenerator:
+  - name: payload-config
+    files:
+      - payload.sh
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
