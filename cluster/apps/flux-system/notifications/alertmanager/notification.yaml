@@ -2,14 +2,11 @@
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Provider
 metadata:
-  name: discord
-  namespace: flux-system
+  name: alertmanager
+  namespace: default
 spec:
-  type: discord
-  username: Flux
-  channel: flux
-  secretRef:
-    name: discord-webhook-url
+  type: alertmanager
+  address: http://prometheus-alertmanager.monitoring:9093/api/v2/alerts/
 ---
 apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Alert
@@ -18,7 +15,7 @@ metadata:
   namespace: flux-system
 spec:
   providerRef:
-    name: discord
+    name: alertmanager
   eventSeverity: error
   eventSources:
     - kind: GitRepository
