@@ -3,7 +3,7 @@ apiVersion: notification.toolkit.fluxcd.io/v1beta1
 kind: Provider
 metadata:
   name: alertmanager
-  namespace: default
+  namespace: flux-system
 spec:
   type: alertmanager
   address: http://prometheus-alertmanager.monitoring:9093/api/v2/alerts/
