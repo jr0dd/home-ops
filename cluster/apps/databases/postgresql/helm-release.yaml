@@ -30,3 +30,5 @@ spec:
     persistence:
       size: 5Gi
       existingClaim: postgresql-config-v1
+    diagnosticMode:
+      enabled: true
