@@ -23,10 +23,10 @@ spec:
       tag: 14.0.0
     postgresqlPassword: "${POSTGRES_PASSWORD}"
     postgresqlDatabase: authentik
-    # metrics:
-    #   enabled: true
-    #   serviceMonitor:
-    #     enabled: true
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
     persistence:
       size: 5Gi
       existingClaim: postgresql-config-v1
