@@ -28,7 +28,7 @@
 
     ## logging
     logging = systemd
-    log level = 3 passdb:5 auth:10 vfs:3
+    log level = 3 passdb:3 auth:3 vfs:3
 
     ## networking osx/linux specific
     bind interfaces only = yes
@@ -36,9 +36,9 @@
     disable netbios = yes
     smb ports = 445
     name resolve order = host bcast
+
     ## vfs objects
-    # to-do add io_uring kernel module for performance
-    vfs objects = acl_xattr catia fruit streams_xattr
+    vfs objects = acl_xattr catia fruit streams_xattr io_uring
 
     ## osx settings
     spotlight = yes
