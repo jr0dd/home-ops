@@ -10,7 +10,7 @@ spec:
     spec:
       # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts
       chart: velero
-      version: 2.25.0
+      version: 2.24.0
       sourceRef:
         kind: HelmRepository
         name: vmware-tanzu-charts
@@ -84,7 +84,7 @@ spec:
         repository: ghcr.io/k8s-at-home/kubectl
         tag: v1.22.2
     deployRestic: true
-    # restic:
-    #   tolerations:
-    #     - key: "node-role.kubernetes.io/master"
-    #       operator: "Exists"
+    restic:
+      tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
