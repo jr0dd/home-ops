@@ -48,6 +48,8 @@ spec:
               value: "{{ kubevip_asn }}"
             - name: bgp_routerinterface
               value: "{{ kubevip_interface }}"
+            - name: bgp_source_ip
+              value: "{{ kubevip_source_ip }}"
             - name: bgp_peeraddress
               value: "{{ kubevip_peer_ip }}"
             - name: bgp_peeras

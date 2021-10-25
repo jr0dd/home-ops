@@ -42,4 +42,4 @@ k3s_server_manifests_templates:
   - "cilium/cilium-bgp-config.yaml.j2"
   - "cilium/cilium-installation.yaml.j2"
   - "kube-vip/kube-vip-rbac.yaml.j2"
-  - "kube-vip/kube-vip-pod.yaml.j2"
+  - "kube-vip/kube-vip-daemonset.yaml.j2"

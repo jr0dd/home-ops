@@ -1,11 +1,4 @@
 ---
-- name: zed | install zed packages
-  ansible.builtin.apt:
-    update_cache: yes
-    pkg:
-      - zfs-zed
-    state: present
-
 - name: zed | configure zed service
   ansible.builtin.template:
     src: zed.rc.j2
