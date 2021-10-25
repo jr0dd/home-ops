@@ -135,7 +135,7 @@ spec:
           expr: |
             sum(rate(pg_stat_database_xact_commit{datname!~"template.*|postgres",datid!~"0"}[1m]))
               < 1
-          for: 2m
+          for: 3m
           labels:
             severity: critical
         - alert: PostgresqlLowXidConsumption
