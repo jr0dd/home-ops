@@ -8,6 +8,10 @@
     name: xanmanning.k3s
     public: true
 
+- include: power.yml
+  tags:
+    - power
+
 - include: cleanup.yml
   tags:
     - cleanup
