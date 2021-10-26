@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: medianew
+  name: mediaold
 spec:
   capacity:
     storage: 100Gi
@@ -26,7 +26,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: /deadpool/medianew
+    path: /deadpool/mediaold
   storageClassName: openebs-zfspv-rust
 ---
 apiVersion: v1

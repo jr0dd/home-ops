@@ -96,8 +96,8 @@ spec:
       medianew:
         enabled: true
         type: pvc
-        existingClaim: medianew
-        mountPath: /medianew
+        existingClaim: mediaold
+        mountPath: /mediaold
       transcode:
         enabled: true
         type: emptyDir

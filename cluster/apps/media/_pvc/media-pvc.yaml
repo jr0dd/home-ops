@@ -16,10 +16,10 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: medianew
+  name: mediaold
   namespace: media
 spec:
-  volumeName: medianew
+  volumeName: mediaold
   accessModes:
     - ReadWriteOnce
   resources:
