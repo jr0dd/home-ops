@@ -12,3 +12,17 @@ spec:
     requests:
       storage: 100Gi
   storageClassName: openebs-zfspv-rust
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: medianew
+  namespace: media
+spec:
+  volumeName: medianew
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: openebs-zfspv-rust

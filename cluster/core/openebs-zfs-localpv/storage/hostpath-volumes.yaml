@@ -17,6 +17,21 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  name: medianew
+spec:
+  capacity:
+    storage: 100Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /deadpool/medianew
+  storageClassName: openebs-zfspv-rust
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
   name: minio
 spec:
   capacity:
