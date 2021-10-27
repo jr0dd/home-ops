@@ -46,7 +46,7 @@ zfs_pools:
     atime: on
     compression: lz4
     devices:
-      - '/dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E2924'
+      - '/dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E25B9'
     type: basic
     state: present
 
