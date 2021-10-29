@@ -14,7 +14,6 @@ tasks:
     dir: provision/ansible
     cmds:
       - "ansible-galaxy install -r requirements.yml --force"
-      - "pip3 install -r requirements.txt"
     silent: true
 
   list:
@@ -23,19 +22,6 @@ tasks:
     cmds:
       - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --list-hosts"
     silent: true
-
-  clean-images:
-    desc: Clean up stale container images
-    dir: provision/ansible
-    cmds:
-      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'k3s crictl rmi --prune' --become"
-    silent: true
-
-  purge-manifests:
-    desc: Delete all manifests under /var/lib/rancher/k3s/server/manifests
-    dir: provision/ansible
-    cmds:
-      - "ansible master-nodes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'rm /var/lib/rancher/k3s/server/manifests/*' --become"
 
   playbook:k3s-install:
     desc: Install Kubernetes on the nodes

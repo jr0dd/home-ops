@@ -7,6 +7,13 @@ vars:
   K3S_LB_ADDR: "10.10.5.5"
 
 tasks:
+  clean-images:
+    desc: Clean up stale container images
+    dir: provision/ansible
+    cmds:
+      - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'k3s crictl rmi --prune' --become"
+    silent: true
+
   kubeconfig:
     desc: Remotely fetch kubeconfig from k3s
     cmds:
@@ -15,21 +22,27 @@ tasks:
       - chmod go-r kubeconfig
     silent: true
 
-  restart-pods:
-    desc: Exec into the Rook Ceph toolbox
+  purge-manifests:
+    desc: Delete all manifests under /var/lib/rancher/k3s/server/manifests
+    dir: provision/ansible
     cmds:
-      - kubectl rollout restart deploy -n kube-system
+      - "ansible master-nodes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'rm /var/lib/rancher/k3s/server/manifests/*' --become"
+
+  restart-pods:
+    desc: Restart all pods
+    cmds:
       - kubectl rollout restart ds -n kube-system
+      - kubectl rollout restart deploy -n kube-system
       - kubectl rollout restart ds -n openebs
       - kubectl rollout restart statefulset -n openebs
       - kubectl rollout restart deploy -n minio
-      - kubectl rollout restart deploy -n networking
       - kubectl rollout restart statefulset -n databases
-      - kubectl rollout restart statefulset -n monitoring
       - kubectl rollout restart ds -n monitoring
       - kubectl rollout restart deploy -n monitoring
-      - kubectl rollout restart deploy -n velero
+      - kubectl rollout restart statefulset -n monitoring
       - kubectl rollout restart ds -n velero
+      - kubectl rollout restart deploy -n velero
+      - kubectl rollout restart deploy -n networking
       - kubectl rollout restart deploy -n home
       - kubectl rollout restart deploy -n system-upgrade
       - kubectl rollout restart deploy -n media
