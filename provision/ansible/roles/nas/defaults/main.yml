@@ -27,6 +27,7 @@ samba_shares: []
 samba_users: []
 
 apt_install_packages:
+  - acl
   - dmraid
   - git
   - gnupg2
