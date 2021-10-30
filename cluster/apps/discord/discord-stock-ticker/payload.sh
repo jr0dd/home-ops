@@ -57,7 +57,6 @@ curl -X POST \
 -d "{\"name\":\"INDICES\", \
     \"discord_bot_token\":\"$INDICES\", \
     \"items\": [\"SPY\", \"^VIX\", \"IWM\", \"^NDX\"], \
-    \"header\": \"1. \", \
     \"frequency\":5, \
     \"percentage\": true, \
     \"set_nickname\":true, \
@@ -70,7 +69,6 @@ curl -X POST \
 -d "{\"name\":\"FUTURES\", \
     \"discord_bot_token\":\"$FUTURES\", \
     \"items\": [\"ES=F\", \"RTY=F\", \"NQ=F\", \"YM=F\"], \
-    \"header\": \"3. \", \
     \"frequency\":5, \
     \"percentage\": true, \
     \"set_nickname\":true, \
@@ -83,7 +81,6 @@ curl -X POST \
 -d "{\"name\":\"MEMES\", \
     \"discord_bot_token\":\"$MEMES\", \
     \"items\": [\"PLTR\", \"MVIS\", \"TLRY\", \"BB\", \"GME\", \"AMC\", \"WISH\", \"CLNE\", \"NOK\", \"RKT\", \"BBBY\", \"KOSS\", \"CLOV\", \"SPCE\"], \
-    \"header\": \"2. \", \
     \"frequency\":5, \
     \"percentage\": true, \
     \"set_nickname\":true, \
