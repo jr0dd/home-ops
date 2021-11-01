@@ -17,21 +17,6 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mediaold
-spec:
-  capacity:
-    storage: 100Gi
-  volumeMode: Filesystem
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: /deadpool/mediaold
-  storageClassName: openebs-zfspv-rust
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
   name: minio
 spec:
   capacity:
