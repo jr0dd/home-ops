@@ -8,8 +8,9 @@ curl -X POST \
 -H "Content-Type: application/json" \
 -d "{\"name\":\"INDICES\", \
     \"discord_bot_token\":\"$INDICES\", \
+    \"twelve_data_key\": \"$TWELVEDATA_API\",
     \"items\": [\"SPY\", \"^VIX\", \"IWM\", \"^NDX\"], \
-    \"frequency\":5, \
+    \"frequency\":15, \
     \"percentage\": true, \
     \"set_nickname\":false, \
     \"arrows\":true, \
@@ -20,8 +21,9 @@ curl -X POST \
 -H "Content-Type: application/json" \
 -d "{\"name\":\"FUTURES\", \
     \"discord_bot_token\":\"$FUTURES\", \
+    \"twelve_data_key\": \"$TWELVEDATA_API\",
     \"items\": [\"ES=F\", \"RTY=F\", \"NQ=F\", \"YM=F\"], \
-    \"frequency\":5, \
+    \"frequency\":15, \
     \"percentage\": true, \
     \"set_nickname\":false, \
     \"arrows\":true, \
@@ -32,8 +34,9 @@ curl -X POST \
 -H "Content-Type: application/json" \
 -d "{\"name\":\"MEMES\", \
     \"discord_bot_token\":\"$MEMES\", \
+    \"twelve_data_key\": \"$TWELVEDATA_API\",
     \"items\": [\"PLTR\", \"MVIS\", \"TLRY\", \"BB\", \"GME\", \"AMC\", \"WISH\", \"CLNE\", \"NOK\", \"RKT\", \"BBBY\", \"KOSS\", \"CLOV\", \"SPCE\"], \
-    \"frequency\":5, \
+    \"frequency\":15, \
     \"percentage\": true, \
     \"set_nickname\":false, \
     \"arrows\":true, \
@@ -93,7 +96,8 @@ curl -X POST \
 -d "{\"ticker\":\"AAPL\", \
     \"name\":\"AAPL\", \
     \"discord_bot_token\":\"$AAPL\", \
-    \"frequency\":5, \
+    \"twelve_data_key\": \"$TWELVEDATA_API\",
+    \"frequency\":15, \
     \"set_nickname\":true, \
     \"arrows\":true, \
     \"set_color\":true}"
@@ -104,7 +108,8 @@ curl -X POST \
 -d "{\"ticker\":\"TSLA\", \
     \"name\":\"TSLA\", \
     \"discord_bot_token\":\"$TSLA\", \
-    \"frequency\":5, \
+    \"twelve_data_key\": \"$TWELVEDATA_API\",
+    \"frequency\":15, \
     \"set_nickname\":true, \
     \"arrows\":true, \
     \"set_color\":true}"
