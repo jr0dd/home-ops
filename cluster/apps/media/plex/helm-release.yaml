@@ -102,7 +102,7 @@ spec:
         enabled: true
         image:
           repository: grafana/promtail
-          tag: 2.4.0
+          tag: 2.4.1
         loki: http://loki.monitoring:3100/loki/api/v1/push
         logs:
           - name: promtail/plex
