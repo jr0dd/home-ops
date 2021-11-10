@@ -1,0 +1,31 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wyoa-bot
+  namespace: discord
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: /charts/kah-common/
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/jr0dd/wyoa-bot
+      tag: v0.0.1
+    nameOverride: wyoa-bot
+    env:
+      TZ: "America/New_York"
+    envFrom:
+      - secretRef:
+          name: wyoa
+    service:
+      main:
+        enabled: false
+    podAnnotations:
+      secret.reloader.stakater.com/reload: "wyoa"
