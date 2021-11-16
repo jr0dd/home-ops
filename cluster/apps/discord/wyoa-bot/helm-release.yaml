@@ -18,6 +18,10 @@ spec:
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
       tag: v0.1.9
+    controller:
+      enabled: true
+      replicas: 1
+      strategy: RollingUpdate
     nameOverride: wyoa-bot
     env:
       TZ: "America/New_York"
