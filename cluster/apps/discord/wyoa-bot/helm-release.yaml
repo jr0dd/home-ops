@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
-      tag: v0.1.7
+      tag: v0.1.8
     nameOverride: wyoa-bot
     env:
       TZ: "America/New_York"
