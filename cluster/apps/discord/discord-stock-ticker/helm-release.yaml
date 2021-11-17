@@ -33,16 +33,10 @@ spec:
       enabled: true
       prometheusRule:
         enabled: true
+    persistence:
+      config:
+        enabled: true
+        type: configmap
+        name: payload-config
     podAnnotations:
       configmap.reloader.stakater.com/reload: "payload-config"
-    configmap:
-      enabled: false
-    persistence:
-      payload-config:
-        enabled: true
-        mountPath: /app/payload.sh
-        subPath: payload.sh
-        type: custom
-        volumeSpec:
-          configMap:
-            name: payload-config
