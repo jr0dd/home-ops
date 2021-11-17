@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
-      tag: v0.1.11
+      tag: v0.1.12
     controller:
       enabled: true
       replicas: 1
