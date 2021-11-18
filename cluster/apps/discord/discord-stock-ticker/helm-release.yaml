@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
-      tag: v3.6.1
+      tag: v3.7.1
     controller:
       enabled: true
       replicas: 1
