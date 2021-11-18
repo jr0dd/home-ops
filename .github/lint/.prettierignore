@@ -1,5 +1,2 @@
 .private
 .vscode
-*.sops.*
-provision/ansible/roles/xanmanning.k3s/
-gotk-components.yaml
