@@ -185,7 +185,9 @@
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "ghcr.io/k8s-at-home/jackett",
-        "ghcr.io/k8s-at-home/prowlarr"
+        "ghcr.io/k8s-at-home/prowlarr",
+        "ghcr.io/jr0dd/wyoa-bot",
+        "ghcr.io/jr0dd/discord-stock-ticker"
      ]
     },
     // group packages
