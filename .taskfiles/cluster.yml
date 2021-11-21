@@ -46,8 +46,9 @@ tasks:
       - kubectl rollout restart deploy -n home
       - kubectl rollout restart deploy -n system-upgrade
       - kubectl rollout restart deploy -n media
-      - kubectl rollout restart deploy -n security
       - kubectl rollout restart deploy -n flux-system
+      - sleep 100
+      - kubectl rollout restart deploy -n security
       - kubectl rollout restart deploy -n discord
     slient: true
 

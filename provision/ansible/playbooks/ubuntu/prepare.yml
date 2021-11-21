@@ -12,3 +12,10 @@
         seconds: 5
   roles:
     - ubuntu
+
+  tasks:
+    - name: k3s | install binaries
+      ansible.builtin.shell: |
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
+          install -o root -g root -m 0755 kustomize /usr/local/bin/kustomize
+          curl -s "https://fluxcd.io/install.sh" | bash
