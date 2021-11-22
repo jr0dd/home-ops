@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/0xerr0r/blocky
-      tag: v0.16
+      tag: v0.17
     controller:
       enabled: true
       replicas: 1
@@ -72,8 +72,6 @@ spec:
       conditional:
         mapping:
           ${SECRET_DOMAIN}: tcp+udp:${GATEWAY_IP}
-      clientLookup:
-        upstream: tcp+udp:${GATEWAY_IP}
       blocking:
         blackLists:
           ads:
@@ -88,6 +86,11 @@ spec:
             - ads
             - fakenews
         blockType: zeroIp
+      clientLookup:
+        upstream: tcp+udp:${GATEWAY_IP}
+        singleNameOrder:
+          - 2
+          - 1
       prometheus:
         enable: true
         path: /metrics
