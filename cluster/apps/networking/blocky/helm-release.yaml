@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/0xerr0r/blocky
-      tag: v0.17
+      tag: v0.16
     controller:
       enabled: true
       replicas: 1
@@ -67,7 +67,6 @@ spec:
       upstream:
         default:
           - tcp-tls://1.1.1.1
-          - tcp-tls://9.9.9.9
           - tcp-tls://1.0.0.1
       conditional:
         mapping:
@@ -75,7 +74,7 @@ spec:
       blocking:
         blackLists:
           ads:
-            - https://raw.githubusercontent.com/ookangzheng/dbl-oisd-nl/master/dbl.txt
+            - https://dbl.oisd.nl
           fakenews:
             - https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews/hosts
         whiteLists:
@@ -88,9 +87,6 @@ spec:
         blockType: zeroIp
       clientLookup:
         upstream: tcp+udp:${GATEWAY_IP}
-        singleNameOrder:
-          - 2
-          - 1
       prometheus:
         enable: true
         path: /metrics
