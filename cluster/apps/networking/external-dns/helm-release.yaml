@@ -35,6 +35,7 @@ spec:
     txtPrefix: "k8s."
     domainFilters:
       - "${SECRET_DOMAIN}"
+      - "${BOT_DOMAIN}"
     extraArgs:
       - "--cloudflare-proxied"
       - "--annotation-filter=external-dns/is-public in (true)"
