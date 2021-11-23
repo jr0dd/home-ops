@@ -58,7 +58,7 @@ spec:
         externalTrafficPolicy: Local
         loadBalancerIP: "${LB_TRAEFIK_IP}"
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: "ipv4.${SECRET_DOMAIN}"
+        external-dns.alpha.kubernetes.io/hostname: "ipv4.${SECRET_DOMAIN},ipv4.${BOT_DOMAIN}"
     ports:
       traefik:
         expose: true
@@ -76,12 +76,3 @@ spec:
         minVersion: VersionTLS12
         maxVersion: VersionTLS13
         sniStrict: true
-    pilot:
-      enabled: true
-      token: "${TRAEFIK_PILOT_TOKEN}"
-    experimental:
-      plugins:
-        enabled: true
-      kubernetesGateway:
-        enabled: false
-        appLabelSelector: traefik
