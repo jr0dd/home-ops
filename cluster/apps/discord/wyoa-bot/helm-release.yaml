@@ -31,13 +31,13 @@ spec:
           name: wyoa
     service:
       main:
-        enabled: false
+        enabled: true
         ports:
           http:
             port: 4242
     ingress:
       main:
-        enabled: false
+        enabled: true
         ingressClassName: traefik
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
