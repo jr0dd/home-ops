@@ -58,7 +58,7 @@ spec:
         externalTrafficPolicy: Local
         loadBalancerIP: "${LB_TRAEFIK_IP}"
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: "ipv4.${SECRET_DOMAIN},ipv4.${BOT_DOMAIN}"
+        external-dns.alpha.kubernetes.io/hostname: "ipv4.${SECRET_DOMAIN},ipv4.${SECRET_DOMAIN_1}"
     ports:
       traefik:
         expose: true
