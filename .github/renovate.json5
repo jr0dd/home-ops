@@ -10,6 +10,15 @@
   "commitMessageTopic": "{{depName}}",
   "commitMessageExtra": "to {{newVersion}}",
   "commitMessageSuffix": "",
+  // "hostRules": [
+  //   {
+  //     "matchHost": "https://ghcr.io/jr0dd/wyoa-bot",
+  //     "username": "jr0dd",
+  //     "encrypted": {
+  //       "token": "wcFMA/xDdHCJBTolAQ//VINa9DwX+D0/Se6AhfSZe0D2ErRsfDm63GXLdVkYVJlrcxak88EecJiH4/B2dk004SrSK0crNu4wa5MPw5DkcXhEfSDFGKVY79l95YHangqV26I8vBZQwNBTNcgx43w7oa+HeT2BG38PN9tJBDPukvNuSWnLQCZcbwa9S7ui4qgJ1PW/RFGB1tT6UcXO/yQAuiVmzGOJZOv0+dwd9W9RGDR2OKpmiWCS6H+4nRmMZfphPaiFmViBG1NTjdCahxbCIZ9p/mXbFUDf9bFE3kmzQ3CDTXDloFhl2V9KoexRexdvKiRjK2OhBE5Q+A37jrwf5k+cq9ZUcT7f1bcinMCYc0JzmUkVDpr2aKfsds6Ds18vImT6473zHD4e1SZkzhycIY+LV72i6AqjPe0TSi/ud/HO/9EEVqgY8DKDBiAd9C0lJhhvs0LLzgrwmLR+Rx1QqTs5ln9SzIeFFaI1xusfRX4sbDc805AQ/NOzG38RmQJuGXN8VuK4lXFkXuMdkEzx17axbELoCz8IIRfdc+ntNzhWsDzXv3w1/6JW6Fci2K84SctkrNK9xQ3ouscQWh760+yQjdOTFaUP4sBTZpJ7XuZJbRCSbHbv5jXLL6APpVolt7dagIJH64ZaXGObiIuKY9sQ0Dk5IsLfAbOt0xJAfmHB25HdDzPUT8CA+ev9ZTPSmAHLO5hzqXcEhkZDLFLpM/jNqcKIXmKElxYf0drKXckN7XM3UOfsWk4BLHxFVJF6lBtFoOQOhpgkHHZQ7MddRmwdfh4i1OTmfOqLKPigCp0nxjWpeDYW6jfqpyHBQHzPG4VIA5Vcd2HcBG/J5ExuZmjIj2GuaGDq7Ov0ElBJuozylIPPgeFjbaqrg63cK9atAqtJxYI+UGDw"
+  //     }
+  //   }
+  // ],
   // set up Renovate Managers
   "helmv3": {
     "fileMatch": ["charts/.+/Chart\\.yaml$"]
