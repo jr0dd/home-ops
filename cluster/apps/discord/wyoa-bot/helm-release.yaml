@@ -34,7 +34,7 @@ spec:
         enabled: true
         ports:
           http:
-            port: 4242
+            port: 3000
     ingress:
       main:
         enabled: true
@@ -49,6 +49,8 @@ spec:
           - host: "bot.${SECRET_DOMAIN_1}"
             paths:
               - path: /
+                pathType: Prefix
+              - path: /hooks
                 pathType: Prefix
         tls:
           - secretName: wyoa-tls
