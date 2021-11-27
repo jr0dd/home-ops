@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -17,7 +16,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
-      tag: v0.2.22 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
+      tag: v0.2.23 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
     imagePullSecrets:
       - name: ghcr-io-creds
