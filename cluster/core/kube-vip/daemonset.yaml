@@ -33,19 +33,21 @@ spec:
             - name: cp_enable
               value: "true"
             - name: cp_namespace
-              value: "kube-system"
-            - name: vip_loglevel
-              value: "5"
+              value: kube-system
+            - name: vip_ddns
+              value: "false"
+            - name: svc_enable
+              value: "false"
             - name: bgp_enable
               value: "true"
             - name: bgp_source_ip
-              value: "10.10.0.200"
+              value: 10.10.0.200
             - name: bgp_as
               value: "64512"
             - name: bgp_routerinterface
               value: "eno0"
             - name: bgp_peeraddress
-              value: "${GATEWAY_IP}"
+              value: ${GATEWAY_IP}
             - name: bgp_peeras
               value: "64512"
           securityContext:
@@ -62,7 +64,13 @@ spec:
       nodeSelector:
         node-role.kubernetes.io/master: "true"
       serviceAccountName: kube-vip
-      tolerations:
-        - key: node-role.kubernetes.io/master
-          operator: Exists
-          effect: NoSchedule
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/master
+                    operator: Exists
+              - matchExpressions:
+                  - key: node-role.kubernetes.io/control-plane
+                    operator: Exists
