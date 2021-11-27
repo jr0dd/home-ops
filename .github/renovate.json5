@@ -10,15 +10,6 @@
   "commitMessageTopic": "{{depName}}",
   "commitMessageExtra": "to {{newVersion}}",
   "commitMessageSuffix": "",
-  "hostRules": [
-    {
-      "matchHost": "ghcr.io/jr0dd/wyoa-bot",
-      "username": "jr0dd",
-      "encrypted": {
-        "password": "wcFMA/xDdHCJBTolAQ//Zk2OmOhHoSwpOlmIzAssgF2qY4HPk0LpbE83SzeDzDYffFo0qUQCmno3V2Q9gK5J/k/r4utKOHpw/Wki/xUXYau6A6QeR6dwz+uCftdyG+jdiP7Aq2Ml5ZqQx1mjKLilL9M+KV2i7CLyUiYc8dCy4F/bwww1/DfzgfkUielxK3ytQxfD6d2G27/8ysiurt3XXGKJPxTfK2K67iODH14AapvA13tfR1ubhf4LH6N0uGPHmyg8MQb9IIaDkW2YXuUvbVRAFoD4Wsmv0Flka650fIercXCx9cnwXovn1DDguAP3lPhe8l4O9Lq8NmSO+dgMGZ9BCHmkhc3Ubw91G0X7YjgmOib/+vNAXeNibJlHmj324fwsLWMCC5NbI4JssXuXp1xRpCgGI79lNwClmhRHWGU5TK0+VxLUiiFzrARKK07W1k7gQSGaGJs4IzaCLl4RfbKb1csQPqBOdzjTi/m5D8PuggoiT3zF5MOXlTyJ//eooeH7yd3E6Eyb7pm2Nlu/a02XUCb71AH8DuXCSpQ2s511r4NVBQf2K8j3HXiSYZT3fd6J/mqB/V7HbHFv6P1TxOcL185lgVNwgx1sD8Svl+EfmshL9A/lEILK841yPUsVJEFS0dmH0ZxvhasI+4oRoc+hX9aQc5SgBs7X9CoMjeSwLKtrbD9P4a9eAoWAv67SgAEiXxna68MRMS7YVee3WVDrwPsMndmWB89NSaXb+gATnuwRl3vMN2R/pqczU6nZqr6aGv8KVRIJLnTdouwQDLm5Or+qNGiLFkT0wWuTqclztAIYvfjXdqdgwNkiKvztP2VmvC9Dj3jP47fQR829jJOtcHv/2fmC7Ax+zil41I4f"
-      }
-    }
-  ],
   // set up Renovate Managers
   "helmv3": {
     "fileMatch": ["charts/.+/Chart\\.yaml$"]
@@ -194,9 +185,7 @@
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "ghcr.io/k8s-at-home/jackett",
-        "ghcr.io/k8s-at-home/prowlarr",
-        "ghcr.io/jr0dd/wyoa-bot",
-        "ghcr.io/jr0dd/discord-stock-ticker"
+        "ghcr.io/k8s-at-home/prowlarr"
      ]
     },
     // group packages
