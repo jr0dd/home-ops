@@ -87,7 +87,6 @@ spec:
           default:
             - ads
             - fakenews
-        blockType: zeroIp
       prometheus:
         enable: true
         path: /metrics
