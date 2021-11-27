@@ -66,13 +66,13 @@ spec:
     config: |
       upstream:
         default:
-          - tcp-tls:cloudflare-dns.com
+          - tcp-tls:one.one.one.one:853
       conditional:
         mapping:
           ${SECRET_DOMAIN}: tcp+udp:${LB_K8S_GATEWAY_IP}
-          # ${SECRET_DOMAIN_1}: tcp+udp:${LB_K8S_GATEWAY_IP}
       clientLookup:
         upstream: tcp+udp:${GATEWAY_IP}
+      bootstrapDns: tcp+udp:1.1.1.1
       blocking:
         blackLists:
           ads:
