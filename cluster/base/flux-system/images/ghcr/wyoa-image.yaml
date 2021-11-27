@@ -1,0 +1,49 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: wyoa-ghcr-io
+  namespace: flux-system
+spec:
+  image: ghcr.io/jr0dd/wyoa-bot
+  interval: 1m0s
+  secretRef:
+    name: wyoa-ghcr-io
+---
+apiVersion: image.toolkit.fluxcd.io/v1alpha2
+kind: ImagePolicy
+metadata:
+  name: wyoa-ghcr-io
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: wyoa-ghcr-io
+    namespace: flux-system
+  policy:
+    semver:
+      range: '>=0.1.0'
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: wyoa-update
+  namespace: flux-system
+spec:
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+    namespace: flux-system
+  interval: 1m
+  update:
+    path: ./cluster/apps/discord/wyoa-bot
+    strategy: Setters
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        name: j_r0dd
+        email: jr0dd@users.noreply.github.com
+      messageTemplate: |
+        feat(images)!: '{{range .Updated.Images}}{{println .}}{{end}}'
