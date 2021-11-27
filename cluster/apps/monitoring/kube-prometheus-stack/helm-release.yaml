@@ -35,7 +35,7 @@ spec:
           - name: "email"
             email_configs:
               - to: "${SECRET_EMAIL}"
-                send_resolved: true
+                send_resolved: false
         route:
           receiver: email
           group_wait: 10s
