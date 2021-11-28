@@ -29,7 +29,7 @@ spec:
       TZ: "America/New_York"
     envFrom:
       - secretRef:
-          name: wyoa
+          name: wyoa-tokens
     service:
       main:
         enabled: true
@@ -58,4 +58,4 @@ spec:
             hosts:
               - "bot.${SECRET_DOMAIN_1}"
     podAnnotations:
-      secret.reloader.stakater.com/reload: "wyoa"
+      secret.reloader.stakater.com/reload: "wyoa-tokens"
