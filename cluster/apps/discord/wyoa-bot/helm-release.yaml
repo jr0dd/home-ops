@@ -51,8 +51,6 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-              - path: /hooks
-                pathType: Prefix
         tls:
           - secretName: wyoa-tls
             hosts:
