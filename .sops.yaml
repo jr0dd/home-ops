@@ -2,12 +2,10 @@
 creation_rules:
   - path_regex: provision/.*\.sops\.ya?ml
     unencrypted_regex: "^(kind)$"
-    # macbook
-    pgp: >-
-      AFE6721008A3DA5B6A027947B8C7431C430C6D24
+    age: >-
+      age1vfgg4n4snp0ktjm83gsv3nptdw39mw8q7fw7dzghgfpllc040vgsd6yypm
+
   - path_regex: cluster/.*\.ya?ml
-    encrypted_regex: '^(data|stringData)$'
-    # flux, macbook
-    pgp: >-
-      90D70EF82A524A486F33D8EF787289B5A6C8ED92,
-      AFE6721008A3DA5B6A027947B8C7431C430C6D24
+    encrypted_regex: "^(data|stringData)$"
+    age: >-
+      age1vfgg4n4snp0ktjm83gsv3nptdw39mw8q7fw7dzghgfpllc040vgsd6yypm
