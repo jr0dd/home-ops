@@ -21,6 +21,7 @@ xanmanning.k3s*
 terraform.tfstate*
 # Sops
 .decrypted~*
+*.agekey
 # Kubernetes
 kubeconfig
 # Other
