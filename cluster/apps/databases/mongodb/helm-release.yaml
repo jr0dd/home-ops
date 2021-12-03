@@ -17,6 +17,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    namespace: databases
+    operator:
+      name: mongodb-operator
     community-operator-crds:
       enabled: false
     database:

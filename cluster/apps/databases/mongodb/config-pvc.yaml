@@ -2,12 +2,25 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: mongodb-config-v1
+  name: data-volume-wyoa-0
   namespace: databases
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 5Gi
+      storage: 10Gi
+  storageClassName: openebs-zfspv-ssd
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: logs-volume-wyoa-0
+  namespace: databases
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
   storageClassName: openebs-zfspv-ssd

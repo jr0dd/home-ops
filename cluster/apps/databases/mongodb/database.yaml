@@ -2,7 +2,7 @@
 apiVersion: mongodbcommunity.mongodb.com/v1
 kind: MongoDBCommunity
 metadata:
-  name: mongodb
+  name: wyoa
   namespace: databases
 spec:
   members: 1
@@ -12,15 +12,15 @@ spec:
     authentication:
       modes: ["SCRAM"]
   users:
-    - name: j_r0dd
-      db: admin
+    - name: admin
+      db: mongodb
       passwordSecretRef:
         name: mongo-creds
       roles:
         - name: clusterAdmin
-          db: admin
+          db: mongodb
         - name: userAdminAnyDatabase
-          db: admin
+          db: mongodb
       scramCredentialsSecretName: scram-creds
   additionalMongodConfig:
     storage.wiredTiger.engineConfig.journalCompressor: zlib
