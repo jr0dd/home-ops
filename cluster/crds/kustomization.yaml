@@ -5,6 +5,7 @@ resources:
   - cert-manager
   - external-dns
   - kube-prometheus-stack
+  - mongodb-operator
   - openebs-zfs-localpv
   - traefik
   - velero
