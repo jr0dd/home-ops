@@ -1,11 +1,11 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: networking
+namespace: openebs
 configMapGenerator:
-  - name: blocky-dashboard
+  - name: openebs-zfs-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blocky.json
+      - dashboard.json=https://raw.githubusercontent.com/openebs/monitoring/develop/deploy/charts/dashboards/zfsLocalPV/zfslocalpv.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

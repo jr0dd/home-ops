@@ -150,9 +150,3 @@ spec:
           gnetId: 14371
           revision: 1
           datasource: Prometheus
-        coredns:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/coredns/dashboards/coredns.json
-          datasource: Prometheus
-        zfs-localpv:
-          url: https://raw.githubusercontent.com/openebs/monitoring/develop/deploy/charts/dashboards/zfsLocalPV/zfslocalpv.json
-          datasource: Prometheus

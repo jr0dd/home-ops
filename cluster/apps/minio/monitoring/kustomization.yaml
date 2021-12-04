@@ -7,7 +7,7 @@ namespace: minio
 configMapGenerator:
   - name: minio-overview-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-replication.json
+      - dashboard.json=https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-overview.json
   - name: minio-replication-dashboard
     files:
       - dashboard.json=https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-replication.json
