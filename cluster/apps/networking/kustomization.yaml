@@ -5,6 +5,7 @@ resources:
   - blocky
   - cloudflare-ddns
   - external-dns
+  # - ingress-nginx
   - k8s-gateway
   - traefik
   - wildcard-certificate
