@@ -56,31 +56,10 @@
       ],
       "datasourceTemplate": "helm"
     },
-    // regexManager to read and process Traefik CRD's
-    {
-      "fileMatch": [
-        "cluster/crds/traefik/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: v(?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
-    },
-    // regexManager to read and process Rook-Ceph CRD's
-    {
-      "fileMatch": [
-        "cluster/crds/rook-ceph/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n *tag: (?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
-    },
     // regexManager to read and process External DNS and MinIO Operator CRD's
     {
       "fileMatch": [
-        "cluster/crds/external-dns/.+\\.yaml$",
-        "cluster/crds/minio-operator/.+\\.yaml$"
+        "cluster/crds/external-dns/.+\\.yaml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
@@ -146,27 +125,8 @@
     // custom version schemes
     {
       "matchDatasources": ["docker"],
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>.*)$",
-      "matchPackageNames": ["blakeblackshear/frigate"]
-    },
-    {
-      "matchDatasources": ["docker"],
       "versioning": "regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z(-(?<compatibility>.*))?$",
       "matchPackageNames": ["quay.io/minio/minio"]
-    },
-    // pin package versions
-    {
-      "matchDatasources": ["docker"],
-      "allowedVersions": "<13",
-      "matchPackageNames": [
-        "postgres",
-        "prodrigestivill/postgres-backup-local"
-      ]
-    },
-    {
-      "matchDatasources": ["docker"],
-      "allowedVersions": "<2",
-      "matchPackageNames": ["influxdb"]
     },
     // version strategies
     {
@@ -190,13 +150,6 @@
      ]
     },
     // group packages
-    {
-      "matchDatasources": ["helm", "docker"],
-      "matchPackagePatterns": ["^rook.ceph"],
-      "groupName": "rook-ceph-suite",
-      "additionalBranchPrefix": "",
-      "separateMinorPatch": true
-    },
     {
       "matchDatasources": ["github-tags", "docker"],
       "matchPackagePatterns": ["rancher/system-upgrade-controller"],

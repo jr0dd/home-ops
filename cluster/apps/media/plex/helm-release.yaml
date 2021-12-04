@@ -37,12 +37,11 @@ spec:
         externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/allow-shared-ip: plex
-          traefik.ingress.kubernetes.io/service.serversscheme: https
         ports:
-          http:
+          connect:
             enabled: true
             port: 32400
-            protocol: HTTP
+            protocol: HTTPS
       roku:
         enabled: true
         type: LoadBalancer
