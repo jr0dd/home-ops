@@ -1,14 +1,11 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-resources:
-  - alerts.yaml
-  - service-monitor.yaml
-namespace: networking
+namespace: media
 configMapGenerator:
-  - name: traefik-dashboard
+  - name: lidarr-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/traefik.json
+      - dashboard.json=https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

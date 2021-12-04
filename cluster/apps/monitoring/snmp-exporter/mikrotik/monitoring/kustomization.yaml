@@ -3,12 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - alerts.yaml
-  - service-monitor.yaml
-namespace: networking
+namespace: monitoring
 configMapGenerator:
-  - name: traefik-dashboard
+  - name: mikrotik-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/traefik.json
+      - dashboard.json=https://raw.githubusercontent.com/IgorKha/Grafana-Mikrotik/master/grafana/provisioning/dashboards/Mikrotik-snmp-prometheus.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

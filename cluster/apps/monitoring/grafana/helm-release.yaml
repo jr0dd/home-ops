@@ -146,65 +146,14 @@ spec:
           gnetId: 13665
           revision: 1
           datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/14127
-        metallb:
-          gnetId: 14127
-          revision: 1
-          datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/14420
-        mikrotik:
-          gnetId: 14420
-          revision: 5
-          datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/14371
         nut:
           gnetId: 14371
           revision: 1
           datasource: Prometheus
-
-        # Ref: https://grafana.com/grafana/dashboards/12275
-        blackbox:
-          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blackbox.json
-          datasource: Prometheus
-        blocky:
-          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blocky.json
-          datasource: Prometheus
         coredns:
-          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/coredns.json
-          datasource: Prometheus
-        lidarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
-          datasource: Prometheus
-        minio-overview:
-          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
-          datasource: Prometheus
-        qbittorrent:
-          url: https://raw.githubusercontent.com/esanchezm/prometheus-qbittorrent-exporter/master/grafana/dashboard.json
-          datasource: Prometheus
-        radarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/radarr.json
-          datasource: Prometheus
-        sonarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
-          datasource: Prometheus
-        thanos-overview:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/overview.json
-          datasource: Prometheus
-        thanos-compact:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/compact.json
-          datasource: Prometheus
-        thanos-query:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/query.json
-          datasource: Prometheus
-        thanos-store:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/store.json
-          datasource: Prometheus
-        thanos-sidecar:
-          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/thanos-sidecar.json
-          datasource: Prometheus
-        traefik:
-          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/traefik.json
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/coredns/dashboards/coredns.json
           datasource: Prometheus
         zfs-localpv:
-          url: https://raw.githubusercontent.com/openebs/monitoring/openebs-monitoring-0.4.7/deploy/charts/dashboards/zfsLocalPV/zfslocalpv.json
+          url: https://raw.githubusercontent.com/openebs/monitoring/develop/deploy/charts/dashboards/zfsLocalPV/zfslocalpv.json
           datasource: Prometheus

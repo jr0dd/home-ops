@@ -8,6 +8,6 @@ resources:
   - loki
   - network-ups-tools
   - promtail
-  - snmp-exporter-mikrotik
+  - snmp-exporter
   - speedtest-exporter
   - thanos
