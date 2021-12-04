@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: cert-manager
-  namespace: security
+  namespace: cert-manager
 spec:
   interval: 5m
   chart:
@@ -24,7 +24,7 @@ spec:
     podDnsConfig:
       nameservers:
         - "1.1.1.1"
-        - "9.9.9.9"
+        - "1.0.0.1"
     startupapicheck:
       enabled: false
     prometheus:
