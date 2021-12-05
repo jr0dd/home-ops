@@ -56,3 +56,27 @@ spec:
       extraEnvs:
         - name: ERROR_FILES_PATH
           value: ./themes/ghost
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - ingress-nginx
+                  - key: app.kubernetes.io/instance
+                    operator: In
+                    values:
+                      - ingress-nginx
+                  - key: app.kubernetes.io/component
+                    operator: In
+                    values:
+                      - controller
+              topologyKey: "kubernetes.io/hostname"
+      resources:
+        requests:
+          memory: 250Mi
+          cpu: 100m
+        limits:
+          memory: 1000Mi
