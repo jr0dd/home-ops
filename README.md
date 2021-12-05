@@ -12,7 +12,7 @@
 
  <div align="center">
 
- [![k3s](https://img.shields.io/badge/v1.22.3+k3s1-brightgreen?style=for-the-badge&logo=kubernetes&logoColor=white)](https://k3s.io/)
+ [![k3s](https://img.shields.io/badge/v1.22.3-brightgreen?style=for-the-badge&logo=kubernetes&logoColor=white)](https://k3s.io/)
  [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge)](https://github.com/pre-commit/pre-commit)
  [![renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?style=for-the-badge&logo=renovatebot&logoColor=white)](https://github.com/renovatebot/renovate)
 
@@ -24,8 +24,6 @@
 This is home to my personal Kubernetes cluster. [Flux](https://github.com/fluxcd/flux2) watches this Git repository and makes the changes to my cluster based on the manifests in the [cluster](./cluster/) directory. [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/) encrypts the secrets so everything can be kept in a public repo as transparent as possible.
 
 Currently I only have a single node running on Ubuntu 21.04 as the master-node and storage-node. This was recently migrated from TrueNAS SCALE using the NAS role I have been working on.
-
-***The Ansible NAS role is still a wip and will eventually move into it's own repo.***
 
 For more information, head on over to my [docs](https://jr0dd.github.io/home-cluster/). ***Not ready yet***
 
