@@ -12,10 +12,11 @@
 
  <div align="center">
 
+ [![Discord](https://img.shields.io/discord/673534664354430999?style=for-the-badge&label=discord&logo=discord&logoColor=white)](https://discord.gg/k8s-at-home)
  [![k3s](https://img.shields.io/badge/v1.22.3-brightgreen?style=for-the-badge&logo=kubernetes&logoColor=white)](https://k3s.io/)
  [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=for-the-badge)](https://github.com/pre-commit/pre-commit)
  [![renovate](https://img.shields.io/badge/renovate-enabled-brightgreen?style=for-the-badge&logo=renovatebot&logoColor=white)](https://github.com/renovatebot/renovate)
-
+ [![Lines of code](https://img.shields.io/tokei/lines/github/jr0dd/home-ops?style=for-the-badge&color=brightgreen&label=lines&logo=codefactor&logoColor=white)](https://github.com/jr0dd/home-ops/graphs/contributors)
 </div>
 
 ---
@@ -25,7 +26,7 @@ This is home to my personal Kubernetes cluster. [Flux](https://github.com/fluxcd
 
 Currently I only have a single node running on Ubuntu 21.04 as the master-node and storage-node. This was recently migrated from TrueNAS SCALE using the NAS role I have been working on.
 
-For more information, head on over to my [docs](https://jr0dd.github.io/home-cluster/). ***Not ready yet***
+For more information, head on over to my [docs](https://jr0dd.github.io/home-ops/). ***Not ready yet***
 
 ## Prometheus Rules
 All my prometheus recording/alerting rules found in this repo can be found in my [prometheus-rules](https://github.com/jr0dd/prometheus-rules) repo.

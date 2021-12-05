@@ -8,7 +8,7 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  url: https://github.com/jr0dd/home-cluster
+  url: https://github.com/jr0dd/home-ops
   secretRef:
     name: gh-creds
 ---
