@@ -82,5 +82,3 @@ spec:
       extraEnvs:
         - name: ERROR_FILES_PATH
           value: ./themes/ghost
-    tcp:
-      "32400": "media/plex:32400:SSL"
