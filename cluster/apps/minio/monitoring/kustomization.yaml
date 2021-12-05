@@ -5,15 +5,12 @@ resources:
   - alerts.yaml
 namespace: minio
 configMapGenerator:
-  - name: minio-overview-dashboard
+  - name: minio-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-overview.json
-  - name: minio-replication-dashboard
-    files:
-      - dashboard.json=https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-replication.json
+      - minio.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"

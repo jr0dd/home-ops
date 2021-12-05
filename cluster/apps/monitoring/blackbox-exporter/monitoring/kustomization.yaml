@@ -7,10 +7,10 @@ namespace: monitoring
 configMapGenerator:
   - name: blackbox-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blackbox.json
+      - blackbox.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blackbox.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"

@@ -7,10 +7,10 @@ namespace: monitoring
 configMapGenerator:
   - name: mikrotik-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/IgorKha/Grafana-Mikrotik/master/grafana/provisioning/dashboards/Mikrotik-snmp-prometheus.json
+      - mikrotik.json=https://raw.githubusercontent.com/IgorKha/Grafana-Mikrotik/master/grafana/provisioning/dashboards/Mikrotik-snmp-prometheus.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"

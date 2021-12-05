@@ -8,10 +8,10 @@ namespace: monitoring
 configMapGenerator:
   - name: promtail-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/promtail/dashboards/promtail.json
+      - promtail.json=https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/promtail/dashboards/promtail.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"

@@ -5,10 +5,10 @@ namespace: media
 configMapGenerator:
   - name: radarr-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/radarr.json
+      - radarr.json=https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/radarr.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"

@@ -5,10 +5,10 @@ namespace: networking
 configMapGenerator:
   - name: blocky-dashboard
     files:
-      - dashboard.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blocky.json
+      - blocky.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blocky.json
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
     kustomize.toolkit.fluxcd.io/substitute: disabled
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
