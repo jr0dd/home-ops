@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: data-volume-wyoa-0
+  name: data-volume-wyoa-bot-0
   namespace: databases
 spec:
   accessModes:
@@ -15,7 +15,7 @@ spec:
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: logs-volume-wyoa-0
+  name: logs-volume-wyoa-bot-0
   namespace: databases
 spec:
   accessModes:

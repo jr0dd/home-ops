@@ -2,25 +2,26 @@
 apiVersion: mongodbcommunity.mongodb.com/v1
 kind: MongoDBCommunity
 metadata:
-  name: wyoa
+  name: wyoa-bot
   namespace: databases
 spec:
   members: 1
   type: ReplicaSet
-  version: "4.2.6"
+  # renovate: registryUrl=docker.io/library/mongo
+  version: "5.0.0"
   security:
     authentication:
       modes: ["SCRAM"]
   users:
-    - name: admin
-      db: mongodb
+    - name: wyoa
+      db: admin
       passwordSecretRef:
-        name: mongo-creds
+        name: wyoa-creds
       roles:
         - name: clusterAdmin
-          db: mongodb
+          db: admin
         - name: userAdminAnyDatabase
-          db: mongodb
+          db: admin
       scramCredentialsSecretName: scram-creds
   additionalMongodConfig:
     storage.wiredTiger.engineConfig.journalCompressor: zlib
