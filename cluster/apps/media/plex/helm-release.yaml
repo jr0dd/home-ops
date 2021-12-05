@@ -31,22 +31,17 @@ spec:
         - 1042
     service:
       main:
-        enabled: true
         type: LoadBalancer
         loadBalancerIP: "${LB_PLEX_IP}"
         externalTrafficPolicy: Local
-        ports:
-          http:
-            enabled: true
-            port: 32400
-            protocol: HTTP
     ingress:
       main:
         enabled: true
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+          nginx.ingress.kubernetes.io/force-ssl-redirect: true
+          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
         hosts:
           - host: "plex.${SECRET_DOMAIN}"
             paths:
