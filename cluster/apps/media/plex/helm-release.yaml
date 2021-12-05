@@ -35,54 +35,27 @@ spec:
         type: LoadBalancer
         loadBalancerIP: "${LB_PLEX_IP}"
         externalTrafficPolicy: Local
-        annotations:
-          metallb.universe.tf/allow-shared-ip: plex
         ports:
-          connect:
+          http:
             enabled: true
             port: 32400
-            protocol: HTTPS
-      roku:
+            protocol: HTTP
+    ingress:
+      main:
         enabled: true
-        type: LoadBalancer
-        loadBalancerIP: "${LB_PLEX_IP}"
-        externalTrafficPolicy: Local
+        ingressClassName: nginx
         annotations:
-          metallb.universe.tf/allow-shared-ip: plex
-        ports:
-          roku:
-            enabled: true
-            port: 8324
-            protocol: TCP
-            targetPort: 8324
-      gdm:
-        enabled: true
-        type: LoadBalancer
-        loadBalancerIP: "${LB_PLEX_IP}"
-        externalTrafficPolicy: Local
-        annotations:
-          metallb.universe.tf/allow-shared-ip: plex
-        ports:
-          gdm1:
-            enabled: true
-            port: 32410
-            protocol: UDP
-            targetPort: 32410
-          gdm2:
-            enabled: true
-            port: 32412
-            protocol: UDP
-            targetPort: 32412
-          gdm3:
-            enabled: true
-            port: 32413
-            protocol: UDP
-            targetPort: 32413
-          gdm4:
-            enabled: true
-            port: 32414
-            protocol: UDP
-            targetPort: 32414
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        hosts:
+          - host: "plex.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: plex-tls
+            hosts:
+              - "plex.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
