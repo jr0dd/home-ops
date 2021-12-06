@@ -65,6 +65,16 @@
         "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
       ],
       "datasourceTemplate": "github-releases"
+    },
+    // regexManager to read and process MongoDB CR's
+    {
+      "fileMatch": [
+        "cluster/apps/databases/mongodb/database.yaml$"
+      ],
+      "matchStrings": [
+        "depName=(?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "docker"
     }
   ],
   "packageRules": [
