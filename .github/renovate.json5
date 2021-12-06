@@ -66,6 +66,16 @@
       ],
       "datasourceTemplate": "github-releases"
     }
+    // // regexManager to read and process MongoDB CR's
+    // {
+    //   "fileMatch": [
+    //     "cluster/apps/databases/mongodb/.+\\.yaml$"
+    //   ],
+    //   "matchStrings": [
+    //     "datasource=(?<datasource>.*?)\n *version: (?<depName>.*?):(?<currentValue>.*)\n"
+    //   ],
+    //   "datasourceTemplate": "docker"
+    // }
   ],
   "packageRules": [
     // setup datasources

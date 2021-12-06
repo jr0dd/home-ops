@@ -7,8 +7,8 @@ metadata:
 spec:
   members: 1
   type: ReplicaSet
-  # renovate: registryUrl=docker.io/library/mongo
-  version: "5.0.0"
+  # renovate: datasource=docker depName=library/mongo
+  version: 5.0.0
   security:
     authentication:
       modes: ["SCRAM"]
