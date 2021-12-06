@@ -69,7 +69,7 @@
     // regexManager to read and process MongoDB CR's
     {
       "fileMatch": [
-        "cluster/apps/databases/mongodb/database.yaml$"
+        "cluster/apps/databases/mongodb/.+\\.yaml$"
       ],
       "matchStrings": [
         "depName=(?<depName>.*?)\n *version: (?<currentValue>.*)\n"
