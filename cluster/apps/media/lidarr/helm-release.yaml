@@ -45,7 +45,7 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_set_header X-Forwarded-Host $http_host Accept-Encoding "";
+            proxy_set_header Accept-Encoding "";
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.dev/css/base/lidarr/nord.css"></head>';
             sub_filter_once on;
           nginx.ingress.kubernetes.io/auth-url: |
