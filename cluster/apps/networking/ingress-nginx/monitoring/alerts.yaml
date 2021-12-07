@@ -38,24 +38,24 @@ spec:
         - alert: NGINXTooMany500s
           annotations:
             description: Too many 5XXs
-            summary: More than 5% of all requests returned 5XX, this requires your attention
+            summary: More than 10% of all requests returned 5XX, this requires your attention
           expr: |
             sum(nginx_ingress_controller_requests{status=~"5.+"})
               /
-            sum(nginx_ingress_controller_requests))
-              > .05
+            sum(nginx_ingress_controller_requests)
+              > .10
           for: 1m
           labels:
             severity: warning
         - alert: NGINXTooMany400s
           annotations:
             description: Too many 4XXs
-            summary: More than 5% of all requests returned 4XX, this requires your attention
+            summary: More than 10% of all requests returned 4XX, this requires your attention
           expr: |
             sum(nginx_ingress_controller_requests{status=~"4.+"})
               /
-            sum(nginx_ingress_controller_requests))
-              > .05
+            sum(nginx_ingress_controller_requests)
+              > .10
           for: 1m
           labels:
             severity: warning
