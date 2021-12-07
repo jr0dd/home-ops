@@ -85,7 +85,7 @@
         "registryUrl=https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *k3s_release_version: \"(?<currentValue>.*)\"\n"
       ],
       "datasourceTemplate": "github-releases",
-      "versioningTemplate": "regex:(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)+[0-9A-Za-z-](-(?<compatibility>.*))?$"
+      "versioningTemplate": "git"
     }
   ],
   "packageRules": [
