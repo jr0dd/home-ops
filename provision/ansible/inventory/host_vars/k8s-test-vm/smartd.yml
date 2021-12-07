@@ -1,5 +1,0 @@
----
-smartd_config: |-
-  DEFAULT -a -o on -S on -d removable -n never -s (L/../(08|23)/./04|S/../(05|12|19|26)/./03) -W 5,41,45 -m root
-  /dev/disk/by-id/scsi-WAEKJDFHIweapfhpiwe
-  /dev/disk/by-id/scsi-KCSAJSADIUFHC

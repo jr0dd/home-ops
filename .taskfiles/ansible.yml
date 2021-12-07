@@ -2,7 +2,7 @@
 version: "3"
 
 env:
-  ANSIBLE_CONFIG: "{{.PROJECT_DIR}}/ansible.cfg"
+  ANSIBLE_CONFIG: "{{.PROJECT_DIR}}/ansible/ansible.cfg"
 
 vars:
   ANSIBLE_PLAYBOOK_DIR: "{{.ANSIBLE_DIR}}/playbooks"
@@ -11,79 +11,79 @@ vars:
 tasks:
   deps:
     desc: Upgrade Ansible galaxy deps
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible-galaxy install -r requirements.yml --force"
     silent: true
 
   list:
     desc: List all the hosts
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --list-hosts"
     silent: true
 
   playbook:k3s-install:
     desc: Install Kubernetes on the nodes
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s/install.yml"
     silent: true
 
   playbook:k3s-nuke:
     desc: Install Kubernetes on the nodes
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/k3s/nuke.yml"
 
   playbook:nas-install:
     desc: Prepare storage node for k8s cluster
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/nas/install.yml"
     silent: true
 
   playbook:pvc-snapshot:
     desc: Take a ZFS snapshot of PVC's
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/nas/pvc-snapshot.yml"
     silent: true
 
   playbook:ubuntu-prepare:
     desc: Prepare all the k8s nodes for running k3s
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu/prepare.yml"
     silent: true
 
   playbook:ubuntu-upgrade:
     desc: Upgrade all the k8s nodes operating system
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml {{.ANSIBLE_PLAYBOOK_DIR}}/ubuntu/upgrade.yml"
     silent: true
 
   adhoc:ping:
     desc: Ping all the hosts
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -m 'ping'"
 
   adhoc:uptime:
     desc: Uptime of all the hosts
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'uptime'
 
   adhoc:reboot:
     desc: Reboot all the k8s nodes
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become"
 
   adhoc:poweroff:
     desc: Shutdown all the k8s nodes
-    dir: provision/ansible
+    dir: ansible
     cmds:
       - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl poweroff' --become"

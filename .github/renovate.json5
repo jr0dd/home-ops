@@ -75,6 +75,16 @@
         "depName=(?<depName>.*?)\n *version: (?<currentValue>.*)\n"
       ],
       "datasourceTemplate": "docker"
+    },
+    // regexManager to read and process k3s version for Ansible
+    {
+      "fileMatch": [
+        "ansible/inventory/.+\\.yml$"
+      ],
+      "matchStrings": [
+        "registryUrl=https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *k3s_release_version: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "github-release"
     }
   ],
   "packageRules": [
