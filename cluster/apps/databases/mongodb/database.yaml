@@ -8,7 +8,7 @@ spec:
   members: 1
   type: ReplicaSet
   # renovate: depName=library/mongo
-  version: 5.0.4
+  version: 5.0.5
   security:
     authentication:
       modes: ["SCRAM"]
