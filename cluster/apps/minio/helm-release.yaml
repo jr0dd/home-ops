@@ -8,55 +8,74 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://charts.min.io/
-      chart: minio
-      version: 3.3.1
+      chart: /charts/kah-common/
       sourceRef:
-        kind: HelmRepository
-        name: minio-charts
+        kind: GitRepository
+        name: flux-system
         namespace: flux-system
       interval: 5m
   values:
     image:
       repository: quay.io/minio/minio
       tag: RELEASE.2021-11-24T23-19-33Z
-    mode: standalone
-    existingSecret: minio-creds
-    drivesPerNode: 1
-    replicas: 1
-    pools: 1
-    persistence:
-      enabled: true
-      existingClaim: minio-config-v1
-    users: []
-    resources:
-      requests:
-        memory: 1Gi
-    metrics:
-      serviceMonitor:
+    nameOverride: minio
+    env:
+      TZ: "America/New_York"
+    args:
+      - server
+      - /export
+      - --address
+      - :9000
+      - --console-address
+      - :9001
+    service:
+      main:
         enabled: true
+        ports:
+          http:
+            enabled: true
+            port: 9001
+          api:
+            enabled: true
+            port: 9000
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: "minio.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  port: 9001
+          - host: "s3.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  port: 9000
+        tls:
+          - secretName: minio-tls
+            hosts:
+              - "minio.${SECRET_DOMAIN}"
+              - "s3.${SECRET_DOMAIN}"
+    persistence:
+      config:
+        enabled: true
+        type: secret
+        name: minio-config-env
+        mountPath: /run/secrets/config.env
+        subPath: config.env
+      data:
+        enabled: true
+        existingClaim: minio-config-v1
+        mountPath: /export
     podAnnotations:
       secret.reloader.stakater.com/reload: "minio-config-env"
-  postRenderers:
-    - kustomize:
-        patchesStrategicMerge:
-          - kind: Deployment
-            apiVersion: apps/v1
-            metadata:
-              name: minio
-              namespace: minio
-            spec:
-              template:
-                spec:
-                  containers:
-                    - name: minio
-                      volumeMounts:
-                        - mountPath: /run/secrets/config.env
-                          name: minio-config-env
-                          readOnly: true
-                          subPath: config.env
-                  volumes:
-                    - name: minio-config-env
-                      secret:
-                        defaultMode: 420
-                        secretName: minio-config-env
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 100m
+      limits:
+        memory: 750Mi
