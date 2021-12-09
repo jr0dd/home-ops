@@ -67,7 +67,7 @@ spec:
       upstream:
         default:
           - tcp-tls:one.one.one.one:853
-          - tcp-tls:dns.quad9.net:853
+          # - tcp-tls:dns.quad9.net:853
       conditional:
         mapping:
           ${SECRET_DOMAIN}: tcp+udp:${LB_K8S_GATEWAY_IP}
