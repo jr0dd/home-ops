@@ -5,15 +5,11 @@ metadata:
   name: minio
   namespace: minio
 spec:
-  endpoints:
-    - port: http
-      scheme: http
-      path: /minio/v2/metrics/cluster
-  namespaceSelector:
-    matchNames:
-      - minio
   selector:
     matchLabels:
-      app: minio
-      release: minio
-      monitoring: "true"
+      app.kubernetes.io/instance: minio
+      app.kubernetes.io/name: minio
+  endpoints:
+    - port: api
+      scheme: http
+      path: /minio/v2/metrics/cluster
