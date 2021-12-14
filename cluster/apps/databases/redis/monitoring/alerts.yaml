@@ -33,7 +33,7 @@ spec:
           expr: |
             (count(redis_instance_info{role="master"}) or vector(0))
               < 1
-          for: 0m
+          for: 1m
           labels:
             severity: critical
         - alert: RedisTooManyMasters
@@ -43,7 +43,7 @@ spec:
           expr: |
             count(redis_instance_info{role="master"})
               > 1
-          for: 0m
+          for: 1m
           labels:
             severity: critical
         - alert: RedisDisconnectedSlaves
@@ -55,7 +55,7 @@ spec:
               -
             sum without (instance, job) (redis_connected_slaves) - 1
               > 1
-          for: 0m
+          for: 1m
           labels:
             severity: critical
         - alert: RedisReplicationBroken
@@ -65,7 +65,7 @@ spec:
           expr: |
             delta(redis_connected_slaves[1m])
               < 0
-          for: 0m
+          for: 1m
           labels:
             severity: critical
         - alert: RedisClusterFlapping
@@ -138,7 +138,7 @@ spec:
             summary: Redis rejected connections.
           expr: |
             increase(redis_rejected_connections_total[1m]) > 0
-          for: 0m
+          for: 1m
           labels:
             severity: critical
         - alert: RedisKeyEviction
