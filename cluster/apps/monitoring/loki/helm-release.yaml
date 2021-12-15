@@ -39,3 +39,44 @@ spec:
       compactor:
         working_directory: /data/loki/compactor
         shared_store: s3
+      ruler:
+        storage:
+          type: local
+          local:
+            directory: /rules
+        rule_path: /tmp/scratch
+        alertmanager_url: http://prometheus-alertmanager:9093
+        ring:
+          kvstore:
+            store: inmemory
+        enable_api: true
+    alerting_groups:
+      #
+      # SMART Failures
+      #
+      - name: smart-failure
+        rules:
+          - alert: SmartFailures
+            expr: |
+              sum by (hostname) (count_over_time({hostname=~".+"} |~ "(?i).*smartd.*(error|fail).*"[2m])) > 0
+            for: 10s
+            labels:
+              severity: critical
+              category: logs
+            annotations:
+              # TODO: Figure out how to use hostname in summary
+              summary: "SMART has reported failures"
+      #
+      # wyoa-bot
+      #
+      - name: discord-api-error
+        rules:
+          - alert: WyoaDiscordApiError
+            expr: |
+              sum(count_over_time({app="wyoa-bot"} |~ "(?i)DiscordAPIError"[1m])) > 0
+            for: 10s
+            labels:
+              severity: critical
+              category: logs
+            annotations:
+              summary: "WYOA Bot reported API errors"
