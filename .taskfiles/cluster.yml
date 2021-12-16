@@ -56,7 +56,6 @@ tasks:
   pause:
     desc: Pause all Helm Releases that rely on ZFS storage
     cmds:
-      - flux suspend ks apps
       - flux suspend hr -n minio minio
       - kubectl scale -n minio deploy/minio --replicas 0
       - flux suspend hr -n databases postgresql
@@ -100,8 +99,8 @@ tasks:
   resume:
     desc: Resume all Helm Releases that rely on ZFS storage
     cmds:
-      - flux resume ks apps
       - flux resume hr -n minio minio
+      - flux resume hr -n databases mongodb-operator
       - flux resume hr -n databases postgresql
       - flux resume hr -n databases redis
       - flux resume hr -n home homebridge
