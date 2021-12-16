@@ -100,7 +100,7 @@ tasks:
     desc: Resume all Helm Releases that rely on ZFS storage
     cmds:
       - flux resume hr -n minio minio
-      - flux resume hr -n databases mongodb-operator
+      - flux resume hr -n databases mongodb
       - flux resume hr -n databases postgresql
       - flux resume hr -n databases redis
       - flux resume hr -n home homebridge
