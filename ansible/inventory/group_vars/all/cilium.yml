@@ -1,6 +1,0 @@
----
-cilium_cidr: 10.10.2.0/24
-cilium_asn: 64512
-cilium_pool_name: mikrotik
-cilium_peer_ip: 10.10.0.1
-cilium_peer_asn: 64512

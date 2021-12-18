@@ -6,11 +6,11 @@
 k3s_control_node: true
 
 # S3 snapshot settings for etcd
-etcd_snapshot_schedule_cron: "0 */4 * * *"
-etcd_snapshot_retention: 12
-etcd_s3_endpoint: "s3.{{ domain }}"
-etcd_s3_bucket: etcd
-etcd_s3: true
+k3s_etcd_snapshot_schedule_cron: "0 */4 * * *"
+k3s_etcd_snapshot_retention: 12
+k3s_etcd_s3_endpoint: "s3.{{ domain }}"
+k3s_etcd_s3_bucket: etcd
+k3s_etcd_s3: true
 
 # k3s settings for all control-plane nodes
 k3s_server:
@@ -28,22 +28,37 @@ k3s_server:
   disable-network-policy: true
   disable-cloud-controller: true
   disable-kube-proxy: true
+
   write-kubeconfig-mode: "644"
+  etcd-expose-metrics: true
 
   cluster-cidr: "{{ k3s_cluster_cidr }}"
   service-cidr: "{{ k3s_service_cidr }}"
 
   kubelet-arg:
-    - "feature-gates=GracefulNodeShutdown=true"
+    - "feature-gates=EphemeralContainers=true"
     - "feature-gates=MixedProtocolLBService=true"
-  # Required to use monitor these components with kube-prometheus-stack
+    - "feature-gates=ReadWriteOncePod=true"
   kube-controller-manager-arg:
-    - "address=0.0.0.0"
-    - "bind-address=0.0.0.0"
+    - "feature-gates=EphemeralContainers=true"
+    - "feature-gates=MixedProtocolLBService=true"
+    - "feature-gates=ReadWriteOncePod=true"
     - "allocate-node-cidrs"
+    # Required to monitor component with kube-prometheus-stack
+    - "bind-address=0.0.0.0"
   kube-proxy-arg:
+    - "feature-gates=EphemeralContainers=true"
+    - "feature-gates=MixedProtocolLBService=true"
+    - "feature-gates=ReadWriteOncePod=true"
+    # Required to monitor component with kube-prometheus-stack
     - "metrics-bind-address=0.0.0.0"
   kube-scheduler-arg:
-    - "address=0.0.0.0"
+    - "feature-gates=EphemeralContainers=true"
+    - "feature-gates=MixedProtocolLBService=true"
+    - "feature-gates=ReadWriteOncePod=true"
+    # Required to monitor component with kube-prometheus-stack
     - "bind-address=0.0.0.0"
-  etcd-expose-metrics: true
+  kube-apiserver-arg:
+    - "feature-gates=EphemeralContainers=true"
+    - "feature-gates=MixedProtocolLBService=true"
+    - "feature-gates=ReadWriteOncePod=true"

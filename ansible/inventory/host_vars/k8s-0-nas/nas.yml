@@ -1,4 +1,88 @@
 ---
+# users & groups
+managed_groups:
+  - name: home_users
+    gid: 1042
+
+managed_users:
+  - name: j_r0dd
+    password: "{{ j_r0dd_passwd }}"
+    uid: 2000
+    shell: /bin/zsh
+    group: home_users
+    groups: sudo,adm
+  - name: waleska
+    password: "{{ waleska_passwd }}"
+    uid: 2001
+    group: home_users
+  - name: nathan
+    password: "{{ nathan_passwd }}"
+    uid: 2002
+    group: home_users
+
+# email settings
+smtp_account_name: icloud
+smtp_address: smtp.mail.me.com
+smtp_port: 587
+
+# smart settings
+smartd_config: |-
+  # rust
+  DEFAULT -a -o on -S on -d removable -n never -s (L/../(08|23)/./04|S/../(05|12|19|26)/./03) -W 5,41,45 -m root
+  /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D3CC14CK
+  /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN370G
+  /dev/disk/by-id/scsi-SATA_HGST_HUH721008AL_7SHP1UKW
+  /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKMJNWG
+  /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHHKTBK
+  DEFAULT -a -o on -S on -d removable -n never -s (L/../(09|24)/./04|S/../(05|12|19|26)/./03) -W 5,41,45 -m root
+  /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D6800V
+  /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7XF
+  /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7ZL
+  /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D9LS0V
+  /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHPA2YG
+  # ssd
+  DEFAULT -a -o on -S on -d removable -n never -s (L/../(10|25)/./04|S/../(05|12|19|26)/./03) -W 10,59,65 -m root
+  /dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E2924
+  /dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E25B9
+
+# samba settings
+samba_users:
+  - name: j_r0dd
+    password: "{{ j_r0dd_passwd }}"
+  - name: waleska
+    password: "{{ waleska_passwd }}"
+  - name: nathan
+    password: "{{ nathan_passwd }}"
+
+samba_shares: |-
+  [media]
+    comment = Media
+    path = /deadpool/media
+    public = no
+    read only = no
+    valid users= j_r0dd
+    force group = home_users
+
+  [backups]
+    comment = Backups
+    path = /deadpool/backups
+    public = no
+    read only = no
+    valid users= @home_users
+    force group = home_users
+
+  [timemachine]
+    comment = Time Machine
+    path = /deadpool/timemachine/%U
+    public = no
+    read only = no
+    valid users= @home_users
+    browseable = False
+    create mode = 0600
+    directory mode = 0700
+    fruit:time machine = yes
+    fruit:time machine max size = 750G
+
 #-- my role --#
 zfs_sharing:
   nfs_enabled: false

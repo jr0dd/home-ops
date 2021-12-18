@@ -36,8 +36,10 @@ spec:
           value: "true"
         - name: bgp_as
           value: "{{ kubevip_asn }}"
+        {% if kubevip_source_ip is defined %}
         - name: bgp_source_ip
           value: "{{ kubevip_source_ip }}"
+        {% endif %}
         - name: bgp_routerinterface
           value: "{{ kubevip_interface }}"
         - name: bgp_peeraddress

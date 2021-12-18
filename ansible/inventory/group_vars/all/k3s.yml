@@ -44,3 +44,17 @@ k3s_server_manifests_templates:
   - "cilium/cilium-installation.yaml.j2"
   - "kube-vip/kube-vip-rbac.yaml.j2"
   - "kube-vip/kube-vip-daemonset.yaml.j2"
+
+# Cilium config
+cilium_cidr: 10.10.2.0/24
+cilium_asn: 64512
+cilium_pool_name: mikrotik
+cilium_peer_ip: 10.10.0.1
+cilium_peer_asn: 64512
+
+# Kube-vip config
+kubevip_address: 'k8s.{{ domain }}'
+kubevip_asn: 64512
+kubevip_peer_ip: 10.10.0.1
+kubevip_peer_asn: 64512
+kubevip_interface: eno0
