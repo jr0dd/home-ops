@@ -62,6 +62,8 @@ tasks:
       - kubectl scale -n databases statefulset/postgresql-postgresql --replicas 0
       - flux suspend hr -n databases redis
       - kubectl scale -n databases statefulset/redis-master --replicas 0
+      - flux suspend hr -n databases mongodb
+      - kubectl scale -n databases statefulset/wyoa-bot --replicas 0
       - flux suspend hr -n home homebridge
       - kubectl scale -n home deploy/homebridge --replicas 0
       - flux suspend hr -n home hajimari
