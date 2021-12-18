@@ -193,13 +193,13 @@ zfs_filesystems:
     group: home_users
     mode: 775
     mountpoint: /deadpool/media/music
-  - name: media/pictures
+  - name: media/photos
     pool: deadpool
     state: present
     owner: root
     group: home_users
     mode: 775
-    mountpoint: /deadpool/media/pictures
+    mountpoint: /deadpool/media/photos
   - name: media/videos
     pool: deadpool
     state: present
