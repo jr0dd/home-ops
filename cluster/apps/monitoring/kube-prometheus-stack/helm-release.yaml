@@ -133,7 +133,8 @@ spec:
         #           - ${GATEWAY_IP}:9153
     prometheusOperator:
       enabled: true
-      configReloaderCpu: 0
+      prometheusConfigReloader:
+        resources: {}
       admissionWebhooks:
         certManager:
           enabled: true
