@@ -51,7 +51,7 @@ spec:
         - name: ipmi
           url: 10.10.0.50
           module: icmp
-        - name: truenas
+        - name: nas
           url: 10.10.0.10
           module: icmp
         - name: hdhomerun
