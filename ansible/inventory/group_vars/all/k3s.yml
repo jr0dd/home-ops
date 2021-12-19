@@ -54,6 +54,7 @@ cilium_peer_asn: 64512
 
 # Kube-vip config
 kubevip_address: 'k8s.{{ domain }}'
+kubevip_ip: 10.10.5.5
 kubevip_asn: 64512
 kubevip_peer_ip: 10.10.0.1
 kubevip_peer_asn: 64512
