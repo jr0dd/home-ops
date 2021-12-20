@@ -21,8 +21,8 @@ managed_users:
     group: home_users
 
 # email settings
-smtp_account_name: icloud
-smtp_address: smtp.mail.me.com
+smtp_account_name: mailgun
+smtp_address: smtp.mailgun.org
 smtp_port: 587
 
 # smart settings

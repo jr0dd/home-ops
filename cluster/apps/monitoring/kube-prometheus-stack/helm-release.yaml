@@ -25,11 +25,10 @@ spec:
       config:
         global:
           resolve_timeout: 5m
-          smtp_from: "${ALERTMANAGER_EMAIL}"
-          smtp_smarthost: "${SECRET_SMTP}:587"
-          smtp_auth_username: "${SECRET_EMAIL}"
-          smtp_auth_identity: "${SECRET_EMAIL}"
-          smtp_auth_password: "${SECRET_EMAIL_PASSWORD}"
+          smtp_from: "${MAILGUN_EMAIL}"
+          smtp_smarthost: smtp.mailgun.org:587
+          smtp_auth_username: "${MAILGUN_USER}"
+          smtp_auth_password: "${MAILGUN_PASSWORD}"
         receivers:
           - name: "null"
           - name: "email"

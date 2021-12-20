@@ -7,9 +7,9 @@ logfile /var/log/msmtp
 
 account  {{ smtp_account_name }}
 host     {{ smtp_address }}
-port     {{ smtp_port }}
+port     {{ smtp_port | default('587') }}
 from     {{ smtp_from }}
-user     {{ email }}
+user     {{ smtp_user }}
 password {{ smtp_password }}
 
 account default: {{ smtp_account_name }}

@@ -39,12 +39,12 @@ spec:
             - "id.${SECRET_DOMAIN}"
     authentik:
       email:
-        host: "${SECRET_SMTP}"
+        host: smtp.mailgun.org
         port: 587
         use_tls: true
-        username: "${SECRET_EMAIL}"
-        password: "${AUTHENTIK_EMAIL_PASSWORD}"
-        from: "${SECRET_EMAIL}"
+        username: "${MAILGUN_USER}"
+        password: "${MAILGUN_PASSWORD}"
+        from: "authentik <${MAILGUN_EMAIL}>"
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       log_level: debug
       outposts:
