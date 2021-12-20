@@ -73,7 +73,7 @@ spec:
         rules:
           - alert: WyoaDiscordApiError
             expr: |
-              sum(count_over_time({app="wyoa-bot"} |~ "(?i)DiscordAPIError"[1m])) > 0
+              sum(count_over_time({app="wyoa-bot"} |~ "(?i).*DiscordAPIError.*"[1m])) > 0
             for: 10s
             labels:
               severity: critical
