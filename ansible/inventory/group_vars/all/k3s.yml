@@ -39,7 +39,6 @@ k3s_server_config_yaml_d_files:
 # /var/lib/rancher/k3s/server/manifests
 k3s_server_manifests_templates:
   - "home-dns/home-dns-rbac.yaml.j2"
-  - "cilium/cilium-rbac.yaml.j2"
   - "cilium/cilium-bgp-config.yaml.j2"
   - "cilium/cilium-installation.yaml.j2"
   - "kube-vip/kube-vip-rbac.yaml.j2"
