@@ -21,11 +21,11 @@ spec:
             - manager
           env:
             - name: address
-              value: ${CONTROL_PLANE_IP}
+              value: k8s.${SECRET_DOMAIN}
             - name: vip_arp
               value: "false"
             - name: vip_interface
-              value: "lo"
+              value: "eno0"
             - name: port
               value: "6443"
             - name: vip_cidr
