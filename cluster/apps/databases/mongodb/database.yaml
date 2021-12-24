@@ -7,7 +7,7 @@ metadata:
 spec:
   members: 1
   type: ReplicaSet
-  # renovate: depName=library/mongo
+  # renovate: datasource=docker depName=library/mongo
   version: 5.0.5
   security:
     authentication:
