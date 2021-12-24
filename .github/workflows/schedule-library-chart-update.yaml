@@ -1,5 +1,5 @@
 ---
-name: Schedule - Update Kah Library Helm chart
+name: Schedule - Library Chart Update
 
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
@@ -7,7 +7,8 @@ on: # yamllint disable-line rule:truthy
     - cron: "0 */4 * * *"
 
 jobs:
-  update-helm-deps:
+  library-chart-update:
+    name: Library Chart Update
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -23,12 +24,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: renovate-kah-library-chart
           delete-branch: true
-          title: "chore(deps): update kah library chart"
+          title: "chore(ci): update kah library chart"
           signoff: true
           committer: "j_r0dd <jr0dd@users.noreply.github.com>"
           author: "j_r0dd <jr0dd@users.noreply.github.com>"
           assignees: "jr0dd"
-          commit-message: "chore(deps): update kah library chart"
+          commit-message: "chore(ci): update kah library chart"
           body: |
             Update the kah library chart
-          labels: renovate/kah-library-chart
+          labels: component/ci
