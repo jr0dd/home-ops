@@ -179,6 +179,18 @@
     },
     {
       "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "library/mongo",
+        "quay.io/mongodb/mongodb-kubernetes-operator"
+      ],
+      "groupName": "mongodb",
+      "additionalBranchPrefix": "",
+      "separateMinorPatch": true
+    },
+    {
+      "matchDatasources": [
         "github-tags",
         "docker"
       ],
