@@ -21,6 +21,6 @@ spec:
     operator:
       name: mongodb-operator
     community-operator-crds:
-      enabled: false
+      enabled: true
     database:
       name: mongodb-database

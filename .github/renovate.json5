@@ -82,11 +82,10 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}docker{{/if}}",
       "registryUrlTemplate": "{{#if registryUrl}}{{{registryUrl}}}{{else}}{{/if}}"
     },
-    // regexManager to read and process Kube Prometheus Stack & MongoDB CRD's
+    // regexManager to read and process Kube Prometheus Stack
     {
       "fileMatch": [
-        "cluster/crds/kube-prometheus-stack/.+\\.yaml$",
-        "cluster/crds/mongodb-operator/.+\\.yaml$"
+        "cluster/crds/kube-prometheus-stack/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
