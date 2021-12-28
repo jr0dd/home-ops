@@ -43,7 +43,6 @@
         "cluster/.+\\.yaml$"
       ],
       "matchStrings": [
-        // helm releases
         "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
       ],
       "datasourceTemplate": "helm"
@@ -96,10 +95,7 @@
     // regexManager to read and process Kube Prometheus Stack, Velero, OpenEBS & MongoDB CRD's
     {
       "fileMatch": [
-        "cluster/crds/kube-prometheus-stack/.+\\.yaml$",
-        "cluster/crds/velero/.+\\.yaml$",
-        "cluster/crds/openebs-zfs-localpv/.+\\.yaml$",
-        "cluster/crds/mongodb-operator/.+\\.yaml$"
+        "cluster/crds/kube-prometheus-stack/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"

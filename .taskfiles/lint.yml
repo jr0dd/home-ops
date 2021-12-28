@@ -31,6 +31,7 @@ tasks:
     desc: Lint Terraform
     cmds:
       - tflint --config .github/lint/.tflint.hcl --loglevel info terraform/cloudflare
+      - tflint --config .github/lint/.tflint.hcl --loglevel info terraform/minio
     ignore_error: true
 
   yaml:

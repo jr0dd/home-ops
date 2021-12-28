@@ -16,6 +16,10 @@ spec:
         name: openebs-zfs-localpv-charts
         namespace: flux-system
       interval: 5m
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   values:
     release:
       version: 1.9.3

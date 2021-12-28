@@ -14,14 +14,6 @@ tasks:
       - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'k3s crictl rmi --prune' --become"
     silent: true
 
-  kubeconfig:
-    desc: Remotely fetch kubeconfig from k3s
-    cmds:
-      - rsync --verbose --progress --partial --rsync-path="sudo rsync" {{.K3S_PRIMARY_MASTER_NODE_USERNAME}}@{{.K3S_PRIMARY_MASTER_NODE_ADDR}}:/etc/rancher/k3s/k3s.yaml ./kubeconfig
-      - sed -i '' 's/127.0.0.1/{{.K3S_LB_ADDR}}/g' ./kubeconfig
-      - chmod go-r kubeconfig
-    silent: true
-
   purge-manifests:
     desc: Delete all manifests under /var/lib/rancher/k3s/server/manifests
     dir: ansible
@@ -48,7 +40,6 @@ tasks:
       - kubectl rollout restart deploy -n system-upgrade
       - kubectl rollout restart deploy -n media
       - kubectl rollout restart deploy -n flux-system
-      - sleep 100
       - kubectl rollout restart deploy -n security
       - kubectl rollout restart deploy -n discord
     slient: true
