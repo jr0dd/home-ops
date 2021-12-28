@@ -82,20 +82,11 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}docker{{/if}}",
       "registryUrlTemplate": "{{#if registryUrl}}{{{registryUrl}}}{{else}}{{/if}}"
     },
-    // regexManager to read and process cert-manager CRD's
+    // regexManager to read and process Kube Prometheus Stack & MongoDB CRD's
     {
       "fileMatch": [
-        "cluster/crds/cert-manager/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
-      ],
-      "datasourceTemplate": "helm"
-    },
-    // regexManager to read and process Kube Prometheus Stack, Velero, OpenEBS & MongoDB CRD's
-    {
-      "fileMatch": [
-        "cluster/crds/kube-prometheus-stack/.+\\.yaml$"
+        "cluster/crds/kube-prometheus-stack/.+\\.yaml$",
+        "cluster/crds/mongodb-operator/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
