@@ -51,7 +51,8 @@
     // regexManager to read and process GitHub release artifacts
     {
       "fileMatch": [
-        "cluster/.+\\.yaml$"
+        "cluster/.+\\.yaml$",
+        "ansible/.+\\.yml$"
       ],
       "matchStrings": [
         "https:\/\/github.com\/(?<org>.*=?)\/(?<repo>.*=?)\/releases\/download\/(?<currentValue>.*=?)\/.*"
