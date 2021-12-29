@@ -18,7 +18,7 @@
 
 - name: nfs | reload nfs exports
   ansible.builtin.command:
-    cmd: 'exportfs -ar'
+    cmd: "exportfs -ar"
 
 - name: nfs | restart nfs service
   ansible.builtin.systemd:

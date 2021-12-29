@@ -30,7 +30,8 @@ spec:
             severity: critical
         - alert: CoreDNSLatencyHigh
           annotations:
-            description: CoreDNS has 99th percentile latency of {{ $value }} seconds for server
+            description:
+              CoreDNS has 99th percentile latency of {{ $value }} seconds for server
               {{ $labels.server }} zone {{ $labels.zone }}.
             runbook_url: https://github.com/povilasv/coredns-mixin/tree/master/runbook.md#alert-name-corednslatencyhigh
             summary: CoreDNS is experiencing latency.
@@ -43,7 +44,8 @@ spec:
             severity: critical
         - alert: CoreDNSErrorsHigh
           annotations:
-            description: CoreDNS is returning SERVFAIL for {{ $value | humanizePercentage }}
+            description:
+              CoreDNS is returning SERVFAIL for {{ $value | humanizePercentage }}
               of requests.
             runbook_url: https://github.com/povilasv/coredns-mixin/tree/master/runbook.md#alert-name-corednserrorshigh
             summary: CoreDNS is returning SERVFAIL.
@@ -57,7 +59,8 @@ spec:
             severity: critical
         - alert: CoreDNSForwardLatencyHigh
           annotations:
-            description: CoreDNS has 99th percentile latency of {{ $value }} seconds forwarding
+            description:
+              CoreDNS has 99th percentile latency of {{ $value }} seconds forwarding
               requests to {{ $labels.to }}.
             runbook_url: https://github.com/povilasv/coredns-mixin/tree/master/runbook.md#alert-name-corednsforwardlatencyhigh
             summary: CoreDNS high forward latency.
@@ -70,7 +73,8 @@ spec:
             severity: critical
         - alert: CoreDNSForwardErrorsHigh
           annotations:
-            description: CoreDNS is returning SERVFAIL for {{ $value | humanizePercentage }}
+            description:
+              CoreDNS is returning SERVFAIL for {{ $value | humanizePercentage }}
               of forward requests to {{ $labels.to }}.
             runbook_url: https://github.com/povilasv/coredns-mixin/tree/master/runbook.md#alert-name-corednsforwarderrorshigh
             summary: CoreDNS high forward errors.

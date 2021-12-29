@@ -40,7 +40,7 @@ spec:
           group_wait: 10s
           group_interval: 5m
           repeat_interval: 1h
-          group_by: ['alertname', 'job']
+          group_by: ["alertname", "job"]
           routes:
             - match:
                 alertname: Watchdog
@@ -54,7 +54,7 @@ spec:
               severity: critical
             target_match:
               severity: warning
-            equal: ['alertname', 'namespace']
+            equal: ["alertname", "namespace"]
       ingress:
         enabled: true
         ingressClassName: nginx

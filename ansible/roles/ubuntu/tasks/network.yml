@@ -52,11 +52,11 @@
   register: original_netplan
 
 - name: network | remove original netplan
-  ansible.builtin.shell: 'rm -f /etc/netplan/00-installer-config.yaml'
+  ansible.builtin.shell: "rm -f /etc/netplan/00-installer-config.yaml"
 
 - name: network | install new netplan
   ansible.builtin.template:
     src: netplan-config.yaml.j2
     dest: /etc/netplan/config.yaml
     lstrip_blocks: true
-    validate: 'netplan apply %s'
+    validate: "netplan apply %s"

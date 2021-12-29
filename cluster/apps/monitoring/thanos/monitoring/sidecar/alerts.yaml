@@ -10,7 +10,8 @@ spec:
       rules:
         - alert: ThanosSidecarIsDown
           annotations:
-            description: ThanosSidecar has disappeared. Prometheus target for the component
+            description:
+              ThanosSidecar has disappeared. Prometheus target for the component
               cannot be discovered.
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanossidecarisdown
             summary: Thanos component has disappeared.
@@ -43,7 +44,8 @@ spec:
           annotations:
             description: Thanos Sidecar {{$labels.instance}} is unhealthy.
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanossidecarnoconnectiontostartedprometheus
-            summary: Thanos Sidecar cannot access Prometheus, even though Prometheus seems
+            summary:
+              Thanos Sidecar cannot access Prometheus, even though Prometheus seems
               healthy and has reloaded WAL.
           expr: |
             thanos_sidecar_prometheus_up{job=~".*thanos-discovery.*"} == 0

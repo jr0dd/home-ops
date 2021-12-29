@@ -5,6 +5,7 @@ vars:
   PROJECT_DIR:
     sh: "git rev-parse --show-toplevel"
   CLUSTER_DIR: "{{.PROJECT_DIR}}/cluster"
+  ANSIBLE_DIR: "{{.PROJECT_DIR}}/ansible"
   K3S_PRIMARY_MASTER_NODE_USERNAME: "ubuntu"
   K3S_PRIMARY_MASTER_NODE_ADDR: "10.10.0.10"
   K3S_LB_ADDR: "10.10.5.5"
@@ -14,8 +15,8 @@ env:
 
 includes:
   ansible: .taskfiles/ansible.yml
-  cluster: .taskfiles/cluster.yml
   blocky: .taskfiles/blocky.yml
+  cluster: .taskfiles/cluster.yml
   format: .taskfiles/format.yml
   lint: .taskfiles/lint.yml
 

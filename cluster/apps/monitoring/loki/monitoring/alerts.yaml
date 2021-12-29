@@ -19,7 +19,8 @@ spec:
             severity: critical
         - alert: LokiRequestErrors
           annotations:
-            description: Loki is experiencing {{ $value | humanizePercentage }} of errors on
+            description:
+              Loki is experiencing {{ $value | humanizePercentage }} of errors on
               {{ $labels.job }} {{ $labels.route }}.
             summary: Loki high error rate.
           expr: |
@@ -32,7 +33,8 @@ spec:
             severity: critical
         - alert: LokiRequestPanics
           annotations:
-            description: Loki is experiencing {{ $value | humanizePercentage }} increase of
+            description:
+              Loki is experiencing {{ $value | humanizePercentage }} increase of
               panics on {{ $labels.job }}.
             summary: Loki request panics.
           expr: |
@@ -41,7 +43,8 @@ spec:
             severity: critical
         - alert: LokiRequestLatency
           annotations:
-            descritpion: Loki is experiencing {{ $value }}s 99th percentile latency on
+            descritpion:
+              Loki is experiencing {{ $value }}s 99th percentile latency on
               {{ $labels.job }} {{ $labels.route }}.
             summary: Loki request latency.
           expr: |

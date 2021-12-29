@@ -5,7 +5,7 @@
     regexp: "{{ item.setting }}"
     line: "{{ item.setting }}={{ item.value }}"
   loop:
-    - { setting: HandlePowerKey, value: ignore }
+    - {setting: HandlePowerKey, value: ignore}
 
 - name: power | restart logind systemd service
   ansible.builtin.systemd:
