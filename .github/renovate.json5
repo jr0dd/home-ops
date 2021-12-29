@@ -50,8 +50,7 @@
     // regexManager to read and process GitHub release artifacts
     {
       "fileMatch": [
-        "cluster/.+\\.yaml$",
-        "ansible/.+\\.yml$"
+        "cluster/.+\\.yaml$"
       ],
       "matchStrings": [
         "https:\/\/github.com\/(?<org>.*=?)\/(?<repo>.*=?)\/releases\/download\/(?<currentValue>.*=?)\/.*"
@@ -82,7 +81,7 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}docker{{/if}}",
       "registryUrlTemplate": "{{#if registryUrl}}{{{registryUrl}}}{{else}}{{/if}}"
     },
-    // regexManager to read and process Kube Prometheus Stack
+    // regexManager to read and process Kube Prometheus Stack CRD's
     {
       "fileMatch": [
         "cluster/crds/kube-prometheus-stack/.+\\.yaml$"
@@ -130,18 +129,6 @@
     // group packages
     {
       "matchDatasources": [
-        "helm",
-        "docker"
-      ],
-      "matchPackagePatterns": [
-        "^rook.ceph"
-      ],
-      "groupName": "rook-ceph-suite",
-      "additionalBranchPrefix": "",
-      "separateMinorPatch": true
-    },
-    {
-      "matchDatasources": [
         "docker"
       ],
       "matchPackageNames": [
@@ -156,7 +143,8 @@
     },
     {
       "matchDatasources": [
-        "helm", "docker"
+        "docker",
+        "helm"
       ],
       "matchPackageNames": [
         "quay.io/cilium/cilium",
@@ -181,8 +169,8 @@
     },
     {
       "matchDatasources": [
-        "github-tags",
-        "docker"
+        "docker",
+        "github-tags"
       ],
       "matchPackagePatterns": [
         "rancher/system-upgrade-controller"

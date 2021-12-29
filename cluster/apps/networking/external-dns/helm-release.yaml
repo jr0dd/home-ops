@@ -39,7 +39,5 @@ spec:
     extraArgs:
       - "--cloudflare-proxied"
       - "--annotation-filter=external-dns/is-public=true"
-      - "--crd-source-apiversion=externaldns.k8s.io/v1alpha1"
-      - "--crd-source-kind=DNSEndpoint"
     serviceMonitor:
       enabled: true
