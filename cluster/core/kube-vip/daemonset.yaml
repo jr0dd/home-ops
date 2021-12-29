@@ -55,12 +55,7 @@ spec:
               add:
                 - NET_ADMIN
                 - NET_RAW
-                - SYS_TIME
       hostNetwork: true
-      hostAliases:
-        - hostnames:
-            - kubernetes
-          ip: 127.0.0.1
       nodeSelector:
         node-role.kubernetes.io/master: "true"
       serviceAccountName: kube-vip

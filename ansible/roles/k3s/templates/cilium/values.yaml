@@ -7,7 +7,7 @@ nativeRoutingCIDR: 172.20.0.0/16
 rollOutCiliumPods: true
 tunnel: disabled
 kubeProxyReplacement: "strict"
-kubeProxyReplacementHealthzBindAddr: "0.0.0.0:10256"
+kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 bgp:
   enabled: true
   announce:

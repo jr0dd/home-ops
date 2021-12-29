@@ -5,13 +5,10 @@ kind: Pod
 metadata:
   name: kube-vip
   namespace: kube-system
-  labels:
-    app.kubernetes.io/instance: kube-vip
-    app.kubernetes.io/name: kube-vip
 spec:
   containers:
     - name: kube-vip
-      image: ghcr.io/kube-vip/kube-vip:v0.3.9
+      image: ghcr.io/kube-vip/kube-vip:v0.4.1
       imagePullPolicy: IfNotPresent
       args:
         - manager
@@ -21,7 +18,7 @@ spec:
         - name: vip_arp
           value: "false"
         - name: vip_interface
-          value: "lo"
+          value: "{{ kubevip_interface }}"
         - name: port
           value: "6443"
         - name: vip_cidr
@@ -51,12 +48,15 @@ spec:
           add:
             - NET_ADMIN
             - NET_RAW
-            - SYS_TIME
       volumeMounts:
-        - name: kubeconfig
-          mountPath: /etc/kubernetes/admin.conf
+        - mountPath: /etc/kubernetes/admin.conf
+          name: kubeconfig
+  hostAliases:
+    - hostnames:
+        - kubernetes
+      ip: 127.0.0.1
   hostNetwork: true
   volumes:
-    - name: kubeconfig
-      hostPath:
+    - hostPath:
         path: /etc/rancher/k3s/k3s.yaml
+      name: kubeconfig

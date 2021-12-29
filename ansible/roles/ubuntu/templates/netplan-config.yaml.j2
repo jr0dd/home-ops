@@ -4,6 +4,13 @@ network:
   version: 2
   renderer: networkd
   ethernets:
+    {% if kubevip_ip is defined %}
+    lo:
+      match:
+        name: lo
+      addresses:
+        - {{ kubevip_ip }}/32
+    {% endif %}
     {% if kubevip_interface is defined %}
     {{ kubevip_interface }}:
       match:
