@@ -12,7 +12,7 @@ spec:
   prune: false
   sourceRef:
     kind: GitRepository
-    name: home-ops
+    name: flux-system
   decryption:
     provider: sops
     secretRef:
@@ -21,6 +21,6 @@ spec:
     substitute: {}
     substituteFrom:
       - kind: ConfigMap
-        name: cluster-config
+        name: cluster-settings
       - kind: Secret
         name: cluster-secrets

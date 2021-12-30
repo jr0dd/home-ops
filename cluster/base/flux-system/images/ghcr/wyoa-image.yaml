@@ -46,4 +46,4 @@ spec:
         name: j_r0dd
         email: jr0dd@users.noreply.github.com
       messageTemplate: |
-        fix(container): update {{range .Updated.Images}}{{println .}}{{end}}
+        feat(images): update {{range .Updated.Images}}{{println .}}{{end}}

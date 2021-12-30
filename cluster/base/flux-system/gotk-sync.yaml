@@ -2,30 +2,29 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: GitRepository
 metadata:
-  name: flux
+  name: flux-system
   namespace: flux-system
 spec:
-  interval: 9m0s
+  interval: 1m0s
   ref:
-    # renovate: datasource=github-releases depName=fluxcd/flux2
-    tag: v0.24.1
-  url: https://github.com/fluxcd/flux2
-  ignore: |
-    # exclude all
-    /*
-    # include gitops dirs
-    !/manifests
+    branch: main
+  url: https://github.com/jr0dd/home-ops
+  secretRef:
+    name: gh-creds
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: flux
+  name: flux-system
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./manifests/install
+  path: ./cluster/base
   prune: true
-  wait: true
   sourceRef:
     kind: GitRepository
-    name: flux
+    name: flux-system
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
