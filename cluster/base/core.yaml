@@ -21,6 +21,6 @@ spec:
     substitute: {}
     substituteFrom:
       - kind: ConfigMap
-        name: cluster-settings
+        name: cluster-config
       - kind: Secret
         name: cluster-secrets
