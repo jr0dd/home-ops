@@ -8,8 +8,10 @@ spec:
   interval: 10m0s
   dependsOn:
     - name: crds
+    - name: namespaces
   path: ./cluster/core
   prune: false
+  wait: true
   sourceRef:
     kind: GitRepository
     name: flux-system

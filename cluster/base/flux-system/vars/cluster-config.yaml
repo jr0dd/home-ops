@@ -5,7 +5,7 @@ metadata:
   name: cluster-config
   namespace: flux-system
 data:
-  CLUSTER_NAME: cluster-0
+  CLUSTER_NAME: metal-0
   CLUSTER_ID: "1"
   #
   GATEWAY_IP: 10.10.0.1
