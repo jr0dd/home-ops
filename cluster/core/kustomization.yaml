@@ -5,6 +5,5 @@ resources:
   - cert-manager
   - cilium
   - kube-vip
-  - namespaces
   - openebs-zfs-localpv
   - system-upgrade
