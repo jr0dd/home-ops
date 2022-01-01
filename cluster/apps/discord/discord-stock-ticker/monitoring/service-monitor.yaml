@@ -1,0 +1,16 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: discord-stock-ticker
+  namespace: discord
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: discord-stock-ticker
+      app.kubernetes.io/name: discord-stock-ticker
+  endpoints:
+    - interval: 30s
+      path: /metrics
+      port: http
+      scrapeTimeout: 10s

@@ -8,31 +8,36 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://jr0dd.github.io/charts/
-      chart: discord-stock-ticker
-      version: 13.4.0
+      chart: /charts/kah-common/
       sourceRef:
-        kind: HelmRepository
-        name: jr0dd-charts
+        kind: GitRepository
+        name: flux-system
         namespace: flux-system
       interval: 5m
   values:
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
       tag: v3.8.0
+    lifecycle:
+      postStart:
+        exec:
+          command: ["bash", "/config/payload.sh"]
     controller:
       enabled: true
       replicas: 1
       strategy: RollingUpdate
+    nameOverride: discord-stock-ticker
     env:
       TZ: "America/New_York"
     envFrom:
       - secretRef:
           name: discord-tokens
-    metrics:
-      enabled: true
-      prometheusRule:
+    service:
+      main:
         enabled: true
+        ports:
+          http:
+            port: 8080
     persistence:
       config:
         enabled: true
