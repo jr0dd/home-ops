@@ -5,7 +5,6 @@ resources:
   - cert-manager.yaml
   - databases.yaml
   - discord.yaml
-  - flux-system.yaml
   - home.yaml
   - media.yaml
   - minio.yaml
