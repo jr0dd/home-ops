@@ -1,0 +1,49 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: whalestream-ghcr-io
+  namespace: flux-system
+spec:
+  image: ghcr.io/jr0dd/whalestream-bot
+  interval: 1m0s
+  secretRef:
+    name: ghcr-io-creds
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImagePolicy
+metadata:
+  name: whalestream-ghcr-io
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: whalestream-ghcr-io
+  policy:
+    semver:
+      range: ">=0.1.0"
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: whalestream-ghcr-io
+  namespace: flux-system
+spec:
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  interval: 1m
+  update:
+    path: ./cluster/apps/discord/whalestream-bot
+    strategy: Setters
+  git:
+    checkout:
+      ref:
+        branch: main
+    push:
+      branch: main
+    commit:
+      author:
+        name: j_r0dd
+        email: jr0dd@users.noreply.github.com
+      messageTemplate: |
+        fix(container): update {{range .Updated.Images}}{{println .}}{{end}}
