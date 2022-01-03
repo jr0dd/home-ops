@@ -57,8 +57,8 @@ spec:
         user: authentik
         password: "${AUTHENTIK_POSTGRES_PASSWORD}"
         s3_backup:
-          access_key: "${MINIO_USER_ACCESS_KEY}"
-          secret_key: "${MINIO_USER_SECRET_KEY}"
+          access_key: "${MINIO_ACCESS_KEY}"
+          secret_key: "${MINIO_SECRET_KEY}"
           bucket: authentik
           host: http://minio.minio:9000
       redis:
