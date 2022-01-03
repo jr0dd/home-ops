@@ -30,7 +30,7 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: "${LB_BLOCKY_IP}"
+        loadBalancerIP: "${LB_BLOCKY}"
         externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/allow-shared-ip: blocky
@@ -42,7 +42,7 @@ spec:
       dns:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: "${LB_BLOCKY_IP}"
+        loadBalancerIP: "${LB_BLOCKY}"
         externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/allow-shared-ip: blocky
@@ -70,7 +70,7 @@ spec:
           # - tcp-tls:dns.quad9.net:853
       conditional:
         mapping:
-          ${SECRET_DOMAIN}: tcp+udp:${LB_K8S_GATEWAY_IP}
+          ${SECRET_DOMAIN}: tcp+udp:${LB_K8S_GATEWAY}
       customDNS:
         mapping:
           k8s.${SECRET_DOMAIN}: 10.10.5.5

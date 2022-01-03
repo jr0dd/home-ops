@@ -24,4 +24,4 @@ spec:
       type: LoadBalancer
       port: 53
       externalTrafficPolicy: Local
-      loadBalancerIP: ${LB_K8S_GATEWAY_IP}
+      loadBalancerIP: ${LB_K8S_GATEWAY}

@@ -30,7 +30,7 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: "${LB_NUT_IP}"
+        loadBalancerIP: "${LB_NUT}"
         externalTrafficPolicy: Local
         ports:
           http:

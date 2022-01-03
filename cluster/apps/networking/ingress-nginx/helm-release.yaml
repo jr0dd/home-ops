@@ -23,7 +23,7 @@ spec:
         - name: TZ
           value: America/New_York
       service:
-        loadBalancerIP: ${LB_NGINX_IP}
+        loadBalancerIP: ${LB_NGINX}
         externalTrafficPolicy: Local
       publishService:
         enabled: true
