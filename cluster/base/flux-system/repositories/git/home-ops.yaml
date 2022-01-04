@@ -9,6 +9,8 @@ spec:
   ref:
     branch: main
   url: https://github.com/jr0dd/home-ops.git
+  secretRef:
+    name: gh-creds
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
