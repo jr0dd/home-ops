@@ -14,7 +14,7 @@ collections:
     version: 2.2.2
 roles:
   - src: xanmanning.k3s
-    version: v3.0.0
+    version: v3.0.1
   - src: https://github.com/mrlesmithjr/ansible-zfs.git
     scm: git
     name: mrlesmithjr.zfs
