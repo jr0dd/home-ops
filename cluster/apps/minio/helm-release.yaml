@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: quay.io/minio/minio
-      tag: RELEASE.2022-01-04T07-41-07Z
+      tag: RELEASE.2022-01-07T01-53-23Z
     nameOverride: minio
     env:
       TZ: "America/New_York"
