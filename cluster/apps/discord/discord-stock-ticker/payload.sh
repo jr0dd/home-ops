@@ -11,9 +11,9 @@ curl -X POST \
     \"items\": [\"SPY\", \"^VIX\", \"IWM\", \"^NDX\"], \
     \"frequency\":5, \
     \"percentage\": true, \
-    \"set_nickname\":false, \
+    \"nickname\":false, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
 
 curl -X POST \
 "localhost:8080/tickerboard" \
@@ -23,9 +23,9 @@ curl -X POST \
     \"items\": [\"ES=F\", \"RTY=F\", \"NQ=F\", \"YM=F\"], \
     \"frequency\":5, \
     \"percentage\": true, \
-    \"set_nickname\":false, \
+    \"nickname\":false, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
 
 curl -X POST \
 "localhost:8080/tickerboard" \
@@ -35,9 +35,9 @@ curl -X POST \
     \"items\": [\"PLTR\", \"MVIS\", \"TLRY\", \"BB\", \"GME\", \"AMC\", \"WISH\", \"CLNE\", \"NOK\", \"RKT\", \"BBBY\", \"KOSS\", \"CLOV\", \"SPCE\"], \
     \"frequency\":5, \
     \"percentage\": true, \
-    \"set_nickname\":false, \
+    \"nickname\":false, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
 
 curl -X POST \
 "localhost:8080/ticker" \
@@ -47,9 +47,9 @@ curl -X POST \
     \"discord_bot_token\":\"$BTC\", \
     \"crypto\":true, \
     \"frequency\":5, \
-    \"set_nickname\":true, \
+    \"nickname\":true, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
 
 curl -X POST \
 "localhost:8080/ticker" \
@@ -59,9 +59,9 @@ curl -X POST \
     \"discord_bot_token\":\"$DOGE\", \
     \"crypto\":true, \
     \"frequency\":5, \
-    \"set_nickname\":true, \
+    \"nickname\":true, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
 
 curl -X POST \
 "localhost:8080/ticker" \
@@ -71,9 +71,9 @@ curl -X POST \
     \"discord_bot_token\":\"$ETH\", \
     \"crypto\":true, \
     \"frequency\":5, \
-    \"set_nickname\":true, \
+    \"nickname\":true, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
 
 curl -X POST \
 "localhost:8080/ticker" \
@@ -83,9 +83,9 @@ curl -X POST \
     \"discord_bot_token\":\"$SHIB\", \
     \"crypto\":true, \
     \"frequency\":5, \
-    \"set_nickname\":true, \
+    \"nickname\":true, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
 
 curl -X POST \
 "localhost:8080/ticker" \
@@ -94,9 +94,9 @@ curl -X POST \
     \"name\":\"AAPL\", \
     \"discord_bot_token\":\"$AAPL\", \
     \"frequency\":5, \
-    \"set_nickname\":true, \
+    \"nickname\":true, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
 
 curl -X POST \
 "localhost:8080/ticker" \
@@ -105,6 +105,6 @@ curl -X POST \
     \"name\":\"TSLA\", \
     \"discord_bot_token\":\"$TSLA\", \
     \"frequency\":5, \
-    \"set_nickname\":true, \
+    \"nickname\":true, \
     \"arrows\":true, \
-    \"set_color\":true}"
+    \"color\":true}"
