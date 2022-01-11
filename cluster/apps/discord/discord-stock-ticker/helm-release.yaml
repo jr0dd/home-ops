@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
-      tag: v3.9.5
+      tag: v3.9.6
     lifecycle:
       postStart:
         exec:
