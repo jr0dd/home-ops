@@ -13,7 +13,7 @@ curl -X POST \
     \"percentage\": true, \
     \"nickname\":false, \
     \"arrows\":true, \
-    \"color\":true}"
+    \"color\":false}"
 
 curl -X POST \
 "localhost:8080/tickerboard" \
@@ -25,7 +25,7 @@ curl -X POST \
     \"percentage\": true, \
     \"nickname\":false, \
     \"arrows\":true, \
-    \"color\":true}"
+    \"color\":false}"
 
 curl -X POST \
 "localhost:8080/tickerboard" \
@@ -37,7 +37,7 @@ curl -X POST \
     \"percentage\": true, \
     \"nickname\":false, \
     \"arrows\":true, \
-    \"color\":true}"
+    \"color\":false}"
 
 curl -X POST \
 "localhost:8080/ticker" \
