@@ -48,6 +48,7 @@ spec:
         enabled: true
         ingressClassName: nginx
         annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/proxy-body-size: 250m
         hosts:
           - host: "minio.${SECRET_DOMAIN}"
