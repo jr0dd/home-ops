@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - secret.sops.yaml
   - whalestream-ghcr.yaml
-  - ws-staging-ghcr.yaml
+  # - ws-staging-ghcr.yaml
   - wyoa-ghcr.yaml
