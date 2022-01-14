@@ -50,7 +50,7 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - secretName: whalestream-tls
+          - secretName: "${SECRET_DOMAIN_1/./-}-tls"
             hosts:
               - "ws.${SECRET_DOMAIN_1}"
     podAnnotations:

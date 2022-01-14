@@ -50,7 +50,7 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - secretName: ws-staging-tls
+          - secretName: "${SECRET_DOMAIN_1/./-}-tls"
             hosts:
               - "ws-staging.${SECRET_DOMAIN_1}"
     podAnnotations:
