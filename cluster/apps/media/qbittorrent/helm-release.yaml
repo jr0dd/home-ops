@@ -23,7 +23,7 @@ spec:
     controller:
       enabled: true
       replicas: 1
-      strategy: RollingUpdate
+      strategy: Recreate
     settings:
       automaticPortSetup: true
     env:
