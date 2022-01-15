@@ -125,19 +125,19 @@ spec:
               path: /var/lib/grafana/dashboards/default
     dashboards:
       default:
-        # Ref: https://grafana.com/grafana/dashboards/14500
+        # Ref: https://grafana.com/grafana/dashboards/15513
         cilium-agent:
-          gnetId: 14500
+          gnetId: 15513
           revision: 1
           datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/14501
+        # Ref: https://grafana.com/grafana/dashboards/15514
         cilium-operator:
-          gnetId: 14501
+          gnetId: 15514
           revision: 1
           datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/14502
+        # Ref: https://grafana.com/grafana/dashboards/15515
         cilium-hubble:
-          gnetId: 14502
+          gnetId: 15515
           revision: 1
           datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/13665
