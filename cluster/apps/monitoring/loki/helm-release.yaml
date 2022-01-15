@@ -17,6 +17,18 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      hosts:
+        - host: "loki.${SECRET_DOMAIN}"
+          paths:
+            - /
+      tls:
+        - secretName: loki-tls
+          hosts:
+            - "loki.${SECRET_DOMAIN}"
     serviceMonitor:
       enabled: true
     config:
@@ -89,13 +101,13 @@ spec:
             annotations:
               summary: "{{ $labels.app }} is experiencing malformed database disk image issues"
       #
-      # wyoa-bot
+      # bots
       #
       - name: discord-api-error
         rules:
           - alert: DiscordApiError
             expr: |
-              sum(count_over_time({app=~"wyoa-bot|discord-stock-ticker"} |~ "(?i).*DiscordAPIError.*"[1m])) > 0
+              sum(count_over_time({namespace="discord"} |~ "(?i).*DiscordAPIError.*"[1m])) > 0
             for: 10s
             labels:
               severity: critical
