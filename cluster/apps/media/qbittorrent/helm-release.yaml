@@ -75,8 +75,8 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          # - secretName: qbittorrent-tls
-          - hosts:
+          - secretName: qbittorrent-tls
+            hosts:
               - "qb.${SECRET_DOMAIN}"
     metrics:
       enabled: true
