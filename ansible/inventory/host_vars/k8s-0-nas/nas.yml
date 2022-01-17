@@ -55,20 +55,20 @@ samba_users:
     password: "{{ nathan_passwd }}"
 
 samba_shares: |-
+  [data]
+    comment = Data
+    path = /deadpool/data
+    public = no
+    read only = no
+    valid users= @home_users
+    force group = home_users
+
   [media]
     comment = Media
     path = /deadpool/media
     public = no
     read only = no
     valid users= j_r0dd
-    force group = home_users
-
-  [backups]
-    comment = Backups
-    path = /deadpool/backups
-    public = no
-    read only = no
-    valid users= @home_users
     force group = home_users
 
   [timemachine]
@@ -135,13 +135,13 @@ zfs_pools:
     state: present
 
 zfs_filesystems:
-  - name: backups
+  - name: data
     pool: deadpool
     state: present
     owner: root
     group: home_users
     mode: 775
-    mountpoint: /deadpool/backups
+    mountpoint: /deadpool/data
 
   - name: containous
     pool: deadpool
