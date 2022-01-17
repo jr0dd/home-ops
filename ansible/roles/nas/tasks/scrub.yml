@@ -2,13 +2,13 @@
 - name: scrub | copy systemd scrub service
   ansible.builtin.template:
     src: zfs-scrub@.service.j2
-    dest: /lib/systemd/system/zfs-scrub@.service
+    dest: /etc/systemd/system/zfs-scrub@.service
     mode: 0644
 
 - name: scrub | copy systemd scrub timer
   ansible.builtin.template:
     src: zfs-scrub@.timer.j2
-    dest: /lib/systemd/system/zfs-scrub@.timer
+    dest: /etc/systemd/system/zfs-scrub@.timer
     mode: 0644
 
 - name: scrub | start systemd scrub timer

@@ -2,7 +2,7 @@
 - name: k3s | configure killall service
   ansible.builtin.template:
     src: k3s-killall.service.j2
-    dest: /lib/systemd/system/k3s-killall.service
+    dest: /etc/systemd/system/k3s-killall.service
     mode: 0644
 
 - name: k3s | enable killall service

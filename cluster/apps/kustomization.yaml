@@ -11,6 +11,5 @@ resources:
   - minio
   - monitoring
   - networking
-  - security
   - system-upgrade
   - velero
