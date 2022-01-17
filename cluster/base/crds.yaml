@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./cluster/crds
+  path: ./cluster/base/crds
   prune: false
   wait: true
   sourceRef:
