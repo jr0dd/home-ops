@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: ubuntu-no-avahi@sha256:a48cb2ee321ce0d280bd75c7ca04d5deec7688172aa9e01cb14b0e47e69bc9ea
+      tag: ubuntu-no-avahi@sha256:4ccef0fdd95b65b921302d1a1aa404c5180183cea3a64c931f9baa7bbe947c6a
     env:
       TZ: "America/New_York"
       PUID: 568
