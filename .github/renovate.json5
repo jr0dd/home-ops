@@ -36,22 +36,12 @@
       "cluster/base/"
     ]
   },
-  // "flux": {
-  //   "fileMatch": [
-  //     "cluster/.+\\.yaml$"
-  //   ]
-  // },
+  "flux": {
+    "fileMatch": [
+      "cluster/.+\\.yaml$"
+    ]
+  },
   "regexManagers": [
-    // regexManager to read and process HelmRelease files
-    {
-      "fileMatch": [
-        "cluster/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
-    },
     // regexManager to read and process GitHub release artifacts
     {
       "fileMatch": [
@@ -62,17 +52,6 @@
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "{{org}}/{{repo}}"
-    },
-    // Generic Flux regexManager
-    {
-      "fileMatch": [
-        "cluster/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( registryUrl=(?<registryUrl>.*?))?( versioning=(?<versioning>.*=?))?\n .*: (?<currentValue>.*=?)"
-      ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
-      "registryUrlTemplate": "{{#if registryUrl}}{{{registryUrl}}}{{else}}{{/if}}"
     },
     // Generic Docker image regexManager
     {
