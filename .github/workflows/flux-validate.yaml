@@ -17,4 +17,4 @@ jobs:
       - name: Setup tools
         uses: ./.github/actions/tools
       - name: Validate manifests
-        run: ./.github/scripts/validate.sh
+        run: ./.github/scripts/flux-validate.sh
