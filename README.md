@@ -28,8 +28,6 @@ This is home to my personal Kubernetes cluster. [Flux](https://github.com/fluxcd
 
 Currently I only have a single node running on Ubuntu 21.04 as the master-node and storage-node. This was recently migrated from TrueNAS SCALE using the NAS role I have been working on.
 
-For more information, head on over to my [docs](https://jr0dd.github.io/home-ops/). ***Not ready yet***
-
 ## Prometheus Rules
 
 All my prometheus recording/alerting rules found in this repo can be found in my [prometheus-rules](https://github.com/jr0dd/prometheus-rules) repo.
