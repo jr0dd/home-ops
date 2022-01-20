@@ -4,3 +4,9 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - monitoring
+configMapGenerator:
+  - name: cloudflare-ip-ranges
+    files:
+      - cloudflare-ip-ranges.txt
+generatorOptions:
+  disableNameSuffixHash: true
