@@ -43,7 +43,7 @@ spec:
       branch: main
     commit:
       author:
-        name: j_r0dd
-        email: jr0dd@users.noreply.github.com
+        name: wyoa-bot
+        email: wyoa-bot[bot]@users.noreply.github.com
       messageTemplate: |
         fix(container): update {{range .Updated.Images}}{{println .}}{{end}}
