@@ -1,14 +1,17 @@
 ---
-name: Schedule - Library Chart Update
+name: Schedule - Cloudflare IP Ranges Update
 
 on: # yamllint disable-line rule:truthy
   workflow_dispatch:
   schedule:
-    - cron: "0 */4 * * *"
+    - cron: "0 0 * * *"
+
+env:
+  CLOUDFLARE_IP_RANGES_FILE: cluster/apps/networking/ingress-nginx/cloudflare-ip-ranges.txt
 
 jobs:
-  library-chart-update:
-    name: Library Chart Update
+  cloudflare-ip-ranges-update:
+    name: Cloudflare IP Ranges
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,28 +22,20 @@ jobs:
         with:
           app_id: "${{ secrets.WYOA_BOT_APP_ID }}"
           private_key: "${{ secrets.WYOA_BOT_APP_PRIVATE_KEY }}"
-      - name: Install Helm
-        uses: azure/setup-helm@v1
-        with:
-          version: v3.6.3
-      - name: Add library chart
-        run: helm repo add k8s-at-home-library https://library-charts.k8s-at-home.com
-      - name: Update helm repositories
-        run: helm repo update
-      - name: Update helm dependencies
-        run: helm dep update
-        working-directory: charts/kah-common
+      - name: Cloudflare IP Ranges
+        run: |
+          bash ./.github/scripts/cloudflare-ip-ranges.sh > ${{ env.CLOUDFLARE_IP_RANGES_FILE }}
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
         with:
           token: "${{ steps.generate-token.outputs.token }}"
-          branch: ci/renovate-kah-library-chart
+          branch: ci/update-cloudflare-ip-ranges
           delete-branch: true
-          title: "chore(ci): update kah library chart"
+          title: "chore(ci): update cloudflare IP ranges"
           signoff: true
           committer: "j_r0dd <jr0dd@users.noreply.github.com>"
           author: "j_r0dd <jr0dd@users.noreply.github.com>"
           assignees: "jr0dd"
-          commit-message: "chore(ci): update kah library chart"
+          commit-message: "chore(ci): update cloudflare IP ranges"
           body: |
-            Update the kah library chart
+            Update Cloudflare IP ranges from https://www.cloudflare.com/ips/

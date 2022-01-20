@@ -21,7 +21,7 @@
       "addLabels": ["component/helm"]
     },
     {
-      "matchDatasources": ["galaxy"],
+      "matchDatasources": ["galaxy", "galaxy-collection"],
       "addLabels": ["component/ansible"]
     },
     {
