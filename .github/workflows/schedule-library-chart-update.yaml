@@ -17,8 +17,8 @@ jobs:
         uses: tibdex/github-app-token@v1
         id: generate-token
         with:
-          app_id: "${{ secrets.WYOA_BOT_APP_ID }}"
-          private_key: "${{ secrets.WYOA_BOT_APP_PRIVATE_KEY }}"
+          app_id: "${{ secrets.BOT_APP_ID }}"
+          private_key: "${{ secrets.BOT_APP_PRIVATE_KEY }}"
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
@@ -38,9 +38,6 @@ jobs:
           delete-branch: true
           title: "chore(ci): update kah library chart"
           signoff: true
-          committer: "j_r0dd <jr0dd@users.noreply.github.com>"
-          author: "j_r0dd <jr0dd@users.noreply.github.com>"
-          assignees: "jr0dd"
           commit-message: "chore(ci): update kah library chart"
           body: |
             Update the kah library chart
