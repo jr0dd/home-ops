@@ -54,7 +54,7 @@ spec:
             description: Log file for {{ $labels.instance }} {{ $labels.job }} {{ $labels.path }} matches the glob but is not being tailed.
             summary: Promtail file missing.
           expr: |
-            promtail_file_bytes_total{path!~".*init.*|.*velero-plugin.*|.*clean-cilium.*|.*cilium-test.*|.*mongod-posthook.*|.*agent-readiness.*"} == 0
+            promtail_file_bytes_total{path!~".*init.*|.*clean-cilium.*|.*cilium-test.*|.*mongod-posthook.*|.*agent-readiness.*"} == 0
               unless
             promtail_read_bytes_total != 0
           for: 15m

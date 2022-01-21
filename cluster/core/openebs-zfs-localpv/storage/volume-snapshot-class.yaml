@@ -5,6 +5,5 @@ metadata:
   name: zfspv-snapclass
   annotations:
     snapshot.storage.kubernetes.io/is-default-class: "true"
-    velero.io/csi-volumesnapshot-class: "true"
 driver: zfs.csi.openebs.io
 deletionPolicy: Delete

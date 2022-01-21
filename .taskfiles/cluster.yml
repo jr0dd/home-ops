@@ -35,8 +35,6 @@ tasks:
       - kubectl rollout restart ds -n monitoring
       - kubectl rollout restart deploy -n monitoring
       - kubectl rollout restart statefulset -n monitoring
-      - kubectl rollout restart ds -n velero
-      - kubectl rollout restart deploy -n velero
       - kubectl rollout restart deploy -n networking
       - kubectl rollout restart deploy -n home
       - kubectl rollout restart deploy -n system-upgrade
