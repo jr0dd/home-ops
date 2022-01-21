@@ -11,4 +11,3 @@ resources:
   - monitoring.yaml
   - networking.yaml
   - openebs.yaml
-  - velero.yaml
