@@ -6,6 +6,7 @@ resources:
   - databases.yaml
   - discord.yaml
   - home.yaml
+  - kasten-io.yaml
   - media.yaml
   - minio.yaml
   - monitoring.yaml

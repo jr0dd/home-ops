@@ -1,0 +1,28 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: kasten-io
+  namespace: kasten-io
+spec:
+  groups:
+    - name: kasten
+      rules:
+        - alert: K10Absent
+          annotations:
+            description: K10 has dissapeared from Prometheus service discovery.
+            summary: K10 has disappeared.
+          expr: |
+            absent(up{job=~".*prometheus-server.*"} == 1)
+          for: 10m
+          labels:
+            severity: critical
+        - alert: JobsFailing
+          annotations:
+            description: More than 1 failed K10 jobs occurred for the {{ $labels.policy }} policy in the last 10 minutes.
+            summary: K10 jobs failing.
+          expr: |
+            increase(catalog_actions_count{status="failed"}[10m]) > 0
+          for: 1m
+          labels:
+            severity: critical

@@ -4,6 +4,8 @@ apiVersion: v1
 metadata:
   name: data-volume-wyoa-bot-0
   namespace: databases
+  labels:
+    k10.kasten.io/backup: "true"
 spec:
   accessModes:
     - ReadWriteOnce
@@ -17,6 +19,8 @@ apiVersion: v1
 metadata:
   name: logs-volume-wyoa-bot-0
   namespace: databases
+  labels:
+    k10.kasten.io/backup: "true"
 spec:
   accessModes:
     - ReadWriteOnce
