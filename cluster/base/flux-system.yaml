@@ -8,6 +8,7 @@ spec:
   interval: 10m0s
   path: ./cluster/base
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -15,3 +16,14 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
+  patches:
+    - target:
+        kind: Deployment
+        name: helm-controller
+      patch: |-
+        - op: replace
+          path: /spec/template/spec/containers/0/resources/requests/memory
+          value: 512Mi
+        - op: replace
+          path: /spec/template/spec/containers/0/resources/limits/memory
+          value: 2Gi

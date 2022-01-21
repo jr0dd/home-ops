@@ -51,12 +51,8 @@ tasks:
     cmds:
       - flux suspend hr -n minio minio
       - kubectl scale -n minio deploy/minio --replicas 0
-      - flux suspend hr -n databases postgresql
-      - kubectl scale -n databases statefulset/postgresql-postgresql --replicas 0
-      - flux suspend hr -n databases redis
-      - kubectl scale -n databases statefulset/redis-master --replicas 0
-      - flux suspend hr -n databases mongodb
-      - kubectl scale -n databases statefulset/wyoa-bot --replicas 0
+      # - flux suspend hr -n databases mongodb
+      # - kubectl scale -n databases statefulset/wyoa-bot --replicas 0
       - flux suspend hr -n home homebridge
       - kubectl scale -n home deploy/homebridge --replicas 0
       - flux suspend hr -n home hajimari
@@ -88,16 +84,12 @@ tasks:
       - kubectl scale -n monitoring statefulset/alertmanager-prometheus-alertmanager --replicas 0
       - kubectl scale -n monitoring statefulset/prometheus-prometheus-prometheus --replicas 0
       - kubectl scale -n monitoring deploy/prometheus-operator --replicas 0
-      - flux suspend hr -n security authentik
-      - kubectl scale -n security deploy/authentik-server --replicas 0
-      - kubectl scale -n security deploy/authentik-worker --replicas 0
+
   resume:
     desc: Resume all Helm Releases that rely on ZFS storage
     cmds:
       - flux resume hr -n minio minio
-      - flux resume hr -n databases mongodb
-      - flux resume hr -n databases postgresql
-      - flux resume hr -n databases redis
+      # - flux resume hr -n databases mongodb
       - flux resume hr -n home homebridge
       - flux resume hr -n home hajimari
       - flux resume hr -n monitoring loki
@@ -111,4 +103,3 @@ tasks:
       - flux resume hr -n media sonarr
       - flux resume hr -n media overseerr
       - flux resume hr -n media tautulli
-      - flux resume hr -n security authentik
