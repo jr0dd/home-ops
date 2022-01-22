@@ -31,7 +31,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: "${{ env.DEFAULT_BRANCH }}"
           GITHUB_TOKEN: "${{ steps.generate-token.outputs.token }}"
-          ANSIBLE_CONFIG_FILE: .ansible-lint
+          ANSIBLE_CONFIG_FILE: .ansible-lint.yaml
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml
           TERRAFORM_TFLINT_CONFIG_FILE: .tflint.hcl
           YAML_CONFIG_FILE: .yamllint.yaml
