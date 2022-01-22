@@ -18,6 +18,12 @@
       "semanticCommitScope": "container"
     },
     {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest"],
+      "semanticCommitType": "fix",
+      "semanticCommitScope": "container"
+    },
+    {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["major"],
       "commitMessagePrefix": "feat(helm)!: "
