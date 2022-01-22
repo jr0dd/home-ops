@@ -77,14 +77,3 @@ spec:
           - secretName: qbittorrent-tls
             hosts:
               - "qb.${SECRET_DOMAIN}"
-    metrics:
-      enabled: true
-      prometheusRule:
-        enabled: true
-      exporter:
-        image:
-          repository: esanchezm/prometheus-qbittorrent-exporter
-          tag: v1.2.0
-        env:
-          user: "${QB_USER}"
-          password: "${QB_PASSWORD}"
