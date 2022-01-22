@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: ingress-nginx-charts
+  name: openebs-zfs-localpv
   namespace: flux-system
 spec:
   interval: 15m
-  url: https://kubernetes.github.io/ingress-nginx
+  url: https://openebs.github.io/zfs-localpv
   timeout: 3m

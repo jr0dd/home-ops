@@ -12,7 +12,7 @@ spec:
       version: 30.1.0
       sourceRef:
         kind: HelmRepository
-        name: prometheus-community-charts
+        name: prometheus-community
         namespace: flux-system
       interval: 5m
   values:
@@ -60,14 +60,14 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - "alertmanager.${SECRET_DOMAIN}"
+          - &host "alertmanager.${SECRET_DOMAIN}"
         paths:
           - /
         pathType: Prefix
         tls:
           - secretName: alertmanager-tls
             hosts:
-              - "alertmanager.${SECRET_DOMAIN}"
+              - *host
       alertmanagerSpec:
         storage:
           volumeClaimTemplate:
@@ -87,14 +87,14 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - "prometheus.${SECRET_DOMAIN}"
+          - &host "prometheus.${SECRET_DOMAIN}"
         paths:
           - /
         pathType: Prefix
         tls:
           - secretName: prometheus-tls
             hosts:
-              - "prometheus.${SECRET_DOMAIN}"
+              - *host
       thanosService:
         enabled: true
       thanosServiceMonitor:

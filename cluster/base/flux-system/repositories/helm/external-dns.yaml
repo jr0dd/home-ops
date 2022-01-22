@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: k8s-gateway-charts
+  name: external-dns
   namespace: flux-system
 spec:
   interval: 15m
-  url: https://ori-edge.github.io/k8s_gateway/
+  url: https://kubernetes-sigs.github.io/external-dns/
   timeout: 3m

@@ -12,7 +12,7 @@ spec:
       version: 6.20.6
       sourceRef:
         kind: HelmRepository
-        name: grafana-charts
+        name: grafana
         namespace: flux-system
       interval: 5m
   values:
@@ -56,12 +56,12 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
-        - "grafana.${SECRET_DOMAIN}"
+        - &host "grafana.${SECRET_DOMAIN}"
       path: /
       tls:
         - secretName: grafana-tls
           hosts:
-            - "grafana.${SECRET_DOMAIN}"
+            - *host
     plugins:
       - grafana-piechart-panel
       - grafana-polystat-panel

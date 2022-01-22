@@ -12,7 +12,7 @@ spec:
       version: 6.2.0
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: k8s-at-home
         namespace: flux-system
       interval: 5m
   values:
@@ -41,14 +41,14 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/backend-protocol: HTTPS
         hosts:
-          - host: "plex.${SECRET_DOMAIN}"
+          - host: &host "plex.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - secretName: plex-tls
             hosts:
-              - "plex.${SECRET_DOMAIN}"
+              - *host
     persistence:
       config:
         enabled: true

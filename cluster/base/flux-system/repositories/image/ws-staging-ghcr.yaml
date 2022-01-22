@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   image: ghcr.io/jr0dd/ws-staging-bot
-  interval: 1m0s
+  interval: 1m
   secretRef:
     name: ghcr-io-creds
 ---

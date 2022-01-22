@@ -1,0 +1,17 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: mongodb-community-operator
+  namespace: flux-system
+spec:
+  interval: 15m
+  url: https://github.com/mongodb/helm-charts.git
+  ref:
+    # renovate: registryUrl=https://mongodb.github.io/helm-charts
+    tag: community-operator-crds-0.7.2
+  ignore: |
+    # exclude all
+    /*
+    # include deploy crds dir
+    !/charts/community-operator-crds/templates/

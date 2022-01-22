@@ -12,7 +12,7 @@ spec:
       version: 1.2.0
       sourceRef:
         kind: HelmRepository
-        name: hajimari-charts
+        name: hajimari
         namespace: flux-system
       interval: 5m
   values:
@@ -34,14 +34,14 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - host: "start.${SECRET_DOMAIN}"
+          - host: &host "start.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - secretName: hajimari-tls
             hosts:
-              - "start.${SECRET_DOMAIN}"
+              - *host
     persistence:
       data:
         enabled: true

@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: mongodb
+  name: mongodb-community-operator
   namespace: databases
 spec:
   interval: 5m
@@ -12,7 +12,7 @@ spec:
       version: 0.7.2
       sourceRef:
         kind: HelmRepository
-        name: mongodb-charts
+        name: mongodb
         namespace: flux-system
       interval: 5m
   values:
@@ -20,6 +20,6 @@ spec:
     operator:
       name: mongodb-operator
     community-operator-crds:
-      enabled: true
+      enabled: false
     database:
       name: mongodb-database

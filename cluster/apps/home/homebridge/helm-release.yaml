@@ -12,7 +12,7 @@ spec:
       version: 4.3.0
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: k8s-at-home
         namespace: flux-system
       interval: 5m
   values:
@@ -43,14 +43,14 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-          - host: "homebridge.${SECRET_DOMAIN}"
+          - host: &host "homebridge.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - secretName: homebridge-tls
             hosts:
-              - "homebridge.${SECRET_DOMAIN}"
+              - *host
     config: |
       #!/bin/sh
 

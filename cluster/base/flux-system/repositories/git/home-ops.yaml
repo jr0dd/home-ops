@@ -5,9 +5,9 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 1m
+  url: https://github.com/jr0dd/home-ops.git
   ref:
     branch: main
-  url: https://github.com/jr0dd/home-ops.git
   secretRef:
     name: gh-creds

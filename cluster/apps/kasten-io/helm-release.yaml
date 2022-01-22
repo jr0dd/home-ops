@@ -13,7 +13,7 @@ spec:
       version: 4.5.7
       sourceRef:
         kind: HelmRepository
-        name: kasten-charts
+        name: kasten
         namespace: flux-system
       interval: 5m
   values:
@@ -33,10 +33,10 @@ spec:
         cert-manager.io/cluster-issuer: letsencrypt-production
       create: true
       class: nginx
-      host: "k10.${SECRET_DOMAIN}"
+      host: &host "k10.${SECRET_DOMAIN}"
       urlPath: k10
       hosts:
-        - "k10.${SECRET_DOMAIN}"
+        - *host
       tls:
         enabled: true
         secretName: k10-tls

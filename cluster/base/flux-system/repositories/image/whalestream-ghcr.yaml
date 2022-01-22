@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   image: ghcr.io/jr0dd/whalestream-bot
-  interval: 1m0s
+  interval: 1m
   secretRef:
     name: ghcr-io-creds
 ---
@@ -20,7 +20,7 @@ spec:
     name: whalestream-ghcr-io
   policy:
     semver:
-      range: ">=0.1.0"
+      range: ">=0.2.0"
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation

@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: bitnami-charts
+  name: mongodb
   namespace: flux-system
 spec:
   interval: 15m
-  url: https://charts.bitnami.com/bitnami
+  url: https://mongodb.github.io/helm-charts
   timeout: 3m

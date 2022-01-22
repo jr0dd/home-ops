@@ -2,9 +2,9 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: external-dns-charts
+  name: ingress-nginx
   namespace: flux-system
 spec:
   interval: 15m
-  url: https://kubernetes-sigs.github.io/external-dns/
+  url: https://kubernetes.github.io/ingress-nginx
   timeout: 3m

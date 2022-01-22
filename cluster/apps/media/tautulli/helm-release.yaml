@@ -12,7 +12,7 @@ spec:
       version: 11.2.0
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home-charts
+        name: k8s-at-home
         namespace: flux-system
       interval: 5m
   values:
@@ -45,11 +45,11 @@ spec:
             sub_filter '</head>' '<link rel="stylesheet" type="text/css" href="https://theme-park.dev/css/base/tautulli/nord.css"></head>';
             sub_filter_once on;
         hosts:
-          - host: "tautulli.${SECRET_DOMAIN}"
+          - host: &host "tautulli.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - secretName: tautulli-tls
             hosts:
-              - "tautulli.${SECRET_DOMAIN}"
+              - *host

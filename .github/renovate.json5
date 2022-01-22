@@ -72,13 +72,15 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}docker{{/if}}",
       "registryUrlTemplate": "{{#if registryUrl}}{{{registryUrl}}}{{else}}{{/if}}"
     },
-    // regexManager to read and process Kube Prometheus Stack CRD's
+    // regexManager to read and process CRD's
     {
       "fileMatch": [
-        "cluster/crds/kube-prometheus-stack/.+\\.yaml$"
+        "cluster/crds/.+\\.yaml$",
+        "cluster/base/flux-system/repositories/.+\\.yaml$"
       ],
       "matchStrings": [
-        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n"
+        "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n",
+        "registryUrl=(?<registryUrl>.*?) chart=(?<depName>.*?)\n.*\\/(?<currentValue>.*?)\\/"
       ],
       "datasourceTemplate": "helm"
     }
@@ -148,11 +150,13 @@
     },
     {
       "matchDatasources": [
-        "docker"
+        "docker",
+        "helm"
       ],
       "matchPackageNames": [
         "library/mongo",
-        "quay.io/mongodb/mongodb-kubernetes-operator"
+        "quay.io/mongodb/mongodb-kubernetes-operator",
+        "community-operator"
       ],
       "groupName": "mongodb",
       "additionalBranchPrefix": "",

@@ -12,7 +12,7 @@ spec:
       version: 2.9.1
       sourceRef:
         kind: HelmRepository
-        name: grafana-charts
+        name: grafana
         namespace: flux-system
       interval: 5m
   values:
@@ -22,13 +22,13 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
-        - host: "loki.${SECRET_DOMAIN}"
+        - host: &host "loki.${SECRET_DOMAIN}"
           paths:
             - /
       tls:
         - secretName: loki-tls
           hosts:
-            - "loki.${SECRET_DOMAIN}"
+            - *host
     serviceMonitor:
       enabled: true
     config:

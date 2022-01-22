@@ -1,0 +1,19 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: openebs-zfs-localpv
+  namespace: flux-system
+spec:
+  interval: 15m
+  url: https://github.com/openebs/zfs-localpv.git
+  ref:
+    # renovate: registryUrl=https://openebs.github.io/zfs-localpv
+    tag: zfs-localpv-2.0.0
+  ignore: |
+    # exclude all
+    /*
+    # include deploy crds dir
+    !/deploy/helm/charts/crds
+    # exclude external-snapshotter crds
+    /deploy/helm/charts/crds/volumesnapshot*
