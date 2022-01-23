@@ -38,9 +38,6 @@
   "kubernetes": {
     "fileMatch": [
       "cluster/.+\\.yaml$"
-    ],
-    "ignorePaths": [
-      "cluster/base/"
     ]
   },
   "flux": {
@@ -76,7 +73,7 @@
     {
       "fileMatch": [
         "cluster/crds/.+\\.yaml$",
-        "cluster/base/flux-system/repositories/.+\\.yaml$"
+        "cluster/base/flux/repositories/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n",
