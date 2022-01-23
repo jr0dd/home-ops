@@ -11,7 +11,7 @@ spec:
       chart: /charts/kah-common/
       sourceRef:
         kind: GitRepository
-        name: flux-system
+        name: home-ops
         namespace: flux-system
       interval: 5m
   values:
