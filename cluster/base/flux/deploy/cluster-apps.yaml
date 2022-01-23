@@ -9,7 +9,7 @@ spec:
   dependsOn:
     - name: cluster-core
   path: ./cluster/apps
-  prune: false
+  prune: true
   wait: true
   sourceRef:
     kind: GitRepository

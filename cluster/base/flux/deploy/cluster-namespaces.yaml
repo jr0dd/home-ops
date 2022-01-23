@@ -9,7 +9,7 @@ spec:
   dependsOn:
     - name: flux-system
   path: ./cluster/base/namespaces
-  prune: false
+  prune: true
   wait: true
   sourceRef:
     kind: GitRepository
