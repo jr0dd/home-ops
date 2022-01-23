@@ -1,0 +1,11 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - cluster-apps.yaml
+  - cluster-config.yaml
+  - cluster-core.yaml
+  - cluster-crds.yaml
+  - cluster-namespaces.yaml
+  - cluster-repositories.yaml
+  - flux-system.yaml

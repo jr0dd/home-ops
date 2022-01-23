@@ -30,7 +30,7 @@ metadata:
 spec:
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: home-ops
   interval: 1m
   update:
     path: ./cluster/apps/discord/wyoa-bot
