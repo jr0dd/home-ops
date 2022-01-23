@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: tautulli-config-v1
+  name: plex-config
   namespace: media
   labels:
     k10.kasten.io/backup: "true"
@@ -11,5 +11,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 150Gi
   storageClassName: openebs-zfspv-ssd

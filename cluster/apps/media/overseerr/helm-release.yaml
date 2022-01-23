@@ -22,6 +22,10 @@ spec:
     env:
       TZ: "America/New_York"
       LOG_LEVEL: "info"
+    persistence:
+      config:
+        enabled: true
+        existingClaim: overseerr-config
     ingress:
       main:
         enabled: true
@@ -43,7 +47,3 @@ spec:
           - secretName: overseerr-tls
             hosts:
               - *host
-    persistence:
-      config:
-        enabled: true
-        existingClaim: overseerr-config-v1

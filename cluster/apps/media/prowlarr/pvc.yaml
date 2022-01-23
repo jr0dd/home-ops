@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: prowlarr-config-v1
+  name: prowlarr-config
   namespace: media
   labels:
     k10.kasten.io/backup: "true"

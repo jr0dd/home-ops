@@ -25,15 +25,10 @@ spec:
       strategy: RollingUpdate
     env:
       TZ: "America/New_York"
-    service:
-      main:
-        ports:
-          http:
-            port: 8181
     persistence:
       config:
         enabled: true
-        existingClaim: tautulli-config-v1
+        existingClaim: tautulli-config
     ingress:
       main:
         enabled: true

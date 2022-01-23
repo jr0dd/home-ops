@@ -52,7 +52,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: plex-config-v1
+        existingClaim: plex-config
       media:
         enabled: true
         type: pvc

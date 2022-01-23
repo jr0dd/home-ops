@@ -2,8 +2,8 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: homebridge-config-v1
-  namespace: home
+  name: lidarr-config
+  namespace: media
   labels:
     k10.kasten.io/backup: "true"
 spec:
@@ -11,5 +11,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 250Mi
+      storage: 5Gi
   storageClassName: openebs-zfspv-ssd

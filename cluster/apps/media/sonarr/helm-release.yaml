@@ -28,15 +28,10 @@ spec:
     podSecurityContext:
       supplementalGroups:
         - 1042
-    service:
-      main:
-        ports:
-          http:
-            port: 8989
     persistence:
       config:
         enabled: true
-        existingClaim: sonarr-config-v1
+        existingClaim: sonarr-config
       media:
         enabled: true
         type: pvc

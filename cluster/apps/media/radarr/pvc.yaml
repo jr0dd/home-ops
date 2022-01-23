@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: qbittorrent-config-v1
+  name: radarr-config
   namespace: media
   labels:
     k10.kasten.io/backup: "true"
@@ -11,5 +11,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 2Gi
   storageClassName: openebs-zfspv-ssd

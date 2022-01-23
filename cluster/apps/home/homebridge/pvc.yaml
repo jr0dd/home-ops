@@ -2,8 +2,8 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: overseerr-config-v1
-  namespace: media
+  name: homebridge-config
+  namespace: home
   labels:
     k10.kasten.io/backup: "true"
 spec:
@@ -11,5 +11,5 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 250Mi
   storageClassName: openebs-zfspv-ssd

@@ -47,10 +47,11 @@ tasks:
   pause:
     desc: Pause all Helm Releases that rely on ZFS storage
     cmds:
-      - flux suspend hr -n minio minio
-      - kubectl scale -n minio deploy/minio --replicas 0
-      # - flux suspend hr -n databases mongodb
-      # - kubectl scale -n databases statefulset/wyoa-bot --replicas 0
+      # - flux suspend hr -n minio minio
+      # - kubectl scale -n minio deploy/minio --replicas 0
+      - flux suspend hr -n databases mongodb-community-operator
+      - kubectl scale -n databases deploy/mongodb-operator --replicas 0
+      - kubectl scale -n databases statefulset/wyoa-bot --replicas 0
       - flux suspend hr -n home homebridge
       - kubectl scale -n home deploy/homebridge --replicas 0
       - flux suspend hr -n home hajimari
@@ -86,8 +87,8 @@ tasks:
   resume:
     desc: Resume all Helm Releases that rely on ZFS storage
     cmds:
-      - flux resume hr -n minio minio
-      # - flux resume hr -n databases mongodb
+      # - flux resume hr -n minio minio
+      - flux resume hr -n databases mongodb-community-operator
       - flux resume hr -n home homebridge
       - flux resume hr -n home hajimari
       - flux resume hr -n monitoring loki

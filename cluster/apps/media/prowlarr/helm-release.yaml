@@ -25,15 +25,10 @@ spec:
       strategy: RollingUpdate
     env:
       TZ: "America/New_York"
-    service:
-      main:
-        ports:
-          http:
-            port: 9696
     persistence:
       config:
         enabled: true
-        existingClaim: prowlarr-config-v1
+        existingClaim: prowlarr-config
     ingress:
       main:
         enabled: true

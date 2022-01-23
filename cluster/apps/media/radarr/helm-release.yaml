@@ -28,15 +28,10 @@ spec:
     podSecurityContext:
       supplementalGroups:
         - 1042
-    service:
-      main:
-        ports:
-          http:
-            port: 7878
     persistence:
       config:
         enabled: true
-        existingClaim: radarr-config-v1
+        existingClaim: radarr-config
       media:
         enabled: true
         type: pvc
