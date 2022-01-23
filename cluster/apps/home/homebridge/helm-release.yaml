@@ -52,7 +52,7 @@ spec:
             hosts:
               - *host
     config: |
-      #!/bin/sh
+      #!/bin/bash
 
       npm install homebridge-myq
       npm install homebridge-nest
