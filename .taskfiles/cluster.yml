@@ -42,6 +42,7 @@ tasks:
       - kubectl rollout restart deploy -n flux-system
       - kubectl rollout restart deploy -n security
       - kubectl rollout restart deploy -n discord
+      - kubectl rollout restart deploy -n kasten
     slient: true
 
   pause:
