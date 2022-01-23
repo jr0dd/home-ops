@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./cluster/base/flux
+  path: ./manifests/install
   prune: true
   wait: true
   sourceRef:

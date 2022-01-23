@@ -10,31 +10,22 @@
     - name: Pausing for 5 seconds...
       pause:
         seconds: 5
+  roles:
+    - xanmanning.k3s
+  vars:
+    k3s_state: uninstalled
   tasks:
-    - name: Kill k3s
-      ansible.builtin.command: /usr/local/bin/k3s-killall.sh
-
-    - name: Uninstall k3s
-      ansible.builtin.command:
-        cmd: /usr/local/bin/k3s-uninstall.sh
-        removes: /usr/local/bin/k3s-uninstall.sh
-
-    - name: Uninstall k3s agent
-      ansible.builtin.command:
-        cmd: /usr/local/bin/k3s-agent-uninstall.sh
-        removes: /usr/local/bin/k3s-agent-uninstall.sh
-
     - name: Gather list of CNI files to delete
       find:
         paths: /etc/cni/net.d
         patterns: "*"
-      register: files_to_delete
+      register: directory_contents
 
     - name: Delete CNI files
       ansible.builtin.file:
         path: "{{ item.path }}"
         state: absent
-      loop: "{{ files_to_delete.files }}"
+      loop: "{{ directory_contents.files }}"
 
     - name: Delete killall service
       ansible.builtin.systemd:
@@ -45,5 +36,5 @@
 
     - name: Delete killall service file
       ansible.builtin.file:
-        path: /lib/systemd/system/k3s-killall.service
+        path: /etc/systemd/system/k3s-killall.service
         state: absent
