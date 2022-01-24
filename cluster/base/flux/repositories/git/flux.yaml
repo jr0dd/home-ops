@@ -8,7 +8,7 @@ spec:
   interval: 15m
   url: https://github.com/fluxcd/flux2.git
   ref:
-    # renovate: datasource=github-releases depName=fluxcd/flux2
+    # renovate: datasource=github-releases
     tag: v0.25.3
   ignore: |
     # exclude all
