@@ -8,21 +8,17 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: /charts/kah-common/
+      chart: homebridge
+      version: 4.3.0
       sourceRef:
-        kind: GitRepository
-        name: home-ops
+        kind: HelmRepository
+        name: k8s-at-home
         namespace: flux-system
       interval: 5m
   values:
     image:
       repository: ghcr.io/oznu/homebridge
       tag: ubuntu-no-avahi@sha256:f40407380cf90f01e3084d09767d07d486508ade53cb6960984792077f947ad3
-    controller:
-      enabled: true
-      replicas: 1
-      strategy: RollingUpdate
-    nameOverride: homebridge
     env:
       TZ: "America/New_York"
       PUID: 568
@@ -39,7 +35,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: homebridge-config
+        existingClaim: homebridge-config-v1
     ingress:
       main:
         enabled: true
@@ -55,3 +51,8 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - *host
+    config: |
+      #!/bin/sh
+      npm install homebridge-myq
+      npm install homebridge-nest
+      npm install homebridge-platform-orbit
