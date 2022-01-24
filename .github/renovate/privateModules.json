@@ -1,8 +1,9 @@
+// TO-DO FIX
 {
   "hostRules": [
     {
-      "hostType": "docker",
       "matchHost": "ghcr.io/jr0dd",
+      "hostType": "github",
       "token": "process.env.GHCR_TOKEN"
     }
   ]
