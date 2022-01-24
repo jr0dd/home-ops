@@ -1,0 +1,9 @@
+{
+  "hostRules": [
+    {
+      "hostType": "docker",
+      "matchHost": "ghcr.io/jr0dd",
+      "token": "process.env.GHCR_TOKEN"
+    }
+  ]
+}

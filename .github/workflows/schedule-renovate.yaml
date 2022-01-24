@@ -24,7 +24,7 @@ on: # yamllint disable-line rule:truthy
 env:
   LOG_LEVEL: info
   DRY_RUN: false
-  GITHUB_COM_TOKEN: "${{ secrets.PAT }}"
+  GHCR_TOKEN: "${{ secrets.PAT }}"
 
 jobs:
   renovate:
