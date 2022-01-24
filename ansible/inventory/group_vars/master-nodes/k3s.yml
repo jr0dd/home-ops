@@ -36,29 +36,14 @@ k3s_server:
   service-cidr: "{{ k3s_service_cidr }}"
 
   kubelet-arg:
-    - "feature-gates=EphemeralContainers=true"
     - "feature-gates=MixedProtocolLBService=true"
-    - "feature-gates=ReadWriteOncePod=true"
   kube-controller-manager-arg:
-    - "feature-gates=EphemeralContainers=true"
-    - "feature-gates=MixedProtocolLBService=true"
-    - "feature-gates=ReadWriteOncePod=true"
     - "allocate-node-cidrs"
     # Required to monitor component with kube-prometheus-stack
     - "bind-address=0.0.0.0"
   kube-proxy-arg:
-    - "feature-gates=EphemeralContainers=true"
-    - "feature-gates=MixedProtocolLBService=true"
-    - "feature-gates=ReadWriteOncePod=true"
     # Required to monitor component with kube-prometheus-stack
     - "metrics-bind-address=0.0.0.0"
   kube-scheduler-arg:
-    - "feature-gates=EphemeralContainers=true"
-    - "feature-gates=MixedProtocolLBService=true"
-    - "feature-gates=ReadWriteOncePod=true"
     # Required to monitor component with kube-prometheus-stack
     - "bind-address=0.0.0.0"
-  kube-apiserver-arg:
-    - "feature-gates=EphemeralContainers=true"
-    - "feature-gates=MixedProtocolLBService=true"
-    - "feature-gates=ReadWriteOncePod=true"
