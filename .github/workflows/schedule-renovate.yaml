@@ -24,7 +24,6 @@ on: # yamllint disable-line rule:truthy
 env:
   LOG_LEVEL: info
   DRY_RUN: false
-  GHCR_TOKEN: "${{ secrets.PAT }}"
 
 jobs:
   renovate:
