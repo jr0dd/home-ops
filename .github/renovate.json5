@@ -72,8 +72,7 @@
     // regexManager to read and process CRD's
     {
       "fileMatch": [
-        "cluster/crds/.+\\.yaml$",
-        "cluster/base/flux/repositories/.+\\.yaml$"
+        "cluster/.+\\.yaml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n",
