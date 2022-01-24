@@ -4,6 +4,5 @@ kind: Kustomization
 resources:
   - cert-manager
   - cilium
-  - kube-vip
   - openebs-zfs-localpv
   - system-upgrade
