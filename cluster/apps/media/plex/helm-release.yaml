@@ -33,6 +33,19 @@ spec:
         type: LoadBalancer
         loadBalancerIP: "${LB_PLEX}"
         externalTrafficPolicy: Local
+    persistence:
+      config:
+        enabled: true
+        existingClaim: plex-config
+      media:
+        enabled: true
+        type: pvc
+        existingClaim: media
+        mountPath: /media
+      transcode:
+        enabled: true
+        type: emptyDir
+        medium: Memory
     ingress:
       main:
         enabled: true
@@ -49,34 +62,3 @@ spec:
           - secretName: plex-tls
             hosts:
               - *host
-    persistence:
-      config:
-        enabled: true
-        existingClaim: plex-config
-      media:
-        enabled: true
-        type: pvc
-        existingClaim: media
-        mountPath: /media
-      transcode:
-        enabled: true
-        type: emptyDir
-        medium: Memory
-    addons:
-      promtail:
-        enabled: true
-        image:
-          repository: grafana/promtail
-          tag: 2.4.2
-        loki: http://loki.monitoring:3100/loki/api/v1/push
-        logs:
-          - name: promtail/plex
-            path: "/config/Library/Application Support/Plex Media Server/Logs/*.log"
-          - name: promtail/plex/plugins
-            path: "/config/Library/Application Support/Plex Media Server/Logs/PMS Plugin Logs/*.log"
-        volumeMounts:
-          - name: config
-            mountPath: /config
-            readOnly: true
-        securityContext:
-          runAsUser: 0
