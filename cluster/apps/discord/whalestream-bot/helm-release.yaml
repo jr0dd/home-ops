@@ -27,15 +27,19 @@ spec:
     nameOverride: whalestream-bot
     env:
       TZ: "America/New_York"
-    envFrom:
-      - secretRef:
-          name: whalestream-tokens
     service:
       main:
         enabled: true
         ports:
           http:
             port: 3000
+    persistence:
+      config:
+        enabled: true
+        type: secret
+        name: whalestream-config
+        mountPath: /app/config.json
+        subPath: config.json
     ingress:
       main:
         enabled: true
@@ -54,4 +58,4 @@ spec:
             hosts:
               - *host
     podAnnotations:
-      secret.reloader.stakater.com/reload: "whalestream-tokens"
+      secret.reloader.stakater.com/reload: "whalestream-config"
