@@ -59,7 +59,7 @@ spec:
         tag: 1.2.1
       extraEnvs:
         - name: ERROR_FILES_PATH
-          value: ./themes/ghost
+          value: ./themes/shuffle
   valuesFrom:
     # Cloudflare IP Addresses
     # https://www.cloudflare.com/ips/
