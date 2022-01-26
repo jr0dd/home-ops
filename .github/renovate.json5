@@ -46,13 +46,15 @@
     ]
   },
   "regexManagers": [
-    // regexManager to read and process GitRepository's
+    // regexManager to read and process github-releases
     {
       "fileMatch": [
-        "cluster/.+\\.yaml$"
+        "cluster/.+\\.yaml$",
+        "ansible/.+\\.yaml$"
       ],
       "matchStrings": [
-        "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n"
+        "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n",
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\n .*: (?<currentValue>.*=?)"
       ],
       "datasourceTemplate": "github-releases"
     },
