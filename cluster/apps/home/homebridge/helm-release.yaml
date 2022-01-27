@@ -52,6 +52,8 @@ spec:
     config: |
       #!/bin/sh
 
+      npm install --save homebridge-config-ui-x@latest
+      npm install --save homebridge-dummy@latest
       npm install --save homebridge-myq@latest
       npm install --save homebridge-nest@latest
       npm install --save homebridge-platform-orbit@latest
