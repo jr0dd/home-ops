@@ -42,10 +42,9 @@ curl -X POST \
 curl -X POST \
 "localhost:8080/ticker" \
 -H "Content-Type: application/json" \
--d "{\"ticker\":\"BTC\", \
-    \"name\":\"bitcoin\", \
-    \"discord_bot_token\":\"$BTC\", \
-    \"crypto\":true, \
+-d "{\"ticker\":\"AAPL\", \
+    \"name\":\"AAPL\", \
+    \"discord_bot_token\":\"$AAPL\", \
     \"frequency\":5, \
     \"nickname\":true, \
     \"arrows\":true, \
@@ -54,9 +53,20 @@ curl -X POST \
 curl -X POST \
 "localhost:8080/ticker" \
 -H "Content-Type: application/json" \
--d "{\"ticker\":\"DOGE\", \
-    \"name\":\"dogecoin\", \
-    \"discord_bot_token\":\"$DOGE\", \
+-d "{\"ticker\":\"TSLA\", \
+    \"name\":\"TSLA\", \
+    \"discord_bot_token\":\"$TSLA\", \
+    \"frequency\":5, \
+    \"nickname\":true, \
+    \"arrows\":true, \
+    \"color\":true}"
+
+curl -X POST \
+"localhost:8080/ticker" \
+-H "Content-Type: application/json" \
+-d "{\"ticker\":\"BTC\", \
+    \"name\":\"bitcoin\", \
+    \"discord_bot_token\":\"$BTC\", \
     \"crypto\":true, \
     \"frequency\":5, \
     \"nickname\":true, \
@@ -78,33 +88,25 @@ curl -X POST \
 curl -X POST \
 "localhost:8080/ticker" \
 -H "Content-Type: application/json" \
+-d "{\"ticker\":\"DOGE\", \
+    \"name\":\"dogecoin\", \
+    \"discord_bot_token\":\"$DOGE\", \
+    \"crypto\":true, \
+    \"frequency\":5, \
+    \"decimals\": 6, \
+    \"nickname\":true, \
+    \"arrows\":true, \
+    \"color\":true}"
+
+curl -X POST \
+"localhost:8080/ticker" \
+-H "Content-Type: application/json" \
 -d "{\"ticker\":\"SHIB\", \
     \"name\":\"shiba-inu\", \
     \"discord_bot_token\":\"$SHIB\", \
     \"crypto\":true, \
     \"frequency\":5, \
-    \"nickname\":true, \
-    \"arrows\":true, \
-    \"color\":true}"
-
-curl -X POST \
-"localhost:8080/ticker" \
--H "Content-Type: application/json" \
--d "{\"ticker\":\"AAPL\", \
-    \"name\":\"AAPL\", \
-    \"discord_bot_token\":\"$AAPL\", \
-    \"frequency\":5, \
-    \"nickname\":true, \
-    \"arrows\":true, \
-    \"color\":true}"
-
-curl -X POST \
-"localhost:8080/ticker" \
--H "Content-Type: application/json" \
--d "{\"ticker\":\"TSLA\", \
-    \"name\":\"TSLA\", \
-    \"discord_bot_token\":\"$TSLA\", \
-    \"frequency\":5, \
+    \"decimals\": 8, \
     \"nickname\":true, \
     \"arrows\":true, \
     \"color\":true}"
