@@ -34,6 +34,7 @@ spec:
         client-body-timeout: 120
         custom-http-errors: >-
           401,403,404,500,501,502,503
+        enable-brotli: "true"
         forwarded-for-header: "CF-Connecting-IP"
         hsts-max-age: "31449600"
         keep-alive: 120
@@ -61,9 +62,9 @@ spec:
         - name: ERROR_FILES_PATH
           value: ./themes/shuffle
   valuesFrom:
-    # Cloudflare IP Addresses
+    # Cloudflare Networks
     # https://www.cloudflare.com/ips/
     - kind: ConfigMap
-      name: cloudflare-ip-ranges
-      valuesKey: cloudflare-ip-ranges.txt
+      name: cloudflare-proxied-networks
+      valuesKey: cloudflare-proxied-networks.txt
       targetPath: controller.config.proxy-real-ip-cidr

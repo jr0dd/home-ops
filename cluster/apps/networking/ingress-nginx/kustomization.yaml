@@ -6,8 +6,8 @@ resources:
   - helm-release.yaml
   - monitoring
 configMapGenerator:
-  - name: cloudflare-ip-ranges
+  - name: cloudflare-proxied-networks
     files:
-      - cloudflare-ip-ranges.txt
+      - cloudflare-proxied-networks.txt
 generatorOptions:
   disableNameSuffixHash: true
