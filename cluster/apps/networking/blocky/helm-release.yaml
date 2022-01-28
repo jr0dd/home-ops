@@ -86,6 +86,8 @@ spec:
         whiteLists:
           ads:
             - https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt
+            - |
+              investing.com
         clientGroupsBlock:
           default:
             - ads
