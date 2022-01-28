@@ -51,13 +51,13 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/proxy-body-size: 250m
         hosts:
-          - host: "minio.${SECRET_DOMAIN}"
+          - host: &host-minio "minio.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
                 service:
                   port: 9001
-          - host: "s3.${SECRET_DOMAIN}"
+          - host: &host-s3 "s3.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
@@ -66,8 +66,8 @@ spec:
         tls:
           - secretName: minio-tls
             hosts:
-              - "minio.${SECRET_DOMAIN}"
-              - "s3.${SECRET_DOMAIN}"
+              - *host-minio
+              - *host-s3
     persistence:
       data:
         enabled: true
