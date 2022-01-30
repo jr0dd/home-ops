@@ -27,30 +27,30 @@
   // set up renovate managers
   "helm-values": {
     "fileMatch": [
-      "cluster/.+/helm-release\\.yaml$"
+      "cluster/.+/helm-release\\.ya?ml$"
     ]
   },
   "helmv3": {
     "fileMatch": [
-      "charts/.+/Chart\\.yaml$"
+      "charts/.+/Chart\\.ya?ml$"
     ]
   },
   "kubernetes": {
     "fileMatch": [
-      "cluster/.+\\.yaml$"
+      "cluster/.+\\.ya?ml$"
     ]
   },
   "flux": {
     "fileMatch": [
-      "cluster/.+\\.yaml$"
+      "cluster/.+\\.ya?ml$"
     ]
   },
   "regexManagers": [
     // regexManager to read and process github-releases
     {
       "fileMatch": [
-        "cluster/.+\\.yaml$",
-        "ansible/.+\\.yml$"
+        "cluster/.+\\.ya?ml$",
+        "ansible/.+\\.ya?ml$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>.*?)\n *url: https:\/\/github\\.com\/(?<depName>.*?)\\.git\n *ref:\n *tag: (?<currentValue>.*)\n",
@@ -61,7 +61,7 @@
     // regexManager to read and process CRD's
     {
       "fileMatch": [
-        "cluster/.+\\.yaml$"
+        "cluster/.+\\.ya?ml$"
       ],
       "matchStrings": [
         "registryUrl=(?<registryUrl>.*?)\n *tag: (?<depName>[a-zA-Z-]+)-(?<currentValue>.*)\n",
@@ -72,7 +72,7 @@
     // regexManager to read and process CR's
     {
       "fileMatch": [
-        "cluster/.+\\.yaml$"
+        "cluster/.+\\.ya?ml$"
       ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\n .*: (?<currentValue>.*=?)"
