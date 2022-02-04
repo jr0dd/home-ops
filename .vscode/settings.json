@@ -12,8 +12,8 @@
         ".taskfiles": "utils",
         "hack": "scripts"
     },
-    "prettier.configPath": ".github/lint/.prettierrc.yaml",
-    "prettier.ignorePath": ".github/lint/.prettierignore",
+    "prettier.configPath": ".github/linters/.prettierrc.yaml",
+    "prettier.ignorePath": ".github/linters/.prettierignore",
     "yaml.schemas": {
         "Kubernetes": "cluster/*.yaml"
     },
