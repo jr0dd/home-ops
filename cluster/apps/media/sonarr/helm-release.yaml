@@ -65,5 +65,6 @@ spec:
           repository: ghcr.io/onedr0p/exportarr
           tag: v1.0.0
         env:
+          port: 9794
           additionalMetrics: true
           unknownQueueItems: true
