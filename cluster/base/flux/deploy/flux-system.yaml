@@ -23,15 +23,3 @@ spec:
         - op: replace
           path: /spec/template/spec/containers/0/resources/limits/memory
           value: 2Gi
-    - taget:
-        kind: NetworkPolicy
-        name: allow-egress
-      patch: delete
-    - taget:
-        kind: NetworkPolicy
-        name: allow-scraping
-      patch: delete
-    - taget:
-        kind: NetworkPolicy
-        name: allow-webhooks
-      patch: delete
