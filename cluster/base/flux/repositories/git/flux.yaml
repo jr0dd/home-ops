@@ -15,5 +15,3 @@ spec:
     /*
     # include manifest dir
     !/manifests
-    # ignore network policies
-    /manifests/policies
