@@ -259,12 +259,6 @@ spec:
         minio-custom:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
           datasource: Prometheus
-        minio-overview:
-          url: https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-overview.json
-          datasource: Prometheus
-        minio-replication:
-          url: https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-replication.json
-          datasource: Prometheus
       thanos:
         bucket-replicate:
           url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/bucket-replicate.json
