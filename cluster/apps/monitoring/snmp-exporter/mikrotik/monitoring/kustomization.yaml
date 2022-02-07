@@ -3,15 +3,3 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - alerts.yaml
-namespace: monitoring
-configMapGenerator:
-  - name: mikrotik-dashboard
-    files:
-      - mikrotik.json=https://raw.githubusercontent.com/IgorKha/Grafana-Mikrotik/master/grafana/provisioning/dashboards/Mikrotik-snmp-prometheus.json
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
-    grafana_folder: networking
-  labels:
-    grafana_dashboard: "1"

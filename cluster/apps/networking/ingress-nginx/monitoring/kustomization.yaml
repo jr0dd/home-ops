@@ -3,15 +3,3 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - alerts.yaml
-namespace: networking
-configMapGenerator:
-  - name: nginx-dashboard
-    files:
-      - nginx.json=https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
-    grafana_folder: networking
-  labels:
-    grafana_dashboard: "1"

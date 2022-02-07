@@ -105,14 +105,30 @@ spec:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-          - name: "cilium"
+          - name: "flux"
             orgId: 1
-            folder: "cilium"
+            folder: "flux"
             type: file
             disableDeletion: false
             editable: true
             options:
-              path: /var/lib/grafana/dashboards/cilium
+              path: /var/lib/grafana/dashboards/flux
+          - name: "loki"
+            orgId: 1
+            folder: "loki"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/loki
+          - name: "media"
+            orgId: 1
+            folder: "media"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/media
           - name: "networking"
             orgId: 1
             folder: "networking"
@@ -129,23 +145,82 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/power
+          - name: "storage"
+            orgId: 1
+            folder: "storage"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/storage
+          - name: "thanos"
+            orgId: 1
+            folder: "thanos"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/thanos
     dashboards:
+      flux:
+        cluster:
+          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+          datasource: Prometheus
+        control-plane:
+          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+          datasource: Prometheus
+      loki:
+        chunks:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-chunks.json
+          datasource: Prometheus
+        deletion:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-deletion.json
+          datasource: Prometheus
+        logs:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-logs.json
+          datasource: Prometheus
+        recording:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-mixin-recording-rules.json
+          datasource: Prometheus
+        operational:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-operational.json
+          datasource: Prometheus
+        reads:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-reads.json
+          datasource: Prometheus
+        reads-resources:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-reads-resources.json
+          datasource: Prometheus
+        retention:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-retention.json
+          datasource: Prometheus
+        writes:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-writes.json
+          datasource: Prometheus
+        writes-resources:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-writes-resources.json
+          datasource: Prometheus
+      media:
+        lidarr:
+          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
+          datasource: Prometheus
+        radarr:
+          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/radarr.json
+          datasource: Prometheus
+        sonarr:
+          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
+          datasource: Prometheus
       networking:
-        # Ref: https://grafana.com/grafana/dashboards/13665
-        speedtest:
-          gnetId: 13665
-          revision: 1
+        blackbox:
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blackbox.json
           datasource: Prometheus
-
-      power:
-        # Ref: https://grafana.com/grafana/dashboards/14371
-        nut:
-          gnetId: 14371
-          revision: 1
+        blocky:
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blocky.json
           datasource: Prometheus
-
-      cilium:
         # Ref: https://grafana.com/grafana/dashboards/15513
+        cert-manager:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
+          datasource: Prometheus
         cilium-agent:
           gnetId: 15513
           revision: 1
@@ -159,4 +234,62 @@ spec:
         cilium-hubble:
           gnetId: 15515
           revision: 1
+          datasource: Prometheus
+        mikrotik:
+          url: https://raw.githubusercontent.com/IgorKha/Grafana-Mikrotik/master/grafana/provisioning/dashboards/Mikrotik-snmp-prometheus.json
+          datasource: Prometheus
+        nginx:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/13665
+        speedtest:
+          gnetId: 13665
+          revision: 1
+          datasource: Prometheus
+      power:
+        # Ref: https://grafana.com/grafana/dashboards/14371
+        nut:
+          gnetId: 14371
+          revision: 1
+          datasource: Prometheus
+      storage:
+        openebs-zfs-localpv:
+          url: https://raw.githubusercontent.com/openebs/monitoring/develop/deploy/charts/dashboards/zfsLocalPV/zfslocalpv.json
+          datasource: Prometheus
+        minio-custom:
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
+          datasource: Prometheus
+        minio-overview:
+          url: https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-overview.json
+          datasource: Prometheus
+        minio-replication:
+          url: https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-replication.json
+          datasource: Prometheus
+      thanos:
+        bucket-replicate:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/bucket-replicate.json
+          datasource: Prometheus
+        compact:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/compact.json
+          datasource: Prometheus
+        overview:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/overview.json
+          datasource: Prometheus
+        query:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/query.json
+          datasource: Prometheus
+        query-frontend:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/query-frontend.json
+          datasource: Prometheus
+        receive:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/receive.json
+          datasource: Prometheus
+        rule:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/rule.json
+          datasource: Prometheus
+        sidecar:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/sidecar.json
+          datasource: Prometheus
+        store:
+          url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/store.json
           datasource: Prometheus

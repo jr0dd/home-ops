@@ -4,15 +4,3 @@ kind: Kustomization
 resources:
   - alerts.yaml
   - service-monitor.yaml
-namespace: minio
-configMapGenerator:
-  - name: minio-dashboard
-    files:
-      - minio.json=https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
-generatorOptions:
-  disableNameSuffixHash: true
-  annotations:
-    kustomize.toolkit.fluxcd.io/substitute: disabled
-    grafana_folder: minio
-  labels:
-    grafana_dashboard: "1"
