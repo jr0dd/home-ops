@@ -105,34 +105,45 @@ spec:
       dashboardproviders.yaml:
         apiVersion: 1
         providers:
-          - name: "default"
-            orgId: 1
-            folder: ""
-            type: file
-            disableDeletion: false
-            editable: true
-            options:
-              path: /var/lib/grafana/dashboards/default
           - name: "cilium"
             orgId: 1
-            folder: ""
+            folder: "cilium"
             type: file
             disableDeletion: false
             editable: true
             options:
               path: /var/lib/grafana/dashboards/cilium
+          - name: "networking"
+            orgId: 1
+            folder: "networking"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/networking
+          - name: "power"
+            orgId: 1
+            folder: "power"
+            type: file
+            disableDeletion: false
+            editable: true
+            options:
+              path: /var/lib/grafana/dashboards/power
     dashboards:
-      default:
+      networking:
         # Ref: https://grafana.com/grafana/dashboards/13665
         speedtest:
           gnetId: 13665
           revision: 1
           datasource: Prometheus
+
+      power:
         # Ref: https://grafana.com/grafana/dashboards/14371
         nut:
           gnetId: 14371
           revision: 1
           datasource: Prometheus
+
       cilium:
         # Ref: https://grafana.com/grafana/dashboards/15513
         cilium-agent:
