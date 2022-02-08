@@ -45,6 +45,9 @@ spec:
                 alertname: Watchdog
               receiver: "null"
             - match:
+                alertname: InfoInhibitor
+                receiver: "null"
+            - match:
                 severity: critical
               receiver: "email"
               continue: true
