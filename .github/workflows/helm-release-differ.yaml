@@ -11,7 +11,7 @@ on: # yamllint disable-line rule:truthy
 env:
   # Currently no way to detect automatically
   DEFAULT_BRANCH: main
-  BOT_USERNAME: "wyoa-bot[bot]"
+  BOT_USERNAME: "rosey-bot[bot]"
 
 jobs:
   detect-file-changes:
@@ -68,7 +68,7 @@ jobs:
         with:
           issue-number: "${{ github.event.pull_request.number }}"
           comment-author: "${{ env.BOT_USERNAME }}"
-          body-includes: helm-release.yaml
+          body-includes: "${{ matrix.file }}"
       - name: Create or update comment
         uses: peter-evans/create-or-update-comment@v1
         with:
