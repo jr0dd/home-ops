@@ -47,7 +47,7 @@ spec:
       server:
         root_url: "https://grafana.${SECRET_DOMAIN}"
     serviceMonitor:
-      enabled: false
+      enabled: true
     persistence:
       enabled: false
     ingress:
