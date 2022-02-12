@@ -169,7 +169,6 @@ spec:
         control-plane:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
           datasource: Prometheus
-
       loki:
         chunks:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-chunks.json
@@ -201,7 +200,6 @@ spec:
         writes-resources:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-writes-resources.json
           datasource: Prometheus
-
       media:
         lidarr:
           url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
@@ -212,7 +210,6 @@ spec:
         sonarr:
           url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
           datasource: Prometheus
-
       networking:
         blackbox:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blackbox.json
@@ -220,10 +217,10 @@ spec:
         blocky:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/blocky.json
           datasource: Prometheus
-        # # Ref: https://grafana.com/grafana/dashboards/15513
-        # cert-manager:
-        #   url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
-        #   datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/15513
+        cert-manager:
+          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
+          datasource: Prometheus
         cilium-agent:
           gnetId: 15513
           revision: 1
@@ -249,14 +246,12 @@ spec:
           gnetId: 13665
           revision: 1
           datasource: Prometheus
-
       power:
         # Ref: https://grafana.com/grafana/dashboards/14371
         nut:
           gnetId: 14371
           revision: 1
           datasource: Prometheus
-
       storage:
         openebs-zfs-localpv:
           url: https://raw.githubusercontent.com/openebs/monitoring/develop/deploy/charts/dashboards/zfsLocalPV/zfslocalpv.json
@@ -264,7 +259,6 @@ spec:
         minio-custom:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
           datasource: Prometheus
-
       thanos:
         bucket-replicate:
           url: https://raw.githubusercontent.com/thanos-io/thanos/main/examples/dashboards/bucket-replicate.json
