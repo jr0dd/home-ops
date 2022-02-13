@@ -18,12 +18,9 @@ metadata:
 spec:
   imageRepositoryRef:
     name: puppeteer-ghcr-io
-  filterTags:
-    pattern: '^(?P<tag>.*)@sha256:(?P<sha>.*)'
-    extract: '$sha'
   policy:
-    numerical:
-      order: asc
+    semver:
+      range: ">=13.0.0"
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImageUpdateAutomation
