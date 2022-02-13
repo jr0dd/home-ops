@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -17,7 +16,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/puppeteer
-      tag: v13.3.1@sha256:3b58187202dcfcde6740d794291f5b05913e2d7921ed3f32d21fd80fad263b2f # {"$imagepolicy": "flux-system:puppeteer-ghcr-io:tag"}
+      tag: v13.3.1 # {"$imagepolicy": "flux-system:puppeteer-ghcr-io:tag"}
       pullPolicy: Always
     controller:
       enabled: true
