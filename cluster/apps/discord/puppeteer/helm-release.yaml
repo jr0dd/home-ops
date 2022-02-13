@@ -35,6 +35,11 @@ spec:
     persistence:
       config:
         enabled: false
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        add:
+          - SYS_ADMIN
     ingress:
       main:
         enabled: false
