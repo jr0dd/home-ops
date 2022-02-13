@@ -102,6 +102,12 @@ spec:
         enabled: true
       thanosServiceMonitor:
         enabled: true
+        relabelings:
+          - action: replace
+            replacement: "thanos-sidecar"
+            sourceLabels:
+              - __job__
+            targetLabel: job
       prometheusSpec:
         replicas: 1
         replicaExternalLabelName: "replica"
