@@ -10,8 +10,7 @@ spec:
       rules:
         - alert: ThanosStoreIsDown
           annotations:
-            description:
-              ThanosStore has disappeared. Prometheus target for the component
+            description: ThanosStore has disappeared. Prometheus target for the component
               cannot be discovered.
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanosstoreisdown
             summary: Thanos component has disappeared.
@@ -22,8 +21,7 @@ spec:
             severity: critical
         - alert: ThanosStoreGrpcErrorRate
           annotations:
-            description:
-              Thanos Store {{$labels.job}} is failing to handle {{$value | humanize}}%
+            description: Thanos Store {{$labels.job}} is failing to handle {{$value | humanize}}%
               of requests.
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanosstoregrpcerrorrate
             summary: Thanos Store is failing to handle qrpcd requests.
@@ -39,8 +37,7 @@ spec:
             severity: warning
         - alert: ThanosStoreSeriesGateLatencyHigh
           annotations:
-            description:
-              Thanos Store {{$labels.job}} has a 99th percentile latency of {{$value}}
+            description: Thanos Store {{$labels.job}} has a 99th percentile latency of {{$value}}
               seconds for store series gate requests.
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanosstoreseriesgatelatencyhigh
             summary: Thanos Store has high latency for store series gate requests.
@@ -55,8 +52,7 @@ spec:
             severity: warning
         - alert: ThanosStoreBucketHighOperationFailures
           annotations:
-            description:
-              Thanos Store {{$labels.job}} Bucket is failing to execute {{$value
+            description: Thanos Store {{$labels.job}} Bucket is failing to execute {{$value
               | humanize}}% of operations.
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanosstorebuckethighoperationfailures
             summary: Thanos Store Bucket is failing to execute operations.
@@ -72,8 +68,7 @@ spec:
             severity: warning
         - alert: ThanosStoreObjstoreOperationLatencyHigh
           annotations:
-            description:
-              Thanos Store {{$labels.job}} Bucket has a 99th percentile latency
+            description: Thanos Store {{$labels.job}} Bucket has a 99th percentile latency
               of {{$value}} seconds for the bucket operations.
             runbook_url: https://github.com/thanos-io/thanos/tree/main/mixin/runbook.md#alert-name-thanosstoreobjstoreoperationlatencyhigh
             summary: Thanos Store is having high latency for bucket operations.
