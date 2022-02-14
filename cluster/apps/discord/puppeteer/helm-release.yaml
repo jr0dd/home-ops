@@ -25,16 +25,6 @@ spec:
     nameOverride: puppeteer
     env:
       TZ: "America/New_York"
-    args:
-      - '--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36'
-      # disable gpu functions
-      - '--disable-gpu'
-      - '--disable-software-rasterizer'
-      - '--no-zygote'
-      # cors handling
-      - '--disable-features=IsolateOrigins,site-per-process'
-      - '--disable-site-isolation-trials'
-      - '--disable-web-security'
     service:
       main:
         enabled: true
