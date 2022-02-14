@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: ubuntu-no-avahi@sha256:f40407380cf90f01e3084d09767d07d486508ade53cb6960984792077f947ad3
+      tag: ubuntu-no-avahi@sha256:84e12ac788eb5883a75b679444929b5e6295a52b1aa4563c9380b762cc05c845
     env:
       TZ: "America/New_York"
       HOMEBRIDGE_CONFIG_UI: 1
