@@ -43,19 +43,5 @@ spec:
         custom: true
         spec:
           httpGet:
-            path: &path /json/list
-            port: *port
-      readiness:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: *path
-            port: *port
-      startup:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: *path
+            path: /json/list
             port: *port
