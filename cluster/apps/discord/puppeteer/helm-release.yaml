@@ -30,10 +30,32 @@ spec:
         enabled: true
         ports:
           http:
-            port: 4000
+            port: &port 4000
     persistence:
       config:
         enabled: false
     ingress:
       main:
         enabled: false
+    probes:
+      liveness:
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: &path /json/list
+            port: *port
+      readiness:
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: *path
+            port: *port
+      startup:
+        enabled: true
+        custom: true
+        spec:
+          httpGet:
+            path: *path
+            port: *port
