@@ -34,7 +34,8 @@ spec:
         - '--no-zygote'
         - '--disable-features=IsolateOrigins,site-per-process'
         - '--disable-site-isolation-trials'
-        # - '--disable-web-security'
+        - '--disable-web-security'
+        - '--enable-features=NetworkService'
     service:
       main:
         enabled: true
