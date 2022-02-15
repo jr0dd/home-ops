@@ -20,11 +20,17 @@ spec:
   eventSources:
     - kind: GitRepository
       name: "*"
-    - kind: Kustomization
+    - kind: HelmRelease
       name: "*"
     - kind: HelmRepository
       name: "*"
-    - kind: HelmRelease
+    - kind: ImagePolicy
+      name: "*"
+    - kind: ImageRepository
+      name: "*"
+    - kind: ImageUpdateAutomation
+      name: "*"
+    - kind: Kustomization
       name: "*"
   exclusionList:
     - "error.*lookup github\\.com"
