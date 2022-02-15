@@ -1,0 +1,6 @@
+    PID TTY      STAT   TIME COMMAND
+     63 pts/0    Rs+    0:00 ps axf
+      1 ?        Ssl    0:00 node server.js --disable-gpu --disable-software-ras
+     17 ?        Ssl    0:00 /app/node_modules/puppeteer/.local-chromium/linux-9
+     30 ?        Sl     0:00  \_ /app/node_modules/puppeteer/.local-chromium/lin
+     42 ?        Sl     0:00  \_ /app/node_modules/puppeteer/.local-chromium/lin

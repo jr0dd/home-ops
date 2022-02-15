@@ -32,15 +32,14 @@ spec:
         - '--disable-gpu'
         - '--disable-software-rasterizer'
         - '--no-zygote'
-        # - '--disable-features=IsolateOrigins,site-per-process'
-        # - '--disable-site-isolation-trials'
-        # - '--disable-web-security'
+        - '--disable-features=IsolateOrigins,site-per-process'
+        - '--disable-site-isolation-trials'
+        - '--disable-web-security'
     service:
       main:
-        enabled: true
-        ports:
-          http:
-            port: 4000
+        type: LoadBalancer
+        loadBalancerIP: 10.10.2.29
+        externalTrafficPolicy: Local
     persistence:
       config:
         enabled: false
