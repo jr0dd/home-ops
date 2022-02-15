@@ -7,16 +7,17 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: /charts/kah-common/
+      chart: puppeteer
+      version: 1.0.0
       sourceRef:
-        kind: GitRepository
-        name: home-ops
+        kind: HelmRepository
+        name: k8s-at-home
         namespace: flux-system
       interval: 5m
   values:
     image:
       repository: ghcr.io/jr0dd/puppeteer
-      tag: v13.3.2 # {"$imagepolicy": "flux-system:puppeteer-ghcr-io:tag"}
+      tag: v13.3.2@sha256:4af6ebe213c7725bfa274add5ee00289b5a02b700b951ea93eb534e87ab4b33c
       pullPolicy: Always
     controller:
       enabled: true
@@ -25,33 +26,23 @@ spec:
     nameOverride: puppeteer
     env:
       TZ: "America/New_York"
-    command:
-      - node
-      - server.js
-    args:
-      - '--disable-gpu'
-      - '--disable-software-rasterizer'
-      - '--no-zygote'
-      - '--disable-features=IsolateOrigins,site-per-process'
-      - '--disable-site-isolation-trials'
-      - '--disable-web-security'
+    chromium:
+      args:
+        - '--disable-gpu'
+        - '--disable-software-rasterizer'
+        - '--no-zygote'
+        - '--disable-features=IsolateOrigins,site-per-process'
+        - '--disable-site-isolation-trials'
+        - '--disable-web-security'
     service:
       main:
         enabled: true
         ports:
           http:
-            port: &port 4000
+            port: 4000
     persistence:
       config:
         enabled: false
     ingress:
       main:
         enabled: false
-    probes:
-      liveness:
-        enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /json/list
-            port: *port
