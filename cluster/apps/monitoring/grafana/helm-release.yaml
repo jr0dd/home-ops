@@ -244,6 +244,9 @@ spec:
         nginx:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/grafana/dashboards/nginx.json
           datasource: Prometheus
+        nginx-requests:
+          url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
+          datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/13665
         speedtest:
           gnetId: 13665
