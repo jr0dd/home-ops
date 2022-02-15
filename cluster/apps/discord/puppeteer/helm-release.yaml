@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -33,7 +34,7 @@ spec:
         - '--no-zygote'
         - '--disable-features=IsolateOrigins,site-per-process'
         - '--disable-site-isolation-trials'
-        - '--disable-web-security'
+        # - '--disable-web-security'
     service:
       main:
         enabled: true
@@ -50,11 +51,11 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
-        - host: &host "puppeteer.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: &host "puppeteer.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: puppeteer-tls
-          hosts:
-          - *host
+          - secretName: puppeteer-tls
+            hosts:
+              - *host
