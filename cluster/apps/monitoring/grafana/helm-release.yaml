@@ -247,10 +247,8 @@ spec:
         nginx-requests:
           url: https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/grafana/dashboards/request-handling-performance.json
           datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/13665
         speedtest:
-          gnetId: 13665
-          revision: 1
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/speedtest.json
           datasource: Prometheus
 
       power:
@@ -266,6 +264,16 @@ spec:
           datasource: Prometheus
         minio:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/10530
+        smart-summary:
+          gnetId: 10530
+          revision: 1
+          datasource: Prometheus
+        # Ref: https://grafana.com/grafana/dashboards/10531
+        smart-errors:
+          gnetId: 10531
+          revision: 1
           datasource: Prometheus
 
       thanos:
