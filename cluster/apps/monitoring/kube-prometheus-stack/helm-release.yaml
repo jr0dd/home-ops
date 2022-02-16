@@ -169,7 +169,16 @@ spec:
             targetLabel: kubernetes_node
     prometheus-node-exporter:
       fullnameOverride: node-exporter
-      extraArgs: []
+      extraArgs:
+        - '--collector.textfile.directory=/var/lib/node_exporter/textfile_collector'
+        - '--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)'
+        - '--collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$'
+      extraHostVolumeMounts:
+        - name: textfiles
+          hostPath: /var/lib/node_exporter/textfile_collector
+          mountPath: /var/lib/node_exporter/textfile_collector
+          readOnly: false
+          mountPropagation: HostToContainer
     kubeStateMetrics:
       enabled: true
     kube-state-metrics:
