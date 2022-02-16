@@ -51,9 +51,7 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_pass http://puppeteer/$1;
             resolver 172.22.0.10;
-            proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection 'upgrade';
             proxy_set_header Host $host;
