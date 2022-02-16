@@ -25,6 +25,10 @@ smtp_account_name: mailgun
 smtp_address: smtp.mailgun.org
 smtp_port: 587
 
+# metrics
+prometheus_metrics:
+  smart_enabled: true
+
 # smart settings
 smartd_config: |-
   # rust

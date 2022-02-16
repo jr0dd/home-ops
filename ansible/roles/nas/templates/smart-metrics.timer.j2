@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+[Unit]
+Description=smart metrics exporter timer
+
+[Timer]
+OnCalendar={{ smart_metrics.on_calendar | default('*-*-* *:*:00') }}
+AccuracySec={{ smart_metrcis.accuracy | default('1m') }}
+Unit=smart-metrics.service
+
+[Install]
+WantedBy=multi-user.target

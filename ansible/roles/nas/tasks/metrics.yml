@@ -1,0 +1,28 @@
+---
+- name: metrics | copy smart-metrics script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/micha37-martins/S.M.A.R.T-disk-monitoring-for-Prometheus/master/smartmon.sh
+    dest: /usr/local/bin/smartmon.sh
+    mode: 0644
+  when: prometheus_metrics.smart_enabled
+
+- name: metrics | copy systemd smart-metrics service
+  ansible.builtin.template:
+    src: smart-metrics.service.j2
+    dest: /etc/systemd/system/smart-metrics.service
+    mode: 0644
+  when: prometheus_metrics.smart_enabled
+
+- name: metrics | copy systemd smart-metrics timer
+  ansible.builtin.template:
+    src: smart-metrics.timer.j2
+    dest: /etc/systemd/system/smart-metrics.timer
+    mode: 0644
+  when: prometheus_metrics.smart_enabled
+
+- name: metrics | start systemd smart-metrics timer
+  ansible.builtin.systemd:
+    name: smart-metrics.timer
+    enabled: true
+    state: started
+  when: prometheus_metrics.smart_enabled

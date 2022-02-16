@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+[Unit]
+Description=smart metrics exporter service
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash -c '/usr/local/bin/smartmon.sh > /var/lib/node_exporter/textfile_collector/smart_metrics.prom'
+
+[Install]
+WantedBy= multi-user.target
