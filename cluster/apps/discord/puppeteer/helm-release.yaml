@@ -32,11 +32,10 @@ spec:
         - '--disable-gpu'
         - '--disable-software-rasterizer'
         - '--no-zygote'
-        # - '--disable-features=IsolateOrigins,site-per-process'
-        # - '--disable-site-isolation-trials'
-        # - '--disable-web-security'
-        # - '--allow-insecure-localhost'
-        # - '--no-proxy-server'
+        - '--disable-features=IsolateOrigins,site-per-process'
+        - '--disable-site-isolation-trials'
+        - '--disable-web-security'
+        - '--remote-debugging-address=puppeteer.${SECRET_DOMAIN}'
     service:
       main:
         enabled: true
@@ -52,10 +51,6 @@ spec:
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_set_header Host $host;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
         hosts:
           - host: &host "puppeteer.${SECRET_DOMAIN}"
             paths:
