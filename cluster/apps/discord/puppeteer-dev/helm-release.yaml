@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: puppeteer
+  name: puppeteer-dev
   namespace: discord
 spec:
   interval: 5m
@@ -24,7 +24,7 @@ spec:
       enabled: true
       replicas: 1
       strategy: RollingUpdate
-    nameOverride: puppeteer
+    nameOverride: puppeteer-dev
     env:
       TZ: "America/New_York"
     chromium:
@@ -44,3 +44,22 @@ spec:
     persistence:
       config:
         enabled: false
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          # cert-manager.io/cluster-issuer: letsencrypt-production
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $proxy_protocol_addr;
+            proxy_set_header X-Forwarded-For $proxy_protocol_addr;
+        hosts:
+          - host: &host "p.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: puppeteer-tls
+            hosts:
+              - *host

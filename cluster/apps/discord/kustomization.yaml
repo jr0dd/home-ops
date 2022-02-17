@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - discord-stock-ticker
   - puppeteer
+  - puppeteer-dev
   - whalestream-bot
   - ws-staging-bot
   - wyoa-bot
