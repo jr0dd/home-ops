@@ -35,12 +35,12 @@ spec:
         - '--disable-features=IsolateOrigins,site-per-process'
         - '--disable-site-isolation-trials'
         - '--disable-web-security'
-        - '--remote-debugging-address=10.10.2.27'
     service:
       main:
-        type: LoadBalancer
-        loadBalancerIP: 10.10.2.27
-        externalTrafficPolicy: Local
+        enabled: true
+        ports:
+          http:
+            port: 4000
     persistence:
       config:
         enabled: false
