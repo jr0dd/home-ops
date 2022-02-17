@@ -50,10 +50,7 @@ spec:
         ingressClassName: nginx
         annotations:
           # cert-manager.io/cluster-issuer: letsencrypt-production
-          nginx.ingress.kubernetes.io/configuration-snippet: |
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $proxy_protocol_addr;
-            proxy_set_header X-Forwarded-For $proxy_protocol_addr;
+          nginx.ingress.kubernetes.io/service-upstream: "true"
         hosts:
           - host: &host "p.${SECRET_DOMAIN}"
             paths:
