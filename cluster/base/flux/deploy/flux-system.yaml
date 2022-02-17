@@ -25,7 +25,7 @@ spec:
           value: 2Gi
     - target:
         kind: Deployment
-        name: source-controller
+        name: kustomize-controller
       patch: |-
         - op: replace
           path: /spec/template/spec/containers/0/resources/requests/memory
@@ -33,3 +33,9 @@ spec:
         - op: replace
           path: /spec/template/spec/containers/0/resources/limits/memory
           value: 2Gi
+        - op: replace
+          path: /spec/template/spec/containers/0/resources/requests/cpu
+          value: 350m
+        - op: replace
+          path: /spec/template/spec/containers/0/resources/limits/cpu
+          value: 1.5
