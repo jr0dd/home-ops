@@ -35,28 +35,12 @@ spec:
         - '--disable-features=IsolateOrigins,site-per-process'
         - '--disable-site-isolation-trials'
         - '--disable-web-security'
-        - '--remote-debugging-address=puppeteer.${SECRET_DOMAIN}'
+        - '--remote-debugging-address=10.10.2.27'
     service:
       main:
-        enabled: true
-        ports:
-          http:
-            port: 4000
+        type: LoadBalancer
+        loadBalancerIP: 10.10.2.27
+        externalTrafficPolicy: Local
     persistence:
       config:
         enabled: false
-    ingress:
-      main:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-        hosts:
-          - host: &host "puppeteer.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - secretName: puppeteer-tls
-            hosts:
-              - *host
