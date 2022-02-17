@@ -35,6 +35,10 @@ spec:
         - '--disable-features=IsolateOrigins,site-per-process'
         - '--disable-site-isolation-trials'
         - '--disable-web-security'
+        # test
+        - '--allow-running-insecure-content'
+        - '--disable-domain-reliability'
+        - '--single-process'
     service:
       main:
         enabled: true
@@ -44,3 +48,28 @@ spec:
     persistence:
       config:
         enabled: false
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          nginx.ingress.kubernetes.io/configuration-snippet: |
+            proxy_set_header Host $http_host;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection $proxy_connection;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $proxy_x_forwarded_proto;
+            proxy_set_header X-Forwarded-Ssl $proxy_x_forwarded_ssl;
+            proxy_set_header X-Forwarded-Port $proxy_x_forwarded_port;
+            proxy_set_header Proxy "";
+        hosts:
+          - host: &host "puppeteer.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: puppeteer-tls
+            hosts:
+              - *host
