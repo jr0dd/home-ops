@@ -265,10 +265,8 @@ spec:
         minio:
           url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/minio.json
           datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/10530
         smart-summary:
-          gnetId: 10530
-          revision: 1
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/smart-summary.json
           datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/10531
         smart-errors:
