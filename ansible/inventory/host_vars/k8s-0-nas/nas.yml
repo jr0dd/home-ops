@@ -39,7 +39,7 @@ smartd_config: |-
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKMJNWG
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHHKTBK
   DEFAULT -a -o on -S on -d removable -n never -s (L/../(09|24)/./04|S/../(05|12|19|26)/./03) -W 5,41,45 -m root
-  /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D6800V
+  /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN0Y1G
   /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7XF
   /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D9LS0V
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXZU0K
@@ -117,7 +117,7 @@ zfs_pools:
     atime: on
     compression: lz4
     devices:
-      - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D6800V"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN0Y1G"
       - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7XF"
       - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D9LS0V"
       - "/dev/disk/by-id/scsi-SATA_HGST_HUH721008AL_7SHP1UKW"
