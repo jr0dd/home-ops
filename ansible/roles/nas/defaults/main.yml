@@ -33,6 +33,7 @@ apt_install_packages:
   - gnupg2
   - ipmitool
   - lm-sensors
+  - moreutils
   - rclone
   - tmux
   - tree
