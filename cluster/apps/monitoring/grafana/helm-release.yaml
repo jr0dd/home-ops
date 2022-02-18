@@ -50,6 +50,8 @@ spec:
       enabled: true
     persistence:
       enabled: false
+      inMemory:
+        enabled: true
     ingress:
       enabled: true
       ingressClassName: nginx
@@ -79,9 +81,9 @@ spec:
         enabled: true
         searchNamespace: ALL
         folderAnnotation: grafana_folder
-        multicluster: true
         provider:
-          foldersFromFilesStructure: true
+          allowUiUpdates: true
+          disableDelete: false
       datasources:
         enabled: true
         searchNamespace: ALL
@@ -109,56 +111,63 @@ spec:
             orgId: 1
             folder: "flux"
             type: file
+            updateIntervalSeconds: 10
             disableDeletion: false
-            editable: true
+            allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/flux
           - name: "loki"
             orgId: 1
             folder: "loki"
             type: file
+            updateIntervalSeconds: 10
             disableDeletion: false
-            editable: true
+            allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/loki
           - name: "media"
             orgId: 1
             folder: "media"
             type: file
+            updateIntervalSeconds: 10
             disableDeletion: false
-            editable: true
+            allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/media
           - name: "networking"
             orgId: 1
             folder: "networking"
             type: file
+            updateIntervalSeconds: 10
             disableDeletion: false
-            editable: true
+            allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/networking
           - name: "power"
             orgId: 1
             folder: "power"
             type: file
+            updateIntervalSeconds: 10
             disableDeletion: false
-            editable: true
+            allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/power
           - name: "storage"
             orgId: 1
             folder: "storage"
             type: file
+            updateIntervalSeconds: 10
             disableDeletion: false
-            editable: true
+            allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/storage
           - name: "thanos"
             orgId: 1
             folder: "thanos"
             type: file
+            updateIntervalSeconds: 10
             disableDeletion: false
-            editable: true
+            allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/thanos
     dashboards:
