@@ -33,15 +33,15 @@ prometheus_metrics:
 smartd_config: |-
   # rust
   DEFAULT -a -o on -S on -d removable -n never -s (L/../(08|23)/./04|S/../(05|12|19|26)/./03) -W 5,41,45 -m root
-  /dev/disk/by-id/scsi-SATA_HGST_HUH721008AL_7SHP1UKW
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY5R6K
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN370G
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKMJNWG
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHHKTBK
+  /dev/disk/by-id/scsi-SATA_HGST_HUH721008AL_7SHP1UKW
   DEFAULT -a -o on -S on -d removable -n never -s (L/../(09|24)/./04|S/../(05|12|19|26)/./03) -W 5,41,45 -m root
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN0Y1G
-  /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7XF
-  /dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D9LS0V
+  /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXUGPK
+  /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY658K
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXZU0K
   /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHPA2YG
   # ssd
@@ -118,15 +118,15 @@ zfs_pools:
     compression: lz4
     devices:
       - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN0Y1G"
-      - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WCC5D2SUA7XF"
-      - "/dev/disk/by-id/scsi-SATA_WDC_WD4000F9YZ-0_WD-WMC5D0D9LS0V"
-      - "/dev/disk/by-id/scsi-SATA_HGST_HUH721008AL_7SHP1UKW"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXUGPK"
+      - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY658K"
       - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKMJNWG"
       - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHHKTBK"
       - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN370G"
       - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHPA2YG"
       - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXZU0K"
       - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY5R6K"
+      - "/dev/disk/by-id/scsi-SATA_HGST_HUH721008AL_7SHP1UKW"
     type: raidz2
     state: present
   - name: k8s
