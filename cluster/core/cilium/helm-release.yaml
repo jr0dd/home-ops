@@ -16,6 +16,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    cluster:
+      name: ${CLUSTER_NAME}
+      id: ${CLUSTER_ID}
     autoDirectNodeRoutes: true
     k8sServiceHost: "k8s.${SECRET_DOMAIN}"
     k8sServicePort: 6443
@@ -36,9 +39,7 @@ spec:
       algorithm: maglev
       mode: dsr
     bgp:
-      enabled: true
-      announce:
-        loadbalancerIP: true
+      enabled: false
     operator:
       rollOutPods: true
       replicas: 1
