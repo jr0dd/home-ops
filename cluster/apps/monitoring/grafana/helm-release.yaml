@@ -247,6 +247,9 @@ spec:
           gnetId: 15515
           revision: 1
           datasource: Prometheus
+        metallb:
+          url: https://raw.githubusercontent.com/jr0dd/grafana-dashboards/main/metallb.json
+          datasource: Prometheus
         mikrotik:
           url: https://raw.githubusercontent.com/IgorKha/Grafana-Mikrotik/master/grafana/provisioning/dashboards/Mikrotik-snmp-prometheus.json
           datasource: Prometheus

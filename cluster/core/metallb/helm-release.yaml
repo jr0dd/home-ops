@@ -34,11 +34,6 @@ spec:
       namespace: monitoring
       podMonitor:
         enabled: true
-        relabelings:
-          - sourceLabels: ['namespace', 'job']
-            regex: ".+/(.*)"
-            targetLabel: "job"
-            replacement: "$1"
       prometheusRule:
         enabled: true
     speaker:
