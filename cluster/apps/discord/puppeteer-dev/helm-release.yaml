@@ -35,7 +35,6 @@ spec:
         - '--disable-features=IsolateOrigins,site-per-process'
         - '--disable-site-isolation-trials'
         - '--disable-web-security'
-        - '--proxy-server=127.0.0.1:4000'
     service:
       main:
         enabled: true
