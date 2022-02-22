@@ -22,7 +22,8 @@ spec:
         - name: TZ
           value: America/New_York
       service:
-        loadBalancerIP: ${LB_NGINX}
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${LB_NGINX}"
         externalTrafficPolicy: Local
       publishService:
         enabled: true

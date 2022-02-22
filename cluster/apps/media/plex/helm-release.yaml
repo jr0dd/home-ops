@@ -31,7 +31,8 @@ spec:
     service:
       main:
         type: LoadBalancer
-        loadBalancerIP: "${LB_PLEX}"
+        annotations:
+          metallb.universe.tf/loadBalancerIPs: "${LB_PLEX}"
         externalTrafficPolicy: Local
     persistence:
       config:

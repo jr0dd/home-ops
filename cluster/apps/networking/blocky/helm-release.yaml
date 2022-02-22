@@ -29,10 +29,10 @@ spec:
       main:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: "${LB_BLOCKY}"
-        externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/allow-shared-ip: blocky
+          metallb.universe.tf/loadBalancerIPs: "${LB_BLOCKY}"
+        externalTrafficPolicy: Local
         ports:
           http:
             enabled: true
@@ -41,10 +41,10 @@ spec:
       dns:
         enabled: true
         type: LoadBalancer
-        loadBalancerIP: "${LB_BLOCKY}"
-        externalTrafficPolicy: Local
         annotations:
           metallb.universe.tf/allow-shared-ip: blocky
+          metallb.universe.tf/loadBalancerIPs: "${LB_BLOCKY}"
+        externalTrafficPolicy: Local
         ports:
           tcp:
             enabled: true

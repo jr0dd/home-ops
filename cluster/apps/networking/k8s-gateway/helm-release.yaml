@@ -22,5 +22,6 @@ spec:
     service:
       type: LoadBalancer
       port: 53
+      annotations:
+        metallb.universe.tf/loadBalancerIPs: "${LB_K8S_GATEWAY}"
       externalTrafficPolicy: Local
-      loadBalancerIP: ${LB_K8S_GATEWAY}
