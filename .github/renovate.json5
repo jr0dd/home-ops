@@ -46,7 +46,7 @@
     ]
   },
   "regexManagers": [
-    // regexManager to read and process github-releases
+    // regexManager to read and process GitHub Releases
     {
       "fileMatch": [
         "cluster/.+\\.ya?ml$",
@@ -58,7 +58,7 @@
       ],
       "datasourceTemplate": "github-releases"
     },
-    // regexManager to read and process CRD's
+    // regexManager to read and process Custom Resource Definitions
     {
       "fileMatch": [
         "cluster/.+\\.ya?ml$"
@@ -69,7 +69,7 @@
       ],
       "datasourceTemplate": "helm"
     },
-    // regexManager to read and process CR's
+    // regexManager to read and process Custom Resources
     {
       "fileMatch": [
         "cluster/.+\\.ya?ml$"
