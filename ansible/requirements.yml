@@ -11,7 +11,7 @@ collections:
   - name: community.sops
     version: 1.2.0
   - name: kubernetes.core
-    version: 2.2.3
+    version: 2.3.0
 roles:
   - src: xanmanning.k3s
     version: v3.1.1
