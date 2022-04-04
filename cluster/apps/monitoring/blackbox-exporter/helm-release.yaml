@@ -22,6 +22,13 @@ spec:
     secretConfig: false
     config:
       modules:
+        http_2xx:
+          prober: http
+          timeout: 5s
+          http:
+            valid_http_versions: ["HTTP/1.1", "HTTP/2.0"]
+            follow_redirects: true
+            preferred_ip_protocol: "ip4"
         icmp:
           prober: icmp
           timeout: 30s
@@ -42,17 +49,29 @@ spec:
           url: 10.10.0.2
           module: icmp
         - name: velop-mbr
-          url: 10.10.0.7
+          url: 10.10.0.5
           module: icmp
         - name: velop-fr
-          url: 10.10.0.8
+          url: 10.10.0.6
           module: icmp
-        - name: ipmi
+        - name: nas-lan
+          url: 10.10.0.10
+          module: icmp
+        - name: nas-ipmi
           url: 10.10.0.50
           module: icmp
-        - name: nas
-          url: 10.10.0.10
+        - name: garage-door
+          url: 10.10.0.107
+          module: icmp
+        - name: hue-bridge
+          url: 10.10.0.109
           module: icmp
         - name: hdhomerun
           url: 10.10.0.113
+          module: icmp
+        - name: eufy-br
+          url: 10.10.0.120
+          module: icmp
+        - name: eufy-fr
+          url: 10.10.0.121
           module: icmp
