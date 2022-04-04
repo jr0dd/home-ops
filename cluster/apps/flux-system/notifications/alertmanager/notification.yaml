@@ -35,4 +35,5 @@ spec:
   exclusionList:
     - "error.*lookup github\\.com"
     - "waiting.*socket"
+    - "dial.*tcp.*timeout"
   suspend: false
