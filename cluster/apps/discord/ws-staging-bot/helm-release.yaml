@@ -15,11 +15,11 @@ spec:
       interval: 5m
   values:
     image:
-      repository: ghcr.io/jr0dd/ws-staging-bot
-      tag: v0.0.73 # {"$imagepolicy": "flux-system:ws-staging-ghcr-io:tag"}
+      repository: ghcr.io/jr0dd/wyoa-bot
+      tag: v0.6.0 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
     imagePullSecrets:
-    - name: ghcr-io-creds
+      - name: ghcr-io-creds
     controller:
       enabled: true
       replicas: 1
@@ -27,19 +27,16 @@ spec:
     nameOverride: ws-staging-bot
     env:
       TZ: "America/New_York"
+      NODE_ENV: "staging"
+    envFrom:
+      - secretRef:
+          name: sops-age
     service:
       main:
         enabled: true
         ports:
           http:
             port: 3000
-    persistence:
-      config:
-        enabled: true
-        type: secret
-        name: ws-staging-config
-        mountPath: /app/config.json
-        subPath: config.json
     ingress:
       main:
         enabled: true
@@ -49,13 +46,11 @@ spec:
           external-dns/is-public: "true"
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hosts:
-        - host: &host "ws-staging.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: &host "ws-staging.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: ws-staging-tls
-          hosts:
-          - *host
-    podAnnotations:
-      secret.reloader.stakater.com/reload: "ws-staging-config"
+          - secretName: ws-staging-tls
+            hosts:
+              - *host
