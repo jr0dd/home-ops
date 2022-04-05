@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - discord-stock-ticker
   - puppeteer
-  - puppeteer-dev
   - secret.sops.yaml
   - whalestream-bot
   - ws-staging-bot
