@@ -35,27 +35,24 @@ spec:
               - to: "${SECRET_EMAIL}"
                 send_resolved: false
         route:
-          receiver: email
-          group_wait: 10s
-          group_interval: 5m
-          repeat_interval: 1h
           group_by: ["alertname", "job"]
+          group_wait: 30s
+          group_interval: 5m
+          repeat_interval: 6h
+          receiver: email
           routes:
-            - match:
-                alertname: Watchdog
-              receiver: "null"
-            - match:
-                alertname: InfoInhibitor
-              receiver: "null"
-            - match:
-                severity: critical
-              receiver: "email"
+            - receiver: "null"
+              matchers:
+                - alertname =~ "InfoInhibitor|Watchdog"
+            - receiver: "email"
+              matchers:
+                - severity = "critical"
               continue: true
         inhibit_rules:
-          - source_match:
-              severity: critical
-            target_match:
-              severity: warning
+          - source_matchers:
+              - severity = "critical"
+            target_matchers:
+              - severity = "warning"
             equal: ["alertname", "namespace"]
       ingress:
         enabled: true
