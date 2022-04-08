@@ -16,10 +16,10 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
-      tag: v0.6.2 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
+      tag: v0.6.3 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
     imagePullSecrets:
-      - name: ghcr-io-creds
+    - name: ghcr-io-creds
     controller:
       enabled: true
       replicas: 1
@@ -29,8 +29,8 @@ spec:
       TZ: "America/New_York"
       NODE_ENV: "production"
     envFrom:
-      - secretRef:
-          name: sops-age
+    - secretRef:
+        name: sops-age
     service:
       main:
         enabled: true
@@ -46,11 +46,11 @@ spec:
           external-dns/is-public: "true"
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hosts:
-          - host: &host "ws.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
+        - host: &host "ws.${SECRET_DOMAIN}"
+          paths:
+          - path: /
+            pathType: Prefix
         tls:
-          - secretName: ws-tls
-            hosts:
-              - *host
+        - secretName: ws-tls
+          hosts:
+          - *host
