@@ -33,12 +33,13 @@ jobs:
           GITHUB_TOKEN: "${{ steps.generate-token.outputs.token }}"
           ENABLE_LINTERS: ACTION_ACTIONLINT, ANSIBLE_ANSIBLE_LINT, BASH_SHELLCHECK, DOCKERFILE_HADOLINT, ENV_DOTENV_LINTER, GIT_GIT_DIFF, JSON_JSONLINT, KUBERNETES_KUBEVAL, MARKDOWN_MARKDOWNLINT, TERRAFORM_TFLINT, YAML_YAMLLINT
           ANSIBLE_DIRECTORY: ansible
-          ANSIBLE_ANSIBLE_LINT_CONFIG_FILE: .ansible-lint.yaml
+          ANSIBLE_ANSIBLE_LINT_CONFIG_FILE: .github/linters/.ansible-lint.yaml
           KUBERNETES_DIRECTORY: cluster
           KUBERNETES_KUBEVAL_ARGUMENTS: --ignore-missing-schemas
-          MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .markdownlint.yaml
-          TERRAFORM_TFLINT_CONFIG_FILE: .tflint.hcl
-          YAML_YAMLLINT_CONFIG_FILE: .yamllint.yaml
+          MARKDOWN_MARKDOWNLINT_CONFIG_FILE: .github/linters/.markdownlint.yaml
+          TERRAFORM_TFLINT_CONFIG_FILE: .github/linters/.tflint.hcl
+          YAML_YAMLLINT_CONFIG_FILE: .github/linters/.yamllint.yaml
+          YAML_PRETTIER_FILTER_REGEX_EXCLUDE: "(.*\\.sops\\.ya?ml)"
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v3
