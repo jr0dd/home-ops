@@ -31,7 +31,8 @@
         "patch"
       ],
       "matchPackageNames": [
-        "kube-prometheus-stack"
+        "kube-prometheus-stack",
+        "thanos"
       ]
     }
   ]
