@@ -35,10 +35,6 @@ spec:
         - '--disable-features=IsolateOrigins,site-per-process'
         - '--disable-site-isolation-trials'
         - '--disable-web-security'
-        # test
-        - '--allow-running-insecure-content'
-        - '--disable-domain-reliability'
-        - '--single-process'
     service:
       main:
         enabled: true
