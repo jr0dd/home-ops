@@ -39,6 +39,7 @@ jobs:
           KUBERNETES_KUBEVAL_ARGUMENTS: --ignore-missing-schemas
           TERRAFORM_TFLINT_CONFIG_FILE: .tflint.hcl
           YAML_YAMLLINT_CONFIG_FILE: .yamllint.yaml
+          FILTER_REGEX_EXCLUDE: (.*\\.sops\\.ya?ml)
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v3
