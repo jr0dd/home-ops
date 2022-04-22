@@ -1,7 +1,7 @@
 ---
 - name: samba | install samba packages
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: yes # yamllint disable-line rule:truthy
     pkg:
       - samba
       - samba-vfs-modules

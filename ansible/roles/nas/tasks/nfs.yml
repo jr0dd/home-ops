@@ -1,7 +1,7 @@
 ---
 - name: nfs | install nfs packages
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: yes # yamllint disable-line rule:truthy
     pkg:
       - nfs-common
       - nfs-kernel-server

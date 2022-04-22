@@ -87,7 +87,7 @@ samba_shares: |-
     fruit:time machine = yes
     fruit:time machine max size = 750G
 
-#-- my role --#
+# -- my role -- #
 zfs_sharing:
   nfs_enabled: false
   samba_enabled: true
@@ -103,7 +103,7 @@ zfs_monitoring:
   # Use systemd timers instead of cron for scrubs
   systemd_scrub_timer: true
 
-#-- below this line is from mrlessmith.zfs role --#
+# -- below this line is from mrlessmith.zfs role -- #
 zfs_install_update: false
 zfs_manage_filesystem_permissions: true
 zfs_enable_auto_snapshots: false
@@ -114,7 +114,7 @@ zfs_create_filesystems: true
 zfs_pools:
   - name: deadpool
     action: create
-    atime: on
+    atime: on # yamllint disable-line rule:truthy
     compression: lz4
     devices:
       - "/dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN0Y1G"
@@ -131,7 +131,7 @@ zfs_pools:
     state: present
   - name: k8s
     action: create
-    atime: on
+    atime: on # yamllint disable-line rule:truthy
     compression: lz4
     devices:
       - "/dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E25B9"
