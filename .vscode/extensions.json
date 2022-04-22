@@ -1,11 +1,11 @@
 {
-    "recommendations": [
-        "HashiCorp.terraform",
-        "ms-kubernetes-tools.vscode-kubernetes-tools",
-        "oderwat.indent-rainbow",
-        "redhat.ansible",
-        "signageos.signageos-vscode-sops",
-        "usernamehw.errorlens",
-        "wholroyd.jinja",
-    ]
+  "recommendations": [
+    "HashiCorp.terraform",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "oderwat.indent-rainbow",
+    "redhat.ansible",
+    "signageos.signageos-vscode-sops",
+    "usernamehw.errorlens",
+    "wholroyd.jinja"
+  ]
 }

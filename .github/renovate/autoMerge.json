@@ -1,17 +1,11 @@
 {
   "packageRules": [
     {
-      "matchDatasources": [
-        "docker",
-        "github-tags"
-      ],
+      "matchDatasources": ["docker", "github-tags"],
       "automerge": true,
       "automergeType": "branch",
       "requiredStatusChecks": null,
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "renovatebot/github-action",
         "ghcr.io/k8s-at-home/lidarr",
@@ -26,15 +20,8 @@
       "automerge": true,
       "automergeType": "branch",
       "requiredStatusChecks": null,
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
-      "matchPackageNames": [
-        "grafana",
-        "kube-prometheus-stack",
-        "thanos"
-      ]
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchPackageNames": ["grafana", "kube-prometheus-stack", "thanos"]
     }
   ]
 }
