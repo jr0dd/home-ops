@@ -33,14 +33,15 @@ jobs:
           GITHUB_TOKEN: "${{ steps.generate-token.outputs.token }}"
           ENABLE_LINTERS: ACTION_ACTIONLINT,ANSIBLE_ANSIBLE_LINT,BASH_SHELLCHECK,GIT_GIT_DIFF,JSON_PRETTIER,KUBERNETES_KUBEVAL,TERRAFORM_TFLINT,YAML_YAMLLINT
           ACTION_ACTIONLINT_FILTER_REGEX_EXCLUDE: (helm-release-differ.yaml)
-          ANSIBLE_DIRECTORY: ./ansible
-          ANSIBLE_ANSIBLE_LINT_CONFIG_FILE: .ansible-lint.yaml
+          ANSIBLE_DIRECTORY: ansible
+          ANSIBLE_ANSIBLE_LINT_CONFIG_FILE: .ansible-lint.yml
+          FILTER_REGEX_EXCLUDE: (.*\\.sops\\.ya?ml)
           JSON_PRETTIER_CONFIG_FILE: .prettierrc.yaml
-          KUBERNETES_DIRECTORY: ./cluster
+          JSON_PRETTIER_FILTER_REGEX_EXCLUDE: (.vscode)
+          KUBERNETES_DIRECTORY: cluster
           KUBERNETES_KUBEVAL_ARGUMENTS: --ignore-missing-schemas
           TERRAFORM_TFLINT_CONFIG_FILE: .tflint.hcl
           YAML_YAMLLINT_CONFIG_FILE: .yamllint.yaml
-          FILTER_REGEX_EXCLUDE: (.*\\.sops\\.ya?ml)
       - name: Archive production artifacts
         if: ${{ success() }} || ${{ failure() }}
         uses: actions/upload-artifact@v3
