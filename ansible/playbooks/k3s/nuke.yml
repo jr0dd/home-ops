@@ -8,33 +8,39 @@
   any_errors_fatal: true
   pre_tasks:
     - name: Pausing for 5 seconds...
-      pause:
+      ansible.builtin.pause:
         seconds: 5
   roles:
     - xanmanning.k3s
   vars:
     k3s_state: uninstalled
   tasks:
-    - name: Gather list of CNI files to delete
-      find:
+    - name: k3s | gather list of cni files to delete
+      ansible.builtin.find:
         paths: /etc/cni/net.d
         patterns: "*"
       register: directory_contents
 
-    - name: Delete CNI files
+    - name: k3s | delete cni files
       ansible.builtin.file:
         path: "{{ item.path }}"
         state: absent
       loop: "{{ directory_contents.files }}"
 
-    - name: Delete killall service
+    - name: k3s | disable killall service
       ansible.builtin.systemd:
         name: k3s-killall
         daemon_reload: true
         enabled: false
         state: stopped
 
-    - name: Delete killall service file
+    - name: k3s | delete extra files
       ansible.builtin.file:
-        path: /etc/systemd/system/k3s-killall.service
+        path: '{{ item }}'
         state: absent
+      with_items:
+        - /usr/local/bin/cilium
+        - /usr/local/bin/flux
+        - /etc/systemd/system/k3s-killall.service
+        - /usr/local/bin/kubectl
+        - /usr/local/bin/kustomize

@@ -8,13 +8,20 @@
   any_errors_fatal: true
   pre_tasks:
     - name: Pausing for 5 seconds...
-      pause:
+      ansible.builtin.pause:
         seconds: 5
   roles:
     - k3s
   tasks:
-    - name: k3s | install binaries
+    - name: k3s | install extra binaries
       ansible.builtin.shell: |
+        # cilium
+        curl -L --remote-name-all https://github.com/cilium/cilium-cli/releases/latest/download/cilium-linux-amd64.tar.gz{,.sha256sum}
+        sha256sum --check cilium-linux-amd64.tar.gz.sha256sum
+        tar xzvfC cilium-linux-amd64.tar.gz /usr/local/bin
+        rm cilium-linux-amd64.tar.gz{,.sha256sum}
+        # flux
+        curl -s "https://fluxcd.io/install.sh" | bash
+        # kustomize
         curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
         install -o root -g root -m 0755 kustomize /usr/local/bin/kustomize
-        curl -s "https://fluxcd.io/install.sh" | bash

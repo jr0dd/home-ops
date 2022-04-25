@@ -1,3 +1,0 @@
----
-# advertised ip to allow multiple bgp sessions from a node
-kubevip_source_ip: 10.10.0.200

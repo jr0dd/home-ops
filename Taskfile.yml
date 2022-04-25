@@ -20,8 +20,6 @@ includes:
   ansible: .taskfiles/ansible.yml
   blocky: .taskfiles/blocky.yml
   cluster: .taskfiles/cluster.yml
-  format: .taskfiles/format.yml
-  lint: .taskfiles/lint.yml
 
 tasks:
   deps:

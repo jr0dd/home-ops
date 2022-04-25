@@ -16,7 +16,7 @@ k3s_etcd_s3: true
 k3s_server:
   node-ip: "{{ ansible_host }}"
   tls-san:
-    - "{{ kubevip_address }}"
+    - "k8s.{{ domain }}"
   docker: false
   flannel-backend: "none" # This needs to be in quotes
   disable:

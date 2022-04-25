@@ -1,5 +1,6 @@
 {
-  "ansible.ansibleLint.arguments": "-c .github/linters/.ansible-lint.yaml",
+  "ansible.ansibleLint.enabled": true,
+  "ansible.ansibleLint.arguments": "-c .github/linters/.ansible-lint",
   "discord.enabled": true,
   "files.associations": {
     "*.json5": "jsonc",

@@ -8,6 +8,7 @@ tasks:
       - rsync --verbose --progress --partial --rsync-path="sudo rsync" {{.K3S_PRIMARY_MASTER_NODE_USERNAME}}@{{.K3S_PRIMARY_MASTER_NODE_ADDR}}:/etc/rancher/k3s/k3s.yaml "{{.CLUSTER_DIR}}/kubeconfig"
       - sed -i '' 's/127.0.0.1/{{.K3S_LB_ADDR}}/g' "{{.CLUSTER_DIR}}/kubeconfig"
       - chmod go-r "{{.CLUSTER_DIR}}/kubeconfig"
+      - cp "{{.CLUSTER_DIR}}/kubeconfig" ~/.kube/config
 
   clean-images:
     desc: Clean up stale container images
@@ -43,7 +44,7 @@ tasks:
       - kubectl rollout restart deploy -n security
       - kubectl rollout restart deploy -n discord
       - kubectl rollout restart deploy -n kasten-io
-    slient: true
+    silent: true
 
   pause:
     desc: Pause all Helm Releases that rely on ZFS storage

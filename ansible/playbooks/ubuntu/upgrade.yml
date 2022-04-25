@@ -17,11 +17,3 @@
       register: apt_upgrade
       retries: 5
       until: apt_upgrade is success
-
-    - name: k3s | update binaries
-      ansible.builtin.shell: |
-        curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-        install -o root -g root -m 0755 kustomize /usr/local/bin/kustomize
-        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-        curl -s "https://fluxcd.io/install.sh" | bash

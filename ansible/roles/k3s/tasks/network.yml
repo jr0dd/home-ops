@@ -1,0 +1,42 @@
+- name: network | check for bridge-nf-call-iptables
+  ansible.builtin.stat:
+    path: /proc/sys/net/bridge/bridge-nf-call-iptables
+  register: bridge_nf_call_iptables_result
+
+- name: network | set kubernetes network configuration
+  ansible.builtin.blockinfile:
+    path: /etc/sysctl.d/99-kubernetes-cri.conf
+    mode: 0644
+    create: true
+    block: |
+      net.ipv4.ip_forward = 1
+      net.bridge.bridge-nf-call-iptables = 1
+      net.ipv6.conf.all.forwarding = 1
+      net.bridge.bridge-nf-call-ip6tables = 1
+  when:
+    - bridge_nf_call_iptables_result.stat.exists
+  register: sysctl_network
+
+- name: network | check for rp_filter
+  ansible.builtin.stat:
+    path: /proc/sys/net/ipv4/conf/default/rp_filter
+  register: rp_filter_result
+
+- name: network | disable rp_filter for cilium
+  ansible.builtin.blockinfile:
+    path: /etc/sysctl.d/90-override.conf
+    mode: 0644
+    create: true
+    block: |
+      net.ipv4.conf.default.rp_filter = 0
+      net.ipv4.conf.lxc*.rp_filter = 0
+  when:
+    - rp_filter_result.stat.exists
+  register: sysctl_network
+
+- name: network | restart systemd-sysctl
+  ansible.builtin.systemd:
+    name: systemd-sysctl
+    state: restarted
+  when:
+    - sysctl_network.changed

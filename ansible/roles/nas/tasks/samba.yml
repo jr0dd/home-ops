@@ -8,7 +8,8 @@
     state: present
 
 - name: samba | create users if absent
-  shell: >
+  ansible.builtin.shell: >
+    set -o pipefail \
     (pdbedit --user={{ item.name }} 2>&1 > /dev/null) \
     || (echo {{ item.password }}; echo {{ item.password }}) \
     | smbpasswd -s -a {{ item.name }}

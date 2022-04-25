@@ -8,5 +8,7 @@ exclude_paths:
   - hack/
   - terraform/
   - '*.sops.*'
+skip_list:
+  - role-name
 warn_list:
   - unnamed-task

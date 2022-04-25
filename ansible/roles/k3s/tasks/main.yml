@@ -8,6 +8,10 @@
     name: xanmanning.k3s
     public: true
 
+- include: network.yml
+  tags:
+    - network
+
 - include: power.yml
   tags:
     - power

@@ -3,7 +3,7 @@
 autoDirectNodeRoutes: true
 k8sServiceHost: "k8s.${SECRET_DOMAIN}"
 k8sServicePort: 6443
-nativeRoutingCIDR: 172.20.0.0/16
+nativeRoutingCIDR: 10.42.0.0/16
 rollOutCiliumPods: true
 tunnel: disabled
 kubeProxyReplacement: "strict"
