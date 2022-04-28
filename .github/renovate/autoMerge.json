@@ -8,6 +8,7 @@
       "matchUpdateTypes": ["minor", "patch"],
       "matchPackageNames": [
         "renovatebot/github-action",
+        "zricethezav/gitleaks",
         "ghcr.io/k8s-at-home/lidarr",
         "ghcr.io/k8s-at-home/plex",
         "ghcr.io/k8s-at-home/prowlarr",
