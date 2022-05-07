@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: prometheus-blackbox-exporter
-      version: 5.8.0
+      version: 5.7.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -59,6 +59,9 @@ spec:
           module: icmp
         - name: nas-ipmi
           url: 10.10.0.50
+          module: icmp
+        - name: orbit-bhyve
+          url: 10.10.0.106
           module: icmp
         - name: garage-door
           url: 10.10.0.107
