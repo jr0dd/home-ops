@@ -23,6 +23,9 @@ spec:
       TZ: "America/New_York"
       MINIO_PROMETHEUS_AUTH_TYPE: "public"
       MINIO_UPDATE: "off"
+      MINIO_BROWSER: "on"
+      MINIO_PROMETHEUS_URL: http://thanos-query.monitoring:9090
+      MINIO_PROMETHEUS_JOB_ID: minio
     envFrom:
       - secretRef:
           name: minio-config
@@ -37,37 +40,38 @@ spec:
       main:
         enabled: true
         ports:
-          http:
-            enabled: true
-            port: 9001
           api:
             enabled: true
+            primary: true
             port: 9000
+          console:
+            enabled: true
+            port: 9001
     ingress:
-      main:
+      api:
         enabled: true
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/proxy-body-size: 250m
         hosts:
-          - host: &host-minio "minio.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  port: 9001
           - host: &host-s3 "s3.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
                 service:
                   port: 9000
+          - host: &host-console "minio.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  port: 9001
         tls:
           - secretName: minio-tls
             hosts:
-              - *host-minio
               - *host-s3
+              - *host-console
     persistence:
       data:
         enabled: true
