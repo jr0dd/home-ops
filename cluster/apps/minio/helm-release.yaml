@@ -40,13 +40,13 @@ spec:
       main:
         enabled: true
         ports:
+          http:
+            enabled: true
+            port: 9001
           api:
             enabled: true
             primary: true
             port: 9000
-          console:
-            enabled: true
-            port: 9001
     ingress:
       api:
         enabled: true
@@ -55,23 +55,23 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/proxy-body-size: 250m
         hosts:
-          - host: &host-s3 "s3.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  port: 9000
           - host: &host-console "minio.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
                 service:
                   port: 9001
+          - host: &host-s3 "s3.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+                service:
+                  port: 9000
         tls:
           - secretName: minio-tls
             hosts:
-              - *host-s3
               - *host-console
+              - *host-s3
     persistence:
       data:
         enabled: true
