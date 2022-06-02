@@ -60,9 +60,6 @@ spec:
         - name: nas-ipmi
           url: 10.10.0.50
           module: icmp
-        - name: orbit-bhyve
-          url: 10.10.0.106
-          module: icmp
         - name: garage-door
           url: 10.10.0.107
           module: icmp
