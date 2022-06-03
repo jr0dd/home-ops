@@ -6,5 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  url: https://charts.bitnami.com/bitnami
+  url: https://charts.bitnami.com/bitnami2
   timeout: 3m
