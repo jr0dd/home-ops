@@ -58,8 +58,11 @@ spec:
           startup.sh: |
             #!/bin/sh
 
-            npm install --save homebridge-config-ui-x@latest
+            npm install -g npm@latest
+            npm install -g --unsafe-perm homebridge@latest
+            # npm install -g --unsafe-perm homebridge-config-ui-x@latest
             npm install --save homebridge-dummy@latest
             npm install --save homebridge-myq@latest
             npm install --save homebridge-nest@latest
             npm install --save homebridge-orbit-irrigation@latest
+            npm install --save homebridge-tplink-smarthome@latest
