@@ -7,11 +7,10 @@ metadata:
 spec:
   interval: 10m
   dependsOn:
-    - name: cluster-repositories
-    - name: cluster-config
+    - name: flux-config
+    - name: flux-repositories
   path: ./cluster/apps
   prune: true
-  # wait: true
   sourceRef:
     kind: GitRepository
     name: home-ops

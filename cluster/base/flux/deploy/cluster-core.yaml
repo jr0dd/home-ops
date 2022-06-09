@@ -7,7 +7,8 @@ metadata:
 spec:
   interval: 10m
   dependsOn:
-    - name: cluster-crds
+    - name: flux-config
+    - name: flux-repositories
   path: ./cluster/core
   prune: false
   wait: true

@@ -19,7 +19,7 @@ spec:
       name: cluster-apps
       apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
     - kind: Kustomization
-      name: cluster-config
+      name: flux-config
       apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
     - kind: Kustomization
       name: cluster-core
@@ -31,7 +31,7 @@ spec:
       name: cluster-namespaces
       apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
     - kind: Kustomization
-      name: cluster-repositories
+      name: flux-repositories
       apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
     - kind: Kustomization
       name: flux-system

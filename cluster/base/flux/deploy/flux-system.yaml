@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-repositories
+    - name: flux-repositories
   interval: 10m
   path: ./manifests/install
   prune: true
