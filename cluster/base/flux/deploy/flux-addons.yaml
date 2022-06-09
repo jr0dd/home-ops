@@ -2,15 +2,15 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: cluster-config
+  name: flux-addons
   namespace: flux-system
 spec:
-  interval: 10m
   dependsOn:
-    - name: cluster-repositories
-  path: ./cluster/base/flux/config
+    - name: flux-system
+    - name: kube-prometheus-stack-crds
+  interval: 10m
+  path: ./cluster/base/flux/addons
   prune: true
-  wait: true
   sourceRef:
     kind: GitRepository
     name: home-ops

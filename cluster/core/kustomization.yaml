@@ -6,4 +6,3 @@ resources:
   - cilium
   - metallb
   - openebs-zfs-localpv
-  - system-upgrade

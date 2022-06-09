@@ -8,4 +8,5 @@ resources:
   - cluster-crds.yaml
   - cluster-namespaces.yaml
   - cluster-repositories.yaml
+  - flux-addons.yaml
   - flux-system.yaml

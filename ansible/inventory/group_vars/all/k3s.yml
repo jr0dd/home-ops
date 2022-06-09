@@ -40,5 +40,4 @@ k3s_server_config_yaml_d_files:
 
 # /var/lib/rancher/k3s/server/manifests
 k3s_server_manifests_templates:
-  - "home-dns/home-dns-rbac.yaml.j2"
   - "cilium/cilium-installation.yaml.j2"

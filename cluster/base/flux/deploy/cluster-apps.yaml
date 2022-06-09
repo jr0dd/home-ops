@@ -7,10 +7,11 @@ metadata:
 spec:
   interval: 10m
   dependsOn:
-    - name: cluster-core
+    - name: cluster-repositories
+    - name: cluster-config
   path: ./cluster/apps
   prune: true
-  wait: true
+  # wait: true
   sourceRef:
     kind: GitRepository
     name: home-ops

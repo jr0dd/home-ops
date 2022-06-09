@@ -8,7 +8,6 @@ spec:
   interval: 10m
   dependsOn:
     - name: cluster-crds
-    - name: cluster-namespaces
   path: ./cluster/core
   prune: false
   wait: true
