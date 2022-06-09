@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
   - cert-manager
   - cilium
-  - metallb
   - openebs-zfs-localpv
