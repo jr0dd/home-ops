@@ -15,6 +15,10 @@ spec:
         name: openebs-zfs-localpv
         namespace: flux-system
       interval: 5m
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   values:
     crd:
-      enableInstall: false
+      enableInstall: true

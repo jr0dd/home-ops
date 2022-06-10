@@ -15,6 +15,10 @@ spec:
         name: prometheus-community
         namespace: flux-system
       interval: 5m
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   values:
     fullnameOverride: prometheus
     nameOverride: prometheus

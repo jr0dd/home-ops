@@ -15,8 +15,8 @@ kind: AnnotationsTransformer
 metadata:
   name: annotations
 annotations:
-  meta.helm.sh/release-name: cert-manager
-  meta.helm.sh/release-namespace: cert-manager
+  meta.helm.sh/release-name: kube-prometheus-stack
+  meta.helm.sh/release-namespace: monitoring
 fieldSpecs:
   - path: metadata/annotations
     create: true

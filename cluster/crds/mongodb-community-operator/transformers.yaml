@@ -15,8 +15,8 @@ kind: AnnotationsTransformer
 metadata:
   name: annotations
 annotations:
-  meta.helm.sh/release-name: cert-manager
-  meta.helm.sh/release-namespace: cert-manager
+  meta.helm.sh/release-name: mongodb-community-operator
+  meta.helm.sh/release-namespace: databases
 fieldSpecs:
   - path: metadata/annotations
     create: true
