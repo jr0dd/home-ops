@@ -9,7 +9,7 @@ spec:
     - name: flux-repositories
   interval: 10m
   path: ./manifests/install
-  prune: true
+  prune: false
   wait: true
   sourceRef:
     kind: GitRepository

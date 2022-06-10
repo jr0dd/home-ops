@@ -9,7 +9,7 @@ spec:
   dependsOn:
     - name: flux-repositories
   path: ./cluster/base/flux/config
-  prune: true
+  prune: false
   wait: true
   sourceRef:
     kind: GitRepository

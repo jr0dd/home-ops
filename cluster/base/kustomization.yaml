@@ -4,3 +4,5 @@ resources:
   - github.com/fluxcd/flux2/manifests/install?ref=v0.31.1
   - flux/repositories
   - deploy-cluster.yaml
+# transformers:
+#   - labels.yaml
