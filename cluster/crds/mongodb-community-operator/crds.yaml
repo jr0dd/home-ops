@@ -22,5 +22,5 @@ spec:
           path: /metadata/annotations/meta.helm.sh~1release-name
           value: mongodb-community-operator
         - op: add
-          path:/metadata/annotations/meta.helm.sh~1release-name
+          path:/metadata/annotations/meta.helm.sh~1release-namespace
           value: databases
