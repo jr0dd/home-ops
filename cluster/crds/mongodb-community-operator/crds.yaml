@@ -11,3 +11,16 @@ spec:
   sourceRef:
     kind: GitRepository
     name: mongodb-community-operator
+  # patches:
+  #   - target:
+  #       kind: CustomResourceDefinition
+  #     patch: |-
+  #       - op: add
+  #         path: /metadata/labels/-
+  #         value: { app.kubernetes.io~1managed-by: "Helm" }
+  #       - op: add
+  #         path: /metadata/annotations/-
+  #         value: { meta.helm.sh~1release-name: "mongodb-community-operator" }
+  #       - op: add
+  #         path: /metadata/annotations/-
+  #         value: { meta.helm.sh~1release-namespace: "databases" }
