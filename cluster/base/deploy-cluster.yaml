@@ -7,7 +7,7 @@ metadata:
 spec:
   interval: 10m
   path: ./cluster/base/flux/deploy
-  prune: true
+  prune: false
   wait: true
   sourceRef:
     kind: GitRepository
