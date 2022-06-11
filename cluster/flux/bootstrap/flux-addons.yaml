@@ -6,10 +6,10 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: flux-system
+    - name: flux
     - name: kube-prometheus-stack-crds
   interval: 10m
-  path: ./cluster/base/flux/addons
+  path: ./cluster/flux/addons
   prune: false
   sourceRef:
     kind: GitRepository

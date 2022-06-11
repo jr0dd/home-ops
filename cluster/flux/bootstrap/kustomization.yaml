@@ -4,8 +4,7 @@ kind: Kustomization
 resources:
   - cluster-apps.yaml
   - cluster-core.yaml
-  - cluster-crds.yaml
+  - flux.yaml
   - flux-addons.yaml
   - flux-config.yaml
   - flux-repositories.yaml
-  - flux-system.yaml
