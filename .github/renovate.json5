@@ -29,21 +29,16 @@
   "helm-values": {
     "fileMatch": ["cluster/.+\\.ya?ml$"]
   },
-  "helmv3": {
-    "fileMatch": [
-      "charts/.+/Chart\\.ya?ml$"
-    ]
-  },
   "kubernetes": {
     "fileMatch": [
-      "cluster/.+\\.ya?ml$",
-      "ansible/.+\\ya?ml.j2$"
+      "ansible/.+\\ya?ml\\.j2$",
+      "cluster/.+\\.ya?ml$"
     ]
   },
   "regexManagers": [
     {
       "description": "Process CRD dependencies",
-      "fileMatch": ["cluster/crds/.+\\.ya?ml$"],
+      "fileMatch": ["cluster/.+\\.ya?ml$"],
       "matchStrings": [
         // GitRepository and Flux Kustomization where 'Git release/tag' matches 'Helm' version
         "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
