@@ -1,0 +1,51 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-zfspv-rust
+parameters:
+  fstype: "zfs"
+  poolname: deadpool/containous
+  shared: "yes"
+provisioner: zfs.csi.openebs.io
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  name: openebs-zfspv-ssd
+parameters:
+  fstype: "zfs"
+  poolname: k8s/containous
+  shared: "yes"
+provisioner: zfs.csi.openebs.io
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-zfspv-zvol
+parameters:
+  fstype: "ext4"
+  poolname: deadpool/containous
+provisioner: zfs.csi.openebs.io
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-zfspv-block
+parameters:
+  poolname: deadpool/containous
+provisioner: zfs.csi.openebs.io
+reclaimPolicy: Delete
+allowVolumeExpansion: true
+volumeBindingMode: Immediate
