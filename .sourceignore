@@ -1,0 +1,13 @@
+.github/
+.taskfiles/
+.vscode/
+ansible/
+hack/
+terraform/
+.gitattributes
+.gitignore
+.pre-commit-config.yaml
+.sops.yaml
+LICENSE
+README.md
+Taskfile.yml
