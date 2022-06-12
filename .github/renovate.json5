@@ -8,8 +8,10 @@
     ":separatePatchReleases",
     "docker:enableMajor",
     ":enablePreCommit",
-    "github>jr0dd/home-ops//.github/renovate/autoMerge",
-    "github>jr0dd/home-ops//.github/renovate/labels",
+    "github>jr0dd/home-ops//.github/renovate/autoMerge.json5",
+    "github>jr0dd/home-ops//.github/renovate/commitMessage.json5",
+    "github>jr0dd/home-ops//.github/renovate/groups.json5",
+    "github>jr0dd/home-ops//.github/renovate/labels.json5",
     "github>jr0dd/home-ops//.github/renovate/semanticCommits"
   ],
   "platform": "github",
@@ -31,7 +33,7 @@
   },
   "kubernetes": {
     "fileMatch": [
-      "ansible/.+\\ya?ml\\.j2$",
+      "ansible/.+\\.ya?ml(\\.j2)?$",
       "cluster/.+\\.ya?ml$"
     ]
   },
@@ -50,7 +52,7 @@
     {
       "description": "Process various other dependencies",
       "fileMatch": [
-        "ansible/.+\\.ya?ml\\.j2$",
+        "ansible/.+\\.ya?ml$",
         "cluster/.+\\.ya?ml$"
       ],
       "matchStrings": [
@@ -83,35 +85,6 @@
         "ghcr.io/k8s-at-home/qbittorrent"
       ],
       "versioning": "loose"
-    },
-    // group packages
-    {
-      "matchDatasources": [
-        "docker",
-        "helm"
-      ],
-      "matchPackageNames": [
-        "quay.io/cilium/cilium",
-        "quay.io/cilium/operator-generic",
-        "cilium"
-      ],
-      "groupName": "cilium",
-      "additionalBranchPrefix": "",
-      "separateMinorPatch": true
-    },
-    {
-      "matchDatasources": [
-        "docker",
-        "helm"
-      ],
-      "matchPackageNames": [
-        "library/mongo",
-        "quay.io/mongodb/mongodb-kubernetes-operator",
-        "community-operator"
-      ],
-      "groupName": "mongodb",
-      "additionalBranchPrefix": "",
-      "separateMinorPatch": true
     }
   ]
 }
