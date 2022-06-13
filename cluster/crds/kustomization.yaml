@@ -6,4 +6,4 @@ resources:
   - kube-prometheus-stack
   - mongodb-community-operator
   - openebs-zfs-localpv
-  - system-upgrade
+  - system-upgrade-controller

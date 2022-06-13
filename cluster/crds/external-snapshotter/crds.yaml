@@ -6,8 +6,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
+  path: ./cluster/crds/external-snapshotter
   prune: false
   wait: true
   sourceRef:
     kind: GitRepository
-    name: external-snapshotter
+    name: home-ops

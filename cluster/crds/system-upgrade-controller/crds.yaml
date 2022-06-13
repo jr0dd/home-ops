@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: crds-system-upgrade
+  name: crds-system-upgrade-controller
   namespace: flux-system
 spec:
   interval: 10m
-  path: ./cluster/crds/system-upgrade
+  path: ./cluster/crds/system-upgrade-controller
   prune: false
   wait: true
   sourceRef:
