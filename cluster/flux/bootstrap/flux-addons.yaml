@@ -7,10 +7,11 @@ metadata:
 spec:
   dependsOn:
     - name: flux
-    - name: kube-prometheus-stack-crds
+    - name: cluster-crds
   interval: 10m
   path: ./cluster/flux/addons
-  prune: false
+  prune: true
+  wait: false
   sourceRef:
     kind: GitRepository
     name: home-ops

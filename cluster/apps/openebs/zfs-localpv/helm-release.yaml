@@ -15,10 +15,33 @@ spec:
         name: openebs-zfs-localpv
         namespace: flux-system
       interval: 5m
-  # install:
-  #   crds: CreateReplace
-  # upgrade:
-  #   crds: CreateReplace
-  # values:
-  #   crd:
-  #     enableInstall: true
+  values:
+    zfsNode:
+      driverRegistrar:
+        image:
+          registry: k8s.gcr.io/
+          repository: sig-storage/csi-node-driver-registrar
+          tag: v2.3.0
+    zfsController:
+      resizer:
+        image:
+          registry: k8s.gcr.io/
+          repository: sig-storage/csi-resizer
+          tag: v1.2.0
+      snapshotter:
+        image:
+          registry: k8s.gcr.io/
+          repository: sig-storage/csi-snapshotter
+          tag: v4.0.0
+      snapshotController:
+        image:
+          registry: k8s.gcr.io/
+          repository: sig-storage/snapshot-controller
+          tag: v4.0.0
+      provisioner:
+        image:
+          registry: k8s.gcr.io/
+          repository: sig-storage/csi-provisioner
+          tag: v3.0.0
+    crd:
+      enableInstall: false

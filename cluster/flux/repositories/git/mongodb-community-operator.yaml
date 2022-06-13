@@ -8,7 +8,7 @@ spec:
   interval: 15m
   url: https://github.com/mongodb/helm-charts.git
   ref:
-    # renovate: registryUrl=https://mongodb.github.io/helm-charts
+    # renovate: registryUrl=https://mongodb.github.io/helm-charts chart=community-operator-crds
     tag: community-operator-crds-0.7.3
   ignore: |
     # exclude all

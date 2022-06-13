@@ -15,15 +15,11 @@ spec:
         name: mongodb
         namespace: flux-system
       interval: 5m
-  install:
-    crds: CreateReplace
-  upgrade:
-    crds: CreateReplace
   values:
     namespace: databases
     operator:
       name: mongodb-operator
     community-operator-crds:
-      enabled: true
+      enabled: false
     database:
       name: mongodb-database

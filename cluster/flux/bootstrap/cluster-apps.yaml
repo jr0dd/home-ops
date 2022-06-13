@@ -9,8 +9,10 @@ spec:
   dependsOn:
     - name: flux-config
     - name: flux-repositories
+    - name: cluster-crds
   path: ./cluster/apps
-  prune: false
+  prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: home-ops

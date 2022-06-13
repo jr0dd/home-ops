@@ -9,7 +9,7 @@ spec:
     - name: flux-repositories
   interval: 10m
   path: ./manifests/install
-  prune: false
+  prune: true
   wait: true
   sourceRef:
     kind: GitRepository
@@ -17,7 +17,6 @@ spec:
   patches:
     - target:
         kind: Deployment
-        name: helm-controller
       patch: |-
         - op: replace
           path: /spec/template/spec/containers/0/resources/requests/memory
