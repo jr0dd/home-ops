@@ -9,6 +9,18 @@
       "separateMinorPatch": true
     },
     {
+      "description": "Cert-Manager image and chart",
+      "groupName": "Cert-Manager",
+      "matchPackagePatterns": [
+        "quay.io/jetstack/cert-manager-controller",
+        "cert-manager"
+      ],
+      "matchDatasources": ["helm", "docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    },
+    {
       "description": "Cilium image and chart",
       "groupName": "Cilium",
       "matchPackagePatterns": [
@@ -26,6 +38,19 @@
       "groupName": "External Snapshotter",
       "matchPackagePatterns": ["external-snapshotter", "snapshot-controller"],
       "matchDatasources": ["docker", "github-tags"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    },
+    {
+      "description": "MongoDB image and chart",
+      "groupName": "MongoDB",
+      "matchPackagePatterns": [
+        "library/mongo",
+        "quay.io/mongodb/mongodb-kubernetes-operator",
+        "community-operator"
+      ],
+      "matchDatasources": ["helm", "docker"],
+      "matchUpdateTypes": ["minor", "patch"],
       "group": { "commitMessageTopic": "{{{groupName}}} group" },
       "separateMinorPatch": true
     },
