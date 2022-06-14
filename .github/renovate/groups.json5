@@ -9,7 +9,7 @@
       "separateMinorPatch": true
     },
     {
-      "description": "Cert-Manager image and chart",
+      "description": "Cert-Manager chart & CRDs",
       "groupName": "Cert-Manager",
       "matchPackagePatterns": [
         "quay.io/jetstack/cert-manager-controller",
@@ -34,15 +34,32 @@
       "separateMinorPatch": true
     },
     {
-      "description": "External Snapshotter image and kustomization",
+      "description": "External Snapshotter image and CRDs",
       "groupName": "External Snapshotter",
-      "matchPackagePatterns": ["external-snapshotter", "snapshot-controller"],
+      "matchPackagePatterns": [
+        "external-snapshotter",
+        "snapshot-controller",
+        "k8s.gcr.io/sig-storage/csi-node-driver-registrar",
+        "k8s.gcr.io/sig-storage/csi-provisioner",
+        "k8s.gcr.io/sig-storage/csi-resizer",
+        "k8s.gcr.io/sig-storage/csi-snapshotter",
+        "k8s.gcr.io/sig-storage/snapshot-controller"
+      ],
       "matchDatasources": ["docker", "github-tags"],
       "group": { "commitMessageTopic": "{{{groupName}}} group" },
       "separateMinorPatch": true
     },
     {
-      "description": "MongoDB image and chart",
+      "description": "KPS chart and CRDs",
+      "groupName": "KPS",
+      "matchPackagePatterns": ["kube-prometheus-stack"],
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    },
+    {
+      "description": "MongoDB image, chart and CRDs",
       "groupName": "MongoDB",
       "matchPackagePatterns": [
         "library/mongo",
@@ -50,6 +67,24 @@
         "community-operator"
       ],
       "matchDatasources": ["helm", "docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    },
+    {
+      "description": "OpenEBS ZFS LocalPV chart and CRDs",
+      "groupName": "OpenEBS",
+      "matchPackagePatterns": ["zfs-localpv"],
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    },
+    {
+      "description": "System Upgrade Controller image and CRDs",
+      "groupName": "system-upgrade-controller",
+      "matchPackagePatterns": ["rancher/system-upgrade-controller"],
+      "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor", "patch"],
       "group": { "commitMessageTopic": "{{{groupName}}} group" },
       "separateMinorPatch": true

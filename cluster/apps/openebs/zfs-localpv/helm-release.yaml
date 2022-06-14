@@ -21,27 +21,32 @@ spec:
         image:
           registry: k8s.gcr.io/
           repository: sig-storage/csi-node-driver-registrar
+          # renovate: datasource=github-releases registryUrl=kubernetes-csi/csi-node-driver-registrar
           tag: v2.3.0
     zfsController:
       resizer:
         image:
           registry: k8s.gcr.io/
           repository: sig-storage/csi-resizer
+          # renovate: datasource=github-releases registryUrl=kubernetes-csi/csi-resizer
           tag: v1.2.0
       snapshotter:
         image:
           registry: k8s.gcr.io/
           repository: sig-storage/csi-snapshotter
+          # renovate: datasource=github-releases registryUrl=kubernetes-csi/csi-snapshotter
           tag: v4.0.0
       snapshotController:
         image:
           registry: k8s.gcr.io/
           repository: sig-storage/snapshot-controller
+          # renovate: datasource=github-releases registryUrl=kubernetes-csi/snapshot-controller
           tag: v4.0.0
       provisioner:
         image:
           registry: k8s.gcr.io/
           repository: sig-storage/csi-provisioner
+          # renovate: datasource=github-releases registryUrl=kubernetes-csi/csi-provisioner
           tag: v3.0.0
     crd:
       enableInstall: false
