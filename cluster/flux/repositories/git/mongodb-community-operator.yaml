@@ -5,7 +5,7 @@ metadata:
   name: mongodb-community-operator
   namespace: flux-system
 spec:
-  interval: 15m
+  interval: 10m
   url: https://github.com/mongodb/helm-charts.git
   ref:
     # renovate: registryUrl=https://mongodb.github.io/helm-charts chart=community-operator-crds
