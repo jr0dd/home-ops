@@ -10,8 +10,9 @@ spec:
     - name: flux-config
     - name: flux-repositories
     - name: cluster-crds
+    - name: cluster-storage
   path: ./cluster/apps
-  prune: true
+  prune: false
   wait: true
   sourceRef:
     kind: GitRepository
