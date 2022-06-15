@@ -1,0 +1,16 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: cluster-storage
+  namespace: flux-system
+spec:
+  interval: 10m
+  dependsOn:
+    - name: cluster-crds
+  path: ./cluster/apps/openebs
+  prune: false
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: home-ops
