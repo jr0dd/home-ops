@@ -10,7 +10,7 @@ spec:
     - name: kube-prometheus-stack-crds
   interval: 10m
   path: ./cluster/flux/addons
-  prune: true
+  prune: false
   wait: false
   sourceRef:
     kind: GitRepository
