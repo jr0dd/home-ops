@@ -2,14 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: flux-addons
+  name: flux-cluster-bootstrap
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: flux
-    - name: kube-prometheus-stack-crds
   interval: 10m
-  path: ./cluster/flux/addons
+  path: ./cluster/flux/bootstrap
   prune: true
   wait: false
   sourceRef:
@@ -19,10 +16,3 @@ spec:
     provider: sops
     secretRef:
       name: sops-age
-  postBuild:
-    substitute: {}
-    substituteFrom:
-      - kind: ConfigMap
-        name: cluster-config
-      - kind: Secret
-        name: cluster-secrets

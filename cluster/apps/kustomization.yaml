@@ -12,5 +12,4 @@ resources:
   - minio
   - monitoring
   - networking
-  - openebs
   - system-upgrade

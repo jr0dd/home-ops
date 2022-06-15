@@ -9,7 +9,6 @@ spec:
   dependsOn:
     - name: flux-config
     - name: flux-repositories
-    - name: cluster-crds
     - name: cluster-storage
   path: ./cluster/apps
   prune: false

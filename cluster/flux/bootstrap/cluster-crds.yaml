@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
+  dependsOn:
+    - name: flux-repositories
   path: ./cluster/crds
   prune: false
   wait: true
