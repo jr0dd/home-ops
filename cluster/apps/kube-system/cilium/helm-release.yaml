@@ -20,7 +20,7 @@ spec:
     localRedirectPolicy: true
     k8sServiceHost: "k8s.${SECRET_DOMAIN}"
     k8sServicePort: 6443
-    ipv4NativeRoutingCIDR: "${K8S_CLUSTER_CIDR}"
+    ipv4NativeRoutingCIDR: "${K8S_POD_CIDR}"
     rollOutCiliumPods: true
     tunnel: disabled
     kubeProxyReplacement: "strict"
@@ -75,8 +75,8 @@ spec:
           annotations:
             cert-manager.io/cluster-issuer: letsencrypt-production
           hosts:
-            - "hubble.${SECRET_DOMAIN}"
+            - &host "hubble.${SECRET_DOMAIN}"
           tls:
             - secretName: hubble-tls
               hosts:
-                - "hubble.${SECRET_DOMAIN}"
+                - *host
