@@ -41,10 +41,6 @@ spec:
       acceleration: native
       algorithm: maglev
       mode: dsr
-    bgp:
-      enabled: false
-    bgpControlPlane:
-      enabled: true
     operator:
       rollOutPods: true
       replicas: 1
