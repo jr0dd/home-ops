@@ -17,6 +17,12 @@ spec:
       interval: 5m
   dependsOn:
     - name: cilium
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
     configInline:
       peers:

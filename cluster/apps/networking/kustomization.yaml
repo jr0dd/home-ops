@@ -1,6 +1,7 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: networking
 resources:
   - namespace.yaml
   - blocky
@@ -8,4 +9,3 @@ resources:
   - external-dns
   - ingress-nginx
   - k8s-gateway
-  - wildcard-certificate

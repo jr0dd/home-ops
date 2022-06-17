@@ -18,6 +18,12 @@ spec:
   dependsOn:
     - name: cert-manager
       namespace: cert-manager
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
     controller:
       replicaCount: 1

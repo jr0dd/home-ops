@@ -15,6 +15,12 @@ spec:
         name: mongodb
         namespace: flux-system
       interval: 5m
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
     namespace: databases
     operator:

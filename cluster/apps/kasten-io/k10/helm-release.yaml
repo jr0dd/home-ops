@@ -16,6 +16,12 @@ spec:
         name: kasten
         namespace: flux-system
       interval: 5m
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
   values:
     eula:
       accept: true

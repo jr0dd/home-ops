@@ -14,6 +14,8 @@ spec:
         name: k8s-at-home
         namespace: flux-system
       interval: 15m
+  dependsOn:
+    - name: puppeteer
   install:
     remediation:
       retries: 5
@@ -28,7 +30,7 @@ spec:
       tag: v0.6.37 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
     imagePullSecrets:
-    - name: ghcr-io-creds
+      - name: ghcr-io-creds
     controller:
       enabled: true
       replicas: 1
@@ -37,9 +39,7 @@ spec:
     env:
       TZ: "America/New_York"
       NODE_ENV: "staging"
-    envFrom:
-    - secretRef:
-        name: sops-age
+      SOPS_AGE_KEY: "${SOPS_AGE_KEY}"
     service:
       main:
         enabled: true
@@ -55,11 +55,11 @@ spec:
           external-dns/is-public: "true"
           external-dns.alpha.kubernetes.io/target: "ipv4.${SECRET_DOMAIN}"
         hosts:
-        - host: &host "ws-staging.${SECRET_DOMAIN}"
-          paths:
-          - path: /
-            pathType: Prefix
+          - host: &host "ws-staging.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
         tls:
-        - secretName: ws-staging-tls
-          hosts:
-          - *host
+          - secretName: ws-staging-tls
+            hosts:
+              - *host
