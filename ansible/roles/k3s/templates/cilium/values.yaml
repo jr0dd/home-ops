@@ -9,9 +9,7 @@ tunnel: disabled
 kubeProxyReplacement: "strict"
 kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
 bgp:
-  enabled: true
-  announce:
-    loadbalancerIP: true
+  enabled: false
 containerRuntime:
   integration: containerd
 ipam:

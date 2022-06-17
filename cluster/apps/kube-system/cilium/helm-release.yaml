@@ -20,11 +20,10 @@ spec:
       name: ${CLUSTER_NAME}
       id: ${CLUSTER_ID}
     autoDirectNodeRoutes: true
-    annotateK8sNode: true
     localRedirectPolicy: true
     k8sServiceHost: "k8s.${SECRET_DOMAIN}"
     k8sServicePort: 6443
-    nativeRoutingCIDR: "${K8S_CLUSTER_CIDR}"
+    ipv4NativeRoutingCIDR: "${K8S_CLUSTER_CIDR}"
     rollOutCiliumPods: true
     tunnel: disabled
     kubeProxyReplacement: "strict"
@@ -44,6 +43,8 @@ spec:
       mode: dsr
     bgp:
       enabled: false
+    bgpControlPlane:
+      enabled: true
     operator:
       rollOutPods: true
       replicas: 1
