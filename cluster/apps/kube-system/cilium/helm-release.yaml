@@ -28,7 +28,7 @@ spec:
     containerRuntime:
       integration: containerd
     endpointRoutes:
-      enabled: false
+      enabled: true
     ipam:
       mode: "kubernetes"
     loadBalancer:
