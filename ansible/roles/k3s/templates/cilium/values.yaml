@@ -8,8 +8,6 @@ rollOutCiliumPods: true
 tunnel: disabled
 kubeProxyReplacement: "strict"
 kubeProxyReplacementHealthzBindAddr: 0.0.0.0:10256
-bgp:
-  enabled: false
 containerRuntime:
   integration: containerd
 ipam:

@@ -5,15 +5,11 @@ metadata:
   name: cluster-config
   namespace: flux-system
 data:
-  CLUSTER_NAME: metal-0
-  CLUSTER_ID: "1"
-  CONTROL_PLANE_IP: 10.10.5.5
-  #
   GATEWAY_IP: 10.10.0.1
   MANAGEMENT_CIDR: 10.10.0.0/24
   #
-  K8S_CLUSTER_CIDR: 172.20.0.0/16
-  K8S_SERVICE_CIDR: 172.22.0.0/16
+  K8S_POD_CIDR: 10.42.0.0/16
+  K8S_SERVICE_CIDR: 10.43.0.0/16
   K8S_LB_CIDR: 10.10.2.0/24
   #
   LB_NGINX: 10.10.2.1

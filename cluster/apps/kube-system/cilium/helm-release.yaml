@@ -16,9 +16,6 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
-    cluster:
-      name: ${CLUSTER_NAME}
-      id: ${CLUSTER_ID}
     autoDirectNodeRoutes: true
     localRedirectPolicy: true
     k8sServiceHost: "k8s.${SECRET_DOMAIN}"
@@ -31,11 +28,9 @@ spec:
     containerRuntime:
       integration: containerd
     endpointRoutes:
-      enabled: true
+      enabled: false
     ipam:
       mode: "kubernetes"
-    k8s:
-      requireIPv4PodCIDR: true
     loadBalancer:
       standalone: false
       acceleration: native
