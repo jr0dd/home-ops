@@ -27,7 +27,7 @@ spec:
       nameOverride: *app
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
-      tag: v0.6.37 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
+      tag: v0.6.38 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
     imagePullSecrets:
       - name: ghcr-io-creds
