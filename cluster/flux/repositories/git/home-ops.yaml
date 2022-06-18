@@ -6,8 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: https://github.com/jr0dd/home-ops.git
+  url: ssh://git@github.com/jr0dd/home-ops
   ref:
     branch: main
   secretRef:
-    name: gh-creds
+    name: flux-github-key

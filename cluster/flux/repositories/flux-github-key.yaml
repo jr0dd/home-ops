@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: flux-github-key
+    namespace: flux-system
+stringData:
+    identity: ENC[AES256_GCM,data:IpltUo9AsFOQ6G0tFBc+qC1PneZLQyVj5pF50L2nHaJOcIwm0LmVWUfkiaJiNzjVybMXm0JhBDFyFITYk66+hcAycf4umt0Kxob9tfQ9VTmiBp9KpCOwPyasonAsFvLrteonSABXsyqGGzMK2UH6m6mlzuNy1ceHg0R7PuRT75rD5SYTI89OCf5LkdYMt+HCuNvSF4xA2SffkDvdDHTwi6jwZipMR1IMaNs9z5DCCJ9dQvY1RtFiab7qNBpzK0QO/vuqMK6iCvnZTHzWGMVP2ofsyo8ZgSQ1pzZT90s5kTzfZkS8J49IIWCpiLlv/b4I51pkRDQRg2k0C6dNr2a3eFlFK9gm9MiU0fNtTPgGcxnvqGY8XCA5urzH67jfdyk1xUTGUO7MvAG1hWmWJY11l1IeaHJ0FqPk2ji70GRVbetbhBi0K8VuQo6NY9mYMT2+reCrjavXqyTxQ7ECxPR08Bk31M5s7EOeqAohQIVrE/EgAP+Ld+gMKn9ooanYuyJ1dBUQcxOmhM/GWuwLUYLHEgsp5fHc14UJr0/R25RAy6+GgEcS/552diL/5nd7k5uKotG9kDEcJoYCYNDMV1p0LEgCQH4/8XCDcPPIkIFgentk449rXRfChJnP3FcVUcMOP4l79d+sLmFE0W0rTUH3q8mtJwqfokTrME2kAQI2u8e1xnoEeaW7Wt2qXxY9RaYVLtgFwzl1nytBahWNJKfQrwS32LTVAttfJviKnHKiwUcLTDBqLXEmfDBjRoSaLbZNIvDIcDwsbfkttX1ixSS1wSgr6dGfCelar0/1HdzfxRsOA44XGvfQfLJRexorWFpreI9YR6cadE93bTJovB8QhNU9jwNkm+oFVi3sKgBKKcrGtXb2ws1oc9hwhaMtrLyquisS7uwej/mjbjGJ5wHbE4mNdW3T4V1mMpZx8mxn/AusReGfv/UC+jF6FOPMwjQpps7tRjC73JtlUqgzNbcCtA==,iv:O+Voz1vK2M0rjnuO+07zhHIf+kQ+C1slU2WDCf6Qf8g=,tag:NeoAk3qsomeOLg0Fzts+iA==,type:str]
+    known_hosts: ENC[AES256_GCM,data:1KYN3xA35kEWwM5x3b/ik/1mV88iZ8LscxE4rrEmC4puFpJvLtIrXvhRtYJUV+3wk5joN8UMPyDQ7lywa/0aGoOmx1rUUFbNlddPqbWKKi5HUzLzKu1COqxcbCqmUaOiB7dndX+GO/+5r2hFGEZ295isgukPnL9pvgcIbB6AsNb8na2Wq0H5yv/hHLMZDlOwM0x46dw8ckchPAu0uRVl4gZ7ctkOaFOMcfVjvB5PwsHNWg4w+t/yHFwnOGiE1hfKn49fvylIG/vZhHHvWD8gBFI5b/WkGz2d7Q19Qbf/g4Fip+GPWyydWnRPTIXCGVB8w1BnQzUdT7WTfivVoElXNw2gWBwd1CoZCCNEbUmTXD7XX+J1dBbPfQSp3xD1FPArFHg8nX2PGGWxFAyH/BZ4rf4um4TV5EmSxEXGytW9CMKq6cQN4mgfzXEoNFRBcOkCe2NqItEaS7pf68a5ylto6rLjxGRnYqVQmU7bk48/TJD15d3Ho+eJDSKiutuWUkRfYf9zywNKnos1CaXn98lZRyVsmLhFgUOM3GAc3JfX3gIDv6A6LKx9luBDTZ/4ctDK4gZ011iNQN/jULPTLsmg1OdmDjyZ6mksdBuOaweoPGspwb5upvDEBkMASomSJhJ5JYGqzZybk4nN5jQdPP6nq3XFWsYlp7N5k40NY3t11sMb9K39iHzKVbvuwNarMSQlp4eFmh+RPzLZQdgPj2p3/eKVV34QKxrFchxTkDy55at43EPl9nd7A2TmtUZj6tRxO3Qeohi1s+iQDCNvm3b9EvVx/U6Jnk+j82/1qZgzTTdsBrfPsRvHh7sVa1s2whk6+yY2utjy5DgE+ZLmlYiCAayrnas/8HZSbsSCHk6WpA==,iv:3DD1tsSh95hGyxYruiZDhScw9CA0iDHzq1ZAfUkdOa8=,tag:DlHJL1IzwakuJGP2q51NcQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1vfgg4n4snp0ktjm83gsv3nptdw39mw8q7fw7dzghgfpllc040vgsd6yypm
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB6OEtzM0QyNlFmSHE2bjdm
+            NDQyNHFhbERtWTFQR21aOThTZzZ1bElhaXpvCkkzclpQZzFDejNQc1VPV2tOYThq
+            ZDN0OXVDMFRVUjBQZkpTTW0zdUxJbzAKLS0tIGQvOSt1SnZNb2dQZTY1Q0NySUdP
+            THdNVnM0ZTRjVWxYWTJaOW83dU1MOVkKCZHsN6md1uc9NybP+R5ntnfJ5efHONkk
+            E07sCwALSGdpHP+S/zXjL3ku+q30X7dbWb845nDqfLYXyYbQE/kiuw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-06-18T21:06:46Z"
+    mac: ENC[AES256_GCM,data:CZ15AFo04S8Ax2TZkHpYyinXaG7eWlnmVnzuv+7cyRFQAIZtIK2TXncVMB5feWxMxA6mOUXrFr/9zxhnbtLj19XZCBzY3033Non0mfgPHg68Vhk3GnXDn+vXfI+ZcE9ctaAwKSDpeaUkTSHC3I9hWSYTtbn2KdCNIbjaJ6udldE=,iv:9WIj5LINiPZYLBDODv+GBrrfVepe9bda6Q+Jx6RKdZ0=,tag:hzU0Cc8aAKEFf9WmjrHOuw==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.3
