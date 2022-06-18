@@ -24,6 +24,15 @@
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
+  // login to ghcr for private bot image
+  "hostRules": [
+    {
+      "hostType": "docker",
+      "hostName": "ghcr.io",
+      "username": "jr0dd",
+      "token": "process.env.PAT"
+    }
+  ],
   // set up renovate managers
   "flux": {
     "fileMatch": ["cluster/.+\\.ya?ml$"]

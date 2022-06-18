@@ -44,8 +44,6 @@ jobs:
         run: |
           echo "DRY_RUN=${{ github.event.inputs.dryRun || env.DRY_RUN }}" >> "${GITHUB_ENV}"
           echo "LOG_LEVEL=${{ github.event.inputs.logLevel || env.LOG_LEVEL }}" >> "${GITHUB_ENV}"
-      - name: Log in to GHCR
-        run: echo "${{ steps.generate-token.outputs.token }}" | docker login ghcr.io -u $ --password-stdin
       - name: Renovate
         uses: renovatebot/github-action@v32.89.1
         with:
