@@ -6,7 +6,6 @@ resources:
   - namespace.yaml
   - discord-stock-ticker
   - puppeteer
-  - secret.sops.yaml
   - whalestream-bot
   - ws-staging-bot
   - wyoa-bot

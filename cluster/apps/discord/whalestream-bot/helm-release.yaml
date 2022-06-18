@@ -4,7 +4,8 @@ metadata:
   name: &app whalestream-bot
   namespace: discord
 spec:
-  interval: 15m
+  interval: 5m
+  serviceAccountName: flux-system-flux
   chart:
     spec:
       chart: kah-common-chart
@@ -13,7 +14,6 @@ spec:
         kind: HelmRepository
         name: k8s-at-home
         namespace: flux-system
-      interval: 15m
   dependsOn:
     - name: puppeteer
   install:
@@ -29,8 +29,6 @@ spec:
       repository: ghcr.io/jr0dd/wyoa-bot
       tag: v0.6.38 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
-    imagePullSecrets:
-      - name: ghcr-io-creds
     controller:
       enabled: true
       replicas: 1
