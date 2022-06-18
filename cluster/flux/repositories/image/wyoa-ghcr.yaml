@@ -7,7 +7,8 @@ metadata:
 spec:
   image: ghcr.io/jr0dd/wyoa-bot
   interval: 1m
-  serviceAccountName: flux
+  secretRef:
+    name: ghcr-io-creds
 ---
 apiVersion: image.toolkit.fluxcd.io/v1beta1
 kind: ImagePolicy

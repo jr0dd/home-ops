@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: discord
 resources:
   - namespace.yaml
+  - secret.sops.yaml
   - discord-stock-ticker
   - puppeteer
   - whalestream-bot
