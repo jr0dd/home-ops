@@ -5,7 +5,6 @@ metadata:
   namespace: discord
 spec:
   interval: 5m
-  serviceAccountName: flux-system-flux
   chart:
     spec:
       chart: kah-common-chart
