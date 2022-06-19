@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: ubuntu-no-avahi@sha256:b63eb82a9a61f94e76d82abe780f46a1d4e6ead29651581df78e2f4c5e84e02b
+      tag: 2022-06-16-ubuntu
     env:
       TZ: "America/New_York"
       HOMEBRIDGE_CONFIG_UI: 1
@@ -63,11 +63,8 @@ spec:
           startup.sh: |
             #!/bin/sh
 
-            npm install -g npm@latest
-            npm install -g --unsafe-perm homebridge@latest
-            # npm install -g --unsafe-perm homebridge-config-ui-x@latest
-            npm install --save homebridge-dummy@latest
-            npm install --save homebridge-myq@latest
-            npm install --save homebridge-nest@latest
-            npm install --save homebridge-orbit-irrigation@latest
-            npm install --save homebridge-tplink-smarthome@latest
+            pnpm install --save homebridge-dummy@latest
+            pnpm install --save homebridge-myq@latest
+            pnpm install --save homebridge-nest@latest
+            pnpm install --save homebridge-orbit-irrigation@latest
+            pnpm install --save homebridge-tplink-smarthome@latest
