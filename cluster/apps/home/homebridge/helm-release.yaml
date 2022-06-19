@@ -23,10 +23,10 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: 2022-05-21@sha256:76ce44148d18faf30802e7c546d8e00ed6a8b1e87c39130be2755d246f3fbdef
+      tag: latest@sha256:eb9a41a14870c048fa0e9daa39ee55715c52069daec4bda002c024b8f54f13c3
     env:
       TZ: "America/New_York"
-      ENABLE_AVAHI: "0"
+      ENABLE_AVAHI: "1"
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
     persistence:
@@ -55,8 +55,8 @@ spec:
           startup.sh: |
             #!/bin/sh
 
-            npm install --save homebridge-dummy@latest
-            npm install --save homebridge-myq@latest
-            npm install --save homebridge-nest@latest
-            npm install --save homebridge-orbit-irrigation@latest
-            npm install --save homebridge-tplink-smarthome@latest
+            pnpm install --save homebridge-dummy@latest
+            pnpm install --save homebridge-myq@latest
+            pnpm install --save homebridge-nest@latest
+            pnpm install --save homebridge-orbit-irrigation@latest
+            pnpm install --save homebridge-tplink-smarthome@latest
