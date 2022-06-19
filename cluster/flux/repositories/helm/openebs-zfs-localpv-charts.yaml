@@ -5,6 +5,5 @@ metadata:
   name: openebs-zfs-localpv
   namespace: flux-system
 spec:
-  interval: 15m
+  interval: 10m
   url: https://openebs.github.io/zfs-localpv
-  timeout: 3m

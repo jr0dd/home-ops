@@ -14,7 +14,6 @@ spec:
         kind: HelmRepository
         name: k8s-gateway
         namespace: flux-system
-      interval: 5m
   install:
     remediation:
       retries: 5
@@ -23,7 +22,7 @@ spec:
       retries: 5
   values:
     nameOverride: k8s-gateway
-    domain: ${SECRET_DOMAIN}
+    domain: "${SECRET_DOMAIN}"
     ttl: 1
     service:
       type: LoadBalancer

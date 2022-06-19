@@ -14,7 +14,6 @@ spec:
         kind: HelmRepository
         name: ingress-nginx
         namespace: flux-system
-      interval: 5m
   dependsOn:
     - name: cert-manager
       namespace: cert-manager

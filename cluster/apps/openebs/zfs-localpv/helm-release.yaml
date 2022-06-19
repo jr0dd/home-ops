@@ -14,7 +14,6 @@ spec:
         kind: HelmRepository
         name: openebs-zfs-localpv
         namespace: flux-system
-      interval: 5m
   install:
     remediation:
       retries: 5
@@ -25,9 +24,9 @@ spec:
     zfsNode:
       driverRegistrar:
         image:
-          # renovate: registryUrl=k8s.gcr.io/sig-storage/csi-node-driver-registrar
           registry: k8s.gcr.io/
           repository: sig-storage/csi-node-driver-registrar
+          # renovate: registryUrl=k8s.gcr.io/sig-storage/csi-node-driver-registrar
           tag: v2.5.1
     zfsController:
       resizer:

@@ -16,6 +16,5 @@ resources:
   - mongodb-charts.yaml
   - openebs-zfs-localpv-charts.yaml
   - prometheus-community-charts.yaml
-  - rook-ceph-charts.yaml
   - stakater-charts.yaml
   - vector-charts.yaml
