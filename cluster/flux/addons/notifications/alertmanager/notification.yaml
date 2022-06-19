@@ -24,8 +24,6 @@ spec:
       name: "*"
     - kind: HelmRepository
       name: "*"
-    - kind: ImagePolicy
-      name: "*"
     - kind: ImageRepository
       name: "*"
     - kind: ImageUpdateAutomation
