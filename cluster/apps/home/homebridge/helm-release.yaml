@@ -23,20 +23,11 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: 2022-06-16-ubuntu
+      tag: latest@sha256:eb9a41a14870c048fa0e9daa39ee55715c52069daec4bda002c024b8f54f13c3
     env:
       TZ: "America/New_York"
-      HOMEBRIDGE_CONFIG_UI: 1
-      PGID: "1000"
-      PUID: "1000"
-      HOMEBRIDGE_CONFIG_UI_PORT: &port 8581
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
-    service:
-      main:
-        ports:
-          http:
-            port: *port
     persistence:
       config:
         enabled: true
