@@ -6,6 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
+  retryInterval: 2m
   path: ./cluster/crds/system-upgrade-controller
   prune: false
   wait: true

@@ -33,17 +33,16 @@ tasks:
       - kubectl rollout restart deploy -n cert-manager
       - kubectl rollout restart deploy -n minio
       - kubectl rollout restart statefulset -n databases
-      - kubectl rollout restart ds -n monitoring
-      - kubectl rollout restart deploy -n monitoring
-      - kubectl rollout restart statefulset -n monitoring
       - kubectl rollout restart deploy -n networking
       - kubectl rollout restart deploy -n home
       - kubectl rollout restart deploy -n system-upgrade
       - kubectl rollout restart deploy -n media
       - kubectl rollout restart deploy -n flux-system
-      - kubectl rollout restart deploy -n security
       - kubectl rollout restart deploy -n discord
       - kubectl rollout restart deploy -n kasten-io
+      - kubectl rollout restart ds -n monitoring
+      - kubectl rollout restart deploy -n monitoring
+      - kubectl rollout restart statefulset -n monitoring
     silent: true
 
   pause:
