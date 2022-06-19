@@ -5,9 +5,10 @@ metadata:
   name: flux
   namespace: flux-system
 spec:
+  interval: 10m
+  retryInterval: 1m
   dependsOn:
     - name: flux-repositories
-  interval: 10m
   path: ./manifests/install
   prune: true
   wait: true

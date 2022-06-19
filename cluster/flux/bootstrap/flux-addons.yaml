@@ -5,10 +5,11 @@ metadata:
   name: flux-addons
   namespace: flux-system
 spec:
+  interval: 10m
+  retryInterval: 1m
   dependsOn:
     - name: flux
     - name: kube-prometheus-stack-crds
-  interval: 10m
   path: ./cluster/flux/addons
   prune: true
   wait: false
