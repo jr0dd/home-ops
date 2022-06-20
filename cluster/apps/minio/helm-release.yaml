@@ -78,7 +78,6 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
           nginx.ingress.kubernetes.io/proxy-body-size: 250m
-          nginx.ingress.kubernetes.io/backend-protocol: HTTPS
         hosts:
           - host: &host-s3 "s3.${SECRET_DOMAIN}"
             paths:
