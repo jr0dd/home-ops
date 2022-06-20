@@ -2,17 +2,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app minio
+  name: minio
   namespace: minio
 spec:
   interval: 5m
   chart:
     spec:
-      chart: kah-common-chart
-      version: 1.1.2
+      chart: minio
+      version: 4.0.2
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: minio
         namespace: flux-system
   install:
     remediation:
@@ -21,84 +21,56 @@ spec:
     remediation:
       retries: 5
   values:
-    global:
-      nameOverride: *app
     image:
       repository: quay.io/minio/minio
       tag: RELEASE.2022-06-17T02-00-35Z
-    nameOverride: minio
-    env:
-      TZ: "America/New_York"
-      MINIO_PROMETHEUS_AUTH_TYPE: "public"
-      MINIO_UPDATE: "off"
-      MINIO_BROWSER: "on"
-      MINIO_PROMETHEUS_URL: http://thanos-query.monitoring:9090
-      MINIO_PROMETHEUS_JOB_ID: minio
-      MINIO_SERVER_URL: "https://s3.${SECRET_DOMAIN}"
-      MINIO_ROOT_USER: "${MINIO_ROOT_USER}"
-      MINIO_ROOT_PASSWORD: "${MINIO_ROOT_PASSWORD}"
-    args:
-      - server
-      - /data
-      - --address
-      - :9000
-      - --console-address
-      - :9001
-    service:
-      main:
-        enabled: true
-        ports:
-          http:
-            enabled: true
-            port: 9001
-          api:
-            enabled: true
-            primary: true
-            port: 9000
-    ingress:
-      console:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-        hosts:
-          - host: &host-console "minio.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  port: 9001
-        tls:
-          - secretName: minio-tls
-            hosts:
-              - *host-console
-      api:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-          nginx.ingress.kubernetes.io/proxy-body-size: 250m
-        hosts:
-          - host: &host-s3 "s3.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-                service:
-                  port: 9000
-        tls:
-          - secretName: s3-tls
-            hosts:
-              - *host-s3
+    mode: standalone
+    ignoreChartChecksums: true
+    rootUser: "${MINIO_ROOT_USER}"
+    rootPassword: "${MINIO_ROOT_PASSWORD}"
+    drivesPerNode: 1
+    replicas: 1
     persistence:
-      data:
+      enabled: true
+      existingClaim: minio
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        nginx.ingress.kubernetes.io/proxy-body-size: 250m
+      path: /
+      hosts:
+        - &host-api "s3.${SECRET_DOMAIN}"
+      tls:
+        - secretName: minio-api-tls
+          hosts:
+            - *host-api
+    consoleIngress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      path: /
+      hosts:
+        - &host-console "minio.${SECRET_DOMAIN}"
+      tls:
+        - secretName: minio-console-tls
+          hosts:
+            - *host-console
+    users: []
+    environment:
+      TZ: "America/New_York"
+      MINIO_PROMETHEUS_JOB_ID: "minio"
+      MINIO_PROMETHEUS_URL: "http://thanos-query.monitoring:9090"
+      MINIO_SERVER_URL: "https://s3.${SECRET_DOMAIN}"
+    metrics:
+      serviceMonitor:
         enabled: true
-        existingClaim: minio
-        mountPath: /data
-    podAnnotations:
-      secret.reloader.stakater.com/reload: "minio-config"
+        public: true
     resources:
       requests:
-        memory: 100Mi
+        memory: 500Mi
         cpu: 100m
       limits:
-        memory: 750Mi
+        memory: 1Gi
