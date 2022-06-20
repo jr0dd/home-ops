@@ -74,9 +74,9 @@ spec:
           # - tcp-tls:dns.quad9.net:853
       conditional:
         mapping:
-          "${SECRET_DOMAIN}": tcp+udp:"${LB_K8S_GATEWAY}"
+          ${SECRET_DOMAIN}: tcp+udp:${LB_K8S_GATEWAY}
       clientLookup:
-        upstream: tcp+udp:"${GATEWAY_IP}"
+        upstream: tcp+udp:${GATEWAY_IP}
       bootstrapDns: tcp+udp:1.1.1.1
       blocking:
         blackLists:
