@@ -7,4 +7,3 @@ resources:
   - helm-release.yaml
   - monitoring
   - pvc.yaml
-  - secret.sops.yaml
