@@ -21,37 +21,5 @@ spec:
     remediation:
       retries: 5
   values:
-    zfsNode:
-      driverRegistrar:
-        image:
-          registry: k8s.gcr.io/
-          repository: sig-storage/csi-node-driver-registrar
-          # renovate: registryUrl=k8s.gcr.io/sig-storage/csi-node-driver-registrar
-          tag: v2.5.1
-    zfsController:
-      resizer:
-        image:
-          registry: k8s.gcr.io/
-          repository: sig-storage/csi-resizer
-          # renovate: registryUrl=k8s.gcr.io/sig-storage/csi-resizer
-          tag: v1.4.0
-      snapshotter:
-        image:
-          registry: k8s.gcr.io/
-          repository: sig-storage/csi-snapshotter
-          # renovate: registryUrl=k8s.gcr.io/sig-storage/csi-snapshotter
-          tag: v6.0.1
-      snapshotController:
-        image:
-          registry: k8s.gcr.io/
-          repository: sig-storage/snapshot-controller
-          # renovate: registryUrl=k8s.gcr.io/sig-storage/snapshot-controller
-          tag: v6.0.1
-      provisioner:
-        image:
-          registry: k8s.gcr.io/
-          repository: sig-storage/csi-provisioner
-          # renovate: registryUrl=k8s.gcr.io/sig-storage/csi-provisioner
-          tag: v3.1.0
     crd:
       enableInstall: false
