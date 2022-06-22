@@ -41,44 +41,34 @@ spec:
           ingestion_burst_size_mb: 16
         schema_config:
           configs:
-            - from: "2021-08-01"
+            - from: "2022-01-11"
               store: boltdb-shipper
               object_store: s3
-              schema: v11
+              schema: v12
               index:
                 prefix: loki_index_
                 period: 24h
         common:
           path_prefix: /var/loki
-          replication_factor: 1
+          replication_factor: 3
           storage:
             s3:
-              s3: true
               endpoint: http://minio.minio:9000
+              bucketnames: loki
               region: us-east-1
-              secretAccessKey: "${MINIO_SECRET_KEY}"
-              accessKeyId: "${MINIO_SECRET_KEY}"
-              s3ForcePathStyle: true
+              secret_access_key: "${MINIO_SECRET_KEY}"
+              access_key_id: "${MINIO_ACCESS_KEY}"
+              s3forcepathstyle: true
               insecure: true
-            ring:
-              kvstore:
-                store: memberlist
+          ring:
+            kvstore:
+              store: memberlist
         ruler:
           enable_api: true
           enable_alertmanager_v2: true
           alertmanager_url: http://prometheus-alertmanager.monitoring:9093
-          storage:
-            type: local
-            local:
-              directory: /rules
-          rule_path: /tmp/scratch
-          ring:
-            kvstore:
-              store: memberlist
-        distributor:
-          ring:
-            kvstore:
-              store: memberlist
+          # storage:
+          #   type: s3
         compactor:
           working_directory: /var/loki/boltdb-shipper-compactor
           shared_store: s3
@@ -88,10 +78,6 @@ spec:
           retention_delete_worker_count: 150
         ingester:
           max_chunk_age: 1h
-          lifecycler:
-            ring:
-              kvstore:
-                store: memberlist
         analytics:
           reporting_enabled: false
     gateway:
