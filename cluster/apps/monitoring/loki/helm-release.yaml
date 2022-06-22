@@ -5,11 +5,11 @@ metadata:
   name: loki
   namespace: monitoring
 spec:
-  interval: 5m
+  interval: 10m
   chart:
     spec:
-      chart: loki
-      version: 2.12.2
+      chart: loki-simple-scalable
+      version: 1.4.1
       sourceRef:
         kind: HelmRepository
         name: grafana
@@ -21,39 +21,105 @@ spec:
     remediation:
       retries: 5
   values:
-    ingress:
+    loki:
+      structuredConfig:
+        auth_enabled: false
+        server:
+          log_level: info
+          http_listen_port: 3100
+          grpc_listen_port: 9095
+        memberlist:
+          join_members: ["loki-memberlist"]
+        limits_config:
+          retention_period: 14d
+          enforce_metric_name: false
+          reject_old_samples: true
+          reject_old_samples_max_age: 168h
+          max_cache_freshness_per_query: 10m
+          split_queries_by_interval: 15m
+          ingestion_rate_mb: 8
+          ingestion_burst_size_mb: 16
+        schema_config:
+          configs:
+            - from: "2021-08-01"
+              store: boltdb-shipper
+              object_store: s3
+              schema: v11
+              index:
+                prefix: loki_index_
+                period: 24h
+        common:
+          path_prefix: /var/loki
+          replication_factor: 1
+          storage:
+            s3:
+              s3: true
+              endpoint: http://minio.minio:9000
+              region: us-east-1
+              secretAccessKey: "${MINIO_SECRET_KEY}"
+              accessKeyId: "${MINIO_SECRET_KEY}"
+              s3ForcePathStyle: true
+              insecure: true
+            ring:
+              kvstore:
+                store: memberlist
+        ruler:
+          enable_api: true
+          enable_alertmanager_v2: true
+          alertmanager_url: http://prometheus-alertmanager.monitoring:9093
+          storage:
+            type: local
+            local:
+              directory: /rules
+          rule_path: /tmp/scratch
+          ring:
+            kvstore:
+              store: memberlist
+        distributor:
+          ring:
+            kvstore:
+              store: memberlist
+        compactor:
+          working_directory: /var/loki/boltdb-shipper-compactor
+          shared_store: s3
+          compaction_interval: 10m
+          retention_enabled: true
+          retention_delete_delay: 2h
+          retention_delete_worker_count: 150
+        ingester:
+          max_chunk_age: 1h
+          lifecycler:
+            ring:
+              kvstore:
+                store: memberlist
+        analytics:
+          reporting_enabled: false
+    gateway:
       enabled: true
-      ingressClassName: nginx
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-      hosts:
-        - host: &host "loki.${SECRET_DOMAIN}"
-          paths:
-            - /
-      tls:
-        - secretName: loki-tls
-          hosts:
-            - *host
+      replicas: 1
+      ingress:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        hosts:
+          - host: &host "loki.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: loki-tls
+            hosts:
+              - *host
+    write:
+      replicas: 1
+      persistence:
+        size: 10Gi
+        storageClass: openebs-zfspv-ssd
+    read:
+      replicas: 1
+      persistence:
+        size: 10Gi
+        storageClass: openebs-zfspv-ssd
     serviceMonitor:
       enabled: true
-    config:
-      limits_config:
-        enforce_metric_name: false
-        reject_old_samples: true
-        reject_old_samples_max_age: 168h
-        ingestion_rate_mb: 16
-        ingestion_burst_size_mb: 24
-      storage_config:
-        aws:
-          bucketnames: loki
-          endpoint: minio.minio:9000
-          region: us-east-1
-          access_key_id: "${MINIO_ACCESS_KEY}"
-          secret_access_key: "${MINIO_SECRET_KEY}"
-          s3forcepathstyle: true
-          insecure: true
-        boltdb_shipper:
-          active_index_directory: /data/loki/index
-          cache_location: /data/loki/index_cache
-          resync_interval: 5s
-          shared_store: s3

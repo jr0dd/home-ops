@@ -1,0 +1,83 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: vector-agent
+  namespace: monitoring
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: vector
+      version: 0.13.1
+      sourceRef:
+        kind: HelmRepository
+        name: vector
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    image:
+      repository: timberio/vector
+      tag: 0.22.2-debian
+    role: Agent
+    customConfig:
+      data_dir: /vector-data-dir
+      api:
+        enabled: false
+      sources:
+        journal_logs:
+          type: journald
+          journal_directory: /var/log/journal
+        kubernetes_logs:
+          type: kubernetes_logs
+          pod_annotation_fields:
+            container_image: "container_image"
+            container_name: "container_name"
+            pod_annotations: "pod_annotations"
+            pod_labels: "pod_labels"
+            pod_name: "pod_name"
+        host_metrics:
+          filesystem:
+            devices:
+              excludes: [binfmt_misc]
+            filesystems:
+              excludes: [binfmt_misc]
+            mountPoints:
+              excludes: ["*/proc/sys/fs/binfmt_misc"]
+          type: host_metrics
+        internal_metrics:
+          type: internal_metrics
+      sinks:
+        loki_journal_sink:
+          type: vector
+          inputs:
+            - journal_logs
+          address: vector-aggregator:6000
+          version: "2"
+        loki_kubernetes_sink:
+          type: vector
+          inputs:
+            - kubernetes_logs
+          address: vector-aggregator:6010
+          version: "2"
+        prom_exporter:
+          type: prometheus_exporter
+          inputs:
+            - [host_metrics, internal_metrics]
+          address: 0.0.0.0:9090
+    service:
+      enabled: false
+    podMonitor:
+      enabled: true
+    securityContext:
+      privileged: true
+    tolerations:
+      - effect: NoSchedule
+        operator: Exists
+      - effect: NoExecute
+        operator: Exists
