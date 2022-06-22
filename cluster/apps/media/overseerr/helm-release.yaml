@@ -5,7 +5,7 @@ metadata:
   name: overseerr
   namespace: media
 spec:
-  interval: 5m
+  interval: 10m
   chart:
     spec:
       chart: overseerr

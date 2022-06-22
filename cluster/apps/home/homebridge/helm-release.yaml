@@ -5,7 +5,7 @@ metadata:
   name: homebridge
   namespace: home
 spec:
-  interval: 5m
+  interval: 10m
   chart:
     spec:
       chart: homebridge

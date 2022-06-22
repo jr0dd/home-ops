@@ -6,7 +6,7 @@ metadata:
   namespace: kasten-io
 spec:
   releaseName: k10
-  interval: 5m
+  interval: 10m
   chart:
     spec:
       chart: k10

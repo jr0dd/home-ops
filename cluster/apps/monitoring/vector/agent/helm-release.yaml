@@ -20,6 +20,8 @@ spec:
   upgrade:
     remediation:
       retries: 5
+  dependsOn:
+    - name: loki
   values:
     image:
       repository: timberio/vector

@@ -5,7 +5,7 @@ metadata:
   name: blocky
   namespace: networking
 spec:
-  interval: 5m
+  interval: 10m
   chart:
     spec:
       chart: blocky
