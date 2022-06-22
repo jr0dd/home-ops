@@ -6,4 +6,5 @@ resources:
   - cilium
   - coredns
   - metallb
+  - metrics-server
   - reloader
