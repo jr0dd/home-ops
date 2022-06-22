@@ -34,7 +34,6 @@ spec:
       enabled: true
       replicas: 1
       strategy: RollingUpdate
-    nameOverride: wyoa-bot
     env:
       TZ: "America/New_York"
       NODE_ENV: "testing"
@@ -62,3 +61,9 @@ spec:
           - secretName: wyoa-tls
             hosts:
               - *host
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        memory: 750Mi

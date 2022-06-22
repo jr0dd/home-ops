@@ -51,7 +51,6 @@ spec:
       transcode:
         enabled: true
         type: emptyDir
-        medium: Memory
     ingress:
       main:
         enabled: true
@@ -68,3 +67,9 @@ spec:
           - secretName: plex-tls
             hosts:
               - *host
+    resources:
+      requests:
+        cpu: 100m
+        memory: 2000Mi
+      limits:
+        memory: 9000Mi

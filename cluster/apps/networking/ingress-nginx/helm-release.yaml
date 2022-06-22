@@ -62,6 +62,14 @@ spec:
             any: true
         prometheusRule:
           enabled: false
+      podAnnotations:
+        configmap.reloader.stakater.com/reload: "cloudflare-proxied-networks"
+      resources:
+        requests:
+          cpu: 10m
+          memory: 250Mi
+        limits:
+          memory: 500Mi
     defaultBackend:
       enabled: true
       image:

@@ -4,5 +4,4 @@ kind: Kustomization
 namespace: home
 resources:
   - namespace.yaml
-  # - hajimari
   - homebridge

@@ -73,3 +73,9 @@ spec:
           port: 9794
           additionalMetrics: true
           unknownQueueItems: true
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        memory: 500Mi

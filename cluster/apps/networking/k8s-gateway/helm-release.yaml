@@ -30,3 +30,9 @@ spec:
       annotations:
         metallb.universe.tf/loadBalancerIPs: "${LB_K8S_GATEWAY}"
       externalTrafficPolicy: Local
+    resources:
+      requests:
+        memory: 100Mi
+        cpu: 25m
+      limits:
+        memory: 250Mi

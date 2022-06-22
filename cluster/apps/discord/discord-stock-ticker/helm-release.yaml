@@ -34,7 +34,6 @@ spec:
       enabled: true
       replicas: 1
       strategy: RollingUpdate
-    nameOverride: discord-stock-ticker
     env:
       TZ: "America/New_York"
     envFrom:
@@ -53,3 +52,9 @@ spec:
         name: payload-config
     podAnnotations:
       configmap.reloader.stakater.com/reload: "payload-config"
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        memory: 200Mi

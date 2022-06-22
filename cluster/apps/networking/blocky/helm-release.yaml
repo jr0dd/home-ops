@@ -67,6 +67,12 @@ spec:
         enabled: true
     podAnnotations:
       configmap.reloader.stakater.com/reload: "blocky-config"
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        memory: 250Mi
     config: |
       upstream:
         default:
