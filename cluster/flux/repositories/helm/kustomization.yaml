@@ -13,6 +13,7 @@ resources:
   - k8s-gateway-charts.yaml
   - kasten-charts.yaml
   - metallb-charts.yaml
+  - metrics-server-charts.yaml
   - minio-charts.yaml
   - mongodb-charts.yaml
   - openebs-zfs-localpv-charts.yaml
