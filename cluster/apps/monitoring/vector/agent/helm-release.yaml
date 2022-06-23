@@ -70,7 +70,8 @@ spec:
         prom_exporter:
           type: prometheus_exporter
           inputs:
-            - [host_metrics, internal_metrics]
+            - host_metrics
+            - internal_metrics
           address: 0.0.0.0:9090
     service:
       enabled: false
