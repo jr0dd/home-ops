@@ -71,8 +71,8 @@ spec:
           startup.sh: |
             #!/bin/sh
 
-            pnpm install --save homebridge-dummy@latest
-            pnpm install --save homebridge-myq@latest
-            pnpm install --save homebridge-nest@latest
-            pnpm install --save homebridge-orbit-irrigation@latest
-            pnpm install --save homebridge-tplink-smarthome@latest
+            npm install --save homebridge-dummy@latest
+            npm install --save homebridge-myq@latest
+            npm install --save homebridge-nest@latest
+            npm install --save homebridge-orbit-irrigation@latest
+            npm install --save homebridge-tplink-smarthome@latest
