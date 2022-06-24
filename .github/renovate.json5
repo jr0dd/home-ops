@@ -65,22 +65,13 @@
         "cluster/.+\\.ya?ml$"
       ],
       "matchStrings": [
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.*?\"(?<currentValue>.*)\"\n"
+        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*=?))?\n .*: (?<currentValue>.*=?)"
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
   ],
   "packageRules": [
-    // setup datasources
-    {
-      "matchDatasources": ["helm"],
-      "ignoreDeprecated": true
-    },
-    {
-      "matchDatasources": ["docker"],
-      "commitMessageExtra": "to {{newVersion}}"
-    },
     // custom versioning
     {
       "matchDatasources": ["docker"],
