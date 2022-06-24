@@ -48,6 +48,16 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - *host
+    probes:
+      liveness:
+        enabled: true
+        custom: false
+        spec:
+          failureThreshold: 5
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 10
     resources:
       requests:
         cpu: 10m
