@@ -21,7 +21,7 @@ spec:
     remediation:
       retries: 5
   dependsOn:
-    - name: loki
+    - name: vector-aggregator
   values:
     image:
       repository: timberio/vector
@@ -43,15 +43,6 @@ spec:
             pod_annotations: "pod_annotations"
             pod_labels: "pod_labels"
             pod_name: "pod_name"
-        host_metrics:
-          filesystem:
-            devices:
-              excludes: [binfmt_misc]
-            filesystems:
-              excludes: [binfmt_misc]
-            mountPoints:
-              excludes: ["*/proc/sys/fs/binfmt_misc"]
-          type: host_metrics
         internal_metrics:
           type: internal_metrics
       sinks:
@@ -70,7 +61,6 @@ spec:
         prom_exporter:
           type: prometheus_exporter
           inputs:
-            - host_metrics
             - internal_metrics
           address: 0.0.0.0:9090
     service:
