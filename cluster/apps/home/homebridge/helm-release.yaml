@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: latest@sha256:eb9a41a14870c048fa0e9daa39ee55715c52069daec4bda002c024b8f54f13c3
+      tag: latest@sha256:f36c618ada44490c5a25c15f65f9a42fee6a5b2e408ede121f6edce67eedb6a9
     env:
       TZ: "America/New_York"
       ENABLE_AVAHI: "1"
