@@ -6,8 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  # renovate: datasource=github-releases
   url: https://github.com/fluxcd/flux2.git
+  # renovate: datasource=github-releases depName=fluxcd/flux2
   ref:
     tag: v0.31.1
   ignore: |
