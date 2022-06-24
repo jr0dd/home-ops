@@ -81,7 +81,7 @@ spec:
           retention_delete_worker_count: 150
         ingester:
           max_chunk_age: 1h
-          chunk_encoding: lz4
+          chunk_encoding: gzip
         analytics:
           reporting_enabled: false
     gateway:
