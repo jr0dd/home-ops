@@ -7,8 +7,8 @@ metadata:
 spec:
   interval: 10m
   url: https://github.com/fluxcd/flux2.git
-  # renovate: datasource=github-tags depName=fluxcd/flux2
   ref:
+    # renovate: datasource=github-releases depName=fluxcd/flux2
     tag: v0.31.1
   ignore: |
     # exclude all
