@@ -57,8 +57,7 @@ spec:
           storage:
             s3:
               endpoint: http://minio.minio:9000
-              bucketnames: loki
-              region: us-east-1
+              bucketnames: loki-chunks
               secret_access_key: "${MINIO_SECRET_KEY}"
               access_key_id: "${MINIO_ACCESS_KEY}"
               s3forcepathstyle: true
@@ -70,8 +69,6 @@ spec:
           enable_api: true
           enable_alertmanager_v2: true
           alertmanager_url: http://prometheus-alertmanager.monitoring:9093
-          # storage:
-          #   type: s3
         compactor:
           working_directory: /var/loki/boltdb-shipper-compactor
           shared_store: s3
