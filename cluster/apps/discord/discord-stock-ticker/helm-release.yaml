@@ -25,7 +25,7 @@ spec:
       nameOverride: *app
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
-      tag: v3.10.0
+      tag: v3.10.0@sha256:e8a61323b2bb2ef974b56b851bb85b9c8eb2fcb3f12c36df78664e5767833ba8
     lifecycle:
       postStart:
         exec:

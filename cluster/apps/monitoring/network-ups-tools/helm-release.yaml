@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/k8s-at-home/network-ups-tools
-      tag: v2.7.4-2479-g86a32237
+      tag: v2.7.4-2479-g86a32237@sha256:38717871ccb91fb8a1d02bb6f0efe0802ebecb1db2d2cd29e544c7c40d3a6e71
     controller:
       enabled: true
       replicas: 1

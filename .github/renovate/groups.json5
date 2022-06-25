@@ -1,14 +1,6 @@
 {
   "packageRules": [
     {
-      "description": "Rook-Ceph image and chart",
-      "groupName": "Rook Ceph",
-      "matchPackagePatterns": ["rook.ceph"],
-      "matchDatasources": ["docker", "helm"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
-    },
-    {
       "description": "Cert-Manager chart & CRDs",
       "groupName": "Cert-Manager",
       "matchPackagePatterns": [
@@ -59,6 +51,18 @@
       "separateMinorPatch": true
     },
     {
+      "description": "MinIO image & chart",
+      "groupName": "MinIO",
+      "matchPackagePatterns": [
+        "quay.io/minio/minio",
+        "minio"
+      ],
+      "matchDatasources": ["helm", "docker"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    },
+    {
       "description": "MongoDB image, chart and CRDs",
       "groupName": "MongoDB",
       "matchPackagePatterns": [
@@ -77,6 +81,14 @@
       "matchPackagePatterns": ["zfs-localpv"],
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["minor", "patch"],
+      "group": { "commitMessageTopic": "{{{groupName}}} group" },
+      "separateMinorPatch": true
+    },
+    {
+      "description": "Rook-Ceph image and chart",
+      "groupName": "Rook Ceph",
+      "matchPackagePatterns": ["rook.ceph"],
+      "matchDatasources": ["docker", "helm"],
       "group": { "commitMessageTopic": "{{{groupName}}} group" },
       "separateMinorPatch": true
     },
