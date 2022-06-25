@@ -60,7 +60,6 @@ spec:
             codec: json
           batch:
             max_bytes: 2049000
-          compression: gzip
           out_of_order_action: accept
           remove_label_fields: true
           remove_timestamp: true
@@ -76,7 +75,6 @@ spec:
             codec: json
           batch:
             max_bytes: 2049000
-          compression: gzip
           out_of_order_action: accept
           remove_label_fields: true
           remove_timestamp: true
