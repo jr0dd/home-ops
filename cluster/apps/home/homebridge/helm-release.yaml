@@ -33,6 +33,12 @@ spec:
       config:
         enabled: true
         existingClaim: homebridge-config
+    service:
+      main:
+        enabled: true
+        ports:
+          http:
+            port: &port 8581
     ingress:
       main:
         enabled: true
@@ -55,6 +61,7 @@ spec:
         spec:
           httpGet:
             path: /login
+            port: *port
           initialDelaySeconds: 30
     resources:
       requests:
