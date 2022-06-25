@@ -51,13 +51,11 @@ spec:
     probes:
       liveness:
         enabled: true
-        custom: false
+        custom: true
         spec:
-          failureThreshold: 5
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 10
+          httpGet:
+            path: /login
+          initialDelaySeconds: 30
     resources:
       requests:
         cpu: 10m
