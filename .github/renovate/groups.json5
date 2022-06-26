@@ -1,123 +1,101 @@
 {
-  "packageRules": [
+  packageRules: [
     {
-      "description": "Cert-Manager chart & CRDs",
-      "groupName": "Cert-Manager",
-      "matchPackagePatterns": [
-        "quay.io/jetstack/cert-manager-controller",
-        "cert-manager"
-      ],
-      "matchDatasources": ["helm", "docker"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "Cert-Manager chart & CRDs",
+      groupName: "Cert-Manager",
+      matchPackagePatterns: ["cert-manager"],
+      matchDatasources: ["helm", "docker"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "Cilium image and chart",
-      "groupName": "Cilium",
-      "matchPackagePatterns": [
-        "quay.io/cilium/cilium",
-        "quay.io/cilium/operator-generic",
-        "cilium"
-      ],
-      "matchDatasources": ["helm", "docker"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "Cilium image and chart",
+      groupName: "Cilium",
+      matchPackagePatterns: ["cilium"],
+      matchDatasources: ["helm", "docker"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "External Snapshotter image and CRDs",
-      "groupName": "External Snapshotter",
-      "matchPackagePatterns": [
-        "external-snapshotter",
-        "snapshot-controller",
-        "k8s.gcr.io/sig-storage/csi-node-driver-registrar",
-        "k8s.gcr.io/sig-storage/csi-provisioner",
-        "k8s.gcr.io/sig-storage/csi-resizer",
-        "k8s.gcr.io/sig-storage/csi-snapshotter",
-        "k8s.gcr.io/sig-storage/snapshot-controller"
-      ],
-      "matchDatasources": ["docker", "github-tags"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "External Snapshotter image and CRDs",
+      groupName: "External Snapshotter",
+      matchPackagePatterns: ["snapshot", "csi"],
+      matchDatasources: ["docker", "github-tags"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "KPS chart and CRDs",
-      "groupName": "KPS",
-      "matchPackagePatterns": ["kube-prometheus-stack"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "KPS chart and CRDs",
+      groupName: "Kube Prometheus Stack",
+      matchPackagePatterns: ["kube-prometheus-stack"],
+      matchDatasources: ["helm"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "MinIO image & chart",
-      "groupName": "MinIO",
-      "matchPackagePatterns": [
-        "quay.io/minio/minio",
-        "minio"
-      ],
-      "matchDatasources": ["helm", "docker"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "MinIO image & chart",
+      groupName: "MinIO",
+      matchPackagePatterns: ["minio"],
+      matchDatasources: ["helm", "docker"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "MongoDB image, chart and CRDs",
-      "groupName": "MongoDB",
-      "matchPackagePatterns": [
-        "library/mongo",
-        "quay.io/mongodb/mongodb-kubernetes-operator",
-        "community-operator"
-      ],
-      "matchDatasources": ["helm", "docker"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "MongoDB image, chart and CRDs",
+      groupName: "MongoDB",
+      matchPackagePatterns: ["mongo", "community-operator"],
+      matchDatasources: ["helm", "docker"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "OpenEBS ZFS LocalPV chart and CRDs",
-      "groupName": "OpenEBS",
-      "matchPackagePatterns": ["zfs-localpv"],
-      "matchDatasources": ["helm"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "OpenEBS ZFS LocalPV chart and CRDs",
+      groupName: "OpenEBS",
+      matchPackagePatterns: ["zfs-localpv"],
+      matchDatasources: ["helm"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "Rook-Ceph image and chart",
-      "groupName": "Rook Ceph",
-      "matchPackagePatterns": ["rook.ceph"],
-      "matchDatasources": ["docker", "helm"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "Rook-Ceph image and chart",
+      groupName: "Rook Ceph",
+      matchPackagePatterns: ["rook.ceph"],
+      matchDatasources: ["docker", "helm"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "System Upgrade Controller image and CRDs",
-      "groupName": "system-upgrade-controller",
-      "matchPackagePatterns": ["rancher/system-upgrade-controller"],
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": true
+      description: "System Upgrade Controller image and CRDs",
+      groupName: "System Upgrade Controller",
+      matchPackagePatterns: ["system-upgrade-controller"],
+      matchDatasources: ["docker"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: true
     },
     {
-      "description": "Thanos image and chart - versions do not match",
-      "groupName": "Thanos",
-      "matchPackagePatterns": ["thanos"],
-      "matchDatasources": ["docker", "github-releases", "helm"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": false
+      description: "Thanos image and chart - versions do not match",
+      groupName: "Thanos",
+      matchPackagePatterns: ["thanos"],
+      matchDatasources: ["docker", "github-releases", "helm"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: false
     },
     {
-      "description": "Vector image and chart - versions do not match",
-      "groupName": "Vector",
-      "matchPackagePatterns": ["vector"],
-      "matchDatasources": ["docker", "github-releases", "helm"],
-      "matchUpdateTypes": ["minor", "patch"],
-      "group": { "commitMessageTopic": "{{{groupName}}} group" },
-      "separateMinorPatch": false
+      description: "Vector image and chart - versions do not match",
+      groupName: "Vector",
+      matchPackagePatterns: ["vector"],
+      matchDatasources: ["docker", "github-releases", "helm"],
+      matchUpdateTypes: ["minor", "patch"],
+      group: { commitMessageTopic: "{{{groupName}}} group" },
+      separateMinorPatch: false
     }
   ]
 }

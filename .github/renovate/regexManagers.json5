@@ -1,0 +1,33 @@
+{
+  regexManagers: [
+    {
+      description: "Process CRD dependencies",
+      fileMatch: ["cluster/.+\\.ya?ml$"],
+      matchStrings: [
+        // GitRepository and Flux Kustomization where 'Git release/tag' matches 'Helm' version
+        "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
+        // Kustomization where 'GitHub release artifact URL' matches 'Docker image' version
+        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)\/(?<currentValue>[^/]+)\/[^/]+\n"
+      ],
+      datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
+    },
+    {
+      description: "Process various other dependencies",
+      fileMatch: ["ansible/.+\\.ya?ml$", "cluster/.+\\.ya?ml$"],
+      matchStrings: [
+        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*=?))?\n .*: (?<currentValue>.*=?)"
+      ],
+      datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
+      versioningTemplate: "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    },
+    {
+      description: "Process raw GitHub URLs",
+      fileMatch: ["cluster/.+\\.ya?ml$"],
+      matchStrings: [
+        "https:\\/\\/raw.githubusercontent.com\\/(?<depName>[\\w\\d\\-_]+\\/[\\w\\d\\-_]+)\\/(?<currentValue>[\\w\\d\\.\\-_]+)\\/.*"
+      ],
+      datasourceTemplate: "github-releases",
+      versioningTemplate: "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ]
+}

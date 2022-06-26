@@ -1,40 +1,39 @@
 {
-  "packageRules": [
+  packageRules: [
     {
-      "description": "Auto merge container digests",
-      "matchDatasources": ["docker"],
-      "automerge": true,
-      "automergeType": "branch",
-      "requiredStatusChecks": null,
-      "matchUpdateTypes": ["digest"],
-      "matchPackagePattern": ["ghcr.io/k8s-at-home","ghcr.io/jr0dd"]
+      description: "Auto merge container digests",
+      matchDatasources: ["docker"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchUpdateTypes: ["digest"],
+      matchPackagePatterns: ["ghcr.io/k8s-at-home", "ghcr.io/jr0dd"]
     },
     {
-      "description": "Auto merge containers",
-      "matchDatasources": ["docker"],
-      "automerge": true,
-      "automergeType": "branch",
-      "requiredStatusChecks": null,
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackageNames": ["quay.io/minio/minio"]
+      description: "Auto merge containers",
+      matchDatasources: ["docker"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchUpdateTypes: ["minor", "patch"],
+      matchPackageNames: ["ghcr.io/jr0dd/puppeteer"]
     },
     {
-      "description": "Auto merge GitHub Actions",
-      "matchDatasources": ["github-tags"],
-      "automerge": true,
-      "automergeType": "branch",
-      "requiredStatusChecks": null,
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackageNames": ["lycheeverse/lychee-action", "renovatebot/github-action"]
+      description: "Auto merge GitHub Actions",
+      matchDatasources: ["github-tags"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchUpdateTypes: ["minor", "patch"]
     },
     {
-      "description": "Auto merge Helm charts",
-      "matchDatasources": ["helm"],
-      "automerge": true,
-      "automergeType": "branch",
-      "requiredStatusChecks": null,
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackageNames": ["grafana", "kube-prometheus-stack", "thanos"]
+      description: "Auto merge Helm charts",
+      matchDatasources: ["helm"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchUpdateTypes: ["minor", "patch"],
+      matchPackageNames: ["grafana", "kube-prometheus-stack", "thanos"]
     }
   ]
 }

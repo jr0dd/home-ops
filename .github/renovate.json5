@@ -1,90 +1,41 @@
 {
-  "extends": [
-    ":enableRenovate",
+  extends: [
     "config:base",
+    "docker:enableMajor",
     ":disableRateLimiting",
     ":dependencyDashboard",
     ":semanticCommits",
-    ":separatePatchReleases",
-    "docker:enableMajor",
     ":enablePreCommit",
+    ":automergeDigest",
+    ":automergeBranchPush",
     "github>jr0dd/home-ops//.github/renovate/autoMerge.json5",
     "github>jr0dd/home-ops//.github/renovate/commitMessage.json5",
+    "github>jr0dd/home-ops//.github/renovate/containerRegistry.json5",
     "github>jr0dd/home-ops//.github/renovate/groups.json5",
     "github>jr0dd/home-ops//.github/renovate/labels.json5",
-    "github>jr0dd/home-ops//.github/renovate/semanticCommits.json5"
+    "github>jr0dd/home-ops//.github/renovate/regexManagers.json5",
+    "github>jr0dd/home-ops//.github/renovate/semanticCommits.json5",
+    "github>jr0dd/home-ops//.github/renovate/versioning.json5"
   ],
-  "platform": "github",
-  "username": "wyoa-bot[bot]",
-  "repositories": ["jr0dd/home-ops"],
-  "onboarding": false,
-  "requireConfig": false,
-  "gitAuthor": "wyoa-bot <98073241+wyoa-bot[bot]@users.noreply.github.com>",
-  "timezone": "America/New_York",
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "suppressNotifications": ["prIgnoreNotification"],
-  "rebaseWhen": "conflicted",
-  // login to ghcr for private bot image
-  "hostRules": [
-    {
-      "hostType": "docker",
-      "matchHost": "ghcr.io/jr0dd",
-      "username": "jr0dd",
-      "password": "process.env.PAT"
-    }
-  ],
+  platform: "github",
+  username: "wyoa-bot[bot]",
+  repositories: ["jr0dd/home-ops"],
+  onboarding: false,
+  requireConfig: false,
+  gitAuthor: "wyoa-bot <98073241+wyoa-bot[bot]@users.noreply.github.com>",
+  timezone: "America/New_York",
+  dependencyDashboardTitle: "Renovate Dashboard 🤖",
+  suppressNotifications: ["prIgnoreNotification"],
+  commitBodyTable: true,
+  rebaseWhen: "conflicted",
   // set up renovate managers
-  "flux": {
-    "fileMatch": ["cluster/.+\\.ya?ml$"]
+  flux: {
+    fileMatch: ["cluster/.+\\.ya?ml$"]
   },
   "helm-values": {
-    "fileMatch": ["cluster/.+\\.ya?ml$"]
+    fileMatch: ["cluster/.+\\.ya?ml$"]
   },
-  "kubernetes": {
-    "fileMatch": [
-      "ansible/.+\\.ya?ml(\\.j2)?$",
-      "cluster/.+\\.ya?ml$"
-    ]
-  },
-  "regexManagers": [
-    {
-      "description": "Process CRD dependencies",
-      "fileMatch": ["cluster/.+\\.ya?ml$"],
-      "matchStrings": [
-        // GitRepository and Flux Kustomization where 'Git release/tag' matches 'Helm' version
-        "registryUrl=(?<registryUrl>\\S+) chart=(?<depName>\\S+)\n.*?(?<currentValue>[^-\\s]*)\n",
-        // Kustomization where 'GitHub release artifact URL' matches 'Docker image' version
-        "datasource=(?<datasource>\\S+) image=(?<depName>\\S+)\n.*?-\\s(.*?)\/(?<currentValue>[^/]+)\/[^/]+\n"
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}helm{{/if}}"
-    },
-    {
-      "description": "Process various other dependencies",
-      "fileMatch": [
-        "ansible/.+\\.ya?ml$",
-        "cluster/.+\\.ya?ml$"
-      ],
-      "matchStrings": [
-        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*=?))?\n .*: (?<currentValue>.*=?)"
-      ],
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
-    }
-  ],
-  "packageRules": [
-    // custom versioning
-    {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["quay.io/minio/minio"],
-      "versioning": "regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z(-(?<compatibility>.*))?$"
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": [
-        "ghcr.io/k8s-at-home/plex",
-        "ghcr.io/k8s-at-home/qbittorrent"
-      ],
-      "versioning": "loose"
-    }
-  ]
+  kubernetes: {
+    fileMatch: ["ansible/.+\\.ya?ml(\\.j2)?$", "cluster/.+\\.ya?ml$"]
+  }
 }
