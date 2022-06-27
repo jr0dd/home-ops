@@ -69,6 +69,9 @@ spec:
           enable_api: true
           enable_alertmanager_v2: true
           alertmanager_url: http://prometheus-alertmanager.monitoring:9093
+          storage:
+            s3:
+              bucketnames: loki-ruler
         compactor:
           working_directory: /var/loki/boltdb-shipper-compactor
           shared_store: s3
