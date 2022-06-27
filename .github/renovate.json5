@@ -11,7 +11,6 @@
     "github>jr0dd/home-ops//.github/renovate/autoMerge.json5",
     "github>jr0dd/home-ops//.github/renovate/commitMessage.json5",
     "github>jr0dd/home-ops//.github/renovate/groups.json5",
-    "github>jr0dd/home-ops//.github/renovate/hostRules.json5",
     "github>jr0dd/home-ops//.github/renovate/labels.json5",
     "github>jr0dd/home-ops//.github/renovate/regexManagers.json5",
     "github>jr0dd/home-ops//.github/renovate/semanticCommits.json5",
@@ -28,11 +27,13 @@
   suppressNotifications: ["prIgnoreNotification"],
   commitBodyTable: true,
   rebaseWhen: "conflicted",
+  // ignore images that flux image automation controls
+  ignoreDeps: ["ghcr.io/jr0dd/wyoa-bot"],
   // set up renovate managers
   flux: {
     fileMatch: ["cluster/.+\\.ya?ml$"]
   },
-  "helm-values": {
+  'helm-values': {
     fileMatch: ["cluster/.+\\.ya?ml$"]
   },
   kubernetes: {

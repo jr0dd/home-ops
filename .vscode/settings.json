@@ -3,7 +3,7 @@
   "ansible.ansibleLint.arguments": "-c .github/linters/.ansible-lint",
   "discord.enabled": true,
   "files.associations": {
-    "*.json5": "jsonc",
+    "*.json5": "json5",
     "**/ansible/**/*.yml": "ansible",
     "**/ansible/**/*.sops.yml": "yaml",
     "**/ansible/**/inventory/**/*.yml": "yaml",

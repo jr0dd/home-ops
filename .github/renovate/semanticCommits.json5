@@ -28,7 +28,6 @@
       semanticCommitType: "feat",
       semanticCommitScope: "helm"
     },
-
     {
       matchDatasources: ["helm"],
       matchUpdateTypes: ["patch"],
@@ -46,9 +45,8 @@
       semanticCommitType: "feat",
       semanticCommitScope: "ansible"
     },
-
     {
-      matchDatasource: ["galaxy", "galaxy-collection"],
+      matchDatasources: ["galaxy", "galaxy-collection"],
       matchUpdateTypes: ["patch"],
       semanticCommitType: "fix",
       semanticCommitScope: "ansible"

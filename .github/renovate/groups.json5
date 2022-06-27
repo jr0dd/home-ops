@@ -7,7 +7,7 @@
       matchDatasources: ["helm", "docker"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
       description: "Cilium image and chart",
@@ -16,15 +16,16 @@
       matchDatasources: ["helm", "docker"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
       description: "External Snapshotter image and CRDs",
       groupName: "External Snapshotter",
-      matchPackagePatterns: ["snapshot", "csi"],
+      matchPackagePatterns: ["snapshot", 'csi'],
       matchDatasources: ["docker", "github-tags"],
+      matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
       description: "KPS chart and CRDs",
@@ -33,7 +34,7 @@
       matchDatasources: ["helm"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
       description: "MinIO image & chart",
@@ -42,7 +43,7 @@
       matchDatasources: ["helm", "docker"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
       description: "MongoDB image, chart and CRDs",
@@ -51,7 +52,7 @@
       matchDatasources: ["helm", "docker"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
       description: "OpenEBS ZFS LocalPV chart and CRDs",
@@ -60,15 +61,16 @@
       matchDatasources: ["helm"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
       description: "Rook-Ceph image and chart",
       groupName: "Rook Ceph",
       matchPackagePatterns: ["rook.ceph"],
       matchDatasources: ["docker", "helm"],
+      matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
       description: "System Upgrade Controller image and CRDs",
@@ -77,10 +79,10 @@
       matchDatasources: ["docker"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: true
+      separateMinorPatch: false
     },
     {
-      description: "Thanos image and chart - versions do not match",
+      description: "Thanos image and chart",
       groupName: "Thanos",
       matchPackagePatterns: ["thanos"],
       matchDatasources: ["docker", "github-releases", "helm"],
@@ -89,7 +91,7 @@
       separateMinorPatch: false
     },
     {
-      description: "Vector image and chart - versions do not match",
+      description: "Vector image and chart",
       groupName: "Vector",
       matchPackagePatterns: ["vector"],
       matchDatasources: ["docker", "github-releases", "helm"],
