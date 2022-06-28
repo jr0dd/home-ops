@@ -36,9 +36,6 @@ spec:
       enabled: true
     ipam:
       mode: "kubernetes"
-    bpf:
-      masquerade: true
-      hostLegacyRouting: false
     loadBalancer:
       standalone: false
       acceleration: native
