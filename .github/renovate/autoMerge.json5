@@ -34,6 +34,14 @@
       requiredStatusChecks: null,
       matchUpdateTypes: ["minor", "patch"],
       matchPackageNames: ["grafana", "kube-prometheus-stack", "thanos"]
+    },
+    {
+      description: "Auto merge Pre-Commit Hooks",
+      matchManagers: ["pre-commit"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchUpdateTypes: ["minor", "patch"]
     }
   ]
 }

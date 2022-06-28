@@ -101,7 +101,7 @@
       matchUpdateTypes: ["patch"],
       semanticCommitType: "fix",
       semanticCommitScope: "pre-commit"
-    }
+    },
     {
       matchDatasources: ["terraform-provider"],
       matchUpdateTypes: ["major"],
