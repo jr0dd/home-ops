@@ -40,7 +40,7 @@ spec:
           type: vector
           address: 0.0.0.0:6010
           version: "2"
-        internal_metrics:
+        vector_metrics:
           type: internal_metrics
       transforms:
         kubernetes_logs_remap:
@@ -58,8 +58,8 @@ spec:
           endpoint: http://loki-gateway:80
           encoding:
             codec: json
-          # batch:
-          #   max_bytes: 2049000
+          batch:
+            max_bytes: 2049000
           out_of_order_action: accept
           remove_label_fields: true
           remove_timestamp: true
@@ -73,8 +73,8 @@ spec:
           endpoint: http://loki-gateway:80
           encoding:
             codec: json
-          # batch:
-          #   max_bytes: 2049000
+          batch:
+            max_bytes: 2049000
           out_of_order_action: accept
           remove_label_fields: true
           remove_timestamp: true
@@ -88,7 +88,7 @@ spec:
         prom_exporter:
           type: prometheus_exporter
           inputs:
-            - internal_metrics
+            - vector_metrics
           address: 0.0.0.0:9090
     service:
       enabled: true
@@ -97,18 +97,6 @@ spec:
         metallb.universe.tf/loadBalancerIPs: "${LB_VECTOR}"
     podMonitor:
       enabled: true
-    affinity:
-      podAntiAffinity:
-        preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                  - key: app.kubernetes.io/component
-                    operator: In
-                    values:
-                      - Stateless-Aggregator
-              topologyKey: kubernetes.io/hostname
   postRenderers:
     - kustomize:
         patchesJson6902:
