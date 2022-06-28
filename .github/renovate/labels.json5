@@ -17,24 +17,28 @@
       addLabels: ["renovate/container"]
     },
     {
-      matchDatasources: ["helm"],
-      addLabels: ["renovate/helm"]
-    },
-    {
       matchDatasources: ["galaxy", "galaxy-collection"],
       addLabels: ["renovate/ansible"]
     },
     {
-      matchDatasources: ["terraform-provider"],
-      addLabels: ["renovate/terraform"]
+      matchManagers: ["github-actions"],
+      addLabels: ["renovate/github-action"]
     },
     {
       matchDatasources: ["github-releases", "github-tags"],
       addLabels: ["renovate/github-release"]
     },
     {
-      matchManagers: ["github-actions"],
-      addLabels: ["renovate/github-action"]
-    }
+      matchDatasources: ["helm"],
+      addLabels: ["renovate/helm"]
+    },
+    {
+      matchManagers: ["pre-commit"],
+      addLabels: ["renovate/pre-commit"]
+    },
+    {
+      matchDatasources: ["terraform-provider"],
+      addLabels: ["renovate/terraform"]
+    },
   ]
 }

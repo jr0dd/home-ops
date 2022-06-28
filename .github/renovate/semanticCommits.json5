@@ -52,21 +52,21 @@
       semanticCommitScope: "ansible"
     },
     {
-      matchDatasources: ["terraform-provider"],
+      matchManagers: ["github-actions"],
       matchUpdateTypes: ["major"],
-      commitMessagePrefix: "feat(terraform)!: "
+      commitMessagePrefix: "feat(github-action)!: "
     },
     {
-      matchDatasources: ["terraform-provider"],
+      matchManagers: ["github-actions"],
       matchUpdateTypes: ["minor"],
       semanticCommitType: "feat",
-      semanticCommitScope: "terraform"
+      semanticCommitScope: "github-action"
     },
     {
-      matchDatasources: ["terraform-provider"],
+      matchManagers: ["github-actions"],
       matchUpdateTypes: ["patch"],
       semanticCommitType: "fix",
-      semanticCommitScope: "terraform"
+      semanticCommitScope: "github-action"
     },
     {
       matchDatasources: ["github-releases", "github-tags"],
@@ -86,21 +86,38 @@
       semanticCommitScope: "github-release"
     },
     {
-      matchManagers: ["github-actions"],
+      matchManagers: ["pre-commit"],
       matchUpdateTypes: ["major"],
-      commitMessagePrefix: "feat(github-action)!: "
+      commitMessagePrefix: "feat(pre-commit)!: "
     },
     {
-      matchManagers: ["github-actions"],
+      matchManagers: ["pre-commit"],
       matchUpdateTypes: ["minor"],
       semanticCommitType: "feat",
-      semanticCommitScope: "github-action"
+      semanticCommitScope: "pre-commit"
     },
     {
-      matchManagers: ["github-actions"],
+      matchManagers: ["pre-commit"],
       matchUpdateTypes: ["patch"],
       semanticCommitType: "fix",
-      semanticCommitScope: "github-action"
+      semanticCommitScope: "pre-commit"
+    }
+    {
+      matchDatasources: ["terraform-provider"],
+      matchUpdateTypes: ["major"],
+      commitMessagePrefix: "feat(terraform)!: "
+    },
+    {
+      matchDatasources: ["terraform-provider"],
+      matchUpdateTypes: ["minor"],
+      semanticCommitType: "feat",
+      semanticCommitScope: "terraform"
+    },
+    {
+      matchDatasources: ["terraform-provider"],
+      matchUpdateTypes: ["patch"],
+      semanticCommitType: "fix",
+      semanticCommitScope: "terraform"
     }
   ]
 }
