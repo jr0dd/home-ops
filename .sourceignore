@@ -1,9 +1,8 @@
 .github/
 .taskfiles/
 .vscode/
-ansible/
 hack/
-terraform/
+infrastructure/
 .gitattributes
 .gitignore
 .pre-commit-config.yaml

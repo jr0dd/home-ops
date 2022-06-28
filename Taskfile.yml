@@ -5,7 +5,7 @@ vars:
   PROJECT_DIR:
     sh: "git rev-parse --show-toplevel"
   CLUSTER_DIR: "{{.PROJECT_DIR}}/cluster"
-  ANSIBLE_DIR: "{{.PROJECT_DIR}}/ansible"
+  ANSIBLE_DIR: "{{.PROJECT_DIR}}/infrastructure/ansible"
   ANSIBLE_PLAYBOOK_DIR: "{{.ANSIBLE_DIR}}/playbooks"
   ANSIBLE_INVENTORY_DIR: "{{.ANSIBLE_DIR}}/inventory"
   K3S_PRIMARY_MASTER_NODE_USERNAME: "ubuntu"
@@ -13,7 +13,7 @@ vars:
   K3S_LB_ADDR: "10.10.0.10"
 
 env:
-  ANSIBLE_CONFIG: "{{.PROJECT_DIR}}/ansible/ansible.cfg"
+  ANSIBLE_CONFIG: "{{.ANSIBLE_DIR}}/ansible.cfg"
   KUBECONFIG: "{{.CLUSTER_DIR}}/kubeconfig"
 
 includes:

@@ -6,7 +6,6 @@ ignore: |
   .taskfiles/
   Taskfile.yml
   *.sops.*
-  gotk-components.yaml
 extends: default
 rules:
   truthy:
