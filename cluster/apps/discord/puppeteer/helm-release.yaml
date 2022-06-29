@@ -25,7 +25,7 @@ spec:
       nameOverride: *app
     image:
       repository: ghcr.io/jr0dd/puppeteer
-      tag: v15.1.1@sha256:42d1b1555268dfe22c6943965d876bbc302b40b5a9f1bcc445a9721f424a11b9
+      tag: v15.2.0@sha256:0e8b87dfa8be540aaa21f082014abb888b56b49d20f63b552f65469d9556ce5e
       pullPolicy: Always
     command:
       - node
