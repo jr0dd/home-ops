@@ -12,10 +12,6 @@
   tags:
     - network
 
-- include: power.yml
-  tags:
-    - power
-
 - include: cleanup.yml
   tags:
     - cleanup

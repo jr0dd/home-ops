@@ -21,7 +21,7 @@
     {
       description: "External Snapshotter image and CRDs",
       groupName: "External Snapshotter",
-      matchPackagePatterns: ["snapshot", 'csi'],
+      matchPackagePatterns: ["snapshot", "csi"],
       matchDatasources: ["docker", "github-tags"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
