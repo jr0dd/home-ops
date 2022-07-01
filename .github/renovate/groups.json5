@@ -3,7 +3,7 @@
     {
       description: "Cert-Manager chart & CRDs",
       groupName: "Cert-Manager",
-      matchPackagePatterns: ["cert.manager"],
+      matchPackagePatterns: ["cert-manager"],
       matchDatasources: ["helm", "docker"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
@@ -30,7 +30,7 @@
     {
       description: "KPS chart and CRDs",
       groupName: "Kube Prometheus Stack",
-      matchPackagePatterns: ["prometheus.stack"],
+      matchPackagePatterns: ["kube-prometheus-stack"],
       matchDatasources: ["helm"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
@@ -48,7 +48,7 @@
     {
       description: "MongoDB image, chart and CRDs",
       groupName: "MongoDB",
-      matchPackagePatterns: ["mongo", "community.operator"],
+      matchPackagePatterns: ["mongo", "community-operator"],
       matchDatasources: ["helm", "docker"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
@@ -57,7 +57,7 @@
     {
       description: "OpenEBS ZFS LocalPV chart and CRDs",
       groupName: "OpenEBS",
-      matchPackagePatterns: ["zfs.localpv"],
+      matchPackagePatterns: ["zfs-localpv"],
       matchDatasources: ["helm"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
@@ -75,7 +75,7 @@
     {
       description: "System Upgrade Controller image and CRDs",
       groupName: "System Upgrade Controller",
-      matchPackagePatterns: ["system.upgrade.controller"],
+      matchPackagePatterns: ["system-upgrade-controller"],
       matchDatasources: ["docker"],
       matchUpdateTypes: ["minor", "patch"],
       group: { commitMessageTopic: "{{{groupName}}} group" },
