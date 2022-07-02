@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - cert-manager
   - databases
+  - default
   - discord
   - home
   - kasten-io
