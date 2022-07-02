@@ -110,6 +110,9 @@ spec:
       enabled: true
       endpoints:
         - 10.10.0.10
+      service:
+        enabled: true
+        port: 2381
 
     kubeScheduler:
       enabled: false
