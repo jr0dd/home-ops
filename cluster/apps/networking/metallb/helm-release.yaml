@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: metallb
-  namespace: kube-system
+  namespace: networking
 spec:
   interval: 10m
   chart:
@@ -16,6 +16,7 @@ spec:
         namespace: flux-system
   dependsOn:
     - name: cilium
+      namespace: kube-system
   install:
     remediation:
       retries: 5
@@ -37,7 +38,7 @@ spec:
     prometheus:
       scrapeAnnotations: false
       metricsPort: 7472
-      serviceAccount: prometheus-prometheus
+      serviceAccount: kube-prometheus-stack-prometheus
       namespace: monitoring
       podMonitor:
         enabled: true
