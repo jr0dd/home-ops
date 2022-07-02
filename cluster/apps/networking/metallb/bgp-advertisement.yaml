@@ -8,4 +8,4 @@ spec:
   ipAddressPools:
     - mikrotik-pool
   peers:
-    - mikrotik
+    - mikrotik-bgp

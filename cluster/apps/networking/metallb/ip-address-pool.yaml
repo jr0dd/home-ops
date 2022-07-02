@@ -5,6 +5,5 @@ metadata:
   name: mikrotik-pool
   namespace: networking
 spec:
-  protocol: bgp
   addresses:
     - ${K8S_LB_CIDR}
