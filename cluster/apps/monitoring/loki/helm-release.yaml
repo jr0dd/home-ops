@@ -116,3 +116,5 @@ spec:
       # may add later
       selfMonitoring:
         enabled: false
+        grafanaAgent:
+          installOperator: false
