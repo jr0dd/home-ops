@@ -97,11 +97,8 @@ spec:
               name: *app
             patch:
               - op: remove
-                path: /spec/template/spec/containers/1/env
-                value: HTTP_PORT
+                path: /spec/template/spec/containers/1/env/2
               - op: remove
-                path: /spec/template/spec/containers/1/env
-                value: HTTP_PATH
+                path: /spec/template/spec/containers/1/env/1
               - op: remove
-                path: /spec/template/spec/containers/1/env
-                value: RUST_LOG
+                path: /spec/template/spec/containers/1/env/0
