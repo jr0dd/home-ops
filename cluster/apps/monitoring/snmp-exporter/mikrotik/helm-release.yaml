@@ -21,16 +21,16 @@ spec:
     remediation:
       retries: 5
   values:
-    fullnameOverride: snmp-exporter-mikrotik-rb3011
+    fullnameOverride: snmp-exporter-mikrotik
     image:
       repository: quay.io/prometheus/snmp-exporter
     extraArgs:
       - "--config.file=/config/snmp.yaml"
     extraConfigmapMounts:
-      - name: snmp-exporter
+      - name: snmp-exporter-mikrotik
         mountPath: /config/snmp.yaml
         subPath: snmp.yaml
-        configMap: snmp-exporter
+        configMap: snmp-exporter-mikrotik
         readOnly: true
         defaultMode: 420
     serviceMonitor:

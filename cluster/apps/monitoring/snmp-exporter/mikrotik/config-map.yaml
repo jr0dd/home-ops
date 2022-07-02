@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: snmp-exporter
+  name: snmp-exporter-mikrotik
   namespace: monitoring
 data:
   snmp.yaml: |
