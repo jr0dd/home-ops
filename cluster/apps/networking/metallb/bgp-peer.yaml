@@ -5,8 +5,8 @@ metadata:
   name: mikrotik-bgp
   namespace: networking
 spec:
-  peerAddress: "10.10.0.1"
+  peerAddress: 10.10.0.1
   peerASN: 64512
   myASN: 64512
-  holdTime: "180s"
-  keepaliveTime: "180s"
+  holdTime: 1m30s
+  keepaliveTime: 30s
