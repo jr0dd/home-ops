@@ -1,0 +1,10 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: mikrotik-pool
+  namespace: networking
+spec:
+  protocol: bgp
+  addresses:
+    - ${K8S_LB_CIDR}

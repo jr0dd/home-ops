@@ -1,0 +1,11 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: lb-advertisement
+  namespace: networking
+spec:
+  ipAddressPools:
+    - mikrotik-pool
+  peers:
+    - mikrotik

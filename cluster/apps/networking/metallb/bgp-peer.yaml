@@ -1,0 +1,12 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: BGPPeer
+metadata:
+  name: mikrotik-bgp
+  namespace: networking
+spec:
+  peerAddress: 10.10.0.1
+  peerASN: 64512
+  myASN: 64512
+  holdTime: "180s"
+  keepaliveTime: "180s"

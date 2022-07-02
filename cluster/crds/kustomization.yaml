@@ -4,6 +4,7 @@ resources:
   - cert-manager
   - external-snapshotter
   - kube-prometheus-stack
+  - metallb
   - mongodb-community-operator
   - openebs-zfs-localpv
   - system-upgrade-controller

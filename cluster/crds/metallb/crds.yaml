@@ -1,0 +1,15 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: metallb-crds
+  namespace: flux-system
+spec:
+  interval: 10m
+  retryInterval: 1m
+  path: ./cluster/crds/metallb
+  prune: false
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: home-ops
