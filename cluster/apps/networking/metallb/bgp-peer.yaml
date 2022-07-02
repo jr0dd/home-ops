@@ -5,7 +5,7 @@ metadata:
   name: mikrotik-bgp
   namespace: networking
 spec:
-  peerAddress: 10.10.0.1
+  peerAddress: ${GATEWAY_IP}
   peerASN: 64512
   myASN: 64512
   holdTime: 1m30s
