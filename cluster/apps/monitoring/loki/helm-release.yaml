@@ -52,6 +52,7 @@ spec:
           path_prefix: /var/loki
           replication_factor: 1
           storage:
+            filesystem: null
             s3:
               endpoint: minio.minio:9000
               insecure: true
@@ -102,12 +103,17 @@ spec:
     write:
       replicas: 1
       persistence:
-        size: 10Gi
+        size: 5Gi
         storageClass: openebs-zfspv-ssd
     read:
       replicas: 1
       persistence:
-        size: 10Gi
+        size: 5Gi
         storageClass: openebs-zfspv-ssd
-    serviceMonitor:
-      enabled: true
+    monitoring:
+      serviceMonitor:
+        enabled: true
+      selfMonitoring:
+        enabled: true
+        grafanaAgent:
+          installOperator: false

@@ -27,18 +27,19 @@ spec:
       tag: v0.26.0
     query:
       enabled: true
-      replicaLabels:
-        - replica
       dnsDiscovery:
-        sidecarsService: prometheus-thanos-discovery
+        sidecarsService: kube-prometheus-stack-thanos-discovery
         sidecarsNamespace: monitoring
       ingress:
         enabled: true
-        hostname: "thanos.${SECRET_DOMAIN}"
+        hostname: &host "thanos.${SECRET_DOMAIN}"
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
         tls: true
+        extraTls:
+          - hosts:
+              - *host
     existingObjstoreSecret: thanos-objstore
     queryFrontend:
       enabled: false
@@ -53,7 +54,30 @@ spec:
       persistence:
         enabled: false
     ruler:
-      enabled: false
+      enabled: true
+      dnsDiscovery:
+        enabled: true
+      alertmanagers:
+        - http://kube-prometheus-stack-alertmanager.monitoring:9093
+      clusterName: home-ops
+      extraFlags:
+        - "--web.prefix-header=X-Forwarded-Prefix"
+      config: |-
+        groups:
+          - name: "PrometheusWatcher"
+            rules:
+              - alert: "PrometheusDown"
+                expr: absent(up{job="kube-prometheus-stack-prometheus"})
+      ingress:
+        enabled: true
+        hostname: &host "thanos-ruler.${SECRET_DOMAIN}"
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        tls: true
+        extraTls:
+          - hosts:
+              - *host
     metrics:
       enabled: true
       serviceMonitor:

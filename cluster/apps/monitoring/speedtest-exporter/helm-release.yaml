@@ -24,12 +24,8 @@ spec:
     image:
       repository: ghcr.io/miguelndecarvalho/speedtest-exporter
       tag: v3.5.1
-    controller:
-      enabled: true
-      replicas: 1
-      strategy: RollingUpdate
     env:
-      TZ: "America/New_York"
+      TZ: "${TZ}"
     metrics:
       enabled: true
       prometheusRule:

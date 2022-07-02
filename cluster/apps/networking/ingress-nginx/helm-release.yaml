@@ -28,7 +28,7 @@ spec:
       replicaCount: 1
       extraEnvs:
         - name: TZ
-          value: America/New_York
+          value: "${TZ}"
       service:
         annotations:
           metallb.universe.tf/loadBalancerIPs: "${LB_NGINX}"

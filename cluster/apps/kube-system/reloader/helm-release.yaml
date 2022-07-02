@@ -21,9 +21,12 @@ spec:
     remediation:
       retries: 5
   values:
-    nameOverride: reloader
-    fullnameOverride: reloader
     reloader:
       podMonitor:
         enabled: true
-        namespace: kube-system
+    resources:
+      requests:
+        cpu: 15m
+        memory: 184M
+      limits:
+        memory: 184M

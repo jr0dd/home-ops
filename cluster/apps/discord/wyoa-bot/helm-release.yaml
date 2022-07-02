@@ -30,12 +30,8 @@ spec:
       pullPolicy: Always
     imagePullSecrets:
       - name: ghcr-io-creds
-    controller:
-      enabled: true
-      replicas: 1
-      strategy: RollingUpdate
     env:
-      TZ: "America/New_York"
+      TZ: "${TZ}"
       NODE_ENV: "testing"
       SOPS_AGE_KEY: "${SOPS_AGE_KEY}"
     service:

@@ -21,6 +21,9 @@ spec:
     remediation:
       retries: 5
   values:
+    fullnameOverride: snmp-exporter-mikrotik-rb3011
+    image:
+      repository: quay.io/prometheus/snmp-exporter
     extraArgs:
       - "--config.file=/config/snmp.yaml"
     extraConfigmapMounts:
@@ -33,12 +36,17 @@ spec:
     serviceMonitor:
       enabled: true
       namespace: monitoring
-      selector:
-        prometheus: prometheus
       params:
-        - name: rb3011
+        - name: mikrotik-rb3011
           target: 10.10.0.1
           module:
             - mikrotik
+        - name: mikrotik-crs226
+          target: 10.10.0.2
+          module:
+            - mikrotik
       path: /snmp
-      scrapeTimeout: 30s
+      scrapeTimeout: 10s
+      relabelings:
+        - sourceLabels: [__param_target]
+          targetLabel: instance

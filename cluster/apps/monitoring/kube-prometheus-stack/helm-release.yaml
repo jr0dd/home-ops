@@ -21,11 +21,7 @@ spec:
     remediation:
       retries: 5
   values:
-    fullnameOverride: prometheus
-    nameOverride: prometheus
     alertmanager:
-      enabled: true
-      logLevel: error
       config:
         global:
           resolve_timeout: 5m
@@ -40,25 +36,29 @@ spec:
               - to: "${SECRET_EMAIL}"
                 send_resolved: false
         route:
-          group_by: ["alertname", "job"]
+          group_by:
+            - "alertname"
+            - "job"
           group_wait: 30s
           group_interval: 5m
           repeat_interval: 6h
-          receiver: email
+          receiver: "email"
           routes:
             - receiver: "null"
               matchers:
-                - alertname =~ "InfoInhibitor|Watchdog"
+                - "alertname =~ InfoInhibitor|Watchdog"
             - receiver: "email"
               matchers:
-                - severity = "critical"
+                - "severity = critical"
               continue: true
         inhibit_rules:
           - source_matchers:
-              - severity = "critical"
+              - "severity = critical"
             target_matchers:
-              - severity = "warning"
-            equal: ["alertname", "namespace"]
+              - "severity = warning"
+            equal:
+              - "alertname"
+              - "namespace"
       ingress:
         enabled: true
         ingressClassName: nginx
@@ -82,44 +82,98 @@ spec:
               storageClassName: openebs-zfspv-ssd
               resources:
                 requests:
-                  storage: 1Gi
-    prometheus:
+                  storage: 256Mi
+
+    grafana:
+      enabled: false
+      forceDeployDashboards: true
+
+    kubeApiServer:
       enabled: true
-      logLevel: error
-      ingress:
-        enabled: true
-        ingressClassName: nginx
-        annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
-        hosts:
-          - &host "prometheus.${SECRET_DOMAIN}"
-        paths:
-          - /
-        pathType: Prefix
-        tls:
-          - secretName: prometheus-tls
-            hosts:
-              - *host
+
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          - action: replace
+            sourceLabels:
+              - node
+            targetLabel: instance
+
+    kubeControllerManager:
+      enabled: false
+
+    coreDns:
+      enabled: true
+
+    kubeEtcd:
+      enabled: true
+      endpoints:
+        - 10.10.0.10
+
+    kubeScheduler:
+      enabled: false
+
+    kubeProxy:
+      enabled: false
+
+    kubeStateMetrics:
+      enabled: true
+
+    kube-state-metrics:
+      metricLabelsAllowlist:
+        - "persistentvolumeclaims=[*]"
+      prometheus:
+        monitor:
+          enabled: true
+          relabelings:
+            - action: replace
+              regex: (.*)
+              replacement: $1
+              sourceLabels:
+                - __meta_kubernetes_pod_node_name
+              targetLabel: kubernetes_node
+
+    nodeExporter:
+      enabled: true
+
+    prometheus-node-exporter:
+      extraArgs:
+        - --collector.textfile.directory=/var/lib/node_exporter/textfile_collector
+        - --collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)
+        - --collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$
+      extraHostVolumeMounts:
+        - name: textfiles
+          hostPath: /var/lib/node_exporter/textfile_collector
+          mountPath: /var/lib/node_exporter/textfile_collector
+          readOnly: false
+          mountPropagation: HostToContainer
+
+    prometheusOperator:
+      prometheusConfigReloader:
+        resources: {}
+      thanosImage:
+        repository: quay.io/thanos/thanos
+        tag: v0.26.0
+
+    prometheus:
       thanosService:
         enabled: true
       thanosServiceMonitor:
         enabled: true
         relabelings:
           - action: replace
-            replacement: "thanos-sidecar"
+            replacement: thanos-sidecar
             sourceLabels:
               - __job__
             targetLabel: job
       prometheusSpec:
-        replicas: 1
-        replicaExternalLabelName: "replica"
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         retention: 6h
         enableAdminAPI: true
-        walCompression: true
         storageSpec:
           volumeClaimTemplate:
             spec:
@@ -140,66 +194,17 @@ spec:
             memory: 2000Mi
           limits:
             memory: 8000Mi
-    prometheusOperator:
-      enabled: true
-      prometheusConfigReloader:
-        resources: {}
-      admissionWebhooks:
-        certManager:
-          enabled: true
-    coreDns:
-      enabled: true
-    kubeApiServer:
-      enabled: true
-    kubelet:
-      enabled: true
-      serviceMonitor:
-        metricRelabelings:
-          - action: replace
-            sourceLabels:
-              - node
-            targetLabel: instance
-    nodeExporter:
-      enabled: true
-      serviceMonitor:
-        relabelings:
-          - action: replace
-            regex: (.*)
-            replacement: $1
-            sourceLabels:
-              - __meta_kubernetes_pod_node_name
-            targetLabel: kubernetes_node
-    prometheus-node-exporter:
-      fullnameOverride: node-exporter
-      extraArgs:
-        - '--collector.textfile.directory=/var/lib/node_exporter/textfile_collector'
-        - '--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|var/lib/docker/.+|var/lib/kubelet/.+)($|/)'
-        - '--collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|rpc_pipefs|securityfs|selinuxfs|squashfs|sysfs|tracefs)$'
-      extraHostVolumeMounts:
-        - name: textfiles
-          hostPath: /var/lib/node_exporter/textfile_collector
-          mountPath: /var/lib/node_exporter/textfile_collector
-          readOnly: false
-          mountPropagation: HostToContainer
-    kubeStateMetrics:
-      enabled: true
-    kube-state-metrics:
-      fullnameOverride: kube-state-metrics
-    kubeEtcd:
-      enabled: true
-      endpoints:
-        - 10.10.0.10
-      service:
+      ingress:
         enabled: true
-        port: 2381
-    kubeControllerManager:
-      enabled: false
-    kubeDns:
-      enabled: false
-    kubeProxy:
-      enabled: false
-    kubeScheduler:
-      enabled: false
-    grafana:
-      enabled: false
-      forceDeployDashboards: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+        hosts:
+          - &host "prometheus.${SECRET_DOMAIN}"
+        paths:
+          - /
+        pathType: Prefix
+        tls:
+          - secretName: prometheus-tls
+            hosts:
+              - *host

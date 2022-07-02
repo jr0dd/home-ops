@@ -22,9 +22,7 @@ spec:
       retries: 5
   values:
     fullnameOverride: blackbox-exporter
-    nameOverride: blackbox-exporter
     allowIcmp: true
-    secretConfig: false
     config:
       modules:
         http_2xx:

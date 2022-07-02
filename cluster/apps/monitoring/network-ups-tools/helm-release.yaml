@@ -24,12 +24,8 @@ spec:
     image:
       repository: ghcr.io/k8s-at-home/network-ups-tools
       tag: v2.7.4-2479-g86a32237@sha256:cbd5d4cc12454121ee9cd3587053c4de313575ee367ffcad07b2fc92a1e8be8c
-    controller:
-      enabled: true
-      replicas: 1
-      strategy: RollingUpdate
     env:
-      TZ: "America/New_York"
+      TZ: "${TZ}"
     service:
       main:
         enabled: true
@@ -86,8 +82,8 @@ spec:
         interval: 15s
         scrapeTimeout: 10s
       prometheusRule:
-        enabled: true
+        enabled: false
       exporter:
         image:
-          repository: hon95/prometheus-nut-exporter
-          tag: 1.1.1
+          repository: ghcr.io/druggeri/nut_exporter
+          tag: 2.4.1@sha256:7b7b3f035ba064ae69cf571cfbb8632a9b783f9b739e12244ddcce34b3606d43

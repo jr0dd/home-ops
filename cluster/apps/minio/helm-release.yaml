@@ -60,7 +60,7 @@ spec:
             - *host-console
     users: []
     environment:
-      TZ: "America/New_York"
+      TZ: "${TZ}"
       MINIO_UPDATE: "off"
       MINIO_PROMETHEUS_JOB_ID: "minio"
       MINIO_PROMETHEUS_URL: "http://thanos-query.monitoring:9090"

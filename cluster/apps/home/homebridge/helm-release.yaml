@@ -25,7 +25,7 @@ spec:
       repository: ghcr.io/oznu/homebridge
       tag: latest@sha256:f36c618ada44490c5a25c15f65f9a42fee6a5b2e408ede121f6edce67eedb6a9
     env:
-      TZ: "America/New_York"
+      TZ: "${TZ}"
       ENABLE_AVAHI: "1"
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet

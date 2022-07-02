@@ -22,8 +22,6 @@ spec:
       retries: 5
   values:
     replicas: 1
-    deploymentStrategy:
-      type: RollingUpdate
     admin:
       existingSecret: grafana
       userKey: adminUser
@@ -34,7 +32,7 @@ spec:
       auth.basic:
         disable_login_form: false
       date_formats:
-        default_timezone: "America/New_York"
+        default_timezone: "${TZ}"
       explore:
         enabled: true
       grafana_net:
@@ -186,38 +184,6 @@ spec:
         logs:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/logs.json
           datasource: Loki
-
-      loki:
-        chunks:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-chunks.json
-          datasource: Prometheus
-        deletion:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-deletion.json
-          datasource: Prometheus
-        logs:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-logs.json
-          datasource: Prometheus
-        recording:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-mixin-recording-rules.json
-          datasource: Prometheus
-        operational:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-operational.json
-          datasource: Prometheus
-        reads:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-reads.json
-          datasource: Prometheus
-        reads-resources:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-reads-resources.json
-          datasource: Prometheus
-        retention:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-retention.json
-          datasource: Prometheus
-        writes:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-writes.json
-          datasource: Prometheus
-        writes-resources:
-          url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/loki/dashboards/loki-writes-resources.json
-          datasource: Prometheus
 
       media:
         lidarr:

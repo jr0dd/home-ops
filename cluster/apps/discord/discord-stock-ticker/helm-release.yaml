@@ -30,12 +30,8 @@ spec:
       postStart:
         exec:
           command: ["bash", "/config/payload.sh"]
-    controller:
-      enabled: true
-      replicas: 1
-      strategy: RollingUpdate
     env:
-      TZ: "America/New_York"
+      TZ: "${TZ}"
     envFrom:
       - secretRef:
           name: discord-tokens

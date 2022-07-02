@@ -38,12 +38,8 @@ spec:
       - '--disable-site-isolation-trials'
       - '--disable-web-security'
       - '--remote-debugging-port=4000'
-    controller:
-      enabled: true
-      replicas: 1
-      strategy: RollingUpdate
     env:
-      TZ: "America/New_York"
+      TZ: "${TZ}"
     service:
       main:
         enabled: true
