@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: blocky
+  name: &app blocky
   namespace: networking
 spec:
   interval: 10m
@@ -21,6 +21,8 @@ spec:
     remediation:
       retries: 5
   values:
+    controller:
+      strategy: RollingUpdate
     image:
       repository: ghcr.io/0xerr0r/blocky
       tag: v0.19
@@ -28,22 +30,20 @@ spec:
       TZ: "${TZ}"
     service:
       main:
-        enabled: true
         type: LoadBalancer
         annotations:
-          metallb.universe.tf/allow-shared-ip: blocky
+          metallb.universe.tf/allow-shared-ip: *app
           metallb.universe.tf/loadBalancerIPs: "${LB_BLOCKY}"
         externalTrafficPolicy: Local
         ports:
           http:
-            enabled: true
             port: 4000
             protocol: HTTP
       dns:
         enabled: true
         type: LoadBalancer
         annotations:
-          metallb.universe.tf/allow-shared-ip: blocky
+          metallb.universe.tf/allow-shared-ip: *app
           metallb.universe.tf/loadBalancerIPs: "${LB_BLOCKY}"
         externalTrafficPolicy: Local
         ports:

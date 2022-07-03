@@ -23,6 +23,8 @@ spec:
   values:
     global:
       nameOverride: *app
+    controller:
+      strategy: RollingUpdate
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
       tag: v3.10.0@sha256:e8a61323b2bb2ef974b56b851bb85b9c8eb2fcb3f12c36df78664e5767833ba8
@@ -37,7 +39,6 @@ spec:
           name: discord-tokens
     service:
       main:
-        enabled: true
         ports:
           http:
             port: 8080
@@ -45,9 +46,10 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: payload-config
+        name: &config payload-config
+        defaultMode: 493
     podAnnotations:
-      configmap.reloader.stakater.com/reload: "payload-config"
+      configmap.reloader.stakater.com/reload: *config
     resources:
       requests:
         cpu: 10m

@@ -2,14 +2,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: homebridge
+  name: &app homebridge
   namespace: home
 spec:
   interval: 10m
   chart:
     spec:
-      chart: homebridge
-      version: 5.1.2
+      chart: kah-common-chart
+      version: 1.1.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -21,24 +21,46 @@ spec:
     remediation:
       retries: 5
   values:
+    global:
+      nameOverride: *app
+    controller:
+      strategy: RollingUpdate
     image:
       repository: ghcr.io/oznu/homebridge
       tag: 2022-07-02
     env:
       TZ: "${TZ}"
       ENABLE_AVAHI: "1"
+    service:
+      main:
+        ports:
+          http:
+            port: &port 8581
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
     persistence:
       config:
         enabled: true
         existingClaim: homebridge-config
-    service:
-      main:
+      startup-sh:
         enabled: true
-        ports:
-          http:
-            port: &port 8581
+        type: configMap
+        name: &config homebridge-startup-sh
+        mountPath: /homebridge/startup.sh
+        subPath: startup.sh
+        defaultMode: 493
+    configmap:
+      config:
+        enabled: true
+        nameOverride: startup-sh
+        data:
+          startup.sh: |-
+            #!/bin/sh
+            npm install --save homebridge-dummy@latest
+            npm install --save homebridge-myq@latest
+            npm install --save homebridge-nest@latest
+            npm install --save homebridge-orbit-irrigation@latest
+            npm install --save homebridge-tplink-smarthome@latest
     ingress:
       main:
         enabled: true
@@ -63,21 +85,11 @@ spec:
             path: /login
             port: *port
           initialDelaySeconds: 30
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: *config
     resources:
       requests:
         cpu: 10m
         memory: 100Mi
       limits:
         memory: 750Mi
-    configmap:
-      scripts:
-        enabled: true
-        data:
-          startup.sh: |
-            #!/bin/sh
-
-            npm install --save homebridge-dummy@latest
-            npm install --save homebridge-myq@latest
-            npm install --save homebridge-nest@latest
-            npm install --save homebridge-orbit-irrigation@latest
-            npm install --save homebridge-tplink-smarthome@latest

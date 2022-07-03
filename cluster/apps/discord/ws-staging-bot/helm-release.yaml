@@ -24,6 +24,8 @@ spec:
   values:
     global:
       nameOverride: *app
+    controller:
+      strategy: RollingUpdate
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
       tag: v0.7.10 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
@@ -36,7 +38,6 @@ spec:
       SOPS_AGE_KEY: "${SOPS_AGE_KEY}"
     service:
       main:
-        enabled: true
         ports:
           http:
             port: 3000

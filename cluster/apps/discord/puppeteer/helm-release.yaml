@@ -23,6 +23,8 @@ spec:
   values:
     global:
       nameOverride: *app
+    controller:
+      strategy: RollingUpdate
     image:
       repository: ghcr.io/jr0dd/puppeteer
       tag: v15.3.0@sha256:ad91a9c6831a7e776f90e85905c46ce0bda17d9809d11c490d55d20309d9e271
@@ -42,7 +44,6 @@ spec:
       TZ: "${TZ}"
     service:
       main:
-        enabled: true
         ports:
           http:
             port: &port 4000

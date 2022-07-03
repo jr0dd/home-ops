@@ -53,7 +53,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: *app
+        name: &config network-ups-tools-config
         mountPath: /etc/nut
         defaultMode: 256
       ups:
@@ -90,6 +90,8 @@ spec:
             POLLFREQ 15
             POLLFREQALERT 5
             HOSTSYNC 15
+    podAnnotations:
+      configmap.reloader.stakater.com/reload: *config
     additionalContainers:
       exporter:
         name: nut-exporter
