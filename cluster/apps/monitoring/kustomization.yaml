@@ -7,9 +7,9 @@ resources:
   - blackbox-exporter
   - grafana
   - kube-prometheus-stack
-  # - loki
+  - loki
   - network-ups-tools
   - snmp-exporter
   - speedtest-exporter
   - thanos
-  # - vector
+  - vector
