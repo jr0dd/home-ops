@@ -164,12 +164,12 @@ spec:
         enabled: true
       thanosServiceMonitor:
         enabled: true
-        relabelings:
-          - action: replace
-            replacement: thanos-sidecar
-            sourceLabels:
-              - __job__
-            targetLabel: job
+        # relabelings:
+        #   - action: replace
+        #     replacement: thanos-sidecar
+        #     sourceLabels:
+        #       - __job__
+        #     targetLabel: job
       prometheusSpec:
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
