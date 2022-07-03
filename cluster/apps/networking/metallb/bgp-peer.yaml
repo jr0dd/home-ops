@@ -2,7 +2,7 @@
 apiVersion: metallb.io/v1beta2
 kind: BGPPeer
 metadata:
-  name: mikrotik-bgp
+  name: mikrotik
   namespace: networking
 spec:
   peerAddress: ${GATEWAY_IP}
