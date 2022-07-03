@@ -7,7 +7,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: prometheus
+      app.kubernetes.io/name: network-ups-tools
   endpoints:
     - port: metrics
       scheme: http
