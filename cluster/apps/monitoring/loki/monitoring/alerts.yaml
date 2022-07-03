@@ -13,7 +13,7 @@ spec:
             description: Loki has disappeared from Prometheus service discovery.
             summary: Loki is down.
           expr: |
-            absent(up{job=~".*loki.*"} == 1)
+            absent(up{cluster=~".*loki.*"} == 1)
           for: 5m
           labels:
             severity: critical
