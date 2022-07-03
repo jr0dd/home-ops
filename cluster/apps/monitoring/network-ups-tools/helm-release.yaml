@@ -8,8 +8,8 @@ spec:
   interval: 10m
   chart:
     spec:
-      chart: *app
-      version: 6.3.3
+      chart: kah-common-chart
+      version: 1.1.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home
@@ -21,6 +21,8 @@ spec:
     remediation:
       retries: 5
   values:
+    global:
+      nameOverride: *app
     image:
       repository: ghcr.io/k8s-at-home/network-ups-tools
       tag: v2.7.4-2479-g86a32237@sha256:cbd5d4cc12454121ee9cd3587053c4de313575ee367ffcad07b2fc92a1e8be8c
@@ -35,11 +37,16 @@ spec:
         externalTrafficPolicy: Local
         ports:
           http:
-            enabled: false
-          server:
-            enabled: true
             port: 3493
+      metrics:
+        enabled: true
+        ports:
+          metrics:
+            enabled: true
+            port: 9199
             protocol: TCP
+    securityContext:
+      privileged: true
     persistence:
       ups:
         enabled: true
@@ -47,58 +54,73 @@ spec:
         hostPath: /dev/bus/usb/003/003
         mountPath: /dev/bus/usb/001/001
         readOnly: false
-    securityContext:
-      privileged: true
-    config:
-      mode: values
-      files:
-        nut.conf: |
+      nut.conf:
+        enabled: true
+        type: configMap
+        mountPath: /etc/nut.conf
+        subPath: nut.conf
+        readOnly: true
+      upsd.conf:
+        enabled: true
+        type: configMap
+        mountPath: /etc/upsd.conf
+        subPath: upsd.conf
+        readOnly: true
+      upsd.users:
+        enabled: true
+        type: configMap
+        mountPath: /etc/upsd.users
+        subPath: upsd.users
+        readOnly: true
+      ups.conf:
+        enabled: true
+        type: configMap
+        mountPath: /etc/ups.conf
+        subPath: ups.conf
+        readOnly: true
+      upsmon.conf:
+        enabled: true
+        type: configMap
+        mountPath: /etc/upsmon.conf
+        subPath: upsmon.conf
+        readOnly: true
+    configmap:
+      nut.conf:
+        enabled: true
+        data: |
           MODE=netserver
-        upsd.conf: |
+      upsd.conf:
+        enabled: true
+        data: |
           MAXAGE 20
           LISTEN 0.0.0.0
-        upsd.users: |
+      upsd.users:
+        enabled: true
+        data: |
           [upsmon]
             password  = "${NUT_PASSWORD}"
             actions = SET
             instcmds = ALL
             upsmon primary
-        ups.conf: |
+      ups.conf:
+        enabled: true
+        data: |
           [cyber-power]
             driver = usbhid-ups
             port = auto
             desc = "CyberPower CP1350PFCLCD"
             pollinterval = 10
-        upsmon.conf: |
+      upsmon.conf:
+        enabled: true
+        data: |
           MONITOR cyber-power@localhost:3493 1 upsmon "${NUT_PASSWORD}" primary
           SHUTDOWNCMD "/sbin/shutdown -h +0"
           POWERDOWNFLAG /etc/killpower
           POLLFREQ 15
           POLLFREQALERT 5
           HOSTSYNC 15
-    metrics:
-      enabled: true
-      serviceMonitor:
-        interval: 15s
-        scrapeTimeout: 10s
-      prometheusRule:
-        enabled: false
+    additionalContainers:
       exporter:
         image:
           repository: ghcr.io/druggeri/nut_exporter
           tag: 2.4.1@sha256:7b7b3f035ba064ae69cf571cfbb8632a9b783f9b739e12244ddcce34b3606d43
-        env:
-          port: 9199
-  postRenderers:
-    - kustomize:
-        patchesJson6902:
-          - target:
-              kind: Deployment
-              name: *app
-            patch:
-              - op: remove
-                path: /spec/template/spec/containers/1/env/2
-              - op: remove
-                path: /spec/template/spec/containers/1/env/1
-              - op: remove
-                path: /spec/template/spec/containers/1/env/0

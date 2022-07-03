@@ -1,0 +1,22 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: network-ups-tools
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  endpoints:
+    - port: metrics
+      scheme: http
+      interval: 15s
+      scrapeTimeout: 10s
+      path: /ups_metrics
+      params:
+        target:
+          - localhost:3493
+      relabelings:
+        - sourceLabels: [__param_target]
+          targetLabel: target
