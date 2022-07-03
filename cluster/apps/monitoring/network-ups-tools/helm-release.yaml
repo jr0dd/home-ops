@@ -23,6 +23,8 @@ spec:
   values:
     global:
       nameOverride: *app
+    controller:
+      strategy: RollingUpdate
     image:
       repository: ghcr.io/k8s-at-home/network-ups-tools
       tag: v2.7.4-2479-g86a32237@sha256:cbd5d4cc12454121ee9cd3587053c4de313575ee367ffcad07b2fc92a1e8be8c
@@ -30,7 +32,6 @@ spec:
       TZ: "${TZ}"
     service:
       main:
-        enabled: true
         type: LoadBalancer
         annotations:
           metallb.universe.tf/loadBalancerIPs: "${LB_NUT}"
@@ -38,6 +39,7 @@ spec:
         ports:
           http:
             port: 3493
+            protocol: TCP
       metrics:
         enabled: true
         ports:
@@ -48,20 +50,20 @@ spec:
     securityContext:
       privileged: true
     persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: *app
+        mountPath: /etc/nut
+        defaultMode: 256
       ups:
         enabled: true
         type: hostPath
         hostPath: /dev/bus/usb/003/003
         mountPath: /dev/bus/usb/001/001
         readOnly: false
-      nut-config:
-        enabled: true
-        type: configMap
-        name: *app
-        mountPath: /etc/nut
-        defaultMode: 256
     configmap:
-      nut-config:
+      config:
         enabled: true
         data:
           nut.conf: |-

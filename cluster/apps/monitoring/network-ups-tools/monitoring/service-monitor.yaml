@@ -8,6 +8,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: network-ups-tools
+      app.kubernetes.io/instance: network-ups-tools
   endpoints:
     - port: metrics
       scheme: http
