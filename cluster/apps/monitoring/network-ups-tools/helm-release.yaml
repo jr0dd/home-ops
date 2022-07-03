@@ -54,73 +54,43 @@ spec:
         hostPath: /dev/bus/usb/003/003
         mountPath: /dev/bus/usb/001/001
         readOnly: false
-      nut.conf:
+      nut-config:
         enabled: true
         type: configMap
-        mountPath: /etc/nut.conf
-        subPath: nut.conf
-        readOnly: true
-      upsd.conf:
-        enabled: true
-        type: configMap
-        mountPath: /etc/upsd.conf
-        subPath: upsd.conf
-        readOnly: true
-      upsd.users:
-        enabled: true
-        type: configMap
-        mountPath: /etc/upsd.users
-        subPath: upsd.users
-        readOnly: true
-      ups.conf:
-        enabled: true
-        type: configMap
-        mountPath: /etc/ups.conf
-        subPath: ups.conf
-        readOnly: true
-      upsmon.conf:
-        enabled: true
-        type: configMap
-        mountPath: /etc/upsmon.conf
-        subPath: upsmon.conf
-        readOnly: true
+        name: *app
+        mountPath: /etc/nut
+        defaultMode: 256
     configmap:
-      nut.conf:
+      nut-config:
         enabled: true
-        data: |
-          MODE=netserver
-      upsd.conf:
-        enabled: true
-        data: |
-          MAXAGE 20
-          LISTEN 0.0.0.0
-      upsd.users:
-        enabled: true
-        data: |
-          [upsmon]
-            password  = "${NUT_PASSWORD}"
-            actions = SET
-            instcmds = ALL
-            upsmon primary
-      ups.conf:
-        enabled: true
-        data: |
-          [cyber-power]
-            driver = usbhid-ups
-            port = auto
-            desc = "CyberPower CP1350PFCLCD"
-            pollinterval = 10
-      upsmon.conf:
-        enabled: true
-        data: |
-          MONITOR cyber-power@localhost:3493 1 upsmon "${NUT_PASSWORD}" primary
-          SHUTDOWNCMD "/sbin/shutdown -h +0"
-          POWERDOWNFLAG /etc/killpower
-          POLLFREQ 15
-          POLLFREQALERT 5
-          HOSTSYNC 15
+        data:
+          nut.conf: |-
+            MODE=netserver
+          upsd.conf: |-
+            MAXAGE 20
+            LISTEN 0.0.0.0
+          upsd.users: |-
+            [upsmon]
+              password  = "${NUT_PASSWORD}"
+              actions = SET
+              instcmds = ALL
+              upsmon primary
+          ups.conf: |-
+            [cyber-power]
+              driver = usbhid-ups
+              port = auto
+              desc = "CyberPower CP1350PFCLCD"
+              pollinterval = 10
+          upsmon.conf: |-
+            MONITOR cyber-power@localhost:3493 1 upsmon "${NUT_PASSWORD}" primary
+            SHUTDOWNCMD "/sbin/shutdown -h +0"
+            POWERDOWNFLAG /etc/killpower
+            POLLFREQ 15
+            POLLFREQALERT 5
+            HOSTSYNC 15
     additionalContainers:
       exporter:
+        name: nut-exporter
         image:
           repository: ghcr.io/druggeri/nut_exporter
           tag: 2.4.1@sha256:7b7b3f035ba064ae69cf571cfbb8632a9b783f9b739e12244ddcce34b3606d43
