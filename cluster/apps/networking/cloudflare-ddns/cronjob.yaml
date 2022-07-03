@@ -23,7 +23,7 @@ spec:
                 - secretRef:
                     name: cloudflare-creds
               command:
-                - "/bin/sh"
+                - "/bin/bash"
                 - &scriptPath "/app/cloudflare-ddns.sh"
               volumeMounts:
                 - name: *app
