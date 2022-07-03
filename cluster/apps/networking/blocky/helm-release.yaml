@@ -30,15 +30,12 @@ spec:
       TZ: "${TZ}"
     service:
       main:
+        enabled: true
         type: LoadBalancer
         annotations:
           metallb.universe.tf/allow-shared-ip: *app
           metallb.universe.tf/loadBalancerIPs: "${LB_BLOCKY}"
         externalTrafficPolicy: Local
-        ports:
-          http:
-            port: 4000
-            protocol: HTTP
       dns:
         enabled: true
         type: LoadBalancer
