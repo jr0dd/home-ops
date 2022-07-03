@@ -94,7 +94,5 @@ spec:
       configmap.reloader.stakater.com/reload: *config
     additionalContainers:
       exporter:
-        name: nut-exporter
-        image:
-          repository: ghcr.io/druggeri/nut_exporter
-          tag: 2.4.1@sha256:7b7b3f035ba064ae69cf571cfbb8632a9b783f9b739e12244ddcce34b3606d43
+        name: exporter
+        image: ghcr.io/druggeri/nut_exporter:2.4.1

@@ -23,8 +23,6 @@ spec:
   values:
     global:
       nameOverride: *app
-    controller:
-      strategy: RollingUpdate
     image:
       repository: ghcr.io/oznu/homebridge
       tag: 2022-07-02
