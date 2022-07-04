@@ -21,7 +21,6 @@ spec:
     remediation:
       retries: 5
   values:
-    replicas: 1
     admin:
       existingSecret: grafana
       userKey: adminUser
@@ -82,14 +81,15 @@ spec:
     sidecar:
       dashboards:
         enabled: true
+        label: grafana_dashboard
+        labelValue: "1"
         searchNamespace: ALL
         folderAnnotation: grafana_folder
         provider:
           allowUiUpdates: true
           disableDelete: false
       datasources:
-        enabled: true
-        searchNamespace: ALL
+        enabled: false
     datasources:
       datasources.yaml:
         apiVersion: 1
