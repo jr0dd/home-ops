@@ -12,11 +12,11 @@ data:
       timeout: 30s
       auth:
         username: prometheus
-        password: "${SNMP_PASSWORD}"
+        password: ${SNMP_PASSWORD}
         auth_protocol: SHA
         priv_protocol: AES
         security_level: authPriv
-        priv_password: "${SNMP_PRIV_PASSWORD}"
+        priv_password: ${SNMP_PRIV_PASSWORD}
       walk:
       - 1.3.6.1.2.1.2
       - 1.3.6.1.2.1.25
