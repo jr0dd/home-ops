@@ -211,3 +211,16 @@ spec:
           - secretName: prometheus-tls
             hosts:
               - *host
+  postRenderers:
+    - kustomize:
+        patchesJson6902:
+          - target:
+              kind: Service
+              name: kube-prometheus-stack-thanos-discovery
+            patch:
+              - op: replace
+                path: /metadata/labels/app
+                value: kube-prometheus-stack-thanos-sidecar
+              - op: replace
+                path: /metadata/name
+                value: kube-prometheus-stack-thanos-sidecar
