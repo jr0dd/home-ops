@@ -15,7 +15,7 @@
       description: "Process various other dependencies",
       fileMatch: ["ansible/.+\\.ya?ml$", "cluster/.+\\.ya?ml$"],
       matchStrings: [
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.+:\\s?[\"]?(?<currentValue>.+)[\"]?\n"
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?\n.+:\\s?[\"]?(?<currentValue>.+)\\b"
       ],
       datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
       versioningTemplate: "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
