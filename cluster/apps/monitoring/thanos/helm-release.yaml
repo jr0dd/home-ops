@@ -28,7 +28,7 @@ spec:
     query:
       enabled: true
       dnsDiscovery:
-        sidecarsService: kube-prometheus-stack-thanos-discovery
+        sidecarsService: kube-prometheus-stack-thanos-sidecar
         sidecarsNamespace: monitoring
       ingress:
         enabled: true
