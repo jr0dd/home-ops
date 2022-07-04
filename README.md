@@ -32,7 +32,7 @@ This is home to my mono repo for my Kubernetes cluster and home infrastructure. 
 
 My personal GitHub app WYOA-bot runs a self-hosted instance of [Renovate](https://github.com/renovatebot/renovate), every 2 hours, that handles the bulk of updating resources. For my personal dev projects, that I need/want deployed immediately, I use [Flux Image Update Automation](https://fluxcd.io/docs/guides/image-update/)
 
-## :computer:&nbsp; Infrastructure
+## :chains:&nbsp; Infrastructure
 
 Feel free to poke around in my [infrastructure](./infrastructure/) directory for ideas. This is still a WIP as I'm waiting for newer [Mikrotik](https://mikrotik.com/) equipment to revamp my network. I plan on creating some Ansible playbooks for this soon. Most things deployed here are with [Ansible](https://www.ansible.com/). Cloudflare is provisioned using [Terraform](https://www.terraform.io/).
 
