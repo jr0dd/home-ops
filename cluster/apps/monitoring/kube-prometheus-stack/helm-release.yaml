@@ -157,7 +157,7 @@ spec:
         resources: {}
       thanosImage:
         repository: quay.io/thanos/thanos
-        tag: v0.26.0
+        tag: v0.27.0
 
     prometheus:
       thanosService:
@@ -187,7 +187,7 @@ spec:
                 requests:
                   storage: 10Gi
         thanos:
-          image: quay.io/thanos/thanos:v0.26.0
+          image: quay.io/thanos/thanos:v0.27.0
           objectStorageConfig:
             name: thanos-objstore
             key: objstore.yml
