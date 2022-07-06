@@ -38,7 +38,8 @@ spec:
       ingressClassName: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
-        nginx.ingress.kubernetes.io/proxy-body-size: 250m
+        # nginx.ingress.kubernetes.io/proxy-body-size: 250m
+        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
       path: /
       hosts:
         - &host-api "s3.${SECRET_DOMAIN}"
@@ -51,6 +52,7 @@ spec:
       ingressClassName: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
+        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
       path: /
       hosts:
         - &host-console "minio.${SECRET_DOMAIN}"
