@@ -9,3 +9,4 @@ resources:
   - flux-addons.yaml
   - flux-config.yaml
   - flux-repositories.yaml
+  - metallb.yaml
