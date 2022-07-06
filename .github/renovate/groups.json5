@@ -37,15 +37,6 @@
       separateMinorPatch: false
     },
     {
-      description: "MetalLB chart & CRDs",
-      groupName: "MetalLB",
-      matchPackagePatterns: ["metallb"],
-      matchDatasources: ["helm", "github-tags"],
-      matchUpdateTypes: ["minor", "patch"],
-      group: { commitMessageTopic: "{{{groupName}}} group" },
-      separateMinorPatch: false
-    },
-    {
       description: "MinIO image & chart",
       groupName: "MinIO",
       matchPackagePatterns: ["minio"],

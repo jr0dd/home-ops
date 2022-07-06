@@ -37,4 +37,4 @@ spec:
           repository: docker.io/frrouting/frr
           tag: v8.2.2
     crds:
-      enabled: false
+      enabled: true
