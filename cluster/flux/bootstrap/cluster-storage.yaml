@@ -11,7 +11,7 @@ spec:
     - name: cluster-crds
   path: ./cluster/apps/openebs
   prune: false
-  wait: true
+  wait: false
   sourceRef:
     kind: GitRepository
     name: home-ops
