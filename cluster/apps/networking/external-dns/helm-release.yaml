@@ -40,8 +40,8 @@ spec:
     domainFilters:
       - "${SECRET_DOMAIN}"
     extraArgs:
-      - "--cloudflare-proxied"
-      - "--annotation-filter=external-dns/is-public=true"
+      - --cloudflare-proxied
+      - --annotation-filter=external-dns/is-public in (true)
     serviceMonitor:
       enabled: true
     resources:

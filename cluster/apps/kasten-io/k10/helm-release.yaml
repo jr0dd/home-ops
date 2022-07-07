@@ -36,6 +36,7 @@ spec:
     ingress:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
+        nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
       create: true
       class: nginx
       host: &host "k10.${SECRET_DOMAIN}"

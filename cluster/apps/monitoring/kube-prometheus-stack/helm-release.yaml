@@ -64,6 +64,7 @@ spec:
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         hosts:
           - &host "alertmanager.${SECRET_DOMAIN}"
         paths:
@@ -88,9 +89,6 @@ spec:
       enabled: false
       forceDeployDashboards: true
 
-    kubeApiServer:
-      enabled: true
-
     kubelet:
       enabled: true
       serviceMonitor:
@@ -100,11 +98,13 @@ spec:
               - node
             targetLabel: instance
 
-    kubeControllerManager:
-      enabled: false
-
-    coreDns:
+    kubeApiServer:
       enabled: true
+
+    kubeControllerManager:
+      enabled: true
+      endpoints:
+        - 10.10.0.10
 
     kubeEtcd:
       enabled: true
@@ -115,14 +115,18 @@ spec:
         port: 2381
 
     kubeScheduler:
-      enabled: false
+      enabled: true
+      endpoints:
+        - 10.10.0.10
+
+    coreDns:
+      enabled: true
 
     kubeProxy:
       enabled: false
 
     kubeStateMetrics:
       enabled: true
-
     kube-state-metrics:
       metricLabelsAllowlist:
         - "persistentvolumeclaims=[*]"
@@ -139,7 +143,6 @@ spec:
 
     nodeExporter:
       enabled: true
-
     prometheus-node-exporter:
       extraArgs:
         - --collector.textfile.directory=/var/lib/node_exporter/textfile_collector
@@ -164,13 +167,10 @@ spec:
         enabled: true
       thanosServiceMonitor:
         enabled: true
-        # relabelings:
-        #   - action: replace
-        #     replacement: thanos-sidecar
-        #     sourceLabels:
-        #       - __job__
-        #     targetLabel: job
       prometheusSpec:
+        replicaExternalLabelName: __replica__
+        externalLabels:
+          cluster: home-ops
         ruleSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
         podMonitorSelectorNilUsesHelmValues: false
@@ -202,6 +202,7 @@ spec:
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
+          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         hosts:
           - &host "prometheus.${SECRET_DOMAIN}"
         paths:
