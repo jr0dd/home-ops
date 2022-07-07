@@ -28,6 +28,7 @@ k3s_server:
   disable-network-policy: true
   disable-cloud-controller: true
   disable-kube-proxy: true
+  disable-helm-controller: true
 
   write-kubeconfig-mode: "644"
   etcd-expose-metrics: true
