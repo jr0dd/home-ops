@@ -32,7 +32,7 @@ spec:
       prometheusRule:
         enabled: true
       frr:
-        enabled: true
+        enabled: disabled
         image:
           repository: docker.io/frrouting/frr
           tag: v8.2.2
