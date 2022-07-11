@@ -6,5 +6,4 @@ resources:
   - flux.yaml
   - home-ops.yaml
   - kube-prometheus-stack.yaml
-  - mongodb-community-operator.yaml
   - openebs-zfs-localpv.yaml
