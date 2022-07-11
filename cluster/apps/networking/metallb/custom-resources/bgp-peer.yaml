@@ -7,5 +7,6 @@ metadata:
 spec:
   peerAddress: ${GATEWAY_IP}
   peerASN: 64512
+  peerPort: 179
   myASN: 64512
   holdTime: 1m30s

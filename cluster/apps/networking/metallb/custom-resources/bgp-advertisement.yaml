@@ -5,6 +5,7 @@ metadata:
   name: bgp-lb
   namespace: networking
 spec:
+  aggregationLength: 32
   ipAddressPools:
     - bgp-pool
   peers:

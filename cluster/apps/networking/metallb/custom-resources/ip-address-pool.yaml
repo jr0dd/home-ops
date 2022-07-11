@@ -7,3 +7,4 @@ metadata:
 spec:
   addresses:
     - ${K8S_LB_CIDR}
+  autoAssign: true
