@@ -6,3 +6,4 @@ resources:
   - kube-prometheus-stack
   - openebs-zfs-localpv
   - system-upgrade-controller
+  - velero

@@ -20,3 +20,4 @@ resources:
   - prometheus-community-charts.yaml
   - stakater-charts.yaml
   - vector-charts.yaml
+  - vmware-tanzu-charts.yaml

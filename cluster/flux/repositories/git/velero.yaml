@@ -1,0 +1,17 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: velero
+  namespace: flux-system
+spec:
+  interval: 10m
+  url: https://github.com/vmware-tanzu/helm-charts.git
+  ref:
+    # renovate: registryUrl=https://vmware-tanzu.github.io/helm-charts chart=velero
+    tag: velero-2.30.1
+  ignore: |
+    # exclude all
+    /*
+    # include crd directory
+    !/charts/velero/crds
