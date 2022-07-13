@@ -44,7 +44,10 @@ spec:
           prefix: zfs
           namespace: openebs
           provider: aws
-          restApiTimeout: 90s
+          region: minio
+          s3ForcePathStyle: true
+          s3Url: http://minio.minio:9000
+          publicUrl: https://s3.${SECRET_DOMAIN}
     credentials:
       name: minio-creds
       secretContents:
@@ -66,12 +69,6 @@ spec:
             - home
             - media
     initContainers:
-      - name: velero-plugin-for-csi
-        image: velero/velero-plugin-for-csi:v0.3.0
-        imagePullPolicy: IfNotPresent
-        volumeMounts:
-          - mountPath: /target
-            name: plugins
       - name: velero-plugin-for-aws
         image: velero/velero-plugin-for-aws:v1.5.0
         imagePullPolicy: IfNotPresent
@@ -79,7 +76,7 @@ spec:
           - mountPath: /target
             name: plugins
       - name: velero-plugin-for-openebs
-        image: openebs/velero-plugin:3.2.0
+        image: ghcr.io/openebs/velero-plugin:3.3.0
         imagePullPolicy: IfNotPresent
         volumeMounts:
           - mountPath: /target
