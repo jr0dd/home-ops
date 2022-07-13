@@ -23,7 +23,6 @@ spec:
   values:
     backupsEnabled: true
     snapshotsEnabled: true
-    deployRestic: true
     configuration:
       provider: aws
       backupStorageLocation:
