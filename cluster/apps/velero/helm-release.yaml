@@ -49,7 +49,7 @@ spec:
       name: minio-creds
       secretContents:
         cloud: |
-          [minio]
+          [default]
           aws_access_key_id=${MINIO_ACCESS_KEY}
           aws_secret_access_key=${MINIO_SECRET_KEY}
     schedules:
