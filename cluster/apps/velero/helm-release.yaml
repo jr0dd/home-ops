@@ -21,6 +21,7 @@ spec:
     remediation:
       retries: 5
   values:
+    upgradeCRDs: false
     backupsEnabled: true
     snapshotsEnabled: true
     configuration:
