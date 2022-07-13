@@ -21,9 +21,6 @@ spec:
     remediation:
       retries: 5
   values:
-    image:
-      repository: velero/velero
-      tag: v1.9.0
     upgradeCRDs: false
     backupsEnabled: true
     snapshotsEnabled: true
@@ -35,6 +32,7 @@ spec:
         bucket: pvc-backups
         default: true
         config:
+          region: minio
           s3ForcePathStyle: true
           s3Url: http://minio.minio:9000
           publicUrl: https://s3.${SECRET_DOMAIN}
@@ -48,11 +46,12 @@ spec:
           provider: aws
           restApiTimeout: 90s
     credentials:
+      name: minio-creds
       secretContents:
         cloud: |
           [minio]
           aws_access_key_id=${MINIO_ACCESS_KEY}
-          aws_secret_access_key=${MINIO_SECRET_KET}
+          aws_secret_access_key=${MINIO_SECRET_KEY}
     schedules:
       daily:
         schedule: "0 5 * * *"
