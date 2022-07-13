@@ -33,6 +33,7 @@ spec:
         default: true
         config:
           region: minio
+          profile: minio
           s3ForcePathStyle: true
           s3Url: http://minio.minio:9000
           publicUrl: https://s3.${SECRET_DOMAIN}
@@ -44,6 +45,7 @@ spec:
           prefix: zfs
           namespace: openebs
           provider: aws
+          profile: minio
           region: minio
           s3ForcePathStyle: true
           s3Url: http://minio.minio:9000
@@ -52,7 +54,7 @@ spec:
       name: minio-creds
       secretContents:
         cloud: |
-          [default]
+          [minio]
           aws_access_key_id=${MINIO_ACCESS_KEY}
           aws_secret_access_key=${MINIO_SECRET_KEY}
     schedules:
