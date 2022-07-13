@@ -28,6 +28,7 @@ spec:
     backupsEnabled: true
     snapshotsEnabled: true
     configuration:
+      features: EnableCSI
       provider: aws
       backupStorageLocation:
         name: minio
