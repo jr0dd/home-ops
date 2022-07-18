@@ -238,9 +238,9 @@ spec:
           datasource: Prometheus
 
       power:
-        # Ref: https://grafana.com/grafana/dashboards/14371
+        # Ref: https://grafana.com/grafana/dashboards/15406
         nut:
-          gnetId: 14371
+          gnetId: 15406
           revision: 1
           datasource: Prometheus
 
