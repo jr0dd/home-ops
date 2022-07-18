@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: loki-simple-scalable
-      version: 1.7.1
+      version: 1.7.5
       sourceRef:
         kind: HelmRepository
         name: grafana
@@ -112,9 +112,15 @@ spec:
         size: 5Gi
         storageClass: openebs-zfspv-ssd
     monitoring:
+      dashboards:
+        enabled: true
+      rules:
+        enabled: true
+        alerting: true
+      alerts:
+       enabled: true
       serviceMonitor:
         enabled: true
-      # may add later
       selfMonitoring:
         enabled: false
         grafanaAgent:
