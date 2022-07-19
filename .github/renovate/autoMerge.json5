@@ -6,7 +6,7 @@
       automerge: true,
       automergeType: "branch",
       requiredStatusChecks: null,
-      matchUpdateTypes: ["digest"],
+      matchUpdateTypes: ["minor", "patch", "digest"],
       matchPackagePatterns: ["ghcr.io/k8s-at-home", "ghcr.io/jr0dd"]
     },
     {
@@ -33,7 +33,7 @@
       automergeType: "branch",
       requiredStatusChecks: null,
       matchUpdateTypes: ["minor", "patch"],
-      matchPackageNames: ["grafana", "kube-prometheus-stack", "thanos"]
+      matchPackageNames: ["grafana", "kube-prometheus-stack", "thanos", "postgresql"]
     },
     {
       description: "Auto merge Pre-Commit Hooks",
