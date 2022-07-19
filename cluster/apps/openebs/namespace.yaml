@@ -5,4 +5,3 @@ metadata:
   name: openebs
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
-    k10.kasten.io/ignorebackuppolicy: "true"

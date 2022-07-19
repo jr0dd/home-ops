@@ -6,7 +6,6 @@ resources:
   - default
   - discord
   - home
-  # - kasten-io
   - kube-system
   - media
   - minio
