@@ -88,6 +88,7 @@ spec:
         provider:
           allowUiUpdates: true
           disableDelete: false
+        logLevel: INFO
       datasources:
         enabled: false
     datasources:
