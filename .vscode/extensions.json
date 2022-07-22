@@ -7,6 +7,7 @@
     "redhat.ansible",
     "signageos.signageos-vscode-sops",
     "usernamehw.errorlens",
-    "wholroyd.jinja"
+    "wholroyd.jinja",
+    "standard.vscode-standard"
   ]
 }

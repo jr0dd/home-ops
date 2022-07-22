@@ -19,5 +19,10 @@
     "Kubernetes": "cluster/*.yaml"
   },
   "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active"
+  "editor.guides.bracketPairs": "active",
+  "standard.enable": true,
+  "standard.engine": "standard",
+  "standard.usePackageJson": true,
+  "standard.workingDirectories": ["./scripts"],
+  "standard.autoFixOnSave": true
 }
