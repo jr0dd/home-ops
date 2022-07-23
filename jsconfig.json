@@ -6,11 +6,11 @@
     "module": "NodeNext",
     "resolveJsonModule": true,
     "strict": true,
-    "rootDir": "./scripts",
+    "rootDir": "./gluctl",
     "baseUrl": ".",
     "paths": {
-      "lib": ["./scripts/lib"]
+      "lib": ["./gluctl/lib"]
     }
   },
-  "include": ["./scripts/**/*"]
+  "exclude": ["node_modules", "**/node_modules/*"]
 }
