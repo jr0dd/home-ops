@@ -23,6 +23,6 @@
   "standard.enable": true,
   "standard.engine": "standard",
   "standard.usePackageJson": true,
-  "standard.workingDirectories": ["./scripts"],
+  "standard.workingDirectories": ["./gluctl"],
   "standard.autoFixOnSave": true
 }

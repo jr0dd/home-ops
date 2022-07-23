@@ -24,6 +24,7 @@ terraform.tfstate*
 kubeconfig
 # Other
 report.html
+renovate.log
 # Node
 node_modules
 package-lock.json
