@@ -76,7 +76,7 @@ spec:
       config:
         enabled: true
         type: secret
-        name: *app
+        name: minio-config
         subPath: repository.config
         mountPath: /config/repository.config
         readOnly: true
