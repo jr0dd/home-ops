@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: minio
-      version: 4.0.7
+      version: 4.0.8
       sourceRef:
         kind: HelmRepository
         name: minio
@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: quay.io/minio/minio
-      tag: RELEASE.2022-07-26T00-53-03Z
+      tag: RELEASE.2022-07-29T19-40-48Z
     mode: standalone
     ignoreChartChecksums: true
     rootUser: "${MINIO_ROOT_USER}"
