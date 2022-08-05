@@ -28,7 +28,7 @@
   commitBodyTable: true,
   rebaseWhen: "conflicted",
   // ignore images that flux image automation controls
-  ignoreDeps: ["ghcr.io/jr0dd/wyoa-bot"],
+  // ignoreDeps: ["ghcr.io/jr0dd/wyoa-bot"],
   // set up renovate managers
   flux: {
     fileMatch: ["cluster/.+\\.ya?ml$"]
