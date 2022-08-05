@@ -27,8 +27,15 @@
   suppressNotifications: ["prIgnoreNotification"],
   commitBodyTable: true,
   rebaseWhen: "conflicted",
-  // ignore images that flux image automation controls
-  // ignoreDeps: ["ghcr.io/jr0dd/wyoa-bot"],
+  // login to ghcr for private bot image
+  hostRules: [
+    {
+      hostType: "docker",
+      matchHost: "ghcr.io/jr0dd",
+      username: "jr0dd",
+      password: "process.env.PAT"
+    }
+  ],
   // set up renovate managers
   flux: {
     fileMatch: ["cluster/.+\\.ya?ml$"]
