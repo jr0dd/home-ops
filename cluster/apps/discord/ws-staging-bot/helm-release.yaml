@@ -58,6 +58,10 @@ spec:
           - secretName: ws-staging-tls
             hosts:
               - *host
+    probes:
+      liveness:
+        enabled: true
+        initialDelaySeconds: 30
     resources:
       requests:
         cpu: 10m
