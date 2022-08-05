@@ -2,8 +2,9 @@
   hostRules: [
     {
       hostType: "docker",
-      matchHost: "ghcr.io",
+      matchHost: "ghcr.io/jr0dd",
       username: "jr0dd",
-      password: "process.env.PAT"
+      password: "process.env.GITHUB_TOKEN"
     }
+  ]
 }

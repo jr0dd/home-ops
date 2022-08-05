@@ -25,6 +25,7 @@ env:
   LOG_LEVEL: debug
   DRY_RUN: false
   RENOVATE_CONFIG_FILE: .github/renovate.json5
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   renovate:
