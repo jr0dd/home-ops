@@ -17,7 +17,7 @@ spec:
     - name: puppeteer
   install:
     remediation:
-      retries: 5
+      retries: 10
   upgrade:
     remediation:
       retries: 5
