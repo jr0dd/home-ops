@@ -36,9 +36,9 @@ spec:
       - '--disable-gpu'
       - '--disable-software-rasterizer'
       - '--no-zygote'
-      - '--disable-features=IsolateOrigins,site-per-process'
-      - '--disable-site-isolation-trials'
-      - '--disable-web-security'
+      # - '--disable-features=IsolateOrigins,site-per-process'
+      # - '--disable-site-isolation-trials'
+      # - '--disable-web-security'
       - '--remote-debugging-port=4000'
     env:
       TZ: "${TZ}"
