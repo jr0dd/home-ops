@@ -25,7 +25,7 @@ spec:
       strategy: RollingUpdate
     image:
       repository: ghcr.io/k8s-at-home/plex-pass
-      tag: v1.28.1.6018-c1f308c6a@sha256:77fecb1863251ed6fcf22848446aff3e1602cd7bfb19bd5385321c5f4dc92629
+      tag: v1.28.1.6041-738907df3@sha256:268da4411a7688456f3b37c8f57d521253c149758c4c9efc8c0e4285a1ba8566
     env:
       TZ: "${TZ}"
     podSecurityContext:
