@@ -27,7 +27,7 @@ spec:
       strategy: RollingUpdate
     image:
       repository: ghcr.io/jr0dd/puppeteer
-      tag: v16.1.0@sha256:c92961f4c60e588344bf7d1a87292dbe81e9bc3032767add648aecaf007954b0
+      tag: v16.1.0@sha256:d5be2ae84ab0fdbadb84dafee511b32886084537a46c504ae5131938fdfa5722
       pullPolicy: Always
     command:
       - node
