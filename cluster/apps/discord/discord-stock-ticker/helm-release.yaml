@@ -27,7 +27,7 @@ spec:
       strategy: RollingUpdate
     image:
       repository: ghcr.io/jr0dd/discord-stock-ticker
-      tag: v3.10.0@sha256:29c043a2d090f16d2d778d0da42195ff374f344a5908661ffee3bd435385a042
+      tag: v3.10.0@sha256:ecc92a5cfaf43a474b5cd8d0083e3e1a0429225074fde0e0838d51b3fbe066fe
     lifecycle:
       postStart:
         exec:
