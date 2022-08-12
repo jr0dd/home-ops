@@ -29,21 +29,6 @@ spec:
       repository: ghcr.io/jr0dd/puppeteer
       tag: v16.1.0@sha256:c92961f4c60e588344bf7d1a87292dbe81e9bc3032767add648aecaf007954b0
       pullPolicy: Always
-    command:
-      - node
-      - server.js
-    args:
-      - '--disable-gpu'
-      - '--disable-software-rasterizer'
-      - '--no-zygote'
-      - '--disable-web-security'
-      - '--disable-features=IsolateOrigins'
-      - '--disable-site-isolation-trials'
-      - '--remote-debugging-port=4000'
-      # testing
-      - '--single-process'
-      - '--use-gl=eg'
-      - '--disable-audio-output'
     env:
       TZ: "${TZ}"
     service:
