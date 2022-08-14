@@ -23,7 +23,7 @@ spec:
             summary: Blackbox probe failed.
           expr: |
             probe_success == 0
-          for: 0m
+          for: 1m
           labels:
             severity: critical
         - alert: BlackboxSlowProbe
