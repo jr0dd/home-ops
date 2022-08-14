@@ -35,7 +35,7 @@ spec:
       main:
         ports:
           http:
-            port: &port 4000
+            port: &port 9222
     persistence:
       config:
         enabled: false
