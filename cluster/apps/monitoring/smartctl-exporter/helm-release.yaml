@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: smartctl-exporter
+  namespace: monitoring
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: prometheus-smartctl-exporter
+      version: 0.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 5
+  upgrade:
+    remediation:
+      retries: 5
+  values:
+    fullnameOverride: smartctl-exporter
+    config:
+      devices:
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY5R6K
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN370G
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKMJNWG
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHHKTBK
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY3PTK
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN0Y1G
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXUGPK
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY658K
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXZU0K
+        - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHPA2YG
+        - /dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E2924
+        - /dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E25B9
+    serviceMonitor:
+      enabled: true
+    prometheusRules:
+      enabled: true

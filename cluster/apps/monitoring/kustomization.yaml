@@ -9,6 +9,7 @@ resources:
   - kube-prometheus-stack
   - loki
   - network-ups-tools
+  # - smartctl-exporter
   - snmp-exporter
   - speedtest-exporter
   - thanos
