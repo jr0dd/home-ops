@@ -44,8 +44,3 @@
   when: zfs_monitoring.zed_alerts
   tags:
     - zed
-
-- include: metrics.yml
-  when: prometheus_metrics
-  tags:
-    - metrics
