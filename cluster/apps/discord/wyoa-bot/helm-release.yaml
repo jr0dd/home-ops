@@ -28,7 +28,7 @@ spec:
       strategy: RollingUpdate
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
-      tag: v0.8.68 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
+      tag: v0.8.69 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
     imagePullSecrets:
       - name: ghcr-io-creds
