@@ -2,17 +2,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: qbittorrent
+  name: &app qbittorrent
   namespace: media
 spec:
   interval: 10m
   chart:
     spec:
-      chart: qbittorrent
-      version: 13.5.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
   install:
     remediation:
@@ -22,20 +22,17 @@ spec:
       retries: 5
   values:
     image:
-      repository: ghcr.io/k8s-at-home/qbittorrent
-      tag: v4.4.3.1@sha256:5ee37a3b5510c17e10d66cb8a4aeb95644f61f7af653cfd223e7100265bd839a
-    settings:
-      automaticPortSetup: true
+      repository: ghcr.io/onedr0p/qbittorrent
+      tag: 4.4.3.1@sha256:3900157743dbe4130fec2bfd07269b0d0c11cfd671c1a83965cda47bd5cec9fa
     env:
       TZ: "${TZ}"
-    podSecurityContext:
-      supplementalGroups:
-        - 1042
+      QBITTORRENT__PORT: &port 80
+      QBITTORRENT__BT_PORT: &port-bt 50413
     service:
       main:
         ports:
           http:
-            port: 8080
+            port: *port
       bittorrent:
         enabled: true
         type: LoadBalancer
@@ -45,9 +42,12 @@ spec:
         ports:
           bittorrent:
             enabled: true
-            port: 50413
+            port: *port-bt
             protocol: TCP
-            targetPort: 50413
+            targetPort: *port-bt
+    podSecurityContext:
+      supplementalGroups:
+        - 1042
     persistence:
       config:
         enabled: true

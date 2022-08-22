@@ -7,7 +7,7 @@
       automergeType: "branch",
       requiredStatusChecks: null,
       matchUpdateTypes: ["minor", "patch", "digest"],
-      matchPackagePatterns: ["ghcr.io/k8s-at-home", "ghcr.io/jr0dd"]
+      matchPackagePatterns: ["ghcr.io/onedr0p", "ghcr.io/jr0dd"]
     },
     {
       description: "Auto merge containers",

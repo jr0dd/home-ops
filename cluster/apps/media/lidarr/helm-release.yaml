@@ -2,17 +2,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: lidarr
+  name: &app lidarr
   namespace: media
 spec:
   interval: 10m
   chart:
     spec:
-      chart: lidarr
-      version: 14.2.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
   install:
     remediation:
@@ -22,10 +22,18 @@ spec:
       retries: 5
   values:
     image:
-      repository: ghcr.io/k8s-at-home/lidarr
-      tag: v1.1.0.2600@sha256:8fd7903dfbc265318743e9f5a67ea38316d2124c5a94d5d9cbf5c806395a55a5
+      repository: ghcr.io/onedr0p/lidarr-develop
+      tag: 1.1.0.2649@sha256:41ffae1283e1dcdc2dfd23591bf6fd3dd735c9348630a5daac56fc969dd21ebb
     env:
       TZ: "${TZ}"
+      LIDARR__INSTANCE_NAME: Lidarr
+      LIDARR__PORT: &port 80
+      LIDARR__LOG_LEVEL: info
+    service:
+      main:
+        ports:
+          http:
+            port: *port
     podSecurityContext:
       supplementalGroups:
         - 1042
@@ -58,18 +66,6 @@ spec:
           - secretName: lidarr-tls
             hosts:
               - *host
-    metrics:
-      enabled: true
-      prometheusRule:
-        enabled: true
-      exporter:
-        image:
-          repository: ghcr.io/onedr0p/exportarr
-          tag: v1.1.0
-        env:
-          port: 9794
-          additionalMetrics: true
-          unknownQueueItems: true
     resources:
       requests:
         cpu: 10m

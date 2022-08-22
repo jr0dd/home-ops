@@ -2,17 +2,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: plex
+  name: &app plex
   namespace: media
 spec:
   interval: 10m
   chart:
     spec:
-      chart: plex
-      version: 6.4.3
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
   install:
     remediation:
@@ -21,22 +21,23 @@ spec:
     remediation:
       retries: 5
   values:
-    controller:
-      strategy: RollingUpdate
     image:
-      repository: ghcr.io/k8s-at-home/plex-pass
-      tag: v1.28.2.6106-44a5bbd28@sha256:f1e2875ad675cdf275f06161d088c33cb3febe816f1124728b613124d5e49f9a
+      repository: ghcr.io/onedr0p/plex-beta
+      tag: 1.28.2.6106-44a5bbd28@sha256:e96d10562ad8de0f498a02fecdfdb99467c0d5d5fed4926bfa3f22e8a9380c3c
     env:
       TZ: "${TZ}"
-    podSecurityContext:
-      supplementalGroups:
-        - 1042
     service:
       main:
         type: LoadBalancer
         annotations:
           metallb.universe.tf/loadBalancerIPs: "${LB_PLEX}"
         externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 32400
+    podSecurityContext:
+      supplementalGroups:
+        - 1042
     persistence:
       config:
         enabled: true

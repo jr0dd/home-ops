@@ -2,17 +2,17 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: radarr
+  name: &app radarr
   namespace: media
 spec:
   interval: 10m
   chart:
     spec:
-      chart: radarr
-      version: 16.3.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
   install:
     remediation:
@@ -22,10 +22,19 @@ spec:
       retries: 5
   values:
     image:
-      repository: ghcr.io/k8s-at-home/radarr
-      tag: v4.1.0.6175@sha256:4273dfaf0295968c7152d6803c2b0b8556f4feb0187311d354a8e8f4d1066e0d
+      repository: ghcr.io/onedr0p/radarr-develop
+      tag: 4.2.2.6503@sha256:b1d020c55eafe7a8df4dab105bec61b4dbca7071f274b3975f2bcbd888538b74
     env:
       TZ: "${TZ}"
+      RADARR__INSTANCE_NAME: Radarr
+      RADARR__PORT: &port 80
+      RADARR__APPLICATION_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
+      RADARR__LOG_LEVEL: info
+    service:
+      main:
+        ports:
+          http:
+            port: *port
     podSecurityContext:
       supplementalGroups:
         - 1042
@@ -58,18 +67,6 @@ spec:
           - secretName: radarr-tls
             hosts:
               - *host
-    metrics:
-      enabled: true
-      prometheusRule:
-        enabled: true
-      exporter:
-        image:
-          repository: ghcr.io/onedr0p/exportarr
-          tag: v1.1.0
-        env:
-          port: 9794
-          additionalMetrics: true
-          unknownQueueItems: true
     resources:
       requests:
         cpu: 10m

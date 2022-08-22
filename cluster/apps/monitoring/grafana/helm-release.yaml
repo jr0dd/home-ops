@@ -129,15 +129,6 @@ spec:
             allowUiUpdates: true
             options:
               path: /var/lib/grafana/dashboards/loki
-          - name: "media"
-            orgId: 1
-            folder: "media"
-            type: file
-            updateIntervalSeconds: 10
-            disableDeletion: false
-            allowUiUpdates: true
-            options:
-              path: /var/lib/grafana/dashboards/media
           - name: "networking"
             orgId: 1
             folder: "networking"
@@ -185,17 +176,6 @@ spec:
         logs:
           url: https://raw.githubusercontent.com/fluxcd/flux2/v0.32.0/manifests/monitoring/monitoring-config/dashboards/logs.json
           datasource: Loki
-
-      media:
-        lidarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/lidarr.json
-          datasource: Prometheus
-        radarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/radarr.json
-          datasource: Prometheus
-        sonarr:
-          url: https://raw.githubusercontent.com/k8s-at-home/grafana-dashboards/main/sonarr.json
-          datasource: Prometheus
 
       networking:
         blackbox:

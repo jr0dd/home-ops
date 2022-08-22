@@ -84,8 +84,8 @@ spec:
             name: plugins
     kubectl:
       image:
-        repository: ghcr.io/k8s-at-home/kubectl
-        tag: v1.24.4
+        repository: onedr0p/kubernetes-kubectl
+        tag: 1.24.4@sha256:41221810e5a8b370b4d60050e833388b67d2888aa79093e023e87f7ae78318ba
     metrics:
       serviceMonitor:
         enabled: true

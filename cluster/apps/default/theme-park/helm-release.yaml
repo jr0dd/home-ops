@@ -8,11 +8,11 @@ spec:
   interval: 10m
   chart:
     spec:
-      chart: kah-common-chart
-      version: 1.2.2
+      chart: app-template
+      version: 0.1.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: bjw-s
         namespace: flux-system
   install:
     remediation:
@@ -21,11 +21,9 @@ spec:
     remediation:
       retries: 5
   values:
-    global:
-      nameOverride: *app
     image:
-      repository: ghcr.io/k8s-at-home/theme-park
-      tag: v1.10.0@sha256:96aca4ac230d582ea6f5cbe17a3975cf54b62359f7a67a8c6cb01378f39af67c
+      repository: ghcr.io/onedr0p/theme-park
+      tag: 1.10.1@sha256:0dcde933654316b6d0f4c9c8d4130f3a95e02927d753952f5199fe348627d7b5
     service:
       main:
         ports:
