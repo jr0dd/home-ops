@@ -34,6 +34,10 @@ spec:
           metallb.universe.tf/allow-shared-ip: *app
           metallb.universe.tf/loadBalancerIPs: &lb "${LB_BLOCKY}"
         externalTrafficPolicy: Local
+        ports:
+          http:
+            port: 4000
+            protocol: TCP
       dns:
         enabled: true
         type: LoadBalancer
