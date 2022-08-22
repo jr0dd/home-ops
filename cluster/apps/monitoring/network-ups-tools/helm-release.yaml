@@ -87,7 +87,7 @@ spec:
             POLLFREQALERT 5
             HOSTSYNC 15
     podAnnotations:
-      configmap.reloader.stakater.com/reload: *app
+      configmap.reloader.stakater.com/reload: network-ups-tools-config
     additionalContainers:
       exporter:
         name: exporter
