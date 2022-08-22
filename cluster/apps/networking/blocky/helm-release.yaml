@@ -63,7 +63,6 @@ spec:
         name: *app
         mountPath: /app/config.yml
         subPath: config.yml
-        defaultMode: 256
     configmap:
       config:
         enabled: true
