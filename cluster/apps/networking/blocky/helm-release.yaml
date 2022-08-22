@@ -32,14 +32,14 @@ spec:
         type: LoadBalancer
         annotations:
           metallb.universe.tf/allow-shared-ip: *app
-          metallb.universe.tf/loadBalancerIPs: "${LB_BLOCKY}"
+          metallb.universe.tf/loadBalancerIPs: &lb "${LB_BLOCKY}"
         externalTrafficPolicy: Local
       dns:
         enabled: true
         type: LoadBalancer
         annotations:
           metallb.universe.tf/allow-shared-ip: *app
-          metallb.universe.tf/loadBalancerIPs: "${LB_BLOCKY}"
+          metallb.universe.tf/loadBalancerIPs: *lb
         externalTrafficPolicy: Local
         ports:
           tcp:
