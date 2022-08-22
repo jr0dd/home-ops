@@ -60,7 +60,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: *app
+        name: &config blocky-config
         mountPath: /app/config.yml
         subPath: config.yml
     configmap:
@@ -99,7 +99,7 @@ spec:
             httpPort: 4000
             logLevel: info
     podAnnotations:
-      configmap.reloader.stakater.com/reload: blocky-config
+      configmap.reloader.stakater.com/reload: *config
     resources:
       requests:
         cpu: 10m
