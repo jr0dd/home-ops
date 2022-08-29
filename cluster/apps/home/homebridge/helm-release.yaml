@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: "2022-07-02"
+      tag: 2022-08-09-ubuntu
     env:
       TZ: "${TZ}"
       ENABLE_AVAHI: "1"
@@ -57,6 +57,7 @@ spec:
             npm install --save homebridge-nest@latest
             npm install --save homebridge-orbit-irrigation@latest
             npm install --save homebridge-tplink-smarthome@latest
+            npm install --save -g homebridge-camera-ui@latest
     ingress:
       main:
         enabled: true
