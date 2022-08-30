@@ -26,6 +26,7 @@
   suppressNotifications: ["prIgnoreNotification"],
   rebaseWhen: "conflicted",
   commitBodyTable: true,
+  ignorePaths: ["cluster/apps/discord/*bot"],
   // set up renovate managers
   flux: {
     fileMatch: ["cluster/.+\\.ya?ml$"]
