@@ -3,4 +3,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - alerts.yaml
-  - https://raw.githubusercontent.com/fluxcd/flux2/v0.32.0/manifests/monitoring/monitoring-config/podmonitor.yaml
+  - https://raw.githubusercontent.com/fluxcd/flux2/v0.33.0/manifests/monitoring/monitoring-config/podmonitor.yaml
