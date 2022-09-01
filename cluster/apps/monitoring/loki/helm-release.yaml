@@ -118,6 +118,8 @@ spec:
         enabled: true
         annotations:
           grafana_folder: loki
+        labels:
+          grafana_dashboard: "1"
       rules:
         enabled: true
         alerting: true
