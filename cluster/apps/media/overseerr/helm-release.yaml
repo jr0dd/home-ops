@@ -37,6 +37,7 @@ spec:
       config:
         enabled: true
         existingClaim: overseerr-config
+        mountPath: /app/config
     ingress:
       main:
         enabled: true
