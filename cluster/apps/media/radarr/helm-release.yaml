@@ -27,7 +27,7 @@ spec:
     env:
       TZ: "${TZ}"
       RADARR__INSTANCE_NAME: Radarr
-      RADARR__PORT: &port 80
+      RADARR__PORT: &port 7878
       RADARR__APPLICATION_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
       RADARR__LOG_LEVEL: info
     service:
@@ -36,6 +36,10 @@ spec:
           http:
             port: *port
     podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 1042
     persistence:

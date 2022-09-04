@@ -27,7 +27,7 @@ spec:
     env:
       TZ: "${TZ}"
       SONARR__INSTANCE_NAME: Sonarr
-      SONARR__PORT: &port 8989
+      SONARR__PORT: &port 80
       SONARR__APPLICATION_URL: "https://{{ .Release.Name }}.${SECRET_DOMAIN}"
       SONARR__LOG_LEVEL: info
     service:
@@ -36,6 +36,10 @@ spec:
           http:
             port: *port
     podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 1042
     persistence:
