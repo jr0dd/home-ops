@@ -41,7 +41,7 @@ spec:
       - "${SECRET_DOMAIN}"
     extraArgs:
       - --cloudflare-proxied
-      - --annotation-filter=external-dns/is-public in (true)
+      - --annotation-filter=external-dns.home.arpa/enabled in (true)
     serviceMonitor:
       enabled: true
     resources:
