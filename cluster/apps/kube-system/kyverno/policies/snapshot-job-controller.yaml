@@ -102,7 +102,8 @@ spec:
                           - /bin/bash
                           - -c
                           - |-
-                            printf "\e[1;32m%-6s\e[m\n" "[01/09] Connect to repo ..."          && kopia repo connect s3 --bucket pvc-backups --access-key "${MINIO_ACCESS_KEY}" --secret-access-key "${MINIO_SECRET_KEY}" --endpoint minio:9000
+                            printf "\e[1;32m%-6s\e[m\n" "[01/09] Connect to repo ..."          && kopia repo create s3 --bucket pvc-backups --access-key "${MINIO_ACCESS_KEY}" --secret-access-key "${MINIO_SECRET_KEY}" --endpoint http://minio:9000
+                            printf "\e[1;32m%-6s\e[m\n" "[01/09] Connect to repo ..."          && kopia repo connect s3 --bucket pvc-backups --access-key "${MINIO_ACCESS_KEY}" --secret-access-key "${MINIO_SECRET_KEY}" --endpoint http://minio:9000
                             printf "\e[1;32m%-6s\e[m\n" "[02/09] Set policies ..."             && kopia policy set /data/{{ namespace }}/{{ appName }}/{{ claimName }} --compression=zstd --keep-latest 14 --keep-hourly 0 --keep-daily 7 --keep-weekly 2 --keep-monthly 0 --keep-annual 0
                             printf "\e[1;32m%-6s\e[m\n" "[03/09] Freeze {{ claimName }} ..."   && fsfreeze -f /data/{{ namespace }}/{{ appName }}/{{ claimName }}
                             printf "\e[1;32m%-6s\e[m\n" "[04/09] Snapshot {{ claimName }} ..." && kopia snap create /data/{{ namespace }}/{{ appName }}/{{ claimName }}

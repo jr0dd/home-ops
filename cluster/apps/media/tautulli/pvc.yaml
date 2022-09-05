@@ -4,6 +4,8 @@ apiVersion: v1
 metadata:
   name: tautulli-config
   namespace: media
+  labels:
+    snapshot.home.arpa/enabled: "true"
 spec:
   accessModes:
     - ReadWriteOnce
