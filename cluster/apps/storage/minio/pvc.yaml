@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: minio
-  namespace: minio
+  namespace: storage
 spec:
   volumeName: minio
   accessModes:

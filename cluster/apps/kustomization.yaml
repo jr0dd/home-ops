@@ -3,14 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - databases
-  # - default
   - discord
   - home
   - kube-system
-  # - kyverno
   - media
-  - minio
   - monitoring
   - networking
+  - storage
   - system-upgrade
-  - velero

@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: velero
-  namespace: velero
+  namespace: storage
 spec:
   interval: 10m
   chart:
@@ -34,7 +34,7 @@ spec:
           region: minio
           profile: minio
           s3ForcePathStyle: true
-          s3Url: http://minio.minio:9000
+          s3Url: http://minio:9000
           publicUrl: https://s3.${SECRET_DOMAIN}
       volumeSnapshotLocation:
         name: minio
@@ -47,7 +47,7 @@ spec:
           profile: minio
           region: minio
           s3ForcePathStyle: true
-          s3Url: http://minio.minio:9000
+          s3Url: http://minio:9000
           publicUrl: https://s3.${SECRET_DOMAIN}
     credentials:
       name: minio-creds

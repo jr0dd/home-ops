@@ -3,7 +3,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
   name: minio
-  namespace: minio
+  namespace: storage
 spec:
   groups:
     - name: minio
