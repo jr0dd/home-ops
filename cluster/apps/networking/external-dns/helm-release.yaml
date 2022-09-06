@@ -22,7 +22,7 @@ spec:
       retries: 5
   values:
     nameOverride: external-dns
-    interval: "5m"
+    interval: 2m
     logLevel: debug
     env:
       - name: CF_API_TOKEN
@@ -35,7 +35,7 @@ spec:
     provider: cloudflare
     policy: sync
     registry: txt
-    txtOwnerId: "k8s"
+    txtOwnerId: "default"
     txtPrefix: "k8s."
     domainFilters:
       - "${SECRET_DOMAIN}"
