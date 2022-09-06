@@ -6,6 +6,6 @@ resources:
   - cert-manager
   - cilium
   - coredns
-  - kyverno
+  # - kyverno
   - metrics-server
   - reloader
