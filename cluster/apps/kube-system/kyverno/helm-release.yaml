@@ -21,7 +21,7 @@ spec:
     remediation:
       retries: 5
   values:
-    installCRDs: true
+    installCRDs: false
     extraArgs:
       - --autogenInternals=false
       - --clientRateLimitQPS=30
