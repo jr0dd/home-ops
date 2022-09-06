@@ -6,6 +6,8 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/instance: lidarr
+    app.kubernetes.io/name: lidarr
 spec:
   accessModes:
     - ReadWriteOnce

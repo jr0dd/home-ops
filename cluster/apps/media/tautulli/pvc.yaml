@@ -6,6 +6,8 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/instance: tautulli
+    app.kubernetes.io/name: tautulli
 spec:
   accessModes:
     - ReadWriteOnce

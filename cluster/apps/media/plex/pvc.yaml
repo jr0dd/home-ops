@@ -6,6 +6,8 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/instance: plex
+    app.kubernetes.io/name: plex
 spec:
   accessModes:
     - ReadWriteOnce

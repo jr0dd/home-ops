@@ -6,6 +6,8 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/instance: overseerr
+    app.kubernetes.io/name: overseerr
 spec:
   accessModes:
     - ReadWriteOnce

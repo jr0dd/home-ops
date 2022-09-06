@@ -6,6 +6,8 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/instance: sonarr
+    app.kubernetes.io/name: sonarr
 spec:
   accessModes:
     - ReadWriteOnce

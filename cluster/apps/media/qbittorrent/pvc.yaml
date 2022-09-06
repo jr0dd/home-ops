@@ -6,6 +6,8 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/instance: qbittorrent
+    app.kubernetes.io/name: qbittorrent
 spec:
   accessModes:
     - ReadWriteOnce

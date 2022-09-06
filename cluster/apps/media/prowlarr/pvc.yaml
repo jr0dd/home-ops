@@ -6,6 +6,8 @@ metadata:
   namespace: media
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/instance: prowlarr
+    app.kubernetes.io/name: prowlarr
 spec:
   accessModes:
     - ReadWriteOnce

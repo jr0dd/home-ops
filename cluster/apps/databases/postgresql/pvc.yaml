@@ -6,6 +6,8 @@ metadata:
   namespace: databases
   labels:
     snapshot.home.arpa/enabled: "true"
+    app.kubernetes.io/instance: postgresql
+    app.kubernetes.io/name: postgresql
 spec:
   accessModes:
     - ReadWriteOnce
