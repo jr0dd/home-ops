@@ -8,8 +8,8 @@ spec:
   interval: 10m
   chart:
     spec:
-      chart: loki-simple-scalable
-      version: 1.8.10
+      chart: loki
+      version: 3.0.0
       sourceRef:
         kind: HelmRepository
         name: grafana
@@ -93,7 +93,6 @@ spec:
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
         hosts:
           - host: &host "loki.${SECRET_DOMAIN}"
             paths:

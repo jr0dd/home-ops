@@ -28,3 +28,18 @@ spec:
   hostPath:
     path: /deadpool/containous/minio
   storageClassName: openebs-zfspv-rust
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: snapshots
+spec:
+  capacity:
+    storage: 100Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /deadpool/containous/kopia-snapshots
+  storageClassName: openebs-zfspv-rust
