@@ -124,9 +124,8 @@ spec:
                         persistentVolumeClaim:
                           claimName: "{{ claimName }}"
                       - name: snapshots
-                        nfs:
-                          server: "expanse.${SECRET_PRIVATE_DOMAIN}"
-                          path: /eros/Apps/Kopia
+                        hostpath:
+                          path: /deadpool/containous/kopia-snapshots
                     affinity:
                       podAffinity:
                         requiredDuringSchedulingIgnoredDuringExecution:

@@ -35,7 +35,7 @@ metadata:
   name: snapshots
 spec:
   capacity:
-    storage: 100Gi
+    storage: 250Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
