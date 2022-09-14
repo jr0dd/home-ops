@@ -8,6 +8,7 @@ spec:
   interval: 10m
   retryInterval: 1m
   dependsOn:
+    - name: cluster-crds
     - name: metallb-crs
   path: ./cluster/apps
   prune: true
