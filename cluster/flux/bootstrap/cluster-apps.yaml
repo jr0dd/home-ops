@@ -8,7 +8,6 @@ spec:
   interval: 10m
   retryInterval: 1m
   dependsOn:
-    - name: cluster-storage
     - name: metallb-crs
   path: ./cluster/apps
   prune: true
