@@ -7,9 +7,10 @@ metadata:
   labels:
     k3s-upgrade: agent
 spec:
+  # renovate: datasource=github-releases depName=k3s-io/k3s
+  version: "v1.24.4+k3s1"
   serviceAccountName: system-upgrade
   concurrency: 1
-  channel: https://update.k3s.io/v1-release/channels/latest
   nodeSelector:
     matchExpressions:
       - key: node-role.kubernetes.io/master
