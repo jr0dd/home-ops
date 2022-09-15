@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - hostpath-volumes.yaml
   - storage-class.yaml
-  - volume-snapshot-class.yaml
+  # - volume-snapshot-class.yaml
