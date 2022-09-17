@@ -124,7 +124,7 @@ spec:
                         persistentVolumeClaim:
                           claimName: "{{ claimName }}"
                       - name: snapshots
-                        hostpath:
+                        hostPath:
                           path: /deadpool/containous/kopia-snapshots
                     affinity:
                       podAffinity:
