@@ -7,4 +7,3 @@ resources:
   - home-ops.yaml
   - kube-prometheus-stack.yaml
   - openebs-zfs-localpv.yaml
-  - velero.yaml

@@ -6,4 +6,3 @@ resources:
   - namespace.yaml
   - kopia
   - minio
-  - velero

@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - kube-prometheus-stack
   - openebs-zfs-localpv
-  - velero
