@@ -24,7 +24,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
-      tag: v0.8.94 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
+      tag: v0.8.96 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
     imagePullSecrets:
       - name: ghcr-io-creds
