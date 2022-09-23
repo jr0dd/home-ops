@@ -24,6 +24,8 @@ spec:
     image:
       repository: ghcr.io/onedr0p/radarr-develop
       tag: 4.2.3.6575@sha256:c18425b9a0e0871141db3d7e8892806df53376f682559d62b6f8c25bb9009d86
+    controller:
+      strategy: RollingUpdate
     env:
       TZ: "${TZ}"
       RADARR__INSTANCE_NAME: Radarr
@@ -36,10 +38,6 @@ spec:
           http:
             port: *port
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 1042
     persistence:

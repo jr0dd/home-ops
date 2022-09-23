@@ -26,7 +26,6 @@ spec:
       tag: 4.4.5@sha256:dcc1d7c29199e05b826f8ad9786b62bd1db9653341e994c0d76a95245554ea2d
     env:
       TZ: "${TZ}"
-      UMASK: "022"
       QBITTORRENT__PORT: &port 8080
       QBITTORRENT__BT_PORT: &port-bt 50413
     service:

@@ -24,6 +24,8 @@ spec:
     image:
       repository: ghcr.io/miguelndecarvalho/speedtest-exporter
       tag: v3.5.3
+    controller:
+      strategy: RollingUpdate
     env:
       TZ: "${TZ}"
     service:

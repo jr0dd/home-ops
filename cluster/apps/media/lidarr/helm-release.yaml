@@ -24,6 +24,8 @@ spec:
     image:
       repository: ghcr.io/onedr0p/lidarr-develop
       tag: 1.1.0.2649@sha256:76d9ab6175e98edfb6429984be48c307914a69b235445ba9f93298fd6ec3c75e
+    controller:
+      strategy: RollingUpdate
     env:
       TZ: "${TZ}"
       LIDARR__INSTANCE_NAME: Lidarr
@@ -35,10 +37,6 @@ spec:
           http:
             port: *port
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 1042
     persistence:

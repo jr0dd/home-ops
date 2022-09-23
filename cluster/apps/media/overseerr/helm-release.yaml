@@ -24,6 +24,8 @@ spec:
     image:
       repository: ghcr.io/sct/overseerr
       tag: 1.30.0
+    controller:
+      strategy: RollingUpdate
     env:
       TZ: "${TZ}"
       LOG_LEVEL: "info"

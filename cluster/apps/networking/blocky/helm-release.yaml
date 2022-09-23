@@ -24,6 +24,8 @@ spec:
     image:
       repository: ghcr.io/0xerr0r/blocky
       tag: v0.19
+    controller:
+      strategy: RollingUpdate
     env:
       TZ: "${TZ}"
     service:

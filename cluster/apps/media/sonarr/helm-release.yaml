@@ -24,6 +24,8 @@ spec:
     image:
       repository: ghcr.io/onedr0p/sonarr-develop
       tag: 3.0.9.1555@sha256:63e06362f8c14829086c908e6e92768bc22568b70095bc21124cdf21f235e785
+    controller:
+      strategy: RollingUpdate
     env:
       TZ: "${TZ}"
       SONARR__INSTANCE_NAME: Sonarr
@@ -36,10 +38,6 @@ spec:
           http:
             port: *port
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
       supplementalGroups:
         - 1042
     persistence:

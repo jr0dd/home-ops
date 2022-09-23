@@ -24,6 +24,8 @@ spec:
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
       tag: 0.4.7.1978@sha256:88bcd9955b4e0d1b3839e3084c1a97f7fda41111cf4b5901bc8ce6b68abb3b6f
+    controller:
+      strategy: RollingUpdate
     env:
       TZ: "${TZ}"
       PROWLARR__INSTANCE_NAME: Prowlarr
@@ -35,10 +37,8 @@ spec:
           http:
             port: *port
     podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
+      supplementalGroups:
+        - 1042
     persistence:
       config:
         enabled: true

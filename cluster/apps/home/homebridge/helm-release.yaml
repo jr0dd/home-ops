@@ -24,6 +24,8 @@ spec:
     image:
       repository: ghcr.io/oznu/homebridge
       tag: 2022-08-09-ubuntu
+    controller:
+      strategy: RollingUpdate
     env:
       TZ: "${TZ}"
       ENABLE_AVAHI: "1"
