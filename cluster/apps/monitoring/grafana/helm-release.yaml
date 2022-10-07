@@ -21,6 +21,8 @@ spec:
     remediation:
       retries: 5
   values:
+    rbac:
+      pspEnabled: false
     admin:
       existingSecret: grafana
       userKey: adminUser
