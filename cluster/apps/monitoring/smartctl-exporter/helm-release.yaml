@@ -22,24 +22,7 @@ spec:
       retries: 5
   values:
     fullnameOverride: *app
-    image:
-      repository: docker.io/pnnlmiscscripts/smartctl-exporter
-      tag: 0.7-2
-    config:
-      devices: []
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY5R6K
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN370G
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKMJNWG
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHHKTBK
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY3PTK
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGKN0Y1G
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXUGPK
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGY658K
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VRGXZU0K
-        # - /dev/disk/by-id/scsi-SATA_WDC_WD8004FRYZ-0_VGHPA2YG
-        # - /dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E2924
-        # - /dev/disk/by-id/scsi-SATA_CT250MX500SSD4_2008E28E25B9
     serviceMonitor:
       enabled: true
     prometheusRules:
-      enabled: false
+      enabled: true
