@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: grafana
-      version: 6.40.4
+      version: 6.43.1
       sourceRef:
         kind: HelmRepository
         name: grafana
@@ -170,13 +170,13 @@ spec:
     dashboards:
       flux:
         cluster:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/v0.35.0/manifests/monitoring/monitoring-config/dashboards/cluster.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2/v0.36.0/manifests/monitoring/monitoring-config/dashboards/cluster.json
           datasource: Prometheus
         control-plane:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/v0.35.0/manifests/monitoring/monitoring-config/dashboards/control-plane.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2/v0.36.0/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
         logs:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/v0.35.0/manifests/monitoring/monitoring-config/dashboards/logs.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2/v0.36.0/manifests/monitoring/monitoring-config/dashboards/logs.json
           datasource: Loki
 
       networking:

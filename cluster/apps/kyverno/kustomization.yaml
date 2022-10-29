@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   # renovate: registryUrl=https://kyverno.github.io/kyverno/ chart=kyverno
-  - github.com/kyverno/kyverno//config/crds?ref=kyverno-chart-2.6.0
+  - github.com/kyverno/kyverno//config/crds?ref=kyverno-chart-2.6.1
   - helm-release.yaml
   - policies
   - rbac.yaml
