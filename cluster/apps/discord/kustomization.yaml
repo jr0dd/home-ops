@@ -8,5 +8,5 @@ resources:
   - discord-stock-ticker
   - puppeteer
   - whalestream-bot
-  - ws-staging-bot
+  # - ws-staging-bot
   - wyoa-bot
