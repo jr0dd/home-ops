@@ -22,6 +22,7 @@ spec:
       retries: 5
   values:
     fullnameOverride: blackbox-exporter
+    pspEnabled: false
     securityContext:
       readOnlyRootFilesystem: true
       allowPrivilegeEscalation: false
