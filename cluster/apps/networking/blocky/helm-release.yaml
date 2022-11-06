@@ -40,6 +40,15 @@ spec:
           http:
             port: 4000
             protocol: TCP
+    serviceMonitor:
+      main:
+        enabled: true
+        serviceName: *app
+        endpoints:
+          - interval: 30s
+            path: /metrics
+            port: http
+            scrapeTimeout: 10s
       dns:
         enabled: true
         type: LoadBalancer

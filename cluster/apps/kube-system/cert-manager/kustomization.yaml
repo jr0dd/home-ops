@@ -6,5 +6,5 @@ resources:
   - https://github.com/cert-manager/cert-manager/releases/download/v1.10.0/cert-manager.crds.yaml
   - helm-release.yaml
   - issuers
-  - monitoring
+  - prometheus-rule.yaml
   - secret.sops.yaml

@@ -45,6 +45,22 @@ spec:
             enabled: true
             port: 9199
             protocol: TCP
+    serviceMonitor:
+      main:
+        enabled: true
+        serviceName: *app
+        endpoints:
+          - port: metrics
+            scheme: http
+            interval: 15s
+            scrapeTimeout: 10s
+            path: /ups_metrics
+            params:
+              target:
+                - localhost:3493
+            relabelings:
+              - sourceLabels: [__param_target]
+                targetLabel: target
     securityContext:
       privileged: true
     persistence:
