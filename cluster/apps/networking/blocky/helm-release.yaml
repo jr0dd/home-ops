@@ -74,7 +74,7 @@ spec:
         name: &config blocky-config
         mountPath: /app/config.yml
         subPath: config.yml
-    configmap:
+    configMaps:
       config:
         enabled: true
         data:
