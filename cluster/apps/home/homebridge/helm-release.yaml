@@ -47,7 +47,7 @@ spec:
         mountPath: /homebridge/startup.sh
         subPath: startup.sh
         defaultMode: 493
-    configmap:
+    configMaps:
       config:
         enabled: true
         nameOverride: startup-sh
