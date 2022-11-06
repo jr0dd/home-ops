@@ -121,7 +121,6 @@ spec:
           grafana_dashboard: "1"
       rules:
         enabled: true
-        alerting: true
       alerts:
         enabled: true
       serviceMonitor:
