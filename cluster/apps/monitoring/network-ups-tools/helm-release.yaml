@@ -48,7 +48,7 @@ spec:
     serviceMonitor:
       main:
         enabled: true
-        serviceName: *app
+        serviceName: network-ups-tools-metrics
         endpoints:
           - port: metrics
             scheme: http
