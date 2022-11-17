@@ -18,7 +18,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/postgresql
-      tag: "14.6.0"
+      tag: "15.1.0"
     auth:
       enablePostgresUser: true
       postgresPassword: "${POSTGRES_ADMIN_PASSWORD}"
