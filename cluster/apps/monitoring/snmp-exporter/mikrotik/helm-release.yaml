@@ -41,10 +41,10 @@ spec:
           target: 10.10.0.1
           module:
             - mikrotik
-        - name: mikrotik-crs226
-          target: 10.10.0.2
-          module:
-            - mikrotik
+        # - name: mikrotik-crs226
+        #   target: 10.10.0.2
+        #   module:
+        #     - mikrotik
       path: /snmp
       scrapeTimeout: 10s
       relabelings:
