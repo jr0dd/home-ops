@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: "2022-10-14"
+      tag: "2022-11-14"
     controller:
       strategy: RollingUpdate
     env:
