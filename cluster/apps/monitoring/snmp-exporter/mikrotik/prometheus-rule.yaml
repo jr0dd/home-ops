@@ -20,12 +20,12 @@ spec:
         - alert: SnmpExporterScrapeSlow
           annotations:
             description:
-              SNMP Exporter is experiencing slow scraping of {{ $labels.job }}
+              SNMP Exporter is experiencing slow scraping of {{ $labels.target }}
               with a duration of {{ $value }} seconds.
             summary: SNMP Exporter slow scraping.
           expr: |
-            sum(snmp_scrape_duration_seconds) by (job)
-              > 3
+            sum(snmp_scrape_duration_seconds) by (target)
+              > 10
           for: 5m
           labels:
             severity: critical

@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/radarr-develop
-      tag: 4.3.0.6671@sha256:cdd1c3a3dd411dd19c37f10ba8dd5be0bd9fcf3e3ccd42ea96deea657d22b8e6
+      tag: 4.3.0.6671@sha256:54c969956ebf3643c8452f73d469079b4b022d8ca3cfac5081a2658f2f1887ec
     controller:
       strategy: RollingUpdate
     env:

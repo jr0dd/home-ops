@@ -47,8 +47,3 @@ spec:
             - mikrotik
       path: /snmp
       scrapeTimeout: 10s
-      relabelings:
-        - sourceLabels: [__param_target]
-          targetLabel: instance
-        - sourceLabels: [__job__]
-          targetLabel: __name__
