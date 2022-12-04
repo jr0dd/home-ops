@@ -50,3 +50,5 @@ spec:
       relabelings:
         - sourceLabels: [__param_target]
           targetLabel: instance
+        - sourceLabels: [__job__]
+          targetLabel: __name__
