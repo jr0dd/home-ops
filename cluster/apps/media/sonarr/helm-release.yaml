@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/sonarr-develop
-      tag: 4.0.0.266@sha256:4ed0fdd36fadca2183434aff84504609fabbceb23a08705fe3e67bc43253728d
+      tag: 4.0.0.269@sha256:250af837335348909dc33f491ae5c3e03b6df21cfba1ac4f7c583338611a1088
     controller:
       strategy: RollingUpdate
     env:
