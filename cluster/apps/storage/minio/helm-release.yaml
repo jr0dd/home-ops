@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: minio
-      version: 5.0.1
+      version: 5.0.4
       sourceRef:
         kind: HelmRepository
         name: minio
@@ -25,7 +25,7 @@ spec:
       repository: quay.io/minio/minio
       tag: RELEASE.2022-11-17T23-20-09Z
     mode: standalone
-    ignoreChartChecksums: true
+    ignoreChartChecksums: false
     rootUser: "${MINIO_ROOT_USER}"
     rootPassword: "${MINIO_ROOT_PASSWORD}"
     drivesPerNode: 1
@@ -60,7 +60,10 @@ spec:
         - secretName: minio-console-tls
           hosts:
             - *host-console
-    users: []
+    users:
+      - accessKey: "${MINIO_ACCESS_KEY}"
+        secretKey: "${MINIO_SECRET_KEY}"
+        policy: readwrite
     environment:
       TZ: "${TZ}"
       MINIO_UPDATE: "off"
@@ -70,6 +73,7 @@ spec:
     metrics:
       serviceMonitor:
         enabled: true
+        includeNode: true
         public: true
     resources:
       requests:
