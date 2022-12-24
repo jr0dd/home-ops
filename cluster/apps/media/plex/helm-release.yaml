@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.1.3
+      version: 1.2.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/plex-beta
-      tag: 1.30.0.6486-629d58034@sha256:8c901d125fdb1856a990153e0c88416e8b45076e2a99b032aac8cded7483295f
+      tag: 1.30.1.6497-5fc2e0894@sha256:1bb20fbf7b205065c586926edd2cbe83ee6da8cb98a75c1fe5ac164c86d174db
     controller:
       strategy: RollingUpdate
     env:

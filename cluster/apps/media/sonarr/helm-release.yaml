@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.1.3
+      version: 1.2.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -23,7 +23,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/sonarr-develop
-      tag: 4.0.0.258@sha256:500795e620bd2d516cad3d63d3aef5353be88d97cf8580ea7db0b8cfce0ed8bb
+      tag: 4.0.0.312@sha256:1bcddd9d9a1927869cbd0444906a4e7168bd31df20c1d67f8827e205109da847
     controller:
       strategy: RollingUpdate
     env:
