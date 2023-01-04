@@ -32,15 +32,12 @@ tasks:
       - kubectl rollout restart ds -n networking
       - kubectl rollout restart ds -n openebs
       - kubectl rollout restart statefulset -n openebs
-      - kubectl rollout restart deploy -n cert-manager
       - kubectl rollout restart deploy -n flux-system
-      - kubectl rollout restart deploy -n minio
       - kubectl rollout restart statefulset -n databases
       - kubectl rollout restart deploy -n home
       - kubectl rollout restart deploy -n system-upgrade
       - kubectl rollout restart deploy -n media
       - kubectl rollout restart deploy -n default
-      - kubectl rollout restart deploy -n velero
       - kubectl rollout restart ds -n monitoring
       - kubectl rollout restart deploy -n monitoring
       - kubectl rollout restart statefulset -n monitoring
@@ -52,13 +49,8 @@ tasks:
     cmds:
       # - flux suspend hr -n minio minio
       # - kubectl scale -n minio deploy/minio --replicas 0
-      - flux suspend hr -n databases mongodb-community-operator
-      - kubectl scale -n databases deploy/mongodb-operator --replicas 0
-      - kubectl scale -n databases statefulset/wyoa-bot --replicas 0
       - flux suspend hr -n home homebridge
       - kubectl scale -n home deploy/homebridge --replicas 0
-      - flux suspend hr -n home hajimari
-      - kubectl scale -n home deploy/hajimari --replicas 0
       - flux suspend hr -n media lidarr
       - kubectl scale -n media deploy/lidarr --replicas 0
       - flux suspend hr -n media plex

@@ -15,18 +15,19 @@ spec:
         name: bitnami
         namespace: flux-system
   values:
+    global:
+      postgresql:
+        auth:
+          postgresPassword: "${POSTGRES_ADMIN_PASSWORD}"
+          username: j_r0dd
+          password: "${POSTGRES_PASSWORD}"
+          database: wyoa
     diagnosticMode:
       enabled: true
     image:
       registry: docker.io
       repository: bitnami/postgresql
       tag: "15.1.0"
-    auth:
-      enablePostgresUser: true
-      postgresPassword: "${POSTGRES_ADMIN_PASSWORD}"
-      username: j_r0dd
-      password: "${POSTGRES_PASSWORD}"
-      database: wyoa
     primary:
       persistence:
         enabled: true
