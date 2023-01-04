@@ -15,6 +15,8 @@ spec:
         name: bitnami
         namespace: flux-system
   values:
+    diagnosticMode:
+      enabled: true
     image:
       registry: docker.io
       repository: bitnami/postgresql
