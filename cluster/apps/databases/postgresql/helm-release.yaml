@@ -17,8 +17,6 @@ spec:
   values:
     diagnosticMode:
       enabled: true
-      command:
-        - pg_upgrade
     image:
       registry: docker.io
       repository: bitnami/postgresql
