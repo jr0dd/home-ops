@@ -22,12 +22,10 @@ spec:
           username: j_r0dd
           password: "${POSTGRES_PASSWORD}"
           database: wyoa
-    diagnosticMode:
-      enabled: true
     image:
       registry: docker.io
       repository: bitnami/postgresql
-      tag: "14.6.0"
+      tag: "15.1.0"
     primary:
       persistence:
         enabled: true
