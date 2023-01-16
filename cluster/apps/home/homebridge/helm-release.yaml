@@ -23,9 +23,9 @@ spec:
   values:
     image:
       repository: ghcr.io/oznu/homebridge
-      tag: "2022-11-14"
+      tag: "2023-01-08"
     controller:
-      strategy: RollingUpdate
+      strategy: Recreate
     env:
       TZ: "${TZ}"
       ENABLE_AVAHI: "1"
