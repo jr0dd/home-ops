@@ -6,7 +6,7 @@ resources:
   - discord
   - home
   - kube-system
-  - kyverno
+  # - kyverno
   - media
   - monitoring
   - networking
