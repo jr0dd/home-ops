@@ -117,6 +117,8 @@ spec:
       persistence:
         size: 5Gi
         storageClass: openebs-zfspv-ssd
+    backend:
+      replicas: 1
     monitoring:
       dashboards:
         enabled: true

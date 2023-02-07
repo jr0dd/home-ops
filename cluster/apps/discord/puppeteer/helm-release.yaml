@@ -28,7 +28,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/puppeteer
-      tag: v19.2.0@sha256:7b2fd87b2e48422a7fa7ecfa266be9c93951787083a2545251afdb1e09d913b5
+      tag: v19.6.3@sha256:8eba24ba8123872434c73edd71067021ff28f5cb38cfed0ab76e18dcc2175ffb
       pullPolicy: Always
     controller:
       strategy: RollingUpdate
