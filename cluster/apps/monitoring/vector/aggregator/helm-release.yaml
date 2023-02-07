@@ -14,14 +14,19 @@ spec:
         kind: HelmRepository
         name: vector
         namespace: flux-system
-  install:
-    remediation:
-      retries: 5
-  upgrade:
-    remediation:
-      retries: 5
   dependsOn:
     - name: loki
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     image:
       repository: timberio/vector

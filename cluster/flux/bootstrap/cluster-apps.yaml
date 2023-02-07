@@ -5,8 +5,9 @@ metadata:
   name: cluster-apps
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 30m
   retryInterval: 1m
+  timeout: 3m
   dependsOn:
     - name: cluster-crds
     - name: metallb-crs

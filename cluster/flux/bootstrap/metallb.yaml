@@ -5,8 +5,9 @@ metadata:
   name: metallb
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 30m
   retryInterval: 1m
+  timeout: 3m
   path: ./cluster/apps/networking/metallb
   prune: true
   wait: true
@@ -20,8 +21,9 @@ metadata:
   name: metallb-crs
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 30m
   retryInterval: 1m
+  timeout: 3m
   dependsOn:
     - name: metallb
   path: ./cluster/apps/networking/metallb/custom-resources

@@ -15,12 +15,17 @@ spec:
         namespace: flux-system
   dependsOn:
     - name: puppeteer
+  maxHistory: 3
   install:
+    createNamespace: true
     remediation:
-      retries: 5
+      retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
-      retries: 5
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     image:
       repository: ghcr.io/jr0dd/wyoa-bot

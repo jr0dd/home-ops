@@ -17,12 +17,17 @@ spec:
   dependsOn:
     - name: cert-manager
       namespace: kube-system
+  maxHistory: 3
   install:
+    createNamespace: true
     remediation:
-      retries: 5
+      retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
-      retries: 5
+      retries: 3
+  uninstall:
+    keepHistory: false
   values:
     controller:
       replicaCount: 1
