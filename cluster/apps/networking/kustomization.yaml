@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: networking
 resources:
   - namespace.yaml
-  - blocky
+  # - blocky
   - cloudflare-ddns
   - external-dns
   - ingress-nginx
