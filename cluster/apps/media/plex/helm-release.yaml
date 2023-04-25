@@ -28,7 +28,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/plex-beta
-      tag: 1.32.1.6983-93784ef3f@sha256:d0d33bacc1825dbe8cf4adaeee92baf1629b7ae59e4e9d5c059f6c61eb78c8de
+      tag: 1.32.1.6999-91e1e2e2c@sha256:033e2ddc1f881f39b48e525631cffde57abedd2782aa9c0da98db5a0a611c62e
     controller:
       strategy: RollingUpdate
     env:
