@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.3.2
+      version: 1.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -28,7 +28,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/puppeteer
-      tag: v19.11.1@sha256:9a2bbf60f24b3d638f552961e5d36ebd35cadec0a9599f2c891fd03dc95bb413
+      tag: v19.11.1@sha256:f360fa0f818418206b8ce149b7d603bf908ad44f5ad61856318eb0069ed1938c
       pullPolicy: Always
     controller:
       strategy: RollingUpdate
