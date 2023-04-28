@@ -63,7 +63,7 @@ spec:
         custom: true
         spec:
           httpGet:
-            path: /json/list
+            path: /json
             port: *port
     resources:
       requests:
