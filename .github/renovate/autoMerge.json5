@@ -12,7 +12,7 @@
     {
       description: "Auto merge containers",
       matchDatasources: ["docker"],
-      automerge: true,
+      automerge: false,
       automergeType: "branch",
       requiredStatusChecks: null,
       matchUpdateTypes: ["minor", "patch"],
