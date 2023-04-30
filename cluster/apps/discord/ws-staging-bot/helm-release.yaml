@@ -29,7 +29,7 @@ spec:
   values:
     image:
       repository: ghcr.io/jr0dd/wyoa-bot
-      tag: v0.10.6 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
+      tag: v0.10.8 # {"$imagepolicy": "flux-system:wyoa-ghcr-io:tag"}
       pullPolicy: Always
     controller:
       strategy: RollingUpdate
