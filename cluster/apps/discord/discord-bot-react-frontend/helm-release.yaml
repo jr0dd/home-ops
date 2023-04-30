@@ -36,7 +36,7 @@ spec:
     env:
       TZ: "${TZ}"
       NODE_ENV: "production"
-      REACT_APP_BASE_URL: "ws.${SECRET_DOMAIN}"
+      REACT_APP_BASE_URL: "https://ws.${SECRET_DOMAIN}"
     service:
       main:
         ports:
