@@ -1,0 +1,66 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: discord-bot-react-frontend
+  namespace: discord
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    image:
+      repository: ghcr.io/jr0dd/discord-bot-react-frontend
+      tag: v0.1.0 # {"$imagepolicy": "flux-system:discord-ghcr-io:tag"}
+      pullPolicy: Always
+    controller:
+      strategy: RollingUpdate
+    imagePullSecrets:
+      - name: ghcr-io-creds
+    env:
+      TZ: "${TZ}"
+      NODE_ENV: "production"
+      REACT_APP_BASE_URL: "ws.${SECRET_DOMAIN}"
+    service:
+      main:
+        ports:
+          http:
+            port: 3000
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          external-dns.home.arpa/enabled: "true"
+        hosts:
+          - host: &host "discord.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - secretName: discord-tls
+            hosts:
+              - *host
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        memory: 750Mi
