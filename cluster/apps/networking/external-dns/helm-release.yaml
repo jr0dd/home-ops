@@ -40,8 +40,7 @@ spec:
     provider: cloudflare
     policy: sync
     registry: txt
-    txtOwnerId: "default"
-    txtPrefix: "k8s."
+    txtPrefix: k8s.
     domainFilters:
       - "${SECRET_DOMAIN}"
     extraArgs:
