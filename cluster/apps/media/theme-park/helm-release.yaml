@@ -2,8 +2,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: &app theme-park
-  namespace: default
+  name: theme-park
+  namespace: media
 spec:
   interval: 10m
   chart:
@@ -42,7 +42,7 @@ spec:
         ingressClassName: nginx
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          external-dns/is-public: "true"
+          nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
         hosts:
           - host: &host "theme-park.${SECRET_DOMAIN}"
             paths:

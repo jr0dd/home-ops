@@ -66,6 +66,7 @@ spec:
       ingressClassName: nginx
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
+        nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
       hosts:
         - &host "grafana.${SECRET_DOMAIN}"
       path: /
@@ -196,17 +197,17 @@ spec:
           url: https://raw.githubusercontent.com/monitoring-mixins/website/master/assets/cert-manager/dashboards/cert-manager.json
           datasource: Prometheus
         cilium-agent:
-          gnetId: 15513
+          gnetId: 16611
           revision: 1
           datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/15514
         cilium-operator:
-          gnetId: 15514
+          gnetId: 16612
           revision: 1
           datasource: Prometheus
         # Ref: https://grafana.com/grafana/dashboards/15515
         cilium-hubble:
-          gnetId: 15515
+          gnetId: 16613
           revision: 1
           datasource: Prometheus
         metallb:

@@ -45,7 +45,7 @@ spec:
       - "${SECRET_DOMAIN}"
     extraArgs:
       - --cloudflare-proxied
-      - --annotation-filter=external-dns.home.arpa/enabled in (true)
+      - --annotation-filter=external-dns.alpha.kubernetes.io/target
     serviceMonitor:
       enabled: true
     resources:
