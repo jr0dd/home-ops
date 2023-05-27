@@ -76,8 +76,8 @@ curl -X POST \
 curl -X POST \
 "localhost:8080/ticker" \
 -H "Content-Type: application/json" \
--d "{\"ticker\":\"ETH\", \
-    \"name\":\"ethereum\", \
+-d "{\"ticker\":\"CSPR\", \
+    \"name\":\"casper-network\", \
     \"discord_bot_token\":\"$CSPR\", \
     \"crypto\":true, \
     \"frequency\":5, \
@@ -126,8 +126,8 @@ curl -X POST \
 curl -X POST \
 "localhost:8080/ticker" \
 -H "Content-Type: application/json" \
--d "{\"ticker\":\"ETH\", \
-    \"name\":\"ethereum\", \
+-d "{\"ticker\":\"XRP\", \
+    \"name\":\"ripple\", \
     \"discord_bot_token\":\"$XRP\", \
     \"crypto\":true, \
     \"frequency\":5, \
