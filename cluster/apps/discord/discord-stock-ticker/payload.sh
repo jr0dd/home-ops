@@ -81,6 +81,7 @@ curl -X POST \
     \"discord_bot_token\":\"$CSPR\", \
     \"crypto\":true, \
     \"frequency\":5, \
+    \"decimals\": 6, \
     \"nickname\":true, \
     \"arrows\":true, \
     \"color\":true}"
@@ -131,6 +132,7 @@ curl -X POST \
     \"discord_bot_token\":\"$XRP\", \
     \"crypto\":true, \
     \"frequency\":5, \
+    \"decimals\": 6, \
     \"nickname\":true, \
     \"arrows\":true, \
     \"color\":true}"
