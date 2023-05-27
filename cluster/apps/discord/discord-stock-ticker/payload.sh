@@ -78,6 +78,18 @@ curl -X POST \
 -H "Content-Type: application/json" \
 -d "{\"ticker\":\"ETH\", \
     \"name\":\"ethereum\", \
+    \"discord_bot_token\":\"$CSPR\", \
+    \"crypto\":true, \
+    \"frequency\":5, \
+    \"nickname\":true, \
+    \"arrows\":true, \
+    \"color\":true}"
+
+curl -X POST \
+"localhost:8080/ticker" \
+-H "Content-Type: application/json" \
+-d "{\"ticker\":\"ETH\", \
+    \"name\":\"ethereum\", \
     \"discord_bot_token\":\"$ETH\", \
     \"crypto\":true, \
     \"frequency\":5, \
@@ -107,6 +119,18 @@ curl -X POST \
     \"crypto\":true, \
     \"frequency\":5, \
     \"decimals\": 8, \
+    \"nickname\":true, \
+    \"arrows\":true, \
+    \"color\":true}"
+
+curl -X POST \
+"localhost:8080/ticker" \
+-H "Content-Type: application/json" \
+-d "{\"ticker\":\"ETH\", \
+    \"name\":\"ethereum\", \
+    \"discord_bot_token\":\"$XRP\", \
+    \"crypto\":true, \
+    \"frequency\":5, \
     \"nickname\":true, \
     \"arrows\":true, \
     \"color\":true}"
