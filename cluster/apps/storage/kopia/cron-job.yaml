@@ -19,7 +19,7 @@ spec:
           restartPolicy: OnFailure
           initContainers:
             - name: wait-for-repo
-              image: ghcr.io/onedr0p/kopia:0.13.0@sha256:8e37d205813283c30bd03af1c0d351a7890a37a816fe3ecb802cb0b281b165fe
+              image: ghcr.io/onedr0p/kopia:0.13.0@sha256:ee6608635237c9ddf3ec5b456122cb60f0195c5cad84b06e945498f2338bff59
               command:
                 - /bin/bash
                 - -c
@@ -33,7 +33,7 @@ spec:
                   mountPath: /snapshots
           containers:
             - name: maintenance
-              image: ghcr.io/onedr0p/kopia:0.13.0@sha256:8e37d205813283c30bd03af1c0d351a7890a37a816fe3ecb802cb0b281b165fe
+              image: ghcr.io/onedr0p/kopia:0.13.0@sha256:ee6608635237c9ddf3ec5b456122cb60f0195c5cad84b06e945498f2338bff59
               env:
                 - name: TZ
                   value: "${TZ}"
