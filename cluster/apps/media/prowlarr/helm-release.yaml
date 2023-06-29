@@ -28,7 +28,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/prowlarr-nightly
-      tag: 1.7.0.3621@sha256:bcaa1fe044441b025a3e014d8163396ffea9c434a5d3dd373384101d08cab150
+      tag: 1.7.0.3623@sha256:8dbec743882fd2c58abbbe96316a7001263f7ea69a542af9933b2b1c32eff0eb
     controller:
       strategy: RollingUpdate
     env:
