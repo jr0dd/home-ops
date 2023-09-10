@@ -28,7 +28,7 @@ spec:
   values:
     image:
       repository: ghcr.io/onedr0p/lidarr-develop
-      tag: 1.4.0.3554@sha256:f32d036b4ccfd62f9b7793fff1ddace0d2bb2a553e3febf1440f9bcaa3d9860b
+      tag: 1.4.1.3566@sha256:e32b77f915c7e82c0b4b160ef9d781434ffff21f4fd48f2806b8748c9e0973cc
     controller:
       strategy: RollingUpdate
     env:
