@@ -66,10 +66,6 @@ spec:
           httpGet:
             path: /json
             port: *port
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
     resources:
       requests:
         cpu: 10m
