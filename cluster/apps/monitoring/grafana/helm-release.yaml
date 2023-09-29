@@ -125,7 +125,7 @@ spec:
             type: file
             updateIntervalSeconds: 10
             disableDeletion: false
-            allowUiUpdates: true
+            editable: true
             options:
               path: /var/lib/grafana/dashboards/flux
           - name: "loki"
@@ -134,7 +134,7 @@ spec:
             type: file
             updateIntervalSeconds: 10
             disableDeletion: false
-            allowUiUpdates: true
+            editable: true
             options:
               path: /var/lib/grafana/dashboards/loki
           - name: "networking"
@@ -143,7 +143,7 @@ spec:
             type: file
             updateIntervalSeconds: 10
             disableDeletion: false
-            allowUiUpdates: true
+            editable: true
             options:
               path: /var/lib/grafana/dashboards/networking
           - name: "power"
@@ -152,7 +152,7 @@ spec:
             type: file
             updateIntervalSeconds: 10
             disableDeletion: false
-            allowUiUpdates: true
+            editable: true
             options:
               path: /var/lib/grafana/dashboards/power
           - name: "storage"
@@ -161,7 +161,7 @@ spec:
             type: file
             updateIntervalSeconds: 10
             disableDeletion: false
-            allowUiUpdates: true
+            editable: true
             options:
               path: /var/lib/grafana/dashboards/storage
           - name: "thanos"
@@ -170,7 +170,7 @@ spec:
             type: file
             updateIntervalSeconds: 10
             disableDeletion: false
-            allowUiUpdates: true
+            editable: true
             options:
               path: /var/lib/grafana/dashboards/thanos
     dashboards:
