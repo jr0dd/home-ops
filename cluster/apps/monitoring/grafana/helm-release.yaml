@@ -16,7 +16,6 @@ spec:
         namespace: flux-system
   maxHistory: 3
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:
@@ -26,8 +25,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    rbac:
-      pspEnabled: false
     admin:
       existingSecret: grafana
       userKey: adminUser
