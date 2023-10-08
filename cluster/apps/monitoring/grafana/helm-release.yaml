@@ -56,8 +56,6 @@ spec:
       enabled: true
     persistence:
       enabled: false
-      inMemory:
-        enabled: true
     ingress:
       enabled: true
       ingressClassName: nginx
@@ -87,15 +85,17 @@ spec:
       dashboards:
         enabled: true
         label: grafana_dashboard
-        labelValue: "1"
+        labelValue: ""
         searchNamespace: ALL
         folderAnnotation: grafana_folder
         provider:
-          allowUiUpdates: true
           disableDelete: false
+          foldersFromFilesStructure: true
         logLevel: INFO
       datasources:
-        enabled: false
+        enabled: true
+        searchNamespace: ALL
+        labelValue: ""
     datasources:
       datasources.yaml:
         apiVersion: 1
