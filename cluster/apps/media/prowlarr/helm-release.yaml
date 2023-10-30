@@ -27,7 +27,7 @@ spec:
     keepHistory: false
   values:
     image:
-      repository: ghcr.io/onedr0p/prowlarr-nightly
+      repository: ghcr.io/onedr0p/prowlarr
       tag: 1.9.4
     controller:
       strategy: RollingUpdate
