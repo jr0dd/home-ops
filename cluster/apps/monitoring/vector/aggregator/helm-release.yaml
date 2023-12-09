@@ -5,7 +5,7 @@ metadata:
   name: vector-aggregator
   namespace: monitoring
 spec:
-  interval: 10m
+  interval: 30m
   chart:
     spec:
       chart: vector
@@ -18,7 +18,6 @@ spec:
     - name: loki
   maxHistory: 3
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:

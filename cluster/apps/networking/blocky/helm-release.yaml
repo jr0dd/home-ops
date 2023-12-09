@@ -5,7 +5,7 @@ metadata:
   name: &app blocky
   namespace: networking
 spec:
-  interval: 10m
+  interval: 30m
   chart:
     spec:
       chart: app-template
@@ -16,7 +16,6 @@ spec:
         namespace: flux-system
   maxHistory: 3
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:

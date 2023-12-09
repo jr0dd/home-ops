@@ -17,7 +17,6 @@ spec:
     - name: puppeteer
   maxHistory: 3
   install:
-    createNamespace: true
     remediation:
       retries: 3
   upgrade:
