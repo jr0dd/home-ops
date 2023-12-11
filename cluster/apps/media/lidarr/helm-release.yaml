@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,33 +25,42 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/onedr0p/lidarr-develop
-      tag: 1.4.5.3639@sha256:8afcbef8d7867849cecfe7a4b3e9db3f02231b0351c73edb2af7c09b892dee23
-    controller:
-      strategy: RollingUpdate
-    env:
-      TZ: "${TZ}"
-      LIDARR__INSTANCE_NAME: Lidarr
-      LIDARR__PORT: &port 80
-      LIDARR__LOG_LEVEL: info
+    defaultPodOptions:
+      securityContext:
+        supplementalGroups:
+          - 1042
+    controllers:
+      main:
+        strategy: RollingUpdate
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/lidarr-develop
+              tag: 1.4.5.3639@sha256:8afcbef8d7867849cecfe7a4b3e9db3f02231b0351c73edb2af7c09b892dee23
+            env:
+              TZ: "${TZ}"
+              LIDARR__INSTANCE_NAME: Lidarr
+              LIDARR__PORT: &port 80
+              LIDARR__LOG_LEVEL: info
+            resources:
+              requests:
+                cpu: 10m
+                memory: 100Mi
+              limits:
+                memory: 500Mi
     service:
       main:
         ports:
           http:
             port: *port
-    podSecurityContext:
-      supplementalGroups:
-        - 1042
     persistence:
       config:
         enabled: true
         existingClaim: lidarr-config
       media:
         enabled: true
-        type: pvc
-        mountPath: /media
         existingClaim: media
+        globalMounts: /media
     ingress:
       main:
         enabled: true
@@ -72,9 +81,3 @@ spec:
           - secretName: lidarr-tls
             hosts:
               - *host
-    resources:
-      requests:
-        cpu: 10m
-        memory: 100Mi
-      limits:
-        memory: 500Mi
