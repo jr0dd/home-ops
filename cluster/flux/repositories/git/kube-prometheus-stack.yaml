@@ -14,4 +14,4 @@ spec:
     # exclude all
     /*
     # include deploy crds dir
-    !/charts/kube-prometheus-stack/crds
+    !/charts/kube-prometheus-stack/charts/crds
