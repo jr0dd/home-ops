@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,45 +25,48 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/oznu/homebridge
-      tag: "2023-11-28"
-    controller:
-      strategy: Recreate
-    env:
-      TZ: "${TZ}"
-      ENABLE_AVAHI: "1"
+    defaultPodOptions:
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
+    controllers:
+      main:
+        strategy: Recreate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: homebridge/homebridge
+              tag: "2023-11-28"
+            env:
+              TZ: "${TZ}"
+              ENABLE_AVAHI: "1"
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: &port 8581
+                  initialDelaySeconds: 30
+                  periodSeconds: 10
+                  timeoutSeconds: 2
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            resources:
+              requests:
+                cpu: 10m
+                memory: 100Mi
+              limits:
+                memory: 750Mi
     service:
       main:
         ports:
           http:
-            port: &port 8581
-    hostNetwork: true
-    dnsPolicy: ClusterFirstWithHostNet
-    persistence:
-      homebridge:
-        enabled: true
-        existingClaim: homebridge-config
-      startup-sh:
-        enabled: true
-        type: configMap
-        name: &config homebridge-startup-sh
-        mountPath: /homebridge/startup.sh
-        subPath: startup.sh
-        defaultMode: 493
-    configMaps:
-      config:
-        enabled: true
-        nameOverride: startup-sh
-        data:
-          startup.sh: |-
-            #!/bin/sh
-            npm install --save homebridge-dummy@latest
-            npm install --save homebridge-myq@latest
-            npm install --save homebridge-nest@latest
-            npm install --save homebridge-orbit-irrigation@latest
-            npm install --save homebridge-tplink-smarthome@latest
-            npm install --save -g homebridge-camera-ui@latest
+            port: *port
     ingress:
       main:
         enabled: true
@@ -80,20 +83,28 @@ spec:
           - secretName: homebridge-tls
             hosts:
               - *host
-    probes:
-      liveness:
+    configMaps:
+      config:
         enabled: true
-        custom: true
-        spec:
-          httpGet:
-            path: /login
-            port: *port
-          initialDelaySeconds: 30
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: *config
-    resources:
-      requests:
-        cpu: 10m
-        memory: 100Mi
-      limits:
-        memory: 750Mi
+        nameOverride: startup-sh
+        data:
+          startup.sh: |-
+            #!/bin/sh
+            npm install --save homebridge-dummy@latest
+            npm install --save homebridge-myq@latest
+            npm install --save homebridge-nest@latest
+            npm install --save homebridge-orbit-irrigation@latest
+            npm install --save homebridge-tplink-smarthome@latest
+            npm install --save -g homebridge-camera-ui@latest
+    persistence:
+      homebridge:
+        enabled: true
+        existingClaim: homebridge-config
+      startup-sh:
+        enabled: true
+        type: configMap
+        # name: &config homebridge-startup-sh
+        globalMounts:
+          - path: /homebridge/startup.sh
+            subPath: startup.sh
+            defaultMode: 493
