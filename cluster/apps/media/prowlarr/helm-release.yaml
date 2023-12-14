@@ -88,7 +88,9 @@ spec:
           - host: &host "prowlarr.${SECRET_DOMAIN}"
             paths:
               - path: /
-                pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - secretName: prowlarr-tls
             hosts:
