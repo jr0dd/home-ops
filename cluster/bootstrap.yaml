@@ -5,7 +5,7 @@ metadata:
   name: flux-cluster-bootstrap
   namespace: flux-system
 spec:
-  interval: 10m
+  interval: 30m
   path: ./cluster/flux/bootstrap
   prune: true
   wait: false

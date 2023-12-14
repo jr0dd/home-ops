@@ -25,13 +25,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    defaultPodOptions:
-      securityContext:
-        supplementalGroups:
-          - 1042
     controllers:
       main:
-        strategy: RollingUpdate
         containers:
           main:
             image:
@@ -42,26 +37,44 @@ spec:
               LIDARR__INSTANCE_NAME: Lidarr
               LIDARR__PORT: &port 80
               LIDARR__LOG_LEVEL: info
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /ping
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
             resources:
               requests:
                 cpu: 10m
                 memory: 100Mi
               limits:
                 memory: 500Mi
+          pod:
+            securityContext:
+              runAsUser: 568
+              runAsGroup: 568
+              runAsNonRoot: true
+              fsGroup: 568
+              fsGroupChangePolicy: OnRootMismatch
+              supplementalGroups: [1042]
     service:
       main:
         ports:
           http:
             port: *port
-    persistence:
-      config:
-        enabled: true
-        existingClaim: lidarr-config
-      media:
-        enabled: true
-        existingClaim: media
-        globalMounts:
-          - path: /media
     ingress:
       main:
         enabled: true
@@ -82,3 +95,13 @@ spec:
           - secretName: lidarr-tls
             hosts:
               - *host
+    persistence:
+      config:
+        enabled: true
+        existingClaim: lidarr-config
+      media:
+        enabled: true
+        type: persistentVolumeClaim
+        existingClaim: media
+        globalMounts:
+          - path: /media

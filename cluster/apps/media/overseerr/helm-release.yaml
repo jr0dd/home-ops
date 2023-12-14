@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,25 +25,54 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/sct/overseerr
-      tag: 1.33.2
-    controller:
-      strategy: RollingUpdate
-    env:
-      TZ: "${TZ}"
-      LOG_LEVEL: "info"
-      PORT: &port 80
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/sct/overseerr
+              tag: 1.33.2
+            env:
+              TZ: "${TZ}"
+              LOG_LEVEL: "info"
+              PORT: &port 80
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/v1/status
+                    port: *port
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+                memory: 250Mi
+              limits:
+                memory: 500Mi
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            runAsNonRoot: true
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
     service:
       main:
         ports:
           http:
             port: *port
-    persistence:
-      config:
-        enabled: true
-        existingClaim: overseerr-config
-        mountPath: /app/config
     ingress:
       main:
         enabled: true
@@ -64,9 +93,8 @@ spec:
           - secretName: overseerr-tls
             hosts:
               - *host
-    resources:
-      requests:
-        cpu: 10m
-        memory: 250Mi
-      limits:
-        memory: 500Mi
+    persistence:
+      config:
+        enabled: true
+        existingClaim: overseerr-config
+        mountPath: /app/config

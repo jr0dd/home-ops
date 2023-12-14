@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   image: ghcr.io/jr0dd/wyoa-bot
-  interval: 2m
+  interval: 30m
   secretRef:
     name: ghcr-io-creds
 ---

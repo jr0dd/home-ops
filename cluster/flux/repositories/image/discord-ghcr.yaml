@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   image: ghcr.io/jr0dd/discord-bot-react-frontend
-  interval: 2m
+  interval: 1h
   secretRef:
     name: ghcr-io-creds
 ---
@@ -31,7 +31,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: home-ops
-  interval: 1m
+  interval: 1h
   update:
     path: ./cluster/apps/discord
     strategy: Setters

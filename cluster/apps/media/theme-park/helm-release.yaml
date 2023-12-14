@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,11 +25,25 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/onedr0p/theme-park
-      tag: 1.14.1@sha256:84d3de535ae7b12b31a97b9c2ecd8b02e8e18c622362f59b05408affaece6130
-    controller:
-      strategy: RollingUpdate
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/theme-park
+              tag: 1.14.1@sha256:84d3de535ae7b12b31a97b9c2ecd8b02e8e18c622362f59b05408affaece6130
+            resources:
+              requests:
+                cpu: 10m
+                memory: 50Mi
+              limits:
+                memory: 150Mi
+        pod:
+          securityContext:
+            runAsUser: 568
+            runAsGroup: 568
+            fsGroup: 568
+            fsGroupChangePolicy: OnRootMismatch
     service:
       main:
         ports:
@@ -50,9 +64,3 @@ spec:
         tls:
           - hosts:
               - *host
-    resources:
-      requests:
-        cpu: 10m
-        memory: 50Mi
-      limits:
-        memory: 150Mi

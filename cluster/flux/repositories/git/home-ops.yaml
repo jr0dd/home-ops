@@ -5,7 +5,7 @@ metadata:
   name: home-ops
   namespace: flux-system
 spec:
-  interval: 1m
+  interval: 30m
   url: ssh://git@github.com/jr0dd/home-ops
   ref:
     branch: main
