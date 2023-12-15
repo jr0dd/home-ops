@@ -45,6 +45,9 @@ spec:
                   httpGet:
                     path: /json
                     port: &port 9222
+                    httpHeaders:
+                      - name: Host
+                        value: localhost
                   initialDelaySeconds: 30
                   periodSeconds: 10
                   timeoutSeconds: 2

@@ -101,4 +101,7 @@ spec:
       config:
         enabled: true
         existingClaim: overseerr-config
-        mountPath: /app/config
+        globalMounts:
+          - path: /app/config
+      tmp:
+        type: emptyDir
