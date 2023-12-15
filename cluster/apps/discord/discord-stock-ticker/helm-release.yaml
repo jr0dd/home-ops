@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,20 +25,31 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/jr0dd/discord-stock-ticker
-      tag: v3.10.0@sha256:d1ecb22cbc3c2a94dce72f61eb5951aa78fe813d572568031053e02afa632600
-    controller:
-      strategy: RollingUpdate
-    lifecycle:
-      postStart:
-        exec:
-          command: ["bash", "/config/payload.sh"]
-    env:
-      TZ: "${TZ}"
-    envFrom:
-      - secretRef:
-          name: discord-tokens
+    controllers:
+      main:
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/jr0dd/discord-stock-ticker
+              tag: v3.10.0@sha256:d1ecb22cbc3c2a94dce72f61eb5951aa78fe813d572568031053e02afa632600
+            env:
+              TZ: "${TZ}"
+            envFrom:
+              - secretRef:
+                  name: discord-tokens
+            lifecycle:
+              postStart:
+                exec:
+                  command: ["bash", "/config/payload.sh"]
+            resources:
+              requests:
+                cpu: 10m
+                memory: 100Mi
+              limits:
+                memory: 200Mi
     service:
       main:
         ports:
@@ -57,13 +68,8 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: &config payload-config
-        defaultMode: 493
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: *config
-    resources:
-      requests:
-        cpu: 10m
-        memory: 100Mi
-      limits:
-        memory: 200Mi
+        name: payload-config
+        globalMounts:
+          - path: /config/payload.sh
+            subPath: payload.sh
+            defaultMode: 493

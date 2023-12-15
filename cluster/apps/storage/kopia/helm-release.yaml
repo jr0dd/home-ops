@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,34 +25,65 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    initContainers:
-      wait-for-repo:
-        image: ghcr.io/onedr0p/kopia:0.13.0@sha256:ee6608635237c9ddf3ec5b456122cb60f0195c5cad84b06e945498f2338bff59
-        command:
-          - /bin/bash
-          - -c
-          - |-
-            until [ -f /snapshots/kopia.repository.f ]; do
-                printf "\e[1;32m%-6s\e[m\n" "Awaiting for the Kopia repo to become ready ..."
-                sleep 1
-            done
-        volumeMounts:
-          - name: snapshots
-            mountPath: /snapshots
-    image:
-      repository: ghcr.io/onedr0p/kopia
-      tag: 0.13.0@sha256:ee6608635237c9ddf3ec5b456122cb60f0195c5cad84b06e945498f2338bff59
-    env:
-      TZ: "${TZ}"
-      KOPIA_PASSWORD: "none"
-    command: kopia
-    args:
-      - server
-      - --address
-      - 0.0.0.0:80
-      - --metrics-listen-addr
-      - 0.0.0.0:8080
-      - --without-password
+    controllers:
+      main:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        initContainers:
+          wait-for-repo:
+            image: ghcr.io/onedr0p/kopia:0.13.0@sha256:ee6608635237c9ddf3ec5b456122cb60f0195c5cad84b06e945498f2338bff59
+            command:
+              - /bin/bash
+              - -c
+              - |-
+                until [ -f /snapshots/kopia.repository.f ]; do
+                    printf "\e[1;32m%-6s\e[m\n" "Awaiting for the Kopia repo to become ready ..."
+                    sleep 1
+                done
+            volumeMounts:
+              - name: snapshots
+                mountPath: /snapshots
+        containers:
+          main:
+            image:
+              repository: ghcr.io/onedr0p/kopia
+              tag: 0.13.0@sha256:ee6608635237c9ddf3ec5b456122cb60f0195c5cad84b06e945498f2338bff59
+            env:
+              TZ: "${TZ}"
+              KOPIA_PASSWORD: "none"
+            args:
+              - server
+              - start
+              - --insecure
+              - --address
+              - 0.0.0.0:80
+              - --metrics-listen-addr
+              - 0.0.0.0:8080
+              - --without-password
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: 80
+                  initialDelaySeconds: 30
+                  periodSeconds: 30
+                  timeoutSeconds: 10
+                  failureThreshold: 6
+              readiness: *probes
+              startup:
+                enabled: false
+            securityContext:
+              privileged: true
+              runAsUser: 0
+            resources:
+              requests:
+                cpu: 10m
+                memory: 100Mi
+              limits:
+                memory: 250Mi
     service:
       main:
         ports:
@@ -60,7 +91,17 @@ spec:
             port: 80
           metrics:
             enabled: true
+            controller: main
             port: 8080
+    serviceMonitor:
+      main:
+        enabled: true
+        endpoints:
+          - port: metrics
+            scheme: http
+            path: /metrics
+            interval: 1m
+            scrapeTimeout: 10s
     ingress:
       main:
         enabled: true
@@ -72,32 +113,33 @@ spec:
           - host: &host "kopia.${SECRET_DOMAIN}"
             paths:
               - path: /
-                pathType: Prefix
+                service:
+                  name: main
+                  port: http
         tls:
           - secretName: kopia-tls
             hosts:
               - *host
-    podSecurityContext:
-      supplementalGroups:
-        - 1042
     persistence:
       config:
         enabled: true
-        type: configMap
-        name: *app
-        subPath: repository.config
-        mountPath: /config/repository.config
-        readOnly: true
+        type: secret
+        name: kopia-repository-secret
+        globalMounts:
+          - path: /app/config/repository.config
+            subPath: repository.config
+            readOnly: true
+      cache:
+        type: emptyDir
+        globalMounts:
+          - path: /app/cache
+      logs:
+        type: emptyDir
+        globalMounts:
+          - path: /app/logs
       snapshots:
         enabled: true
-        type: pvc
+        type: persistentVolumeClaim
         existingClaim: snapshots
-        mountPath: /snapshots
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: *app
-    resources:
-      requests:
-        cpu: 10m
-        memory: 100Mi
-      limits:
-        memory: 250Mi
+        globalMounts:
+          - path: /snapshots

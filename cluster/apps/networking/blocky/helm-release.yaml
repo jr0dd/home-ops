@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: app-template
-      version: 1.5.1
+      version: 2.4.0
       sourceRef:
         kind: HelmRepository
         name: bjw-s
@@ -25,13 +25,43 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    image:
-      repository: ghcr.io/0xerr0r/blocky
-      tag: v0.22
-    controller:
-      strategy: RollingUpdate
-    env:
-      TZ: "${TZ}"
+    controllers:
+      main:
+        strategy: RollingUpdate
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/0xerr0r/blocky
+              tag: v0.22
+            env:
+              TZ: "${TZ}"
+            probes:
+              liveness: &probes
+                enabled: true
+                custom: true
+                spec:
+                  httpGet:
+                    path: /api/blocking/status
+                    port: &port 4000
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+                memory: 50Mi
+              limits:
+                memory: 150Mi
     service:
       main:
         enabled: true
@@ -42,10 +72,11 @@ spec:
         externalTrafficPolicy: Local
         ports:
           http:
-            port: 4000
+            port: *port
             protocol: TCP
       dns:
         enabled: true
+        controller: main
         type: LoadBalancer
         annotations:
           metallb.universe.tf/allow-shared-ip: *app
@@ -71,13 +102,6 @@ spec:
             path: /metrics
             port: http
             scrapeTimeout: 10s
-    persistence:
-      config:
-        enabled: true
-        type: configMap
-        name: &config blocky-config
-        mountPath: /app/config.yml
-        subPath: config.yml
     configMaps:
       config:
         enabled: true
@@ -113,11 +137,11 @@ spec:
               path: /metrics
             httpPort: 4000
             logLevel: info
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: *config
-    resources:
-      requests:
-        cpu: 10m
-        memory: 50Mi
-      limits:
-        memory: 150Mi
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+        name: &config blocky-config
+        globalMounts:
+          - path: /app/config.yml
+            subPath: config.yml
