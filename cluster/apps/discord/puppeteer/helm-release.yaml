@@ -44,7 +44,7 @@ spec:
                 spec:
                   httpGet:
                     path: /json
-                    port: &port 8581
+                    port: &port 9222
                   initialDelaySeconds: 30
                   periodSeconds: 10
                   timeoutSeconds: 2
