@@ -34,7 +34,7 @@ spec:
           main:
             image:
               repository: ghcr.io/jr0dd/discord-stock-ticker
-              tag: v3.10.8@sha256:f6f9b9bce46ed64d00ae02c3a09541830e212ebbea5d1b4d706d80db9d72e58f
+              tag: v3.10.8@sha256:4dc38fc3cff2f1e88c9179000d9355b22d4438a39819efa8504f077b1a9f6da7
             env:
               TZ: "${TZ}"
             envFrom:
