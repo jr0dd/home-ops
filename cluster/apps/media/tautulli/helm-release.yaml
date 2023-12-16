@@ -81,3 +81,5 @@ spec:
       config:
         enabled: true
         existingClaim: tautulli-config
+      tmp:
+        type: emptyDir

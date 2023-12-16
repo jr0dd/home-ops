@@ -109,3 +109,5 @@ spec:
         existingClaim: media
         globalMounts:
           - path: /media
+      tmp:
+        type: emptyDir

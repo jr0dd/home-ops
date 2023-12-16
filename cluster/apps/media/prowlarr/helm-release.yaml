@@ -101,3 +101,5 @@ spec:
       config:
         enabled: true
         existingClaim: prowlarr-config
+      tmp:
+        type: emptyDir
