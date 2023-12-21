@@ -26,6 +26,8 @@ spec:
     keepHistory: false
   values:
     global:
+      diagnosticMode:
+        enabled: true
       postgresql:
         auth:
           postgresPassword: "${POSTGRES_ADMIN_PASSWORD}"
@@ -35,7 +37,7 @@ spec:
     image:
       registry: docker.io
       repository: bitnami/postgresql
-      tag: "15.4.0"
+      tag: "16.1.0"
     primary:
       persistence:
         enabled: true
