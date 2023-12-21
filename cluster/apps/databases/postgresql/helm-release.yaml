@@ -27,10 +27,6 @@ spec:
   values:
     diagnosticMode:
       enabled: true
-      command:
-        - sleep
-      args:
-        - infinity
     global:
       postgresql:
         auth:
@@ -43,6 +39,8 @@ spec:
       repository: bitnami/postgresql
       tag: "16.1.0"
     primary:
+      containerSecurityContext:
+        runAsUser: 0
       persistence:
         enabled: true
         existingClaim: postgresql-data
