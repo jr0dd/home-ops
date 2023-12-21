@@ -26,7 +26,7 @@ spec:
     keepHistory: false
   values:
     diagnosticMode:
-      enabled: true
+      enabled: false
     global:
       postgresql:
         auth:
