@@ -41,8 +41,7 @@ spec:
     primary:
       containerSecurityContext:
         runAsUser: 0
-        privileged: true
-        allowPrivilegeEscalation: true
+        runAsNonRoot: false
       persistence:
         enabled: true
         existingClaim: postgresql-data
