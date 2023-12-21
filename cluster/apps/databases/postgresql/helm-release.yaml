@@ -25,9 +25,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    diagnosticMode:
+      enabled: true
     global:
-      diagnosticMode:
-        enabled: true
       postgresql:
         auth:
           postgresPassword: "${POSTGRES_ADMIN_PASSWORD}"
@@ -43,6 +43,6 @@ spec:
         enabled: true
         existingClaim: postgresql-data
     metrics:
-      enabled: false
+      enabled: true
       serviceMonitor:
-        enabled: false
+        enabled: true
