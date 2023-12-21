@@ -40,8 +40,10 @@ spec:
       tag: "16.1.0"
     primary:
       containerSecurityContext:
+        enabled: true
         runAsUser: 0
         runAsNonRoot: false
+        allowPrivilegeEscalation: true
       persistence:
         enabled: true
         existingClaim: postgresql-data
