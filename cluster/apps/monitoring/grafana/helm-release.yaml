@@ -246,29 +246,29 @@ spec:
 
       thanos:
         bucket-replicate:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/bucket-replicate.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/bucket-replicate.json
           datasource: Prometheus
         compact:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/compact.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/compact.json
           datasource: Prometheus
         overview:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/overview.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/overview.json
           datasource: Prometheus
         query:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/query.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/query.json
           datasource: Prometheus
         query-frontend:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/query-frontend.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/query-frontend.json
           datasource: Prometheus
         receive:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/receive.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/receive.json
           datasource: Prometheus
         rule:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/rule.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/rule.json
           datasource: Prometheus
         sidecar:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/sidecar.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/sidecar.json
           datasource: Prometheus
         store:
-          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.33.0/examples/dashboards/store.json
+          url: https://raw.githubusercontent.com/thanos-io/thanos/v0.37.2/examples/dashboards/store.json
           datasource: Prometheus
