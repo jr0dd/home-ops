@@ -9,7 +9,7 @@ spec:
   url: https://github.com/fluxcd/flux2.git
   ref:
     # renovate: datasource=github-releases depName=fluxcd/flux2
-    tag: v2.2.2
+    tag: v2.5.1
   ignore: |
     # exclude all
     /*

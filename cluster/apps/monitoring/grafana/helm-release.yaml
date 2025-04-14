@@ -173,13 +173,13 @@ spec:
     dashboards:
       flux:
         cluster:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/v2.2.2/manifests/monitoring/monitoring-config/dashboards/cluster.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2/v2.5.1/manifests/monitoring/monitoring-config/dashboards/cluster.json
           datasource: Prometheus
         control-plane:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/v2.2.2/manifests/monitoring/monitoring-config/dashboards/control-plane.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2/v2.5.1/manifests/monitoring/monitoring-config/dashboards/control-plane.json
           datasource: Prometheus
         logs:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/v2.2.2/manifests/monitoring/monitoring-config/dashboards/logs.json
+          url: https://raw.githubusercontent.com/fluxcd/flux2/v2.5.1/manifests/monitoring/monitoring-config/dashboards/logs.json
           datasource: Loki
 
       networking:
