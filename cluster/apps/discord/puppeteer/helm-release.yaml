@@ -33,7 +33,7 @@ spec:
           main:
             image:
               repository: ghcr.io/jr0dd/puppeteer
-              tag: v19.6.3@sha256:8eba24ba8123872434c73edd71067021ff28f5cb38cfed0ab76e18dcc2175ffb
+              tag: v24.7.2@sha256:07bac1923d47c873109ebb516f69e5d062585d31b95c179717901a43c17839bb
               pullPolicy: Always
             env:
               TZ: "${TZ}"
