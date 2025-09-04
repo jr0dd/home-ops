@@ -37,7 +37,7 @@ jobs:
             }
 
       - name: Generate Labels
-        uses: actions/labeler@v5
+        uses: actions/labeler@v6
         with:
           configuration-path: .github/labeler.yaml
           repo-token: ${{ steps.generate-token.outputs.token }}
